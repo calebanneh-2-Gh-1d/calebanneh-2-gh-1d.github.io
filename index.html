@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Scout Escort - Worldwide Football Network & Fixtures</title>
+    <title>Scout Escort - Dynamic Football Network</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
         body { background-color: #0d1117; color: #c9d1d9; }
@@ -11,38 +11,29 @@
         header { background: #161b22; padding: 15px 30px; display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #238636; flex-wrap: wrap; gap: 10px; }
         .logo { font-size: 1.5rem; font-weight: bold; color: #ffffff; text-decoration: none; display: flex; align-items: center; gap: 8px; }
         .logo span { color: #238636; }
-        .search-box { width: 40%; display: flex; }
-        .search-box input { width: 100%; padding: 10px; border: 1px solid #30363d; background: #0d1117; color: #fff; border-radius: 6px 0 0 6px; outline: none; }
-        .search-box button { padding: 10px 15px; background: #238636; border: none; color: white; cursor: pointer; border-radius: 0 6px 6px 0; font-weight: bold; }
         
-        .container { max-width: 1300px; margin: 25px auto; padding: 0 20px; display: grid; grid-template-columns: 240px 1fr 340px; gap: 20px; }
+        .container { max-width: 1300px; margin: 25px auto; padding: 0 20px; display: grid; grid-template-columns: 280px 1fr 300px; gap: 20px; }
         
-        .sidebar, .api-sidebar { background: #161b22; padding: 20px; border-radius: 8px; border: 1px solid #30363d; height: fit-content; }
-        .sidebar h3, .api-sidebar h3 { color: #fff; margin-bottom: 15px; border-bottom: 1px solid #30363d; padding-bottom: 8px; font-size: 1rem; }
-        .sidebar ul { list-style: none; }
-        .sidebar li { margin-bottom: 12px; }
-        .sidebar a { color: #58a6ff; text-decoration: none; font-weight: 500; cursor: pointer; display: block; }
-        .sidebar a:hover { text-decoration: underline; color: #238636; }
+        .card-panel { background: #161b22; padding: 20px; border-radius: 8px; border: 1px solid #30363d; height: fit-content; margin-bottom: 20px; }
+        .card-panel h3 { color: #fff; margin-bottom: 15px; border-bottom: 1px solid #30363d; padding-bottom: 8px; font-size: 1rem; }
+        
+        /* Form Inputs */
+        .form-group { margin-bottom: 12px; }
+        .form-group label { display: block; font-size: 0.8rem; color: #8b949e; margin-bottom: 4px; }
+        .form-group input, .form-group select { width: 100%; padding: 8px 10px; border: 1px solid #30363d; background: #0d1117; color: #fff; border-radius: 6px; outline: none; }
+        .btn { width: 100%; padding: 10px; background: #238636; border: none; color: white; cursor: pointer; border-radius: 6px; font-weight: bold; margin-top: 5px; }
+        .btn:hover { background: #2ea043; }
 
-        .main-content { background: #161b22; padding: 25px; border-radius: 8px; border: 1px solid #30363d; }
-        .section-header { color: #ffffff; margin-bottom: 20px; border-left: 4px solid #238636; padding-left: 10px; font-size: 1.3rem; }
-        
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; }
-        .card { background: #0d1117; border: 1px solid #30363d; border-radius: 8px; padding: 18px; text-align: left; }
-        .card-header { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; }
-        .card-header img { width: 55px; height: 55px; border-radius: 50%; object-fit: cover; border: 2px solid #238636; }
-        .card h4 { color: #ffffff; font-size: 1.05rem; }
-        
-        .match-card { background: #0d1117; border: 1px solid #30363d; padding: 12px; border-radius: 6px; margin-bottom: 12px; }
-        .match-teams { display: flex; justify-content: space-between; font-weight: bold; font-size: 0.9rem; color: #fff; margin-bottom: 6px; }
-        .match-status { font-size: 0.75rem; color: #238636; display: flex; justify-content: space-between; }
-        .badge { display: inline-block; padding: 2px 7px; background: #21262d; border: 1px solid #30363d; border-radius: 12px; color: #238636; font-size: 0.7rem; }
+        /* Directory Cards */
+        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 15px; }
+        .profile-card { background: #0d1117; border: 1px solid #30363d; border-radius: 8px; padding: 15px; text-align: left; }
+        .profile-card h4 { color: #ffffff; font-size: 1.1rem; }
+        .badge { display: inline-block; padding: 2px 8px; background: #21262d; border: 1px solid #30363d; border-radius: 12px; color: #238636; font-size: 0.75rem; margin-top: 5px; }
         
         footer { text-align: center; padding: 20px; margin-top: 40px; background: #161b22; color: #8b949e; border-top: 1px solid #30363d; font-size: 0.8rem; }
 
         @media (max-width: 900px) {
             .container { grid-template-columns: 1fr; }
-            .search-box { width: 100%; }
         }
     </style>
 </head>
@@ -50,125 +41,124 @@
 
     <header>
         <a href="#" class="logo">SCOUT<span>ESCORT</span> 🌐 NETWORK</a>
-        <div class="search-box">
-            <input type="text" id="searchInput" placeholder="Search profiles...">
-            <button>Search</button>
-        </div>
     </header>
 
     <div class="container">
-        <div class="sidebar">
-            <h3>Global Hub</h3>
-            <ul>
-                <li><a href="#">🌐 All Profiles</a></li>
-                <li><a href="#">🏃 Players Directory</a></li>
-                <li><a href="#">🏟️ Club Spaces</a></li>
-            </ul>
+        <!-- Registration Sidebar -->
+        <div>
+            <div class="card-panel">
+                <h3>📝 Register Profile</h3>
+                <form id="profileForm">
+                    <div class="form-group">
+                        <label>Full Name / Club Name</label>
+                        <input type="text" id="nameInput" placeholder="e.g. John Doe" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Role</label>
+                        <select id="roleInput">
+                            <option value="Player">Player</option>
+                            <option value="Scout">Scout</option>
+                            <option value="Club / Academy">Club / Academy</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Primary Position / Detail</label>
+                        <input type="text" id="detailInput" placeholder="e.g. Midfielder / Ghana" required>
+                    </div>
+                    <button type="submit" class="btn">Add to Live Network</button>
+                </form>
+            </div>
         </div>
 
-        <div class="main-content">
-            <div class="section-header">Featured Directory</div>
-            <div class="grid">
-                <div class="card">
-                    <div class="card-header">
-                        <img src="https://via.placeholder.com/55/238636/FFFFFF?text=SE" alt="Scout">
-                        <div>
-                            <h4>Scout Escort Network</h4>
-                            <span class="badge">Official Platform</span>
-                        </div>
-                    </div>
-                    <p style="font-size: 0.85rem; color: #8b949e;">Connecting player profiles and global club leg fixtures in real-time.</p>
+        <!-- Dynamic Main Content -->
+        <div>
+            <div class="card-panel">
+                <h3>🌐 Live Registered Directory</h3>
+                <div id="directoryGrid" class="grid">
+                    <p style="color: #8b949e; font-size: 0.85rem;">Connecting to database...</p>
                 </div>
             </div>
         </div>
 
-        <div class="api-sidebar">
-            <h3>⚽ Live Leg Fixtures</h3>
-            <p style="font-size: 0.75rem; color: #8b949e; margin-bottom: 12px;">Powered by <strong>Football Data Network</strong></p>
-            <div id="fixturesContainer">Loading match legs...</div>
+        <!-- Match Panel -->
+        <div>
+            <div class="card-panel">
+                <h3>⚽ Platform Notice</h3>
+                <p style="font-size: 0.85rem; color: #8b949e; line-height: 1.4;">
+                    Profiles added on this page save directly to Cloud Firestore in real time.
+                </p>
+            </div>
         </div>
     </div>
-fd_a7f30da90a2f75caeb0ba52e58acda984283f00903f73ec4
+
     <footer>
         <p>&copy; 2026 Scout Escort Platform.</p>
     </footer>
 
-    <script>
-        // Paste your newly generated API key inside the quotes below
-        const API_KEY = "fd_75d4b50a..."; 
+    <!-- Firebase SDK Modules -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+        import { getFirestore, collection, addDoc, onSnapshot, query, orderBy } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
 
-        async function fetchMatchFixtures() {
-            const container = document.getElementById('fixturesContainer');
-            const targetUrl = 'https://footballdata.io/api/v1/fixtures/today';
-            const proxyUrl = `https://corsproxy.io/?${encodeURIComponent(targetUrl)}`;
+        // Firebase Configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyD__xh7FZIoes8WuVlaW-...",
+            authDomain: "scout-escort.firebaseapp.com",
+            projectId: "scout-escort",
+            storageBucket: "scout-escort.firebasestorage.app",
+            messagingSenderId: "920239833217",
+            appId: "1:920239833217:web:848948a32...",
+            measurementId: "G-9DMZLL3XQE"
+        };
+
+        // Initialize Firebase & Firestore
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+        const profilesRef = collection(db, "profiles");
+
+        // Save new profile to Firestore
+        document.getElementById('profileForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const name = document.getElementById('nameInput').value;
+            const role = document.getElementById('roleInput').value;
+            const detail = document.getElementById('detailInput').value;
 
             try {
-                const response = await fetch(proxyUrl, {
-                    headers: {
-                        'Authorization': `Bearer ${API_KEY}`
-                    }
+                await addDoc(profilesRef, {
+                    name: name,
+                    role: role,
+                    detail: detail,
+                    createdAt: new Date()
                 });
-
-                if (!response.ok) throw new Error('API Request Failed');
-
-                const data = await response.json();
-                
-                if (Array.isArray(data) && data.length > 0) {
-                    container.innerHTML = '';
-                    data.forEach(match => {
-                        container.innerHTML += `
-                            <div class="match-card">
-                                <div class="match-teams">
-                                    <span>${match.home_team || 'Home'}</span>
-                                    <span>${match.score || 'vs'}</span>
-                                    <span>${match.away_team || 'Away'}</span>
-                                </div>
-                                <div class="match-status">
-                                    <span>Leg Match</span>
-                                    <span>${match.status || 'Scheduled'}</span>
-                                </div>
-                            </div>
-                        `;
-                    });
-                } else {
-                    // Fallback to active sample leg fixtures if no matches are scheduled today
-                    renderSampleFixtures();
-                }
+                document.getElementById('profileForm').reset();
             } catch (err) {
-                renderSampleFixtures();
+                alert("Error saving profile: " + err.message);
             }
-        }
+        });
 
-        function renderSampleFixtures() {
-            const container = document.getElementById('fixturesContainer');
-            container.innerHTML = `
-                <div class="match-card">
-                    <div class="match-teams">
-                        <span>Arsenal</span>
-                        <span>1 - 0</span>
-                        <span>Bayern</span>
-                    </div>
-                    <div class="match-status">
-                        <span>Leg 1 (Quarter Final)</span>
-                        <span style="color: #238636;">FULL TIME</span>
-                    </div>
-                </div>
-                <div class="match-card">
-                    <div class="match-teams">
-                        <span>Real Madrid</span>
-                        <span>VS</span>
-                        <span>Man City</span>
-                    </div>
-                    <div class="match-status">
-                        <span>Leg 2 (Quarter Final)</span>
-                        <span style="color: #e3b341;">20:00 GMT</span>
-                    </div>
-                </div>
-            `;
-        }
+        // Listen for live database changes and display profiles automatically
+        onSnapshot(query(profilesRef, orderBy("createdAt", "desc")), (snapshot) => {
+            const grid = document.getElementById('directoryGrid');
+            grid.innerHTML = '';
+            
+            if (snapshot.empty) {
+                grid.innerHTML = '<p style="color: #8b949e; font-size: 0.85rem;">No profiles created yet. Use the form to submit one!</p>';
+                return;
+            }
 
-        fetchMatchFixtures();
+            snapshot.forEach((doc) => {
+                const data = doc.data();
+                grid.innerHTML += `
+                    <div class="profile-card">
+                        <h4>${data.name}</h4>
+                        <span class="badge">${data.role}</span>
+                        <p style="font-size: 0.85rem; color: #8b949e; margin-top: 8px;">${data.detail}</p>
+                    </div>
+                `;
+            });
+        });
     </script>
 </body>
 </html>
+
 
