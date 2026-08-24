@@ -1,1 +1,372 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scout Escort - Worldwide Talent & Live Transfer Network</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        body { background-color: #0d1117; color: #c9d1d9; }
+        
+        /* Global Navigation Header */
+        header { background: #161b22; padding: 15px 30px; display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #238636; flex-wrap: wrap; gap: 10px; }
+        .logo { font-size: 1.5rem; font-weight: bold; color: #ffffff; text-decoration: none; display: flex; align-items: center; gap: 8px; }
+        .logo span { color: #238636; }
+        .search-box { width: 40%; display: flex; }
+        .search-box input { width: 100%; padding: 10px; border: 1px solid #30363d; background: #0d1117; color: #fff; border-radius: 6px 0 0 6px; outline: none; }
+        .search-box button { padding: 10px 15px; background: #238636; border: none; color: white; cursor: pointer; border-radius: 0 6px 6px 0; font-weight: bold; }
+        
+        /* Breaking Transfer News Ticker */
+        .news-ticker { background: #21262d; border-bottom: 1px solid #30363d; padding: 10px 30px; font-size: 0.85rem; display: flex; align-items: center; gap: 15px; overflow: hidden; }
+        .ticker-badge { background: #da3633; color: white; padding: 3px 8px; border-radius: 4px; font-weight: bold; font-size: 0.75rem; text-transform: uppercase; white-space: nowrap; }
+        .ticker-text { color: #58a6ff; white-space: nowrap; animation: marquee 25s linear infinite; }
+        @keyframes marquee { 0% { transform: translateX(100%); } 100% { transform: translateX(-100%); } }
+
+        /* Layout Grid */
+        .container { max-width: 1300px; margin: 25px auto; padding: 0 20px; display: grid; grid-template-columns: 240px 1fr 300px; gap: 20px; }
+        
+        /* Sidebar Navigation */
+        .sidebar, .news-sidebar { background: #161b22; padding: 20px; border-radius: 8px; border: 1px solid #30363d; height: fit-content; }
+        .sidebar h3, .news-sidebar h3 { color: #fff; margin-bottom: 15px; border-bottom: 1px solid #30363d; padding-bottom: 8px; font-size: 1rem; }
+        .sidebar ul { list-style: none; }
+        .sidebar li { margin-bottom: 12px; }
+        .sidebar a { color: #58a6ff; text-decoration: none; font-weight: 500; cursor: pointer; display: block; }
+        .sidebar a:hover { text-decoration: underline; color: #238636; }
+
+        /* Main Workspace */
+        .main-content { background: #161b22; padding: 25px; border-radius: 8px; border: 1px solid #30363d; }
+        .section-header { color: #ffffff; margin-bottom: 20px; border-left: 4px solid #238636; padding-left: 10px; font-size: 1.3rem; display: flex; justify-content: space-between; align-items: center; }
+        
+        /* Directory Cards */
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; }
+        .card { background: #0d1117; border: 1px solid #30363d; border-radius: 8px; padding: 18px; text-align: left; position: relative; }
+        .card-header { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; }
+        .card-header img { width: 55px; height: 55px; border-radius: 50%; object-fit: cover; border: 2px solid #238636; }
+        .card h4 { color: #ffffff; font-size: 1.05rem; }
+        .country-flag { font-size: 0.8rem; color: #8b949e; display: flex; align-items: center; gap: 5px; margin-top: 3px; }
+        
+        .video-container { width: 100%; height: 150px; background: #000; margin: 10px 0; border-radius: 6px; overflow: hidden; border: 1px solid #30363d; }
+        .video-container iframe { width: 100%; height: 100%; border: none; }
+        
+        .stats-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 6px; background: #161b22; padding: 8px; border-radius: 6px; text-align: center; margin: 10px 0; font-size: 0.75rem; }
+        .stats-grid div strong { display: block; color: #238636; font-size: 0.9rem; }
+        
+        .badge { display: inline-block; padding: 2px 7px; background: #21262d; border: 1px solid #30363d; border-radius: 12px; color: #238636; font-size: 0.7rem; font-weight: bold; }
+        .btn-action { display: block; width: 100%; text-align: center; background: #238636; color: white; padding: 8px; border-radius: 6px; text-decoration: none; font-weight: bold; margin-top: 10px; font-size: 0.85rem; border: none; cursor: pointer; }
+        .btn-action:hover { background: #2ea043; }
+        
+        /* Transfer News Item Cards */
+        .transfer-card { background: #0d1117; border-left: 3px solid #e3b341; padding: 10px; border-radius: 4px; margin-bottom: 12px; font-size: 0.85rem; }
+        .transfer-card h5 { color: #fff; margin-bottom: 4px; font-size: 0.9rem; }
+        .transfer-card p { color: #8b949e; font-size: 0.8rem; }
+        .transfer-card .time { font-size: 0.7rem; color: #238636; font-weight: bold; margin-top: 5px; display: block; }
+
+        /* Forms */
+        .form-group { margin-bottom: 12px; }
+        .form-group label { display: block; margin-bottom: 4px; color: #c9d1d9; font-size: 0.85rem; }
+        .form-group input, .form-group select, .form-group textarea { width: 100%; padding: 8px; background: #0d1117; border: 1px solid #30363d; color: #fff; border-radius: 6px; outline: none; font-size: 0.85rem; }
+        
+        footer { text-align: center; padding: 20px; margin-top: 40px; background: #161b22; color: #8b949e; border-top: 1px solid #30363d; font-size: 0.8rem; }
+
+        @media (max-width: 900px) {
+            .container { grid-template-columns: 1fr; }
+            .search-box { width: 100%; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Navigation -->
+    <header>
+        <a href="#" class="logo">SCOUT<span>ESCORT</span> 🌐 WORLDWIDE</a>
+        <div class="search-box">
+            <input type="text" id="searchInput" placeholder="Search players, clubs globally, or transfer news..." onkeyup="searchProfiles()">
+            <button onclick="searchProfiles()">Search</button>
+        </div>
+    </header>
+
+    <!-- Worldwide Breaking Transfer News Ticker -->
+    <div class="news-ticker">
+        <span class="ticker-badge">FIRST TO KNOW</span>
+        <div class="ticker-text" id="tickerContent">
+            🚨 BREAKING TRANSFER SCOOP: Scouting networks verifying terms for emerging talent across Europe & Africa... | Real-time transfer updates active...
+        </div>
+    </div>
+
+    <div class="container">
+        <!-- Sidebar Navigation -->
+        <div class="sidebar">
+            <h3>Global Network</h3>
+            <ul>
+                <li><a onclick="filterCategory('all')">🌐 All Worldwide Spaces</a></li>
+                <li><a onclick="filterCategory('Player')">🏃 Global Players Directory</a></li>
+                <li><a onclick="filterCategory('Club')">🏟️ Worldwide Club Spaces</a></li>
+                <li><a onclick="filterCategory('Scout')">📋 International Scouts</a></li>
+                <li><a onclick="showForm('space')">➕ Register Club or Player Space</a></li>
+                <li><a onclick="showForm('news')">📰 Post Exclusive Transfer News</a></li>
+            </ul>
+        </div>
+
+        <!-- Main Workspace Directory -->
+        <div class="main-content">
+            <div class="section-header">
+                <span id="viewTitle">Global Talent & Club Directory</span>
+            </div>
+            <div class="grid" id="profileGrid"></div>
+        </div>
+
+        <!-- Dedicated Live Transfer News Panel -->
+        <div class="news-sidebar">
+            <h3>⚡ Live Transfer Wire</h3>
+            <div id="transferNewsFeed"></div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Scout Escort Platform. Global Digital Scouting & Transfer Intelligence System.</p>
+    </footer>
+
+    <script>
+        // Global Accounts Database (Players, Clubs, Scouts)
+        const globalProfiles = [
+            { 
+                name: "Kwame Asante", 
+                type: "Player", 
+                country: "Ghana 🇬🇭", 
+                position: "Winger (RW)", 
+                img: "https://via.placeholder.com/60/238636/FFFFFF?text=KA", 
+                video: "https://www.youtube.com/embed/tgbNymZ7vqY", 
+                pace: "93", goals: "14", assists: "8",
+                desc: "Speed winger from Accra. Available for global scouting and trial matches." 
+            },
+            { 
+                name: "Real Madrid Scouting Portal", 
+                type: "Club", 
+                country: "Spain 🇪🇸", 
+                position: "La Liga", 
+                img: "https://via.placeholder.com/60/FEBE10/000000?text=RMA", 
+                video: "", 
+                pace: "-", goals: "-", assists: "-",
+                desc: "Official international scouting space inspecting global talent and video submissions." 
+            },
+            { 
+                name: "Mateo Silva", 
+                type: "Player", 
+                country: "Brazil 🇧🇷", 
+                position: "Attacking Midfielder (CAM)", 
+                img: "https://via.placeholder.com/60/009739/FFFFFF?text=MS", 
+                video: "https://www.youtube.com/embed/tgbNymZ7vqY", 
+                pace: "87", goals: "11", assists: "15",
+                desc: "Creative playmaker looking for European or Asian club contract opportunities." 
+            },
+            { 
+                name: "Manchester United", 
+                type: "Club", 
+                country: "England 🇬🇧", 
+                position: "Premier League", 
+                img: "https://via.placeholder.com/60/DA291C/FFFFFF?text=MUFC", 
+                video: "", 
+                pace: "-", goals: "-", assists: "-",
+                desc: "Official club space recruiting prospects globally across Africa, Europe, and South America." 
+            }
+        ];
+
+        // Global Exclusive Transfer News Database
+        const transferNews = [
+            {
+                title: "Exclusive: European Scouting Agents In Accra",
+                details: "Scouts from 3 European clubs are reviewing video reels for Ghanaian wingers before official negotiations start.",
+                time: "10 mins ago"
+            },
+            {
+                title: "Brazilian Prospect Talks Advanced",
+                details: "Mateo Silva's agency has opened direct inquiries with international team representatives on Scout Escort.",
+                time: "1 hour ago"
+            }
+        ];
+
+        // Render Directory Profiles
+        function renderProfiles(data) {
+            const container = document.getElementById('profileGrid');
+            container.innerHTML = '';
+            if (data.length === 0) {
+                container.innerHTML = '<p style="color: #8b949e;">No spaces or players match your global search query.</p>';
+                return;
+            }
+            data.forEach(item => {
+                let videoHTML = item.video ? `<div class="video-container"><iframe src="${item.video}" title="Highlights" allowfullscreen></iframe></div>` : '';
+                let statsHTML = item.type === 'Player' ? `
+                    <div class="stats-grid">
+                        <div>Pace<strong>${item.pace}</strong></div>
+                        <div>Goals<strong>${item.goals}</strong></div>
+                        <div>Assists<strong>${item.assists}</strong></div>
+                    </div>` : '';
+
+                container.innerHTML += `
+                    <div class="card">
+                        <div class="card-header">
+                            <img src="${item.img}" alt="${item.name}">
+                            <div>
+                                <h4>${item.name}</h4>
+                                <div class="country-flag">📍 ${item.country} | <span class="badge">${item.type}</span></div>
+                            </div>
+                        </div>
+                        <p style="font-size: 0.8rem; color: #8b949e; margin-bottom: 6px;"><strong>Role/League:</strong> ${item.position}</p>
+                        <p style="font-size: 0.8rem;">${item.desc}</p>
+                        ${statsHTML}
+                        ${videoHTML}
+                        <button class="btn-action" onclick="alert('Opening secure direct messaging channel with ${item.name}...')">Connect / Scout Profile</button>
+                    </div>
+                `;
+            });
+        }
+
+        // Render Live Transfer News Feed
+        function renderTransferNews() {
+            const container = document.getElementById('transferNewsFeed');
+            container.innerHTML = '';
+            transferNews.forEach(news => {
+                container.innerHTML += `
+                    <div class="transfer-card">
+                        <h5>${news.title}</h5>
+                        <p>${news.details}</p>
+                        <span class="time">⚡ ${news.time}</span>
+                    </div>
+                `;
+            });
+            // Update News Marquee
+            document.getElementById('tickerContent').innerText = transferNews.map(n => `🚨 ${n.title.toUpperCase()}: ${n.details}`).join('  |  ');
+        }
+
+        // Search Both News & Directory
+        function searchProfiles() {
+            const query = document.getElementById('searchInput').value.toLowerCase();
+            const filtered = globalProfiles.filter(p => 
+                p.name.toLowerCase().includes(query) || 
+                p.country.toLowerCase().includes(query) || 
+                p.type.toLowerCase().includes(query) || 
+                p.position.toLowerCase().includes(query)
+            );
+            document.getElementById('viewTitle').innerText = `Worldwide Results for "${query}"`;
+            renderProfiles(filtered);
+        }
+
+        // Category Filter
+        function filterCategory(type) {
+            if (type === 'all') {
+                document.getElementById('viewTitle').innerText = "Global Talent & Club Directory";
+                renderProfiles(globalProfiles);
+            } else {
+                document.getElementById('viewTitle').innerText = `${type} Profiles`;
+                renderProfiles(globalProfiles.filter(p => p.type === type));
+            }
+        }
+
+        // Show Forms (Space Registration OR Posting Transfer News)
+        function showForm(formType) {
+            if (formType === 'space') {
+                document.getElementById('viewTitle').innerText = "Register Your Space (Worldwide Team or Player)";
+                document.getElementById('profileGrid').innerHTML = `
+                    <div style="grid-column: 1 / -1; max-width: 600px; margin: 0 auto; width: 100%;">
+                        <form onsubmit="handleRegistration(event)">
+                            <div class="form-group">
+                                <label>Name (Player, Club, or Agency)</label>
+                                <input type="text" id="regName" placeholder="e.g. Manchester City or Samuel Osei" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Space Category</label>
+                                <select id="regType">
+                                    <option value="Player">Player / Prospect</option>
+                                    <option value="Club">Club / Scouting Team</option>
+                                    <option value="Scout">International Scout</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Country & Flag Tag</label>
+                                <input type="text" id="regCountry" placeholder="e.g. Nigeria 🇳🇬, France 🇫🇷, Argentina 🇦🇷" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Position / League Focus</label>
+                                <input type="text" id="regPosition" placeholder="e.g. Striker (ST) or Premier League">
+                            </div>
+                            <div class="form-group">
+                                <label>Highlight Video URL (YouTube Embed Link)</label>
+                                <input type="text" id="regVideo" placeholder="https://www.youtube.com/embed/YOUR_VIDEO_ID">
+                            </div>
+                            <div class="form-group">
+                                <label>Bio & Career Summary</label>
+                                <textarea id="regDesc" rows="3" placeholder="Provide full details for global scouts or teams..." required></textarea>
+                            </div>
+                            <button type="submit" class="btn-action" style="padding: 10px;">Publish Worldwide Space</button>
+                        </form>
+                    </div>
+                `;
+            } else if (formType === 'news') {
+                document.getElementById('viewTitle').innerText = "Post Breaking Transfer News";
+                document.getElementById('profileGrid').innerHTML = `
+                    <div style="grid-column: 1 / -1; max-width: 600px; margin: 0 auto; width: 100%;">
+                        <form onsubmit="handleNewsSubmit(event)">
+                            <div class="form-group">
+                                <label>News Headline</label>
+                                <input type="text" id="newsTitle" placeholder="e.g. BREAKING: Club Signs Overseas Prospect" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Transfer Scoop Details</label>
+                                <textarea id="newsDetails" rows="4" placeholder="Describe contract details, fees, or medical status..." required></textarea>
+                            </div>
+                            <button type="submit" class="btn-action" style="padding: 10px;">Broadcast Transfer News Live</button>
+                        </form>
+                    </div>
+                `;
+            }
+        }
+
+        // Handle Adding Space
+        function handleRegistration(e) {
+            e.preventDefault();
+            const name = document.getElementById('regName').value;
+            const type = document.getElementById('regType').value;
+            const country = document.getElementById('regCountry').value;
+            const position = document.getElementById('regPosition').value;
+            const video = document.getElementById('regVideo').value;
+            const desc = document.getElementById('regDesc').value;
+
+            globalProfiles.unshift({
+                name: name,
+                type: type,
+                country: country,
+                position: position || "N/A",
+                img: `https://via.placeholder.com/60/238636/FFFFFF?text=${name.charAt(0)}`,
+                video: video,
+                pace: "88", goals: "0", assists: "0",
+                desc: desc
+            });
+
+            alert(`Worldwide Space published for ${name}!`);
+            filterCategory('all');
+        }
+
+        // Handle Adding Transfer News
+        function handleNewsSubmit(e) {
+            e.preventDefault();
+            const title = document.getElementById('newsTitle').value;
+            const details = document.getElementById('newsDetails').value;
+
+            transferNews.unshift({
+                title: title,
+                details: details,
+                time: "Just now"
+            });
+
+            alert("Transfer news published globally!");
+            renderTransferNews();
+            filterCategory('all');
+        }
+
+        // Initial Load
+        renderProfiles(globalProfiles);
+        renderTransferNews();
+    </script>
+</body>
+</html>
