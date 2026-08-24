@@ -1,9 +1,9 @@
-j<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Scout Escort - All-In-One Football Platform</title>
+    <title>Scout Escort - All-In-One Football Hub</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
         body { background-color: #0d1117; color: #c9d1d9; padding-bottom: 40px; }
@@ -12,7 +12,7 @@ j<!DOCTYPE html>
         .logo { font-size: 1.4rem; font-weight: bold; color: #ffffff; text-decoration: none; }
         .logo span { color: #238636; }
 
-        /* Navigation Menu Bar */
+        /* Mobile Scrollable Navigation Menu */
         nav { background: #161b22; display: flex; overflow-x: auto; border-bottom: 1px solid #30363d; scrollbar-width: none; position: sticky; top: 57px; z-index: 99; }
         nav::-webkit-scrollbar { display: none; }
         .nav-btn { background: none; border: none; color: #8b949e; padding: 14px 18px; font-weight: bold; font-size: 0.85rem; cursor: pointer; white-space: nowrap; border-bottom: 3px solid transparent; transition: 0.2s; }
@@ -20,27 +20,27 @@ j<!DOCTYPE html>
 
         .container { max-width: 1000px; margin: 20px auto; padding: 0 15px; }
 
-        /* Tab Content Control */
+        /* Section Tab Visibility */
         .tab-content { display: none; }
         .tab-content.active { display: block; }
 
         .card-panel { background: #161b22; padding: 20px; border-radius: 8px; border: 1px solid #30363d; margin-bottom: 20px; }
         .card-panel h3 { color: #fff; margin-bottom: 15px; border-bottom: 1px solid #30363d; padding-bottom: 8px; font-size: 1.1rem; }
 
-        /* Form Inputs */
+        /* Input Controls */
         .form-group { margin-bottom: 12px; }
         .form-group label { display: block; font-size: 0.8rem; color: #8b949e; margin-bottom: 4px; }
         .form-group input, .form-group select { width: 100%; padding: 10px; border: 1px solid #30363d; background: #0d1117; color: #fff; border-radius: 6px; outline: none; }
         .btn { width: 100%; padding: 12px; background: #238636; border: none; color: white; cursor: pointer; border-radius: 6px; font-weight: bold; font-size: 0.9rem; }
         .btn:hover { background: #2ea043; }
 
-        /* Cards Layout */
+        /* Grid System */
         .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 12px; }
         .profile-card { background: #0d1117; border: 1px solid #30363d; border-radius: 8px; padding: 15px; }
         .profile-card h4 { color: #ffffff; }
         .badge { display: inline-block; padding: 2px 8px; background: #21262d; border: 1px solid #30363d; border-radius: 12px; color: #238636; font-size: 0.75rem; margin-top: 5px; }
 
-        /* Rankings & Transfer Tables */
+        /* Tables */
         table { width: 100%; border-collapse: collapse; margin-top: 10px; font-size: 0.85rem; }
         th, td { text-align: left; padding: 10px; border-bottom: 1px solid #30363d; }
         th { color: #8b949e; background: #0d1117; }
@@ -52,11 +52,11 @@ j<!DOCTYPE html>
         <div class="logo">SCOUT<span>ESCORT</span> FOOTBALL HUB</div>
     </header>
 
-    <!-- Navigation Tabs -->
+    <!-- Header Navigation -->
     <nav>
         <button class="nav-btn active" onclick="switchTab('registerTab', this)">📝 Register</button>
         <button class="nav-btn" onclick="switchTab('scoutingTab', this)">🔍 Scouting Network</button>
-        <button class="nav-btn" onclick="switchTab('matchesTab', this)">📺 Live Matches & Streaming</button>
+        <button class="nav-btn" onclick="switchTab('matchesTab', this)">📺 Live Matches & Streams</button>
         <button class="nav-btn" onclick="switchTab('transfersTab', this)">🔄 Player Transfers</button>
         <button class="nav-btn" onclick="switchTab('newsTab', this)">📰 Live News</button>
         <button class="nav-btn" onclick="switchTab('rankingsTab', this)">🏆 FIFA Rankings</button>
@@ -64,7 +64,7 @@ j<!DOCTYPE html>
 
     <div class="container">
 
-        <!-- 1. REGISTRATION SECTION -->
+        <!-- 1. REGISTRATION -->
         <div id="registerTab" class="tab-content active">
             <div class="card-panel">
                 <h3>📝 Player, Scout & Club Registration</h3>
@@ -90,7 +90,7 @@ j<!DOCTYPE html>
             </div>
         </div>
 
-        <!-- 2. SCOUTING NETWORK SECTION -->
+        <!-- 2. SCOUTING NETWORK -->
         <div id="scoutingTab" class="tab-content">
             <div class="card-panel">
                 <h3>🔍 Live Registered Talent Network</h3>
@@ -100,14 +100,14 @@ j<!DOCTYPE html>
             </div>
         </div>
 
-        <!-- 3. LIVE MATCHES & STREAMING GUIDE -->
+        <!-- 3. LIVE MATCHES & STREAMS -->
         <div id="matchesTab" class="tab-content">
             <div class="card-panel">
-                <h3>📺 Live Matches & Official Broadcast Links</h3>
+                <h3>📺 Match Center & Official Broadcast Links</h3>
                 
                 <div class="profile-card" style="margin-bottom: 15px;">
-                    <span class="badge" style="color: #e55353;">LIVE 65'</span>
-                    <h4 style="margin-top: 5px;">Real Madrid vs FC Barcelona</h4>
+                    <span class="badge" style="color: #e55353;">LIVE 72'</span>
+                    <h4 style="margin-top: 5px;">Real Madrid 2 - 1 FC Barcelona</h4>
                     <p style="font-size: 0.8rem; color: #8b949e; margin-bottom: 12px;">La Liga | El Clásico</p>
                     <a href="https://www.dstv.com/en-gh/watch" target="_blank" style="text-decoration: none;">
                         <button class="btn" style="background: #0070f3; font-size: 0.8rem; padding: 10px;">
@@ -133,14 +133,14 @@ j<!DOCTYPE html>
                 <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 8px;">
                     <iframe 
                         style="position: absolute; top:0; left: 0; width: 100%; height: 100%; border:0;"
-                        src="https://www.youtube-nocookie.com/embed/videoseries?list=PLQ_41N69f1uK6n8i8" 
+                        src="https://www.youtube-nocookie.com/embed/SxiMucn6hTc" 
                         allowfullscreen>
                     </iframe>
                 </div>
             </div>
         </div>
 
-        <!-- 4. PLAYER TRANSFERS SECTION -->
+        <!-- 4. PLAYER TRANSFERS -->
         <div id="transfersTab" class="tab-content">
             <div class="card-panel">
                 <h3>🔄 Latest Confirmed Transfers</h3>
@@ -150,7 +150,7 @@ j<!DOCTYPE html>
                             <th>Player</th>
                             <th>From</th>
                             <th>To</th>
-                            <th>Type</th>
+                            <th>Type / Fee</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -162,22 +162,22 @@ j<!DOCTYPE html>
             </div>
         </div>
 
-        <!-- 5. LIVE NEWS SECTION -->
+        <!-- 5. LIVE NEWS -->
         <div id="newsTab" class="tab-content">
             <div class="card-panel">
                 <h3>📰 Live Football News</h3>
                 <div style="border-bottom: 1px solid #30363d; padding-bottom: 12px; margin-bottom: 12px;">
-                    <h4 style="color: #fff;">Scout Escort Platform Launches Global Player Database</h4>
-                    <p style="font-size: 0.85rem; color: #8b949e; margin-top: 4px;">Emerging talent can now register profiles directly for international scout evaluation.</p>
+                    <h4 style="color: #fff;">Scout Escort Network Expands Global Talent Pipeline</h4>
+                    <p style="font-size: 0.85rem; color: #8b949e; margin-top: 4px;">Emerging talent across domestic leagues can now publish profile stats directly to international scouting directors.</p>
                 </div>
                 <div>
-                    <h4 style="color: #fff;">Upcoming UEFA Champions League Fixtures Announced</h4>
-                    <p style="font-size: 0.85rem; color: #8b949e; margin-top: 4px;">Top clubs prepare for expanded league format matchdays.</p>
+                    <h4 style="color: #fff;">UEFA Champions League League-Phase Fixtures Confirmed</h4>
+                    <p style="font-size: 0.85rem; color: #8b949e; margin-top: 4px;">Clubs prepare for expanded international match schedule.</p>
                 </div>
             </div>
         </div>
 
-        <!-- 6. FIFA RANKINGS SECTION -->
+        <!-- 6. FIFA WORLD RANKINGS -->
         <div id="rankingsTab" class="tab-content">
             <div class="card-panel">
                 <h3>🏆 Official FIFA World Rankings (Top 5)</h3>
@@ -202,7 +202,7 @@ j<!DOCTYPE html>
 
     </div>
 
-    <!-- Firebase Script -->
+    <!-- Backend & Dynamic Script Module -->
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
         import { getFirestore, collection, addDoc, onSnapshot, query, orderBy } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
@@ -221,7 +221,7 @@ j<!DOCTYPE html>
         const db = getFirestore(app);
         const profilesRef = collection(db, "profiles");
 
-        // Form Submit
+        // Form Submit to Firebase
         document.getElementById('profileForm').addEventListener('submit', async (e) => {
             e.preventDefault();
             const name = document.getElementById('nameInput').value;
@@ -237,13 +237,13 @@ j<!DOCTYPE html>
             }
         });
 
-        // Live Database Sync
+        // Live Real-Time Database Sync
         onSnapshot(query(profilesRef, orderBy("createdAt", "desc")), (snapshot) => {
             const grid = document.getElementById('directoryGrid');
             grid.innerHTML = '';
             
             if (snapshot.empty) {
-                grid.innerHTML = '<p style="color: #8b949e; font-size: 0.85rem;">No registered profiles yet.</p>';
+                grid.innerHTML = '<p style="color: #8b949e; font-size: 0.85rem;">No registered profiles yet. Use the form to add one!</p>';
                 return;
             }
 
@@ -260,8 +260,8 @@ j<!DOCTYPE html>
         });
     </script>
 
+    <!-- UI Tab Navigation Logic -->
     <script>
-        // Navigation Switcher
         function switchTab(tabId, element) {
             const tabs = document.querySelectorAll('.tab-content');
             tabs.forEach(tab => tab.classList.remove('active'));
@@ -275,6 +275,7 @@ j<!DOCTYPE html>
     </script>
 </body>
 </html>
+
 
 
 
