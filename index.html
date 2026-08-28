@@ -225,14 +225,26 @@
       }
     }
 
-    // Initialize scores on load
-    loadLiveScores();
-  </script>
+    // Initialize scores on 
+loadLiveScores();6
+function switchTab(event, tabId) {
+  const contents = document.querySelectorAll('.tab-content');
+  contents.forEach(content => content.style.display = 'none');
+  
+  const buttons = document.querySelectorAll('.nav-btn');
+  buttons.forEach(btn => btn.classList.remove('active'));
+  
+  const selectedTab = document.getElementById(tabId);
+  if (selectedTab) selectedTab.style.display = 'block';
+  if (event && event.currentTarget) event.currentTarget.classList.add('active');
+}
+
+// Automatically show the first tab when the page loads
+document.addEventListener('DOMContentLoaded', () => {
+  switchTab(null, 'matches');
+});
+</script>
 </body>
 </html>
-
-
-
-
 
 
