@@ -22,7 +22,7 @@
         .brand-qatar { color: #7f1933; }
         .brand-mastercard { color: #ffffff; font-weight: bold; }
         
-        /* Custom Mastercard Icon Styling */
+        /* Custom Mastercard Icon Styling (Red and Yellow circles) */
         .mc-circles { display: inline-block; position: relative; width: 22px; height: 14px; vertical-align: middle; margin-right: 6px; }
         .mc-circle-1 { position: absolute; left: 0; top: 0; width: 14px; height: 14px; background: #eb001b; border-radius: 50%; opacity: 0.9; }
         .mc-circle-2 { position: absolute; left: 8px; top: 0; width: 14px; height: 14px; background: #f79e1b; border-radius: 50%; opacity: 0.9; }
@@ -63,10 +63,8 @@
 </head>
 <body>
 
-    <!-- Scrolling Sponsors Ticker with Brand Colors -->
     <div class="sponsors-ticker">
         <div class="sponsors-track">
-            <!-- First Set -->
             <span class="sponsor-item brand-nike"><img class="sponsor-logo-img" src="https://cdn.jsdelivr.net/npm/simple-icons@v12/icons/nike.svg" alt="Nike" style="filter: invert(1);">NIKE</span>
             <span class="sponsor-item brand-puma"><img class="sponsor-logo-img" src="https://cdn.jsdelivr.net/npm/simple-icons@v12/icons/puma.svg" alt="Puma" style="filter: invert(14%) sepia(95%) saturate(7408%) hue-rotate(357deg) brightness(97%) contrast(115%);">PUMA</span>
             <span class="sponsor-item brand-samsung"><img class="sponsor-logo-img" src="https://cdn.jsdelivr.net/npm/simple-icons@v12/icons/samsung.svg" alt="Samsung" style="filter: invert(16%) sepia(87%) saturate(3533%) hue-rotate(224deg) brightness(94%) contrast(97%);">SAMSUNG</span>
@@ -75,7 +73,6 @@
             <span class="sponsor-item brand-qatar"><img class="sponsor-logo-img" src="https://cdn.jsdelivr.net/npm/simple-icons@v12/icons/qatarairways.svg" alt="Qatar" style="filter: invert(15%) sepia(57%) saturate(3822%) hue-rotate(326deg) brightness(90%) contrast(93%);">QATAR AIRWAYS</span>
             <span class="sponsor-item brand-mastercard"><div class="mc-circles"><div class="mc-circle-1"></div><div class="mc-circle-2"></div></div>MASTERCARD</span>
             
-            <!-- Duplicate Set for Smooth Continuous Loop -->
             <span class="sponsor-item brand-nike"><img class="sponsor-logo-img" src="https://cdn.jsdelivr.net/npm/simple-icons@v12/icons/nike.svg" alt="Nike" style="filter: invert(1);">NIKE</span>
             <span class="sponsor-item brand-puma"><img class="sponsor-logo-img" src="https://cdn.jsdelivr.net/npm/simple-icons@v12/icons/puma.svg" alt="Puma" style="filter: invert(14%) sepia(95%) saturate(7408%) hue-rotate(357deg) brightness(97%) contrast(115%);">PUMA</span>
             <span class="sponsor-item brand-samsung"><img class="sponsor-logo-img" src="https://cdn.jsdelivr.net/npm/simple-icons@v12/icons/samsung.svg" alt="Samsung" style="filter: invert(16%) sepia(87%) saturate(3533%) hue-rotate(224deg) brightness(94%) contrast(97%);">SAMSUNG</span>
@@ -88,13 +85,11 @@
 
     <div class="container" style="padding-bottom: 80px;">
 
-        <!-- Tab 1: Live Matches Schedule & YouTube Links -->
         <div id="matches" class="tab-content active">
             <div class="card">
                 <h2>Today's Live Match Schedule</h2>
                 <p style="font-size: 13px; color: #666; margin-top: 0; margin-bottom: 15px;">Tap any match below to open and watch the live stream directly on YouTube.</p>
 
-                <!-- Match 1 -->
                 <a href="https://www.youtube.com/results?search_query=live+football+match" target="_blank" class="match-list-item">
                     <div>
                         <div class="match-teams">Premier League: Top Match Stream</div>
@@ -103,7 +98,6 @@
                     <span class="watch-btn">Watch Live</span>
                 </a>
 
-                <!-- Match 2 -->
                 <a href="https://www.youtube.com/results?search_query=live+football+match" target="_blank" class="match-list-item">
                     <div>
                         <div class="match-teams">La Liga: Featured Fixture</div>
@@ -112,7 +106,6 @@
                     <span class="watch-btn">Watch Live</span>
                 </a>
 
-                <!-- Match 3 -->
                 <a href="https://www.youtube.com/results?search_query=live+football+match" target="_blank" class="match-list-item">
                     <div>
                         <div class="match-teams">International Club Friendly</div>
@@ -121,7 +114,6 @@
                     <span class="watch-btn">Watch Live</span>
                 </a>
 
-                <!-- Match 4 -->
                 <a href="https://www.youtube.com/results?search_query=live+football+match" target="_blank" class="match-list-item">
                     <div>
                         <div class="match-teams">Scout Escort Special Showcase</div>
@@ -132,7 +124,6 @@
             </div>
         </div>
 
-        <!-- Tab 2: Football News -->
         <div id="news" class="tab-content">
             <div class="card">
                 <h2>Latest Football News & Transfers</h2>
@@ -154,7 +145,6 @@
             </div>
         </div>
 
-        <!-- Tab 3: Rankings -->
         <div id="rankings" class="tab-content">
             <div class="card">
                 <h2>Official FIFA World Rankings</h2>
@@ -184,7 +174,6 @@
             </div>
         </div>
 
-        <!-- Tab 4: Player & Scout Registration -->
         <div id="register" class="tab-content">
             <div class="card">
                 <h2>Talent & Scout Book Registration</h2>
@@ -224,7 +213,6 @@
 
     </div>
 
-    <!-- Bottom Navigation Bar -->
     <div class="bottom-nav">
         <button onclick="switchTab('matches', this)" class="active">Matches</button>
         <button onclick="switchTab('news', this)">News</button>
@@ -243,6 +231,7 @@
     </script>
 </body>
 </html>
+
 
 
 
