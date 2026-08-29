@@ -4,34 +4,42 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Scout Escort</title>
-      <style>
+  <style>
     body {
       font-family: Arial, sans-serif;
       margin: 0;
-      padding: 0;
-      /* Vibrant Green Background */
+      padding: 0 0 70px 0; /* Space for bottom navigation */
       background-color: #1b4d3e; 
+      color: #333;
     }
+    /* Bottom Navigation Bar */
     nav {
-      /* Royal Blue Navigation Bar */
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
       background-color: #003366; 
       display: flex;
       justify-content: space-around;
-      padding: 12px 0;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+      padding: 10px 0;
+      box-shadow: 0 -2px 10px rgba(0,0,0,0.3);
+      z-index: 1000;
     }
     .nav-btn {
       background: none;
       border: none;
       color: #ffffff;
-      font-size: 15px;
+      font-size: 13px;
       font-weight: bold;
-      padding: 8px 12px;
+      padding: 6px 10px;
       cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
     .nav-btn.active {
-      border-bottom: 4px solid #28a745; /* Bright Green Active Highlight */
-      color: #ffffff;
+      border-top: 3px solid #28a745;
+      color: #28a745;
     }
     .container {
       max-width: 800px;
@@ -39,11 +47,10 @@
       padding: 0 15px;
     }
     .card {
-      /* Clean White Content Cards */
       background: #ffffff; 
-      padding: 20px;
-      border-radius: 10px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      padding: 24px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
     }
     .tab-content {
       display: none;
@@ -51,9 +58,44 @@
     .tab-content.active {
       display: block;
     }
+    /* TV Showcase Box */
+    .tv-frame {
+      background: #000;
+      border: 6px solid #222;
+      border-radius: 10px;
+      overflow: hidden;
+      margin-bottom: 20px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+    }
+    .tv-screen {
+      position: relative;
+      width: 100%;
+      height: 200px;
+      background-image: url('https://images.unsplash.com/photo-1508098682722-e99c43a406b2?auto=format&fit=crop&w=800&q=80');
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      align-items: flex-end;
+    }
+    .tv-overlay {
+      background: linear-gradient(transparent, rgba(0,51,102,0.9));
+      color: #fff;
+      padding: 12px;
+      width: 100%;
+    }
+    .tv-overlay h4 {
+      margin: 0 0 4px 0;
+      font-size: 15px;
+      color: #28a745;
+    }
+    .tv-overlay p {
+      margin: 0;
+      font-size: 12px;
+    }
+    /* News Cards */
     .news-card {
       background-color: #f8f9fa;
-      border-left: 5px solid #003366; /* Blue Accent Line */
+      border-left: 5px solid #003366;
       padding: 12px 16px;
       margin-bottom: 15px;
       border-radius: 6px;
@@ -62,45 +104,44 @@
       margin: 0 0 8px 0;
       font-size: 16px;
     }
-    .news-card p {
-      color: #333333;
-      font-size: 14px;
-      margin: 0 0 8px 0;
+    .form-group {
+      margin-bottom: 14px;
     }
-    form input {
+    .form-group label {
+      display: block;
+      font-weight: bold;
+      margin-bottom: 5px;
+      color: #003366;
+      font-size: 13px;
+    }
+    form input, form select {
       display: block;
       width: 100%;
-      margin-bottom: 12px;
-      padding: 12px;
+      padding: 10px;
       border: 1px solid #ccc;
       border-radius: 6px;
       box-sizing: border-box;
+      font-size: 14px;
     }
     form button {
       display: block;
       width: 100%;
-      background-color: #003366; /* Blue Action Button */
+      background-color: #003366;
       color: #ffffff;
+      font-size: 16px;
       font-weight: bold;
       border: none;
       padding: 12px;
       border-radius: 6px;
       cursor: pointer;
+      margin-top: 15px;
     }
     form button:hover {
-      background-color: #28a745; /* Turns Green on Click/Hover */
+      background-color: #28a745;
     }
   </style>
-
 </head>
 <body>
-
-  <nav>
-    <button class="nav-btn active" onclick="switchTab(event, 'matches')">Live Matches</button>
-    <button class="nav-btn" onclick="switchTab(event, 'news')">Football News</button>
-    <button class="nav-btn" onclick="switchTab(event, 'standings')">Rankings</button>
-    <button class="nav-btn" onclick="switchTab(event, 'register')">Registration</button>
-  </nav>
 
   <div class="container">
     
@@ -132,19 +173,92 @@
       </div>
     </div>
 
-    <!-- Tab 4: Player Registration -->
+    <!-- Tab 4: Player & Scout Registration -->
     <div id="register" class="tab-content">
       <div class="card">
-        <h2>Talent Registration</h2>
+        
+        <!-- TV Showcase Frame -->
+        <div class="tv-frame">
+          <div class="tv-screen">
+            <div class="tv-overlay">
+              <h4>📺 Scout Escort TV</h4>
+              <p>Live Scouting Hub • Showcase your football skills to verified European scouts.</p>
+            </div>
+          </div>
+        </div>
+
+        <h2>Talent & Scout Book Registration</h2>
+        <p style="color: #666; font-size: 13px; margin-bottom: 18px;">
+          Fill out your official details below to register in our scouting database.
+        </p>
+        
         <form id="signup-form" onsubmit="event.preventDefault(); handleFormSubmit();">
-          <input type="text" id="fullname" placeholder="Full Name" required>
-          <button type="submit">Submit Registration</button>
+          
+          <div class="form-group">
+            <label for="fullname">Full Name *</label>
+            <input type="text" id="fullname" placeholder="e.g. Samuel Mensah" required>
+          </div>
+
+          <div class="form-group">
+            <label for="user-role">Register As *</label>
+            <select id="user-role" required>
+              <option value="">Select Role...</option>
+              <option value="Player">Football Player</option>
+              <option value="Scout">Football Scout</option>
+              <option value="Academy Manager">Academy / Club Manager</option>
+              <option value="Agent">Player Agent</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="email">Email Address *</label>
+            <input type="email" id="email" placeholder="name@example.com" required>
+          </div>
+
+          <div class="form-group">
+            <label for="phone">Phone / WhatsApp Number *</label>
+            <input type="tel" id="phone" placeholder="+233 24 000 0000" required>
+          </div>
+
+          <div class="form-group">
+            <label for="position">Primary Position (Players)</label>
+            <select id="position">
+              <option value="N/A">Not Applicable</option>
+              <option value="Striker / Forward">Striker / Forward</option>
+              <option value="Winger (LW/RW)">Winger (Left/Right)</option>
+              <option value="Attacking Midfielder (CAM)">Attacking Midfielder (CAM)</option>
+              <option value="Central Midfielder (CM/CDM)">Central / Defensive Midfielder</option>
+              <option value="Defender (CB/LB/RB)">Defender (CB / Fullback)</option>
+              <option value="Goalkeeper (GK)">Goalkeeper (GK)</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="age">Age / Year of Birth</label>
+            <input type="text" id="age" placeholder="e.g. 18 years (2008)">
+          </div>
+
+          <div class="form-group">
+            <label for="location">Current Location / Country</label>
+            <input type="text" id="location" placeholder="e.g. Accra, Ghana">
+          </div>
+
+          <button type="submit">Complete Registration</button>
         </form>
-        <p id="form-msg"></p>
+
+        <p id="form-msg" style="margin-top: 15px; font-weight: bold;"></p>
       </div>
     </div>
 
   </div>
+
+  <!-- Navigation fixed at the bottom -->
+  <nav>
+    <button class="nav-btn active" onclick="switchTab(event, 'matches')">Matches</button>
+    <button class="nav-btn" onclick="switchTab(event, 'news')">News</button>
+    <button class="nav-btn" onclick="switchTab(event, 'standings')">Rankings</button>
+    <button class="nav-btn" onclick="switchTab(event, 'register')">Registration</button>
+  </nav>
 
   <script>
     const apiKey = "";
@@ -202,7 +316,7 @@
             data.items.slice(0, 5).forEach(article => {
               html += `
                 <article class="news-card">
-                  <h3><a href="${article.link}" target="_blank" style="text-decoration:none; color:#007bff;">${article.title}</a></h3>
+                  <h3><a href="${article.link}" target="_blank" style="text-decoration:none; color:#003366;">${article.title}</a></h3>
                   <p>${article.description}</p>
                   <small style="color:#888;">Published: ${new Date(article.pubDate).toLocaleDateString()}</small>
                 </article>
@@ -220,14 +334,16 @@
 
     function handleFormSubmit() {
       const name = document.getElementById('fullname').value;
+      const role = document.getElementById('user-role').value;
       const msg = document.getElementById('form-msg');
-      if (name) {
-        msg.style.color = "green";
-        msg.innerText = `Thank you, ${name}! Your profile submission was recorded.`;
+      
+      if (name && role) {
+        msg.style.color = "#28a745";
+        msg.innerText = `Thank you, ${name}! Your ${role} profile has been submitted successfully.`;
         document.getElementById('signup-form').reset();
       } else {
-        msg.style.color = "red";
-        msg.innerText = "Please fill in all required fields.";
+        msg.style.color = "#d9534f";
+        msg.innerText = "Please complete all required fields.";
       }
     }
 
@@ -250,6 +366,7 @@
   </script>
 </body>
 </html>
+
 
 
 
