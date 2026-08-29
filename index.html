@@ -3,49 +3,81 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Scout Escort - Live Football & Talent Hub</title>
+  <title>Scout Escort</title>
   <style>
-    :root {
-      --primary: #0a192f;
-      --accent: #00ff88;
-      --light: #f4f4f9;
-      --dark: #1e1e24;
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f4;
     }
-    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
-    body { background-color: var(--light); color: var(--dark); line-height: 1.6; }
-    header { background: var(--primary); color: #fff; padding: 1rem 5%; text-align: center; border-bottom: 3px solid var(--accent); }
-    header h1 { font-size: 2rem; }
-    header span { color: var(--accent); }
-    nav { display: flex; justify-content: center; background: #112240; padding: 0.5rem; gap: 5px; flex-wrap: wrap; }
-    nav button { background: transparent; border: none; color: #fff; padding: 8px 14px; font-weight: bold; cursor: pointer; border-radius: 5px; font-size: 0.9rem; }
-    nav button.active { background: var(--accent); color: var(--primary); }
-    .container { max-width: 900px; margin: 20px auto; padding: 0 15px; }
-    .tab-content { display: none; }
-    .tab-content.active { display: block; }
-    .card { background: #fff; padding: 20px; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); margin-bottom: 20px; }
-    .match-item { border: 1px solid #e0e0e0; padding: 15px; margin-bottom: 12px; border-radius: 8px; background: #fafafa; }
-    .match-header { display: flex; justify-content: space-between; font-size: 0.85rem; color: #666; margin-bottom: 8px; }
-    .match-scores { display: flex; justify-content: space-between; align-items: center; font-size: 1.1rem; font-weight: bold; }
-    .match-status { text-align: center; color: green; font-weight: bold; font-size: 0.85rem; margin-top: 8px; }
-    .stream-btn { display: inline-block; background: #e63946; color: white; text-decoration: none; padding: 6px 12px; font-size: 0.8rem; border-radius: 4px; font-weight: bold; margin-top: 8px; width: 100%; text-align: center; }
-    .news-item { border-bottom: 1px solid #eee; padding: 12px 0; }
-    .news-item h4 { color: var(--primary); margin-bottom: 5px; }
-    .news-item p { font-size: 0.9rem; color: #555; }
-    .ranking-table { width: 100%; border-collapse: collapse; margin-top: 10px; }
-    .ranking-table th, .ranking-table td { text-align: left; padding: 10px; border-bottom: 1px solid #ddd; }
-    .ranking-table th { background-color: var(--primary); color: white; }
-    form label { display: block; margin-top: 10px; font-weight: bold; }
-    form input, form select { width: 100%; padding: 10px; margin-top: 5px; border: 1px solid #ccc; border-radius: 5px; }
-    form button { background: var(--primary); color: #fff; border: none; padding: 12px 20px; margin-top: 15px; width: 100%; font-weight: bold; border-radius: 5px; cursor: pointer; }
-    form button:hover { background: var(--accent); color: var(--primary); }
+    nav {
+      background-color: #222;
+      display: flex;
+      justify-content: space-around;
+      padding: 10px 0;
+    }
+    .nav-btn {
+      background: none;
+      border: none;
+      color: #fff;
+      font-size: 16px;
+      padding: 8px 16px;
+      cursor: pointer;
+    }
+    .nav-btn.active {
+      border-bottom: 3px solid #007bff;
+      font-weight: bold;
+    }
+    .container {
+      max-width: 800px;
+      margin: 20px auto;
+      padding: 0 15px;
+    }
+    .card {
+      background: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    .tab-content {
+      display: none;
+    }
+    .tab-content.active {
+      display: block;
+    }
+    .news-card {
+      background-color: #f9f9f9;
+      border-left: 4px solid #007bff;
+      padding: 12px 16px;
+      margin-bottom: 15px;
+      border-radius: 4px;
+    }
+    .news-card h3 {
+      margin: 0 0 8px 0;
+      font-size: 16px;
+    }
+    .news-card p {
+      color: #444;
+      font-size: 14px;
+      margin: 0 0 8px 0;
+    }
+    form input, form button {
+      display: block;
+      width: 100%;
+      margin-bottom: 10px;
+      padding: 10px;
+      box-sizing: border-box;
+    }
+    form button {
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+    }
   </style>
 </head>
 <body>
-
-  <header>
-    <h1>Scout <span>Escort</span></h1>
-    <p>Live Scores, Streaming Links, News & Talent Network</p>
-  </header>
 
   <nav>
     <button class="nav-btn active" onclick="switchTab(event, 'matches')">Live Matches</button>
@@ -56,11 +88,10 @@
 
   <div class="container">
     
-    <!-- Tab 1: Live Matches & Streams -->
+    <!-- Tab 1: Live Matches -->
     <div id="matches" class="tab-content active">
       <div class="card">
         <h2>Live & Scheduled Matches</h2>
-        <p style="color: #666; font-size: 0.9rem; margin-bottom: 15px;">Real-time fixture updates with YouTube stream search</p>
         <div id="live-matches-container">
           <p>Loading scores...</p>
         </div>
@@ -71,19 +102,8 @@
     <div id="news" class="tab-content">
       <div class="card">
         <h2>Latest Football News & Transfers</h2>
-        <div id="news-container">
-          <div class="news-item">
-            <h4>Transfer Center Live: Latest Headlines</h4>
-            <p>Clubs across Europe and Africa continue active scouting and transfer deal negotiations.</p>
-          </div>
-          <div class="news-item">
-            <h4>Scouting Network Spotlight</h4>
-            <p>Emerging talents are being tracked live as regional leagues hit high-tempo fixtures.</p>
-          </div>
-          <div class="news-item">
-            <h4>International Fixture Previews</h4>
-            <p>Top national teams gear up for crucial tournament qualifiers and ranking updates.</p>
-          </div>
+        <div id="rss-news-container">
+          <p>Loading latest football headlines...</p>
         </div>
       </div>
     </div>
@@ -91,74 +111,30 @@
     <!-- Tab 3: Rankings & Standings -->
     <div id="standings" class="tab-content">
       <div class="card">
-        <h2>FIFA World Rankings (Top Men's Teams)</h2>
-        <table class="ranking-table">
-          <thead>
-            <tr>
-              <th>Rank</th>
-              <th>Team</th>
-              <th>Points</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr><td>1</td><td>Argentina</td><td>1889.02</td></tr>
-            <tr><td>2</td><td>France</td><td>1851.92</td></tr>
-            <tr><td>3</td><td>Spain</td><td>1836.42</td></tr>
-            <tr><td>4</td><td>England</td><td>1817.28</td></tr>
-            <tr><td>5</td><td>Brazil</td><td>1772.02</td></tr>
-            <tr><td>6</td><td>Belgium</td><td>1768.14</td></tr>
-            <tr><td>7</td><td>Netherlands</td><td>1759.95</td></tr>
-            <tr><td>8</td><td>Portugal</td><td>1752.14</td></tr>
-            <tr><td>9</td><td>Colombia</td><td>1738.72</td></tr>
-            <tr><td>10</td><td>Italy</td><td>1726.86</td></tr>
-          </tbody>
-        </table>
+        <h2>FIFA World Rankings</h2>
+        <p>Rankings update periodically during match cycles.</p>
       </div>
     </div>
 
     <!-- Tab 4: Player Registration -->
     <div id="register" class="tab-content">
       <div class="card">
-        <h2>Register as Player or Scout</h2>
-        <form id="signup-form">
-          <label for="fullname">Full Name</label>
-          <input type="text" id="fullname" required placeholder="e.g. John Doe">
-
-          <label for="role">Role</label>
-          <select id="role">
-            <option value="player">Footballer / Player</option>
-            <option value="scout">Scout / Agent</option>
-          </select>
-
-          <label for="position">Preferred Position (if Player)</label>
-          <input type="text" id="position" placeholder="e.g. Midfielder, Striker">
-
-          <label for="email">Contact Email</label>
-          <input type="email" id="email" required placeholder="name@example.com">
-
-          <button type="button" onclick="handleFormSubmit()">Submit Profile</button>
+        <h2>Talent Registration</h2>
+        <form id="signup-form" onsubmit="event.preventDefault(); handleFormSubmit();">
+          <input type="text" id="fullname" placeholder="Full Name" required>
+          <button type="submit">Submit Registration</button>
         </form>
-        <div id="form-msg" style="margin-top: 10px; font-weight: bold; text-align: center;"></div>
+        <p id="form-msg"></p>
       </div>
     </div>
 
   </div>
 
   <script>
-    // Tab Switcher Logic
-    function switchTab(evt, tabId) {
-      document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
-      document.querySelectorAll('.nav-btn').forEach(el => el.classList.remove('active'));
-      document.getElementById(tabId).classList.add('active');
-      evt.target.classList.add('active');
-    }
-
-    // API-Football Integration with YouTube Streaming Search
-    const apiKey = "39f724ce55c7bafb8923fbe0da903827";
+    const apiKey = "";
 
     async function loadLiveScores() {
       const container = document.getElementById("live-matches-container");
-      
       try {
         let response = await fetch("https://v3.football.api-sports.io/fixtures?live=all", {
           method: "GET",
@@ -185,33 +161,47 @@
         container.innerHTML = matches.slice(0, 10).map(match => {
           const streamQuery = encodeURIComponent(`${match.teams.home.name} vs ${match.teams.away.name} live stream`);
           const streamUrl = `https://www.youtube.com/results?search_query=${streamQuery}`;
-
           return `
             <div class="match-item">
-              <div class="match-header">
-                <span>${match.league.name} (${match.league.country})</span>
-                <span>${match.fixture.status.short}</span>
-              </div>
-              <div class="match-scores">
-                <span>${match.teams.home.name}</span>
-                <span>${match.goals.home ?? 0} - ${match.goals.away ?? 0}</span>
-                <span>${match.teams.away.name}</span>
-              </div>
-              <div class="match-status">
-                ${match.fixture.status.long} ${match.fixture.status.elapsed ? "(" + match.fixture.status.elapsed + "')" : ""}
-              </div>
-              <a href="${streamUrl}" target="_blank" class="stream-btn">🎥 Search Live Stream on YouTube</a>
+              <div><span>${match.league.name} (${match.league.country})</span> - <span>${match.fixture.status.short}</span></div>
+              <div><span>${match.teams.home.name}</span> <span>${match.goals.home ?? 0} - ${match.goals.away ?? 0}</span> <span>${match.teams.away.name}</span></div>
+              <a href="${streamUrl}" target="_blank">Search Live Stream on YouTube</a>
             </div>
           `;
-        }).join("");
-
+        }).join('');
       } catch (error) {
-        console.error("API Error:", error);
         container.innerHTML = "<p>Unable to connect to live match servers right now.</p>";
       }
     }
 
-    // Registration Handler Demo
+    function fetchFootballNews() {
+      const feedUrl = "https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Ffeeds.bbci.co.uk%2Fsport%2Ffootball%2Frss.xml";
+      const container = document.getElementById("rss-news-container");
+
+      fetch(feedUrl)
+        .then(response => response.json())
+        .then(data => {
+          if (data.status === "ok" && data.items.length > 0) {
+            let html = "";
+            data.items.slice(0, 5).forEach(article => {
+              html += `
+                <article class="news-card">
+                  <h3><a href="${article.link}" target="_blank" style="text-decoration:none; color:#007bff;">${article.title}</a></h3>
+                  <p>${article.description}</p>
+                  <small style="color:#888;">Published: ${new Date(article.pubDate).toLocaleDateString()}</small>
+                </article>
+              `;
+            });
+            container.innerHTML = html;
+          } else {
+            container.innerHTML = "<p>Unable to load news right now.</p>";
+          }
+        })
+        .catch(() => {
+          container.innerHTML = "<p>Error loading live football news.</p>";
+        });
+    }
+
     function handleFormSubmit() {
       const name = document.getElementById('fullname').value;
       const msg = document.getElementById('form-msg');
@@ -225,26 +215,25 @@
       }
     }
 
-    // Initialize scores on 
-loadLiveScores();6
-function switchTab(event, tabId) {
-  const contents = document.querySelectorAll('.tab-content');
-  contents.forEach(content => content.style.display = 'none');
-  
-  const buttons = document.querySelectorAll('.nav-btn');
-  buttons.forEach(btn => btn.classList.remove('active'));
-  
-  const selectedTab = document.getElementById(tabId);
-  if (selectedTab) selectedTab.style.display = 'block';
-  if (event && event.currentTarget) event.currentTarget.classList.add('active');
-}
+    function switchTab(event, tabId) {
+      const contents = document.querySelectorAll('.tab-content');
+      contents.forEach(content => content.classList.remove('active'));
 
-// Automatically show the first tab when the page loads
-document.addEventListener('DOMContentLoaded', () => {
-  switchTab(null, 'matches');
-});
-</script>
+      const buttons = document.querySelectorAll('.nav-btn');
+      buttons.forEach(btn => btn.classList.remove('active'));
+
+      const selectedTab = document.getElementById(tabId);
+      if (selectedTab) selectedTab.classList.add('active');
+      if (event && event.currentTarget) event.currentTarget.classList.add('active');
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      loadLiveScores();
+      fetchFootballNews();
+    });
+  </script>
 </body>
 </html>
+
 
 
