@@ -8,10 +8,46 @@
     body {
       font-family: Arial, sans-serif;
       margin: 0;
-      padding: 0 0 70px 0; /* Space for bottom navigation */
+      padding: 40px 0 70px 0; /* Space for top ticker and bottom nav */
       background-color: #1b4d3e; 
       color: #333;
     }
+
+    /* Top Moving Sponsor Ticker Bar */
+    .ticker-wrap {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      overflow: hidden;
+      height: 35px;
+      background-color: #001f3f;
+      border-bottom: 2px solid #28a745;
+      z-index: 1000;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+    }
+    .ticker-move {
+      display: inline-block;
+      white-space: nowrap;
+      padding-left: 100%;
+      animation: ticker 25s linear infinite;
+    }
+    .ticker-item {
+      display: inline-block;
+      padding: 7px 20px;
+      font-size: 13px;
+      font-weight: bold;
+      color: #ffffff;
+    }
+    .ticker-item span {
+      color: #28a745;
+      margin-left: 5px;
+    }
+    @keyframes ticker {
+      0% { transform: translate3d(0, 0, 0); }
+      100% { transform: translate3d(-100%, 0, 0); }
+    }
+
     /* Bottom Navigation Bar */
     nav {
       position: fixed;
@@ -142,6 +178,22 @@
   </style>
 </head>
 <body>
+
+  <!-- Top Moving Sponsors Ticker -->
+  <div class="ticker-wrap">
+    <div class="ticker-move">
+      <div class="ticker-item">OFFICIAL SPONSORS:</div>
+      <div class="ticker-item">⚽ ADIDAS <span>•</span></div>
+      <div class="ticker-item">🚗 MERCEDES-BENZ <span>•</span></div>
+      <div class="ticker-item">🏎️ BMW <span>•</span></div>
+      <div class="ticker-item">✈️ QATAR AIRWAYS <span>•</span></div>
+      <div class="ticker-item">🍺 HEINEKEN <span>•</span></div>
+      <div class="ticker-item">👟 NIKE <span>•</span></div>
+      <div class="ticker-item">🎮 EA SPORTS FC <span>•</span></div>
+      <div class="ticker-item">💳 MASTERCARD <span>•</span></div>
+      <div class="ticker-item">🐾 PUMA <span>•</span></div>
+    </div>
+  </div>
 
   <div class="container">
     
@@ -366,6 +418,7 @@
   </script>
 </body>
 </html>
+
 
 
 
