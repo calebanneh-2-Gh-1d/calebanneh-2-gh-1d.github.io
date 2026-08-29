@@ -8,19 +8,19 @@
     body {
       font-family: Arial, sans-serif;
       margin: 0;
-      padding: 65px 0 75px 0; /* Clearances for top ticker & bottom nav */
+      padding: 65px 0 75px 0;
       background-color: #1b4d3e; 
       color: #333;
     }
 
-    /* Top Moving Sponsor Ticker Bar */
+    /* Fixed Top Moving Sponsor Ticker Bar */
     .ticker-wrap {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       overflow: hidden;
-      height: 55px;
+      height: 60px;
       background-color: #ffffff;
       border-bottom: 3px solid #003366;
       z-index: 1000;
@@ -33,19 +33,20 @@
       align-items: center;
       white-space: nowrap;
       padding-left: 100%;
-      animation: ticker 28s linear infinite;
+      animation: ticker 30s linear infinite;
     }
     .ticker-title {
-      font-size: 12px;
+      font-size: 13px;
       font-weight: bold;
       color: #003366;
-      margin-right: 25px;
+      margin-right: 30px;
       letter-spacing: 1px;
     }
     .sponsor-logo {
-      height: 32px;
+      height: 35px;
       width: auto;
-      margin: 0 35px;
+      max-width: 160px; /* Ensures text and symbol fit completely without clipping */
+      margin: 0 40px;   /* Extra room so full brand names are visible */
       vertical-align: middle;
       object-fit: contain;
     }
@@ -54,7 +55,7 @@
       100% { transform: translate3d(-100%, 0, 0); }
     }
 
-    /* Bottom Fixed Navigation Bar */
+    /* Bottom Navigation Bar */
     nav {
       position: fixed;
       bottom: 0;
@@ -211,13 +212,13 @@
   <div class="ticker-wrap">
     <div class="ticker-move">
       <span class="ticker-title">OFFICIAL SPONSORS</span>
-      <img src="https://upload.wikimedia.org/wikipedia/commons/4/44/BMW.svg" alt="BMW" class="sponsor-logo">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/a/a6/Logo_NIKE.svg" alt="Nike" class="sponsor-logo">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/2/20/Adidas_Logo.svg" alt="Adidas" class="sponsor-logo">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/9/9b/Qatar_Airways_Logo.svg" alt="Qatar Airways" class="sponsor-logo">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/9/90/Mercedes-Logo.svg" alt="Mercedes-Benz" class="sponsor-logo">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/a/a8/Puma_Logo.svg" alt="Puma" class="sponsor-logo">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/2/2a/Mastercard-logo.svg" alt="Mastercard" class="sponsor-logo">
+      <img src="https://logo.clearbit.com/bmw.com" alt="BMW" class="sponsor-logo">
+      <img src="https://logo.clearbit.com/nike.com" alt="Nike" class="sponsor-logo">
+      <img src="https://logo.clearbit.com/adidas.com" alt="Adidas" class="sponsor-logo">
+      <img src="https://logo.clearbit.com/qatarairways.com" alt="Qatar Airways" class="sponsor-logo">
+      <img src="https://logo.clearbit.com/mercedes-benz.com" alt="Mercedes-Benz" class="sponsor-logo">
+      <img src="https://logo.clearbit.com/puma.com" alt="Puma" class="sponsor-logo">
+      <img src="https://logo.clearbit.com/mastercard.com" alt="Mastercard" class="sponsor-logo">
     </div>
   </div>
 
@@ -443,6 +444,7 @@
   </script>
 </body>
 </html>
+
 
 
 
