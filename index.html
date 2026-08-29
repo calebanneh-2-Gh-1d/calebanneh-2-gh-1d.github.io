@@ -4,30 +4,34 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Scout Escort</title>
-  <style>
+      <style>
     body {
       font-family: Arial, sans-serif;
       margin: 0;
       padding: 0;
-      background-color: #f4f4f4;
+      /* Vibrant Green Background */
+      background-color: #1b4d3e; 
     }
     nav {
-      background-color: #222;
+      /* Royal Blue Navigation Bar */
+      background-color: #003366; 
       display: flex;
       justify-content: space-around;
-      padding: 10px 0;
+      padding: 12px 0;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
     }
     .nav-btn {
       background: none;
       border: none;
-      color: #fff;
-      font-size: 16px;
-      padding: 8px 16px;
+      color: #ffffff;
+      font-size: 15px;
+      font-weight: bold;
+      padding: 8px 12px;
       cursor: pointer;
     }
     .nav-btn.active {
-      border-bottom: 3px solid #007bff;
-      font-weight: bold;
+      border-bottom: 4px solid #28a745; /* Bright Green Active Highlight */
+      color: #ffffff;
     }
     .container {
       max-width: 800px;
@@ -35,10 +39,11 @@
       padding: 0 15px;
     }
     .card {
-      background: #fff;
+      /* Clean White Content Cards */
+      background: #ffffff; 
       padding: 20px;
-      border-radius: 8px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
     }
     .tab-content {
       display: none;
@@ -47,35 +52,46 @@
       display: block;
     }
     .news-card {
-      background-color: #f9f9f9;
-      border-left: 4px solid #007bff;
+      background-color: #f8f9fa;
+      border-left: 5px solid #003366; /* Blue Accent Line */
       padding: 12px 16px;
       margin-bottom: 15px;
-      border-radius: 4px;
+      border-radius: 6px;
     }
     .news-card h3 {
       margin: 0 0 8px 0;
       font-size: 16px;
     }
     .news-card p {
-      color: #444;
+      color: #333333;
       font-size: 14px;
       margin: 0 0 8px 0;
     }
-    form input, form button {
+    form input {
       display: block;
       width: 100%;
-      margin-bottom: 10px;
-      padding: 10px;
+      margin-bottom: 12px;
+      padding: 12px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
       box-sizing: border-box;
     }
     form button {
-      background-color: #007bff;
-      color: #fff;
+      display: block;
+      width: 100%;
+      background-color: #003366; /* Blue Action Button */
+      color: #ffffff;
+      font-weight: bold;
       border: none;
+      padding: 12px;
+      border-radius: 6px;
       cursor: pointer;
     }
+    form button:hover {
+      background-color: #28a745; /* Turns Green on Click/Hover */
+    }
   </style>
+
 </head>
 <body>
 
