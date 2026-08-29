@@ -4,8 +4,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Scout Escort</title>
-  <!-- Font Awesome CDN for remaining brands -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -38,7 +36,7 @@
       animation: ticker 25s linear infinite;
     }
 
-    /* Thick, Heavy Black "OFFICIAL SPONSORS" Header */
+    /* Heavy Black "OFFICIAL SPONSORS" Header */
     .ticker-title {
       font-size: 14px;
       font-weight: 900;
@@ -54,11 +52,13 @@
       margin: 0 30px;
       font-size: 18px;
       font-weight: 800;
-      color: #111;
+      color: #111111;
       gap: 10px;
     }
-    .sponsor-item i {
-      font-size: 26px;
+    .sponsor-logo-img {
+      height: 24px;
+      width: auto;
+      object-fit: contain;
     }
     @keyframes ticker {
       0% { transform: translate3d(0, 0, 0); }
@@ -187,33 +187,49 @@
 </head>
 <body>
 
-  <!-- Top Moving Sponsors Ticker Bar -->
   <div class="ticker-wrap">
     <div class="ticker-move">
       <span class="ticker-title">OFFICIAL SPONSORS</span>
       
-      <!-- True Nike Vector -->
       <span class="sponsor-item">
-        <svg width="36" height="18" viewBox="0 0 73 24" fill="#000"><path d="M72.2 0s-9.9 12-25.7 16.7c-9 2.7-18.7 1.8-25.1-.3-3.6-1.1-13-5.1-16.1-9L0 12.3C1.6 17.6 8 23 15 23.8c12.5 1.5 28-3.1 38.4-9.3 8.1-4.8 18.8-14.5 18.8-14.5z"/></svg>
+        <img class="sponsor-logo-img" src="https://cdn.jsdelivr.net/npm/simple-icons@v12/icons/nike.svg" alt="Nike">
         NIKE
       </span>
       
-      <!-- True Adidas Vector -->
       <span class="sponsor-item">
-        <svg width="28" height="20" viewBox="0 0 32 22" fill="#000"><path d="M22.094 22l5.093-8.834 4.813 8.834h-9.906zM13.25 22l5.125-8.834-3.406-5.875-8.531 14.709h6.812zM6.344 22l-3.375-5.844 5.094-8.844 3.375 5.844-5.094 8.844z"/></svg>
+        <img class="sponsor-logo-img" src="https://cdn.jsdelivr.net/npm/simple-icons@v12/icons/adidas.svg" alt="Adidas">
         ADIDAS
       </span>
-      
-      <span class="sponsor-item"><i class="fa-brands fa-apple" style="color:#000000;"></i> APPLE</span>
-      <span class="sponsor-item"><i class="fa-brands fa-playstation" style="color:#003791;"></i> PLAYSTATION</span>
-      <span class="sponsor-item"><i class="fa-brands fa-amazon" style="color:#FF9900;"></i> AMAZON</span>
-      <span class="sponsor-item"><i class="fa-brands fa-cc-mastercard" style="color:#EB001B;"></i> MASTERCARD</span>
+
+      <span class="sponsor-item">
+        <img class="sponsor-logo-img" src="https://cdn.jsdelivr.net/npm/simple-icons@v12/icons/puma.svg" alt="Puma">
+        PUMA
+      </span>
+
+      <span class="sponsor-item">
+        <img class="sponsor-logo-img" src="https://cdn.jsdelivr.net/npm/simple-icons@v12/icons/bmw.svg" alt="BMW">
+        BMW
+      </span>
+
+      <span class="sponsor-item">
+        <img class="sponsor-logo-img" src="https://cdn.jsdelivr.net/npm/simple-icons@v12/icons/mercedes.svg" alt="Mercedes">
+        MERCEDES
+      </span>
+
+      <span class="sponsor-item">
+        <img class="sponsor-logo-img" src="https://cdn.jsdelivr.net/npm/simple-icons@v12/icons/qatarairways.svg" alt="Qatar Airways">
+        QATAR AIRWAYS
+      </span>
+
+      <span class="sponsor-item">
+        <img class="sponsor-logo-img" src="https://cdn.jsdelivr.net/npm/simple-icons@v12/icons/mastercard.svg" alt="Mastercard">
+        MASTERCARD
+      </span>
     </div>
   </div>
 
   <div class="container">
     
-    <!-- Tab 1: Live Matches -->
     <div id="matches" class="tab-content active">
       <div class="card">
         <h2>Live & Scheduled Matches</h2>
@@ -223,7 +239,6 @@
       </div>
     </div>
 
-    <!-- Tab 2: Football News -->
     <div id="news" class="tab-content">
       <div class="card">
         <h2>Latest Football News & Transfers</h2>
@@ -233,7 +248,6 @@
       </div>
     </div>
 
-    <!-- Tab 3: Rankings -->
     <div id="standings" class="tab-content">
       <div class="card">
         <h2>FIFA World Rankings</h2>
@@ -241,7 +255,6 @@
       </div>
     </div>
 
-    <!-- Tab 4: Player & Scout Registration -->
     <div id="register" class="tab-content">
       <div class="card">
         <div class="tv-frame">
@@ -294,7 +307,6 @@
 
   </div>
 
-  <!-- Bottom Navigation Bar -->
   <nav>
     <button class="nav-btn active" onclick="switchTab(event, 'matches')">Matches</button>
     <button class="nav-btn" onclick="switchTab(event, 'news')">News</button>
@@ -326,6 +338,7 @@
   </script>
 </body>
 </html>
+>
 
 
 
