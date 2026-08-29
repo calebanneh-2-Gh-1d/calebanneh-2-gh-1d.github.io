@@ -11,7 +11,36 @@
       padding: 60px 0 75px 0;
       background-color: #1b4d3e; 
       color: #333;
+      /* Mastercard Specific Styling */
+    .brand-mastercard {
+      color: #EB001B;
     }
+    .mastercard-icon {
+      display: inline-block;
+      width: 28px;
+      height: 20px;
+      position: relative;
+    }
+    .mc-circle-1 {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 16px;
+      height: 16px;
+      background-color: #EB001B;
+      border-radius: 50%;
+    }
+    .mc-circle-2 {
+      position: absolute;
+      right: 0;
+      top: 0;
+      width: 16px;
+      height: 16px;
+      background-color: #FF5F00;
+      border-radius: 50%;
+      mix-blend-mode: multiply;
+    }
+  }
 
     /* Fixed Top Sponsor Ticker Bar */
     .ticker-wrap {
@@ -246,12 +275,20 @@
         <img class="sponsor-logo-img brand-qatar-img" src="https://cdn.jsdelivr.net/npm/simple-icons@v12/icons/qatarairways.svg" alt="Qatar Airways">
         QATAR AIRWAYS
       </span>
-
-      <!-- Colored Mastercard -->
+      
+      <!-- Properly Colored Two-Circle Mastercard -->
       <span class="sponsor-item brand-mastercard">
-        <img class="sponsor-logo-img brand-mastercard-img" src="https://cdn.jsdelivr.net/npm/simple-icons@v12/icons/mastercard.svg" alt="Mastercard">
-        MASTERCARD
+        <span class="mastercard-icon">
+          <span class="mc-circle-1"></span>
+          <span class="mc-circle-2"></span>
+        <span>MASTERCARD</span>
+        
       </span>
+      
+
+                  
+
+
     </div>
   </div>
 
