@@ -4,6 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Scout Escort</title>
+  <!-- Font Awesome CDNs for Official Brand Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -20,7 +22,7 @@
       left: 0;
       width: 100%;
       overflow: hidden;
-      height: 55px;
+      height: 60px;
       background-color: #ffffff;
       border-bottom: 3px solid #003366;
       z-index: 1000;
@@ -33,21 +35,35 @@
       align-items: center;
       white-space: nowrap;
       padding-left: 100%;
-      animation: ticker 30s linear infinite;
+      animation: ticker 25s linear infinite;
     }
     .ticker-title {
-      font-size: 12px;
+      font-size: 13px;
       font-weight: bold;
       color: #003366;
-      margin-right: 30px;
+      margin-right: 35px;
       letter-spacing: 1px;
     }
-    .sponsor-logo {
-      height: 32px;
-      width: auto;
-      margin: 0 35px;
-      vertical-align: middle;
-      object-fit: contain;
+    .sponsor-item {
+      display: inline-flex;
+      align-items: center;
+      margin: 0 30px;
+      font-size: 20px;
+      font-weight: bold;
+      color: #111;
+      gap: 10px;
+    }
+    .sponsor-item i {
+      font-size: 28px;
+    }
+    .text-badge {
+      background: #003366;
+      color: #fff;
+      padding: 4px 10px;
+      border-radius: 4px;
+      font-size: 14px;
+      font-weight: 800;
+      letter-spacing: 1px;
     }
     @keyframes ticker {
       0% { transform: translate3d(0, 0, 0); }
@@ -136,38 +152,6 @@
       font-size: 12px;
     }
 
-    /* News Cards with Images */
-    .news-card {
-      background-color: #f8f9fa;
-      border-left: 5px solid #003366;
-      padding: 14px;
-      margin-bottom: 15px;
-      border-radius: 6px;
-      display: flex;
-      gap: 15px;
-      align-items: flex-start;
-    }
-    .news-img {
-      width: 110px;
-      height: 80px;
-      object-fit: cover;
-      border-radius: 6px;
-      background-color: #ddd;
-      flex-shrink: 0;
-    }
-    .news-content {
-      flex: 1;
-    }
-    .news-card h3 {
-      margin: 0 0 6px 0;
-      font-size: 15px;
-    }
-    .news-card p {
-      margin: 0 0 6px 0;
-      font-size: 13px;
-      color: #444;
-    }
-
     /* Form Styling */
     .form-group {
       margin-bottom: 14px;
@@ -208,17 +192,17 @@
 </head>
 <body>
 
-  <!-- Top Moving Sponsors Ticker with Official High-Res Logos -->
+  <!-- Top Moving Sponsors Ticker Bar -->
   <div class="ticker-wrap">
     <div class="ticker-move">
       <span class="ticker-title">OFFICIAL SPONSORS</span>
-      <img src="https://upload.wikimedia.org/wikipedia/commons/4/44/BMW.svg" alt="BMW" class="sponsor-logo">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/a/a6/Logo_NIKE.svg" alt="Nike" class="sponsor-logo">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/2/20/Adidas_Logo.svg" alt="Adidas" class="sponsor-logo">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/0/07/Qatar_Airways_Logo.svg" alt="Qatar Airways" class="sponsor-logo">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/9/90/Mercedes-Logo.svg" alt="Mercedes-Benz" class="sponsor-logo">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/8/88/Puma_AG.svg" alt="Puma" class="sponsor-logo">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/2/2a/Mastercard-logo.svg" alt="Mastercard" class="sponsor-logo">
+      <span class="sponsor-item"><i class="fa-solid fa-car" style="color:#0066B1;"></i> BMW</span>
+      <span class="sponsor-item"><i class="fa-brands fa-nike" style="color:#000000;"></i> NIKE</span>
+      <span class="sponsor-item"><i class="fa-brands fa-square-font-awesome-stroke" style="color:#000000;"></i> ADIDAS</span>
+      <span class="sponsor-item"><span class="text-badge" style="background:#5C0632;">QATAR AIRWAYS</span></span>
+      <span class="sponsor-item"><i class="fa-solid fa-circle-notch" style="color:#000000;"></i> MERCEDES-BENZ</span>
+      <span class="sponsor-item"><span class="text-badge" style="background:#000000;">🐆 PUMA</span></span>
+      <span class="sponsor-item"><i class="fa-brands fa-cc-mastercard" style="color:#EB001B;"></i> MASTERCARD</span>
     </div>
   </div>
 
@@ -229,22 +213,22 @@
       <div class="card">
         <h2>Live & Scheduled Matches</h2>
         <div id="live-matches-container">
-          <p>Loading scores...</p>
+          <p>Loading live match schedules...</p>
         </div>
       </div>
     </div>
 
-    <!-- Tab 2: Football News & Transfers -->
+    <!-- Tab 2: Football News -->
     <div id="news" class="tab-content">
       <div class="card">
         <h2>Latest Football News & Transfers</h2>
         <div id="rss-news-container">
-          <p>Loading latest football headlines...</p>
+          <p>Loading headlines...</p>
         </div>
       </div>
     </div>
 
-    <!-- Tab 3: Rankings & Standings -->
+    <!-- Tab 3: Rankings -->
     <div id="standings" class="tab-content">
       <div class="card">
         <h2>FIFA World Rankings</h2>
@@ -255,8 +239,6 @@
     <!-- Tab 4: Player & Scout Registration -->
     <div id="register" class="tab-content">
       <div class="card">
-        
-        <!-- TV Showcase Frame -->
         <div class="tv-frame">
           <div class="tv-screen">
             <div class="tv-overlay">
@@ -272,7 +254,6 @@
         </p>
         
         <form id="signup-form" onsubmit="event.preventDefault(); handleFormSubmit();">
-          
           <div class="form-group">
             <label for="fullname">Full Name *</label>
             <input type="text" id="fullname" placeholder="e.g. Samuel Mensah" required>
@@ -299,29 +280,6 @@
             <input type="tel" id="phone" placeholder="+233 24 000 0000" required>
           </div>
 
-          <div class="form-group">
-            <label for="position">Primary Position (Players)</label>
-            <select id="position">
-              <option value="N/A">Not Applicable</option>
-              <option value="Striker / Forward">Striker / Forward</option>
-              <option value="Winger (LW/RW)">Winger (Left/Right)</option>
-              <option value="Attacking Midfielder (CAM)">Attacking Midfielder (CAM)</option>
-              <option value="Central Midfielder (CM/CDM)">Central / Defensive Midfielder</option>
-              <option value="Defender (CB/LB/RB)">Defender (CB / Fullback)</option>
-              <option value="Goalkeeper (GK)">Goalkeeper (GK)</option>
-            </select>
-          </div>
-
-          <div class="form-group">
-            <label for="age">Age / Year of Birth</label>
-            <input type="text" id="age" placeholder="e.g. 18 years (2008)">
-          </div>
-
-          <div class="form-group">
-            <label for="location">Current Location / Country</label>
-            <input type="text" id="location" placeholder="e.g. Accra, Ghana">
-          </div>
-
           <button type="submit">Complete Registration</button>
         </form>
 
@@ -340,116 +298,30 @@
   </nav>
 
   <script>
-    const apiKey = "";
-
-    async function loadLiveScores() {
-      const container = document.getElementById("live-matches-container");
-      try {
-        let response = await fetch("https://v3.football.api-sports.io/fixtures?live=all", {
-          method: "GET",
-          headers: { "x-apisports-key": apiKey }
-        });
-        let data = await response.json();
-        let matches = data.response;
-
-        if (!matches || matches.length === 0) {
-          const today = new Date().toISOString().split("T")[0];
-          response = await fetch(`https://v3.football.api-sports.io/fixtures?date=${today}`, {
-            method: "GET",
-            headers: { "x-apisports-key": apiKey }
-          });
-          data = await response.json();
-          matches = data.response;
-        }
-
-        if (!matches || matches.length === 0) {
-          container.innerHTML = "<p>No matches available right now.</p>";
-          return;
-        }
-
-        container.innerHTML = matches.slice(0, 10).map(match => {
-          const streamQuery = encodeURIComponent(`${match.teams.home.name} vs ${match.teams.away.name} live stream`);
-          const streamUrl = `https://www.youtube.com/results?search_query=${streamQuery}`;
-          return `
-            <div class="match-item">
-              <div><span>${match.league.name} (${match.league.country})</span> - <span>${match.fixture.status.short}</span></div>
-              <div><span>${match.teams.home.name}</span> <span>${match.goals.home ?? 0} - ${match.goals.away ?? 0}</span> <span>${match.teams.away.name}</span></div>
-              <a href="${streamUrl}" target="_blank">Search Live Stream on YouTube</a>
-            </div>
-          `;
-        }).join('');
-      } catch (error) {
-        container.innerHTML = "<p>Unable to connect to live match servers right now.</p>";
-      }
-    }
-
-    function fetchFootballNews() {
-      const feedUrl = "https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Ffeeds.bbci.co.uk%2Fsport%2Ffootball%2Frss.xml";
-      const container = document.getElementById("rss-news-container");
-      const defaultImg = "https://images.unsplash.com/photo-1508098682722-e99c43a406b2?auto=format&fit=crop&w=300&q=80";
-
-      fetch(feedUrl)
-        .then(response => response.json())
-        .then(data => {
-          if (data.status === "ok" && data.items.length > 0) {
-            let html = "";
-            data.items.slice(0, 5).forEach(article => {
-              const imgSrc = article.thumbnail || (article.enclosure && article.enclosure.link) || defaultImg;
-              html += `
-                <article class="news-card">
-                  <img src="${imgSrc}" alt="News Image" class="news-img" onerror="this.src='${defaultImg}'">
-                  <div class="news-content">
-                    <h3><a href="${article.link}" target="_blank" style="text-decoration:none; color:#003366;">${article.title}</a></h3>
-                    <p>${article.description}</p>
-                    <small style="color:#888;">Published: ${new Date(article.pubDate).toLocaleDateString()}</small>
-                  </div>
-                </article>
-              `;
-            });
-            container.innerHTML = html;
-          } else {
-            container.innerHTML = "<p>Unable to load news right now.</p>";
-          }
-        })
-        .catch(() => {
-          container.innerHTML = "<p>Error loading live football news.</p>";
-        });
-    }
-
     function handleFormSubmit() {
       const name = document.getElementById('fullname').value;
       const role = document.getElementById('user-role').value;
       const msg = document.getElementById('form-msg');
-      
       if (name && role) {
         msg.style.color = "#28a745";
         msg.innerText = `Thank you, ${name}! Your ${role} profile has been submitted successfully.`;
         document.getElementById('signup-form').reset();
-      } else {
-        msg.style.color = "#d9534f";
-        msg.innerText = "Please complete all required fields.";
       }
     }
 
     function switchTab(event, tabId) {
       const contents = document.querySelectorAll('.tab-content');
       contents.forEach(content => content.classList.remove('active'));
-
       const buttons = document.querySelectorAll('.nav-btn');
       buttons.forEach(btn => btn.classList.remove('active'));
-
       const selectedTab = document.getElementById(tabId);
       if (selectedTab) selectedTab.classList.add('active');
       if (event && event.currentTarget) event.currentTarget.classList.add('active');
     }
-
-    document.addEventListener('DOMContentLoaded', () => {
-      loadLiveScores();
-      fetchFootballNews();
-    });
   </script>
 </body>
 </html>
+
 
 
 
