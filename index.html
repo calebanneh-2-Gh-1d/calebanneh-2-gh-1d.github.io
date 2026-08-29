@@ -6,14 +6,27 @@
     <title>Scout Escort - Live Matches & Scouting</title>
     <style>
         body { font-family: Arial, sans-serif; margin: 0; padding: 0; background-color: #0b3d2e; color: #fff; }
-        .sponsors-header { background: #fff; padding: 10px 0; text-align: center; white-space: nowrap; overflow: hidden; }
-        .sponsor-item { display: inline-block; margin: 0 10px; font-weight: bold; color: #333; font-size: 13px; vertical-align: middle; }
-        .sponsor-logo-img { height: 18px; vertical-align: middle; margin-right: 3px; }
-        .container { max-width: 800px; margin: 20px auto; padding: 15px; }
+        
+        /* Scrolling Sponsors Marquee */
+        .sponsors-ticker { background: #fff; overflow: hidden; white-space: nowrap; padding: 10px 0; width: 100%; box-sizing: border-box; }
+        .sponsors-track { display: inline-block; white-space: nowrap; animation: scrollMarquee 25s linear infinite; }
+        .sponsor-item { display: inline-block; margin: 0 25px; font-weight: bold; color: #333; font-size: 13px; vertical-align: middle; }
+        .sponsor-logo-img { height: 20px; vertical-align: middle; margin-right: 5px; }
+        @keyframes scrollMarquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        .container { max-width: 800px; margin: 15px auto; padding: 15px; }
         .tab-content { display: none; }
         .tab-content.active { display: block; }
         .card { background: #fff; border-radius: 8px; padding: 20px; color: #333; margin-bottom: 20px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
         .card h2 { margin-top: 0; color: #0b3d2e; }
+        
+        /* Video Container Error Fix */
+        .video-container { position: relative; width: 100%; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 6px; background: #000; }
+        .video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
+
         .news-item { border-bottom: 1px solid #eee; padding-bottom: 12px; margin-bottom: 12px; }
         .news-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
         .news-title { font-weight: bold; font-size: 16px; color: #222; }
@@ -32,37 +45,44 @@
 </head>
 <body>
 
-    <!-- Sponsors Header -->
-    <div class="sponsors-header">
-        <span class="sponsor-item"><img class="sponsor-logo-img" src="https://cdn.jsdelivr.net/npm/simple-icons@v12/icons/nike.svg" alt="Nike">NIKE</span>
-        <span class="sponsor-item"><img class="sponsor-logo-img" src="https://cdn.jsdelivr.net/npm/simple-icons@v12/icons/puma.svg" alt="Puma">PUMA</span>
-        <span class="sponsor-item"><img class="sponsor-logo-img" src="https://cdn.jsdelivr.net/npm/simple-icons@v12/icons/samsung.svg" alt="Samsung">SAMSUNG</span>
-        <span class="sponsor-item"><img class="sponsor-logo-img" src="https://cdn.jsdelivr.net/npm/simple-icons@v12/icons/mercedes.svg" alt="Mercedes">MERCEDES</span>
-        <span class="sponsor-item"><img class="sponsor-logo-img" src="https://cdn.jsdelivr.net/npm/simple-icons@v12/icons/bmw.svg" alt="BMW">BMW</span>
-        <span class="sponsor-item"><img class="sponsor-logo-img" src="https://cdn.jsdelivr.net/npm/simple-icons@v12/icons/qatarairways.svg" alt="Qatar">QATAR AIRWAYS</span>
-        <span class="sponsor-item"><img class="sponsor-logo-img" src="https://cdn.jsdelivr.net/npm/simple-icons@v12/icons/mastercard.svg" alt="Mastercard">MASTERCARD</span>
+    <div class="sponsors-ticker">
+        <div class="sponsors-track">
+            <span class="sponsor-item"><img class="sponsor-logo-img" src="https://cdn.jsdelivr.net/npm/simple-icons@v12/icons/nike.svg" alt="Nike">NIKE</span>
+            <span class="sponsor-item"><img class="sponsor-logo-img" src="https://cdn.jsdelivr.net/npm/simple-icons@v12/icons/puma.svg" alt="Puma">PUMA</span>
+            <span class="sponsor-item"><img class="sponsor-logo-img" src="https://cdn.jsdelivr.net/npm/simple-icons@v12/icons/samsung.svg" alt="Samsung">SAMSUNG</span>
+            <span class="sponsor-item"><img class="sponsor-logo-img" src="https://cdn.jsdelivr.net/npm/simple-icons@v12/icons/mercedes.svg" alt="Mercedes">MERCEDES</span>
+            <span class="sponsor-item"><img class="sponsor-logo-img" src="https://cdn.jsdelivr.net/npm/simple-icons@v12/icons/bmw.svg" alt="BMW">BMW</span>
+            <span class="sponsor-item"><img class="sponsor-logo-img" src="https://cdn.jsdelivr.net/npm/simple-icons@v12/icons/qatarairways.svg" alt="Qatar">QATAR AIRWAYS</span>
+            <span class="sponsor-item"><img class="sponsor-logo-img" src="https://cdn.jsdelivr.net/npm/simple-icons@v12/icons/mastercard.svg" alt="Mastercard">MASTERCARD</span>
+            <span class="sponsor-item"><img class="sponsor-logo-img" src="https://cdn.jsdelivr.net/npm/simple-icons@v12/icons/nike.svg" alt="Nike">NIKE</span>
+            <span class="sponsor-item"><img class="sponsor-logo-img" src="https://cdn.jsdelivr.net/npm/simple-icons@v12/icons/puma.svg" alt="Puma">PUMA</span>
+            <span class="sponsor-item"><img class="sponsor-logo-img" src="https://cdn.jsdelivr.net/npm/simple-icons@v12/icons/samsung.svg" alt="Samsung">SAMSUNG</span>
+            <span class="sponsor-item"><img class="sponsor-logo-img" src="https://cdn.jsdelivr.net/npm/simple-icons@v12/icons/mercedes.svg" alt="Mercedes">MERCEDES</span>
+            <span class="sponsor-item"><img class="sponsor-logo-img" src="https://cdn.jsdelivr.net/npm/simple-icons@v12/icons/bmw.svg" alt="BMW">BMW</span>
+            <span class="sponsor-item"><img class="sponsor-logo-img" src="https://cdn.jsdelivr.net/npm/simple-icons@v12/icons/qatarairways.svg" alt="Qatar">QATAR AIRWAYS</span>
+            <span class="sponsor-item"><img class="sponsor-logo-img" src="https://cdn.jsdelivr.net/npm/simple-icons@v12/icons/mastercard.svg" alt="Mastercard">MASTERCARD</span>
+        </div>
     </div>
 
     <div class="container" style="padding-bottom: 80px;">
 
-        <!-- Tab 1: Live Matches -->
         <div id="matches" class="tab-content active">
             <div class="card">
                 <h2>Live Matches on YouTube</h2>
-                <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 6px;">
-                    <iframe src="https://www.youtube.com/embed/NpZHFNiLS90" title="Live Football Match" frameborder="0" allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe>
+                <div class="video-container">
+                    <iframe src="https://www.youtube.com/embed/live_stream?channel=UC_x5XG1OV2P6uZZ5FSM9Ttw" title="Live Football Match" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </div>
+                <p style="font-size: 13px; color: #666; margin-top: 10px; text-align: center;">Broadcasting live match stream directly to viewers.</p>
             </div>
         </div>
 
-        <!-- Tab 2: Football News -->
         <div id="news" class="tab-content">
             <div class="card">
                 <h2>Latest Football News & Transfers</h2>
                 
                 <div class="news-item">
                     <div class="news-title">Transfer Deadline Approaching</div>
-                    <div class="news-desc">Major European clubs are rushing to finalize final squad adjustments as the summer transfer window reaches its final hours.</div>
+                    <div class="news-desc">Major European clubs are rushing to finalize squad adjustments as the window reaches its final hours.</div>
                 </div>
 
                 <div class="news-item">
@@ -77,7 +97,6 @@
             </div>
         </div>
 
-        <!-- Tab 3: Rankings -->
         <div id="rankings" class="tab-content">
             <div class="card">
                 <h2>Official FIFA World Rankings</h2>
@@ -107,7 +126,6 @@
             </div>
         </div>
 
-        <!-- Tab 4: Player & Scout Registration -->
         <div id="register" class="tab-content">
             <div class="card">
                 <h2>Talent & Scout Book Registration</h2>
@@ -147,7 +165,6 @@
 
     </div>
 
-    <!-- Bottom Navigation Bar -->
     <div class="bottom-nav">
         <button onclick="switchTab('matches', this)" class="active">Matches</button>
         <button onclick="switchTab('news', this)">News</button>
@@ -166,6 +183,7 @@
     </script>
 </body>
 </html>
+
 
 
 
