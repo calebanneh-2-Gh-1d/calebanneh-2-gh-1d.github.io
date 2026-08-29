@@ -60,6 +60,29 @@
       width: auto;
       object-fit: contain;
     }
+
+    /* Specific Brand Colors */
+    .brand-qatar {
+      color: #5C0632;
+    }
+    .brand-qatar-img {
+      filter: invert(11%) sepia(85%) saturate(3132%) hue-rotate(308deg) brightness(85%) contrast(97%);
+    }
+
+    .brand-bmw {
+      color: #0066B1;
+    }
+    .brand-bmw-img {
+      filter: invert(27%) sepia(98%) saturate(1872%) hue-rotate(189deg) brightness(91%) contrast(101%);
+    }
+
+    .brand-mastercard {
+      color: #EB001B;
+    }
+    .brand-mastercard-img {
+      filter: invert(14%) sepia(89%) saturate(6011%) hue-rotate(348deg) brightness(97%) contrast(98%);
+    }
+
     @keyframes ticker {
       0% { transform: translate3d(0, 0, 0); }
       100% { transform: translate3d(-100%, 0, 0); }
@@ -187,6 +210,7 @@
 </head>
 <body>
 
+  <!-- Top Moving Sponsors Ticker Bar -->
   <div class="ticker-wrap">
     <div class="ticker-move">
       <span class="ticker-title">OFFICIAL SPONSORS</span>
@@ -206,8 +230,9 @@
         PUMA
       </span>
 
-      <span class="sponsor-item">
-        <img class="sponsor-logo-img" src="https://cdn.jsdelivr.net/npm/simple-icons@v12/icons/bmw.svg" alt="BMW">
+      <!-- Colored BMW -->
+      <span class="sponsor-item brand-bmw">
+        <img class="sponsor-logo-img brand-bmw-img" src="https://cdn.jsdelivr.net/npm/simple-icons@v12/icons/bmw.svg" alt="BMW">
         BMW
       </span>
 
@@ -216,13 +241,15 @@
         MERCEDES
       </span>
 
-      <span class="sponsor-item">
-        <img class="sponsor-logo-img" src="https://cdn.jsdelivr.net/npm/simple-icons@v12/icons/qatarairways.svg" alt="Qatar Airways">
+      <!-- Colored Qatar Airways -->
+      <span class="sponsor-item brand-qatar">
+        <img class="sponsor-logo-img brand-qatar-img" src="https://cdn.jsdelivr.net/npm/simple-icons@v12/icons/qatarairways.svg" alt="Qatar Airways">
         QATAR AIRWAYS
       </span>
 
-      <span class="sponsor-item">
-        <img class="sponsor-logo-img" src="https://cdn.jsdelivr.net/npm/simple-icons@v12/icons/mastercard.svg" alt="Mastercard">
+      <!-- Colored Mastercard -->
+      <span class="sponsor-item brand-mastercard">
+        <img class="sponsor-logo-img brand-mastercard-img" src="https://cdn.jsdelivr.net/npm/simple-icons@v12/icons/mastercard.svg" alt="Mastercard">
         MASTERCARD
       </span>
     </div>
@@ -230,6 +257,7 @@
 
   <div class="container">
     
+    <!-- Tab 1: Live Matches -->
     <div id="matches" class="tab-content active">
       <div class="card">
         <h2>Live & Scheduled Matches</h2>
@@ -239,6 +267,7 @@
       </div>
     </div>
 
+    <!-- Tab 2: Football News -->
     <div id="news" class="tab-content">
       <div class="card">
         <h2>Latest Football News & Transfers</h2>
@@ -248,6 +277,7 @@
       </div>
     </div>
 
+    <!-- Tab 3: Rankings -->
     <div id="standings" class="tab-content">
       <div class="card">
         <h2>FIFA World Rankings</h2>
@@ -255,6 +285,7 @@
       </div>
     </div>
 
+    <!-- Tab 4: Player & Scout Registration -->
     <div id="register" class="tab-content">
       <div class="card">
         <div class="tv-frame">
@@ -307,6 +338,7 @@
 
   </div>
 
+  <!-- Bottom Navigation Bar -->
   <nav>
     <button class="nav-btn active" onclick="switchTab(event, 'matches')">Matches</button>
     <button class="nav-btn" onclick="switchTab(event, 'news')">News</button>
@@ -338,7 +370,7 @@
   </script>
 </body>
 </html>
->
+
 
 
 
