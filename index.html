@@ -8,7 +8,7 @@
     body {
       font-family: Arial, sans-serif;
       margin: 0;
-      padding: 45px 0 75px 0; /* Clearances for top ticker & bottom nav */
+      padding: 65px 0 75px 0; /* Clearances for top ticker & bottom nav */
       background-color: #1b4d3e; 
       color: #333;
     }
@@ -20,9 +20,9 @@
       left: 0;
       width: 100%;
       overflow: hidden;
-      height: 40px;
-      background-color: #001f3f;
-      border-bottom: 2px solid #28a745;
+      height: 55px;
+      background-color: #ffffff;
+      border-bottom: 3px solid #003366;
       z-index: 1000;
       box-shadow: 0 2px 6px rgba(0,0,0,0.3);
       display: flex;
@@ -33,21 +33,21 @@
       align-items: center;
       white-space: nowrap;
       padding-left: 100%;
-      animation: ticker 25s linear infinite;
+      animation: ticker 28s linear infinite;
     }
     .ticker-title {
-      font-size: 11px;
+      font-size: 12px;
       font-weight: bold;
-      color: #28a745;
-      margin-right: 15px;
+      color: #003366;
+      margin-right: 25px;
       letter-spacing: 1px;
     }
     .sponsor-logo {
-      height: 22px;
+      height: 32px;
       width: auto;
-      margin: 0 20px;
+      margin: 0 35px;
       vertical-align: middle;
-      filter: brightness(0) invert(1); /* Renders crisp white vector icons */
+      object-fit: contain;
     }
     @keyframes ticker {
       0% { transform: translate3d(0, 0, 0); }
@@ -136,17 +136,36 @@
       font-size: 12px;
     }
 
-    /* News Cards */
+    /* News Cards with Images */
     .news-card {
       background-color: #f8f9fa;
       border-left: 5px solid #003366;
-      padding: 12px 16px;
+      padding: 14px;
       margin-bottom: 15px;
       border-radius: 6px;
+      display: flex;
+      gap: 15px;
+      align-items: flex-start;
+    }
+    .news-img {
+      width: 110px;
+      height: 80px;
+      object-fit: cover;
+      border-radius: 6px;
+      background-color: #ddd;
+      flex-shrink: 0;
+    }
+    .news-content {
+      flex: 1;
     }
     .news-card h3 {
-      margin: 0 0 8px 0;
-      font-size: 16px;
+      margin: 0 0 6px 0;
+      font-size: 15px;
+    }
+    .news-card p {
+      margin: 0 0 6px 0;
+      font-size: 13px;
+      color: #444;
     }
 
     /* Registration Form Styling */
@@ -191,7 +210,7 @@
 
   <div class="ticker-wrap">
     <div class="ticker-move">
-      <span class="ticker-title">SPONSORS</span>
+      <span class="ticker-title">OFFICIAL SPONSORS</span>
       <img src="https://upload.wikimedia.org/wikipedia/commons/4/44/BMW.svg" alt="BMW" class="sponsor-logo">
       <img src="https://upload.wikimedia.org/wikipedia/commons/a/a6/Logo_NIKE.svg" alt="Nike" class="sponsor-logo">
       <img src="https://upload.wikimedia.org/wikipedia/commons/2/20/Adidas_Logo.svg" alt="Adidas" class="sponsor-logo">
@@ -241,9 +260,9 @@
           </div>
         </div>
 
-        <h2>Talent & Scout Registration</h2>
+        <h2>Talent & Scout Book Registration</h2>
         <p style="color: #666; font-size: 13px; margin-bottom: 18px;">
-          Fill out your official details below to register in our global database.
+          Fill out your official details below to register in our scouting database.
         </p>
         
         <form id="signup-form" onsubmit="event.preventDefault(); handleFormSubmit();">
@@ -360,6 +379,7 @@
     function fetchFootballNews() {
       const feedUrl = "https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Ffeeds.bbci.co.uk%2Fsport%2Ffootball%2Frss.xml";
       const container = document.getElementById("rss-news-container");
+      const defaultImg = "https://images.unsplash.com/photo-1508098682722-e99c43a406b2?auto=format&fit=crop&w=300&q=80";
 
       fetch(feedUrl)
         .then(response => response.json())
@@ -367,11 +387,15 @@
           if (data.status === "ok" && data.items.length > 0) {
             let html = "";
             data.items.slice(0, 5).forEach(article => {
+              const imgSrc = article.thumbnail || (article.enclosure && article.enclosure.link) || defaultImg;
               html += `
                 <article class="news-card">
-                  <h3><a href="${article.link}" target="_blank" style="text-decoration:none; color:#003366;">${article.title}</a></h3>
-                  <p>${article.description}</p>
-                  <small style="color:#888;">Published: ${new Date(article.pubDate).toLocaleDateString()}</small>
+                  <img src="${imgSrc}" alt="News Image" class="news-img" onerror="this.src='${defaultImg}'">
+                  <div class="news-content">
+                    <h3><a href="${article.link}" target="_blank" style="text-decoration:none; color:#003366;">${article.title}</a></h3>
+                    <p>${article.description}</p>
+                    <small style="color:#888;">Published: ${new Date(article.pubDate).toLocaleDateString()}</small>
+                  </div>
                 </article>
               `;
             });
@@ -419,6 +443,7 @@
   </script>
 </body>
 </html>
+
 
 
 
