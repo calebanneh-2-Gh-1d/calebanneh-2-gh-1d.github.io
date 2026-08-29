@@ -8,7 +8,7 @@
     body {
       font-family: Arial, sans-serif;
       margin: 0;
-      padding: 40px 0 70px 0; /* Space for top ticker and bottom nav */
+      padding: 45px 0 75px 0; /* Clearances for top ticker & bottom nav */
       background-color: #1b4d3e; 
       color: #333;
     }
@@ -20,35 +20,41 @@
       left: 0;
       width: 100%;
       overflow: hidden;
-      height: 35px;
+      height: 40px;
       background-color: #001f3f;
       border-bottom: 2px solid #28a745;
       z-index: 1000;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+      box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+      display: flex;
+      align-items: center;
     }
     .ticker-move {
-      display: inline-block;
+      display: flex;
+      align-items: center;
       white-space: nowrap;
       padding-left: 100%;
       animation: ticker 25s linear infinite;
     }
-    .ticker-item {
-      display: inline-block;
-      padding: 7px 20px;
-      font-size: 13px;
+    .ticker-title {
+      font-size: 11px;
       font-weight: bold;
-      color: #ffffff;
-    }
-    .ticker-item span {
       color: #28a745;
-      margin-left: 5px;
+      margin-right: 15px;
+      letter-spacing: 1px;
+    }
+    .sponsor-logo {
+      height: 22px;
+      width: auto;
+      margin: 0 20px;
+      vertical-align: middle;
+      filter: brightness(0) invert(1); /* Renders crisp white vector icons */
     }
     @keyframes ticker {
       0% { transform: translate3d(0, 0, 0); }
       100% { transform: translate3d(-100%, 0, 0); }
     }
 
-    /* Bottom Navigation Bar */
+    /* Bottom Fixed Navigation Bar */
     nav {
       position: fixed;
       bottom: 0;
@@ -79,7 +85,7 @@
     }
     .container {
       max-width: 800px;
-      margin: 20px auto;
+      margin: 15px auto;
       padding: 0 15px;
     }
     .card {
@@ -94,7 +100,8 @@
     .tab-content.active {
       display: block;
     }
-    /* TV Showcase Box */
+
+    /* TV Showcase Frame */
     .tv-frame {
       background: #000;
       border: 6px solid #222;
@@ -114,7 +121,7 @@
       align-items: flex-end;
     }
     .tv-overlay {
-      background: linear-gradient(transparent, rgba(0,51,102,0.9));
+      background: linear-gradient(transparent, rgba(0,51,102,0.95));
       color: #fff;
       padding: 12px;
       width: 100%;
@@ -128,6 +135,7 @@
       margin: 0;
       font-size: 12px;
     }
+
     /* News Cards */
     .news-card {
       background-color: #f8f9fa;
@@ -140,6 +148,8 @@
       margin: 0 0 8px 0;
       font-size: 16px;
     }
+
+    /* Registration Form Styling */
     .form-group {
       margin-bottom: 14px;
     }
@@ -179,25 +189,21 @@
 </head>
 <body>
 
-  <!-- Top Moving Sponsors Ticker -->
   <div class="ticker-wrap">
     <div class="ticker-move">
-      <div class="ticker-item">OFFICIAL SPONSORS:</div>
-      <div class="ticker-item">⚽ ADIDAS <span>•</span></div>
-      <div class="ticker-item">🚗 MERCEDES-BENZ <span>•</span></div>
-      <div class="ticker-item">🏎️ BMW <span>•</span></div>
-      <div class="ticker-item">✈️ QATAR AIRWAYS <span>•</span></div>
-      <div class="ticker-item">🍺 HEINEKEN <span>•</span></div>
-      <div class="ticker-item">👟 NIKE <span>•</span></div>
-      <div class="ticker-item">🎮 EA SPORTS FC <span>•</span></div>
-      <div class="ticker-item">💳 MASTERCARD <span>•</span></div>
-      <div class="ticker-item">🐾 PUMA <span>•</span></div>
+      <span class="ticker-title">SPONSORS</span>
+      <img src="https://upload.wikimedia.org/wikipedia/commons/4/44/BMW.svg" alt="BMW" class="sponsor-logo">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/a/a6/Logo_NIKE.svg" alt="Nike" class="sponsor-logo">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/2/20/Adidas_Logo.svg" alt="Adidas" class="sponsor-logo">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/9/9b/Qatar_Airways_Logo.svg" alt="Qatar Airways" class="sponsor-logo">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/9/90/Mercedes-Logo.svg" alt="Mercedes-Benz" class="sponsor-logo">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/a/a8/Puma_Logo.svg" alt="Puma" class="sponsor-logo">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/2/2a/Mastercard-logo.svg" alt="Mastercard" class="sponsor-logo">
     </div>
   </div>
 
   <div class="container">
     
-    <!-- Tab 1: Live Matches -->
     <div id="matches" class="tab-content active">
       <div class="card">
         <h2>Live & Scheduled Matches</h2>
@@ -207,7 +213,6 @@
       </div>
     </div>
 
-    <!-- Tab 2: Football News & Transfers -->
     <div id="news" class="tab-content">
       <div class="card">
         <h2>Latest Football News & Transfers</h2>
@@ -217,7 +222,6 @@
       </div>
     </div>
 
-    <!-- Tab 3: Rankings & Standings -->
     <div id="standings" class="tab-content">
       <div class="card">
         <h2>FIFA World Rankings</h2>
@@ -225,11 +229,9 @@
       </div>
     </div>
 
-    <!-- Tab 4: Player & Scout Registration -->
     <div id="register" class="tab-content">
       <div class="card">
         
-        <!-- TV Showcase Frame -->
         <div class="tv-frame">
           <div class="tv-screen">
             <div class="tv-overlay">
@@ -239,9 +241,9 @@
           </div>
         </div>
 
-        <h2>Talent & Scout Book Registration</h2>
+        <h2>Talent & Scout Registration</h2>
         <p style="color: #666; font-size: 13px; margin-bottom: 18px;">
-          Fill out your official details below to register in our scouting database.
+          Fill out your official details below to register in our global database.
         </p>
         
         <form id="signup-form" onsubmit="event.preventDefault(); handleFormSubmit();">
@@ -304,7 +306,6 @@
 
   </div>
 
-  <!-- Navigation fixed at the bottom -->
   <nav>
     <button class="nav-btn active" onclick="switchTab(event, 'matches')">Matches</button>
     <button class="nav-btn" onclick="switchTab(event, 'news')">News</button>
@@ -418,6 +419,7 @@
   </script>
 </body>
 </html>
+
 
 
 
