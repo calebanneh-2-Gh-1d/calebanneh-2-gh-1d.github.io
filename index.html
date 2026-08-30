@@ -1,249 +1,357 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Scout Escort - Live Matches & Scouting</title> 
-      <!-- Global site tag (gtag.js) - Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-TG8655XYH5"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Scout Escort | Digital Talent & Showcase Hub</title>
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-
-    gtag('config', 'G-TG8655XYH5');
+    gtag('config', 'G-XXXXXXXXXX');
   </script>
 
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7761571186606176"
-     crossorigin="anonymous"></script>
-<style>
-    
-    body { font-family: Arial, sans-serif; margin: 0; padding: 0; background-color: #0b3d2e; color: #fff; }
-        
-        /* Scrolling Sponsors Marquee */
-        .sponsors-ticker { background: #111; overflow: hidden; white-space: nowrap; padding: 12px 0; width: 100%; box-sizing: border-box; border-bottom: 2px solid #222; }
-        .sponsors-track { display: inline-block; white-space: nowrap; animation: scrollMarquee 25s linear infinite; }
-        .sponsor-item { display: inline-block; margin: 0 25px; font-weight: bold; font-size: 14px; vertical-align: middle; letter-spacing: 0.5px; }
-        .sponsor-logo-img { height: 22px; vertical-align: middle; margin-right: 6px; }
-        
-        /* Brand Specific Colors */
-        .brand-nike { color: #ffffff; }
-        .brand-puma { color: #e10600; }
-        .brand-samsung { color: #1428a0; }
-        .brand-mercedes { color: #cccccc; }
-        .brand-bmw { color: #1c69d4; }
-        .brand-qatar { color: #7f1933; }
-        .brand-mastercard { color: #ffffff; font-weight: bold; }
-        
-        /* Custom Mastercard Icon Styling (Red and Yellow circles) */
-        .mc-circles { display: inline-block; position: relative; width: 22px; height: 14px; vertical-align: middle; margin-right: 6px; }
-        .mc-circle-1 { position: absolute; left: 0; top: 0; width: 14px; height: 14px; background: #eb001b; border-radius: 50%; opacity: 0.9; }
-        .mc-circle-2 { position: absolute; left: 8px; top: 0; width: 14px; height: 14px; background: #f79e1b; border-radius: 50%; opacity: 0.9; }
+  <style>
+    :root {
+      --bg-color: #0d2818;
+      --card-bg: #ffffff;
+      --text-dark: #111111;
+      --accent-red: #cc0000;
+      --primary-green: #044b23;
+    }
 
-        @keyframes scrollMarquee {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); }
-        }
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-dark);
+    }
 
-        .container { max-width: 800px; margin: 15px auto; padding: 15px; }
-        .tab-content { display: none; }
-        .tab-content.active { display: block; }
-        .card { background: #fff; border-radius: 8px; padding: 20px; color: #333; margin-bottom: 20px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
-        .card h2 { margin-top: 0; color: #0b3d2e; }
-        
-        /* Match List Links */
-        .match-list-item { display: flex; justify-content: space-between; align-items: center; padding: 12px 15px; border: 1px solid #e0e0e0; border-radius: 6px; margin-bottom: 10px; text-decoration: none; color: #333; background: #f9f9f9; transition: background 0.2s, transform 0.2s; }
-        .match-list-item:hover { background: #f0f8f5; border-color: #0b3d2e; transform: translateY(-1px); }
-        .match-teams { font-weight: bold; font-size: 15px; color: #111; }
-        .match-time { font-size: 13px; color: #666; background: #eef2f1; padding: 4px 8px; border-radius: 4px; }
-        .watch-btn { background: #ff0000; color: #fff; padding: 6px 12px; border-radius: 4px; font-size: 13px; font-weight: bold; text-decoration: none; display: inline-flex; align-items: center; gap: 4px; }
+    /* Moving Sponsor Marquee Ticker with Colorful Brand Badges */
+    .sponsor-ticker {
+      background-color: #050b07;
+      overflow: hidden;
+      white-space: nowrap;
+      padding: 10px 0;
+      border-bottom: 2px solid #1b432a;
+      display: flex;
+      align-items: center;
+    }
 
-        .news-item { border-bottom: 1px solid #eee; padding-bottom: 12px; margin-bottom: 12px; }
-        .news-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
-        .news-title { font-weight: bold; font-size: 16px; color: #222; }
-        .news-desc { font-size: 14px; color: #555; margin-top: 4px; }
-        table.rankings-table { width: 100%; border-collapse: collapse; margin-top: 10px; font-size: 14px; }
-        table.rankings-table th, table.rankings-table td { padding: 8px 10px; text-align: left; border-bottom: 1px solid #ddd; color: #333; }
-        table.rankings-table th { background-color: #f2f2f2; font-weight: bold; }
-        .form-group { margin-bottom: 15px; }
-        .form-group label { display: block; font-weight: bold; margin-bottom: 5px; color: #333; }
-        .form-group input, .form-group select { width: 100%; padding: 10px; border-radius: 6px; border: 1px solid #ccc; box-sizing: border-box; }
-        .btn-submit { background: #0b3d2e; color: #fff; padding: 12px 20px; border: none; border-radius: 6px; font-size: 16px; cursor: pointer; width: 100%; font-weight: bold; }
-        .bottom-nav { position: fixed; bottom: 0; left: 0; width: 100%; background: #05231c; display: flex; justify-content: space-around; padding: 12px 0; border-top: 2px solid #0b3d2e; z-index: 1000; }
-        .bottom-nav button { background: none; border: none; color: #fff; font-size: 13px; font-weight: bold; cursor: pointer; }
-        .bottom-nav button.active { color: #00ff88; border-bottom: 2px solid #00ff88; padding-bottom: 2px; }
-    </style>
+    .ticker-content {
+      display: inline-block;
+      white-space: nowrap;
+      animation: marquee 22s linear infinite;
+    }
+
+    .brand-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-right: 35px;
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 0.8px;
+      padding: 4px 10px;
+      border-radius: 4px;
+      text-transform: uppercase;
+    }
+
+    /* Individual Brand Colors & Styling */
+    .brand-puma { color: #ff4d4d; background: rgba(255, 77, 77, 0.1); border: 1px solid rgba(255, 77, 77, 0.3); }
+    .brand-samsung { color: #1428a0; background: #ffffff; border: 1px solid #1428a0; }
+    .brand-mercedes { color: #e0e0e0; background: rgba(255, 255, 255, 0.1); border: 1px solid #ffffff; }
+    .brand-bmw { color: #0066b1; background: #ffffff; border: 1px solid #0066b1; }
+    .brand-qatar { color: #58111A; background: #f4e8ea; border: 1px solid #58111A; }
+    .brand-mastercard { color: #ff5f00; background: #1a1a1a; border: 1px solid #eb001b; }
+
+    @keyframes marquee {
+      0% { transform: translateX(100%); }
+      100% { transform: translateX(-100%); }
+    }
+
+    /* Header Nav */
+    header {
+      background-color: #111111;
+      color: #ffffff;
+      padding: 12px;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    header button {
+      background: none;
+      border: none;
+      color: #cccccc;
+      font-weight: 600;
+      font-size: 14px;
+      padding: 8px 12px;
+      cursor: pointer;
+    }
+
+    header button.active {
+      color: #ffffff;
+      border-bottom: 2px solid #25d366;
+    }
+
+    /* Main Container */
+    .container {
+      max-width: 500px;
+      margin: 20px auto;
+      padding: 0 15px;
+    }
+
+    .card {
+      background: var(--card-bg);
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 20px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    }
+
+    h2 {
+      margin-top: 0;
+      color: var(--primary-green);
+    }
+
+    /* Player & Match Cards */
+    .player-card {
+      border: 1px solid #e0e0e0;
+      border-radius: 8px;
+      padding: 12px;
+      margin-bottom: 12px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .player-info h4 {
+      margin: 0 0 4px 0;
+    }
+
+    .player-info p {
+      margin: 2px 0;
+      font-size: 13px;
+      color: #555555;
+    }
+
+    .btn-action {
+      background-color: var(--accent-red);
+      color: white;
+      border: none;
+      padding: 8px 14px;
+      border-radius: 6px;
+      font-weight: bold;
+      cursor: pointer;
+      text-decoration: none;
+      font-size: 13px;
+      display: inline-block;
+    }
+
+    /* Registration Form Styling */
+    .form-group {
+      margin-bottom: 14px;
+    }
+
+    .form-group label {
+      display: block;
+      font-weight: 600;
+      margin-bottom: 4px;
+      font-size: 13px;
+    }
+
+    .form-group input, .form-group select {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      box-sizing: border-box;
+    }
+
+    .submit-btn {
+      width: 100%;
+      background-color: var(--primary-green);
+      color: white;
+      border: none;
+      padding: 12px;
+      font-size: 15px;
+      font-weight: bold;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    .tab-content {
+      display: none;
+    }
+
+    .tab-content.active {
+      display: block;
+    }
+  </style>
 </head>
 <body>
 
-    <div class="sponsors-ticker">
-        <div class="sponsors-track">
-            <span class="sponsor-item brand-nike"><img class="sponsor-logo-img" src="https://cdn.jsdelivr.net/npm/simple-icons@v12/icons/nike.svg" alt="Nike" style="filter: invert(1);">NIKE</span>
-            <span class="sponsor-item brand-puma"><img class="sponsor-logo-img" src="https://cdn.jsdelivr.net/npm/simple-icons@v12/icons/puma.svg" alt="Puma" style="filter: invert(14%) sepia(95%) saturate(7408%) hue-rotate(357deg) brightness(97%) contrast(115%);">PUMA</span>
-            <span class="sponsor-item brand-samsung"><img class="sponsor-logo-img" src="https://cdn.jsdelivr.net/npm/simple-icons@v12/icons/samsung.svg" alt="Samsung" style="filter: invert(16%) sepia(87%) saturate(3533%) hue-rotate(224deg) brightness(94%) contrast(97%);">SAMSUNG</span>
-            <span class="sponsor-item brand-mercedes"><img class="sponsor-logo-img" src="https://cdn.jsdelivr.net/npm/simple-icons@v12/icons/mercedes.svg" alt="Mercedes" style="filter: invert(85%);">MERCEDES</span>
-            <span class="sponsor-item brand-bmw"><img class="sponsor-logo-img" src="https://cdn.jsdelivr.net/npm/simple-icons@v12/icons/bmw.svg" alt="BMW" style="filter: invert(39%) sepia(77%) saturate(1637%) hue-rotate(192deg) brightness(93%) contrast(93%);">BMW</span>
-            <span class="sponsor-item brand-qatar"><img class="sponsor-logo-img" src="https://cdn.jsdelivr.net/npm/simple-icons@v12/icons/qatarairways.svg" alt="Qatar" style="filter: invert(15%) sepia(57%) saturate(3822%) hue-rotate(326deg) brightness(90%) contrast(93%);">QATAR AIRWAYS</span>
-            <span class="sponsor-item brand-mastercard"><div class="mc-circles"><div class="mc-circle-1"></div><div class="mc-circle-2"></div></div>MASTERCARD</span>
-            
-            <span class="sponsor-item brand-nike"><img class="sponsor-logo-img" src="https://cdn.jsdelivr.net/npm/simple-icons@v12/icons/nike.svg" alt="Nike" style="filter: invert(1);">NIKE</span>
-            <span class="sponsor-item brand-puma"><img class="sponsor-logo-img" src="https://cdn.jsdelivr.net/npm/simple-icons@v12/icons/puma.svg" alt="Puma" style="filter: invert(14%) sepia(95%) saturate(7408%) hue-rotate(357deg) brightness(97%) contrast(115%);">PUMA</span>
-            <span class="sponsor-item brand-samsung"><img class="sponsor-logo-img" src="https://cdn.jsdelivr.net/npm/simple-icons@v12/icons/samsung.svg" alt="Samsung" style="filter: invert(16%) sepia(87%) saturate(3533%) hue-rotate(224deg) brightness(94%) contrast(97%);">SAMSUNG</span>
-            <span class="sponsor-item brand-mercedes"><img class="sponsor-logo-img" src="https://cdn.jsdelivr.net/npm/simple-icons@v12/icons/mercedes.svg" alt="Mercedes" style="filter: invert(85%);">MERCEDES</span>
-            <span class="sponsor-item brand-bmw"><img class="sponsor-logo-img" src="https://cdn.jsdelivr.net/npm/simple-icons@v12/icons/bmw.svg" alt="BMW" style="filter: invert(39%) sepia(77%) saturate(1637%) hue-rotate(192deg) brightness(93%) contrast(93%);">BMW</span>
-            <span class="sponsor-item brand-qatar"><img class="sponsor-logo-img" src="https://cdn.jsdelivr.net/npm/simple-icons@v12/icons/qatarairways.svg" alt="Qatar" style="filter: invert(15%) sepia(57%) saturate(3822%) hue-rotate(326deg) brightness(90%) contrast(93%);">QATAR AIRWAYS</span>
-            <span class="sponsor-item brand-mastercard"><div class="mc-circles"><div class="mc-circle-1"></div><div class="mc-circle-2"></div></div>MASTERCARD</span>
+  <div class="sponsor-ticker">
+    <div class="ticker-content">
+      <span class="brand-badge brand-puma">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+        PUMA
+      </span>
+      <span class="brand-badge brand-samsung">
+        SAMSUNG
+      </span>
+      <span class="brand-badge brand-mercedes">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15 10L22 12L15 14L12 22L9 14L2 12L9 10L12 2Z"/></svg>
+        MERCEDES
+      </span>
+      <span class="brand-badge brand-bmw">
+        BMW
+      </span>
+      <span class="brand-badge brand-qatar">
+        QATAR AIRWAYS
+      </span>
+      <span class="brand-badge brand-mastercard">
+        <svg width="16" height="12" viewBox="0 0 24 16"><circle cx="7" cy="8" r="7" fill="#EB001B"/><circle cx="17" cy="8" r="7" fill="#F79E1B" fill-opacity="0.8"/></svg>
+        MASTERCARD
+      </span>
+    </div>
+  </div>
+
+  <header>
+    <button class="nav-btn active" onclick="switchTab('matches', event)">Matches</button>
+    <button class="nav-btn" onclick="switchTab('roster', event)">Talent Hub</button>
+    <button class="nav-btn" onclick="switchTab('registration', event)">Registration</button>
+  </header>
+
+  <div class="container">
+
+    <div id="matches" class="tab-content active">
+      <div class="card">
+        <h2>Featured Showcase Matches</h2>
+        <p style="font-size: 13px; color: #666;">Select a showcase fixture below to access live streams and scout reels.</p>
+        
+        <div class="player-card">
+          <div>
+            <h4>D&R Academy vs. Grassroots XI</h4>
+            <p>Showcase Series • Full Match Tape</p>
+          </div>
+          <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank" rel="noopener" class="btn-action">Watch Tape</a>
         </div>
+
+        <div class="player-card">
+          <div>
+            <h4>West London Prospect Showcase</h4>
+            <p>Full Match Replay & Scout Reel</p>
+          </div>
+          <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank" rel="noopener" class="btn-action">View Reel</a>
+        </div>
+      </div>
     </div>
 
-    <div class="container" style="padding-bottom: 80px;">
-
-        <div id="matches" class="tab-content active">
-            <div class="card">
-                <h2>Today's Live Match Schedule</h2>
-                <p style="font-size: 13px; color: #666; margin-top: 0; margin-bottom: 15px;">Tap any match below to open and watch the live stream directly on YouTube.</p>
-
-                <a href="https://www.youtube.com/results?search_query=live+football+match" target="_blank" class="match-list-item">
-                    <div>
-                        <div class="match-teams">Premier League: Top Match Stream</div>
-                        <div class="match-time">🔴 LIVE NOW</div>
-                    </div>
-                    <span class="watch-btn">Watch Live</span>
-                </a>
-
-                <a href="https://www.youtube.com/results?search_query=live+football+match" target="_blank" class="match-list-item">
-                    <div>
-                        <div class="match-teams">La Liga: Featured Fixture</div>
-                        <div class="match-time">⏰ Kickoff Soon</div>
-                    </div>
-                    <span class="watch-btn">Watch Live</span>
-                </a>
-
-                <a href="https://www.youtube.com/results?search_query=live+football+match" target="_blank" class="match-list-item">
-                    <div>
-                        <div class="match-teams">International Club Friendly</div>
-                        <div class="match-time">🔴 LIVE NOW</div>
-                    </div>
-                    <span class="watch-btn">Watch Live</span>
-                </a>
-
-                <a href="https://www.youtube.com/results?search_query=live+football+match" target="_blank" class="match-list-item">
-                    <div>
-                        <div class="match-teams">Scout Escort Special Showcase</div>
-                        <div class="match-time">⏰ Later Today</div>
-                    </div>
-                    <span class="watch-btn">Watch Live</span>
-                </a>
-            </div>
+    <div id="roster" class="tab-content">
+      <div class="card">
+        <h2>Prospect Scouting Database</h2>
+        <p style="font-size: 13px; color: #666;">Verified player profiles available for club review.</p>
+        
+        <div class="player-card">
+          <div class="player-info">
+            <h4>K. Mensah</h4>
+            <p><strong>Position:</strong> Winger (LW / RW)</p>
+            <p><strong>Age:</strong> 19 | <strong>Foot:</strong> Right</p>
+            <p><strong>Status:</strong> Free Agent</p>
+          </div>
+          <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank" rel="noopener" class="btn-action">Highlights</a>
         </div>
 
-        <div id="news" class="tab-content">
-            <div class="card">
-                <h2>Latest Football News & Transfers</h2>
-                
-                <div class="news-item">
-                    <div class="news-title">Transfer Deadline Approaching</div>
-                    <div class="news-desc">Major European clubs are rushing to finalize squad adjustments as the window reaches its final hours.</div>
-                </div>
-
-                <div class="news-item">
-                    <div class="news-title">Blockbuster Deals in Motion</div>
-                    <div class="news-desc">High-profile moves and medicals are being booked across top leagues, keeping fans on the edge of their seats.</div>
-                </div>
-
-                <div class="news-item">
-                    <div class="news-title">Scouting Network Expansion</div>
-                    <div class="news-desc">Scout Escort opens up new pathways for young international talent to connect directly with global club representatives.</div>
-                </div>
-            </div>
+        <div class="player-card">
+          <div class="player-info">
+            <h4>J. Owusu</h4>
+            <p><strong>Position:</strong> Central Midfield (CM)</p>
+            <p><strong>Age:</strong> 20 | <strong>Foot:</strong> Left</p>
+            <p><strong>Status:</strong> Grassroots Academy</p>
+          </div>
+          <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank" rel="noopener" class="btn-action">Highlights</a>
         </div>
-
-        <div id="rankings" class="tab-content">
-            <div class="card">
-                <h2>Official FIFA World Rankings</h2>
-                <p style="font-size: 13px; color: #666; margin-top: 0;">Updated following the international match cycle.</p>
-                
-                <table class="rankings-table">
-                    <thead>
-                        <tr>
-                            <th>Rank</th>
-                            <th>Team</th>
-                            <th>Points</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr><td>1</td><td>🇪🇸 Spain</td><td>1995.98</td></tr>
-                        <tr><td>2</td><td>🇦🇷 Argentina</td><td>1970.37</td></tr>
-                        <tr><td>3</td><td>🇫🇷 France</td><td>1948.97</td></tr>
-                        <tr><td>4</td><td>🏴󠁧󠁢󠁥󠁮󠁧󠁿 England</td><td>1922.83</td></tr>
-                        <tr><td>5</td><td>🇧🇷 Brazil</td><td>1804.92</td></tr>
-                        <tr><td>6</td><td>🇲🇦 Morocco</td><td>1803.99</td></tr>
-                        <tr><td>7</td><td>🇵🇹 Portugal</td><td>1787.85</td></tr>
-                        <tr><td>8</td><td>🇧🇪 Belgium</td><td>1778.36</td></tr>
-                        <tr><td>9</td><td>🇳🇱 Netherlands</td><td>1775.54</td></tr>
-                        <tr><td>10</td><td>🇲🇽 Mexico</td><td>1754.30</td></tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-
-        <div id="register" class="tab-content">
-            <div class="card">
-                <h2>Talent & Scout Book Registration</h2>
-                <p style="color: #666; font-size: 14px; margin-bottom: 15px;">Fill out your official details below to register in our scouting database.</p>
-                
-                <form id="signup-form" onsubmit="event.preventDefault(); alert('Registration submitted successfully!');">
-                    <div class="form-group">
-                        <label for="fullname">Full Name *</label>
-                        <input type="text" id="fullname" placeholder="e.g. Samuel Mensah" required>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="user-role">Register As *</label>
-                        <select id="user-role" required>
-                            <option value="">Select Role...</option>
-                            <option value="Player">Football Player</option>
-                            <option value="Scout">Football Scout</option>
-                            <option value="Academy Manager">Academy / Club Manager</option>
-                            <option value="Agent">Player Agent</option>
-                        </select>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="email">Email Address *</label>
-                        <input type="email" id="email" placeholder="name@example.com" required>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="phone">Phone / WhatsApp Number *</label>
-                        <input type="tel" id="phone" placeholder="+233 24 000 0000" required>
-                    </div>
-
-                    <button type="submit" class="btn-submit">Complete Registration</button>
-                </form>
-            </div>
-        </div>
-
+      </div>
     </div>
 
-    <div class="bottom-nav">
-        <button onclick="switchTab('matches', this)" class="active">Matches</button>
-        <button onclick="switchTab('news', this)">News</button>
-        <button onclick="switchTab('rankings', this)">Rankings</button>
-        <button onclick="switchTab('register', this)">Registration</button>
+    <div id="registration" class="tab-content">
+      <div class="card">
+        <h2>Talent & Scout Registration</h2>
+        <p style="font-size: 13px; color: #666;">Submit your scouting credentials or player data directly to our database.</p>
+
+        <form action="https://formspree.io/f/YOUR_FORMSPREE_ID" method="POST">
+          <div class="form-group">
+            <label>Full Name *</label>
+            <input type="text" name="full_name" placeholder="e.g. Samuel Mensah" required>
+          </div>
+
+          <div class="form-group">
+            <label>Register As *</label>
+            <select name="role" required>
+              <option value="">Select Role...</option>
+              <option value="Player">Player / Prospect</option>
+              <option value="Scout">Club Scout / Recruiter</option>
+              <option value="Agent">Player Representative / Agent</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>Primary Position (If Player)</label>
+            <select name="position">
+              <option value="N/A">Not Applicable</option>
+              <option value="Goalkeeper">Goalkeeper</option>
+              <option value="Defender">Defender (CB/LB/RB)</option>
+              <option value="Midfielder">Midfielder (CM/CAM/CDM)</option>
+              <option value="Winger">Winger (LW/RW)</option>
+              <option value="Striker">Striker (ST/CF)</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>Highlight Video Link (YouTube/Vimeo)</label>
+            <input type="url" name="video_url" placeholder="https://youtube.com/...">
+          </div>
+
+          <div class="form-group">
+            <label>Email Address *</label>
+            <input type="email" name="email" placeholder="name@example.com" required>
+          </div>
+
+          <div class="form-group">
+            <label>Phone / WhatsApp Number *</label>
+            <input type="tel" name="phone" placeholder="+233 24 000 0000" required>
+          </div>
+
+          <button type="submit" class="submit-btn">Complete Registration</button>
+        </form>
+      </div>
     </div>
 
-    <script>
-        function switchTab(tabId, btn) {
-            document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
-            document.getElementById(tabId).classList.add('active');
-            document.querySelectorAll('.bottom-nav button').forEach(el => el.classList.remove('active'));
-            btn.classList.add('active');
-            window.scrollTo(0, 0);
-        }
-    </script>
+  </div>
+
+  <script>
+    function switchTab(tabId, event) {
+      document.querySelectorAll('.tab-content').forEach(tab => {
+        tab.classList.remove('active');
+      });
+      document.querySelectorAll('.nav-btn').forEach(btn => {
+        btn.classList.remove('active');
+      });
+
+      document.getElementById(tabId).classList.add('active');
+      event.target.classList.add('active');
+    }
+  </script>
 </body>
 </html>
+
 
 
 
