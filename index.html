@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -51,7 +50,7 @@
     .brand-badge {
       display: inline-flex;
       align-items: center;
-      gap: 6px;
+      gap: 8px;
       margin-right: 35px;
       font-size: 13px;
       font-weight: 800;
@@ -61,13 +60,13 @@
       text-transform: uppercase;
     }
 
-    /* Correct Official Brand Colors & Styling */
-    .brand-puma { color: #ffffff; background: #000000; border: 1px solid #ffffff; }
-    .brand-samsung { color: #1428a0; background: #ffffff; border: 1px solid #1428a0; }
-    .brand-mercedes { color: #ffffff; background: #000000; border: 1px solid #00adef; }
+    /* Official Brand Styling */
+    .brand-puma { color: #ffffff; background: #000000; border: 1px solid #333; }
+    .brand-samsung { color: #ffffff; background: #1428a0; border: 1px solid #1428a0; }
+    .brand-mercedes { color: #ffffff; background: #000000; border: 1px solid #444; }
     .brand-bmw { color: #0066b1; background: #ffffff; border: 1px solid #0066b1; }
     .brand-qatar { color: #ffffff; background: #58111A; border: 1px solid #701722; }
-    .brand-mastercard { color: #ff5f00; background: #1a1a1a; border: 1px solid #eb001b; }
+    .brand-mastercard { color: #ffffff; background: #111111; border: 1px solid #333; }
 
     @keyframes marquee {
       0% { transform: translateX(100%); }
@@ -199,18 +198,61 @@
 </head>
 <body>
 
-  <!-- Moving Sponsor Ticker with Accurate Branding -->
+  <!-- Moving Sponsor Ticker with Accurate Symbols -->
   <div class="sponsor-ticker">
     <div class="ticker-content">
-      <span class="brand-badge brand-puma">PUMA</span>
-      <span class="brand-badge brand-samsung">SAMSUNG</span>
-      <span class="brand-badge brand-mercedes">MERCEDES-BENZ</span>
-      <span class="brand-badge brand-bmw">BMW</span>
-      <span class="brand-badge brand-qatar">QATAR AIRWAYS</span>
+      
+      <!-- PUMA: Cat Silhouetted Symbol -->
+      <span class="brand-badge brand-puma">
+        <svg width="18" height="14" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M22.5 10c-.8 0-1.8.5-2.2.9-.6-1.1-1.8-2.4-3.5-3.1 1-.5 1.5-1.5 1.2-2.5-.2-.7-.9-1.2-1.7-1.1-.3 0-.6.1-.9.3 0 0-2.1 1.2-2.6 1.8-.4-.1-.9-.2-1.3-.2-3.1 0-6.1 2.3-7.2 5.1-.3.8-.5 1.7-.5 2.6 0 1.2.3 2.4.9 3.4L2 20h3l2.8-3.4c1.1.6 2.4.9 3.7.9 4.1 0 7.7-2.8 8.8-6.7.7.3 1.3.2 1.7-.1.5-.4.7-1 .5-1.7z"/>
+        </svg>
+        PUMA
+      </span>
+
+      <!-- SAMSUNG: Ellipse Brand Symbol -->
+      <span class="brand-badge brand-samsung">
+        <svg width="18" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <ellipse cx="12" cy="12" rx="10" ry="6"/>
+        </svg>
+        SAMSUNG
+      </span>
+
+      <!-- MERCEDES-BENZ: 3-Point Star Symbol -->
+      <span class="brand-badge brand-mercedes">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm0 2a8 8 0 0 1 7.2 4.5L12 11.2V4zm-7.2 4.5A8 8 0 0 1 12 4v7.2L4.8 8.5zm.3 7.8 6.9-4 6.9 4A8 8 0 0 1 12 20a8 8 0 0 1-6.9-3.7z"/>
+        </svg>
+        MERCEDES-BENZ
+      </span>
+
+      <!-- BMW: Roundel Quadrant Symbol -->
+      <span class="brand-badge brand-bmw">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+          <circle cx="12" cy="12" r="10" stroke="#0066b1" stroke-width="2"/>
+          <path d="M12 2a10 10 0 0 1 10 10h-10V2z" fill="#0066b1"/>
+          <path d="M12 22a10 10 0 0 1-10-10h10v10z" fill="#0066b1"/>
+        </svg>
+        BMW
+      </span>
+
+      <!-- QATAR AIRWAYS: Oryx / Wing Symbol -->
+      <span class="brand-badge brand-qatar">
+        <svg width="16" height="14" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M21 16v-2l-8-5V3.5c0-.83-.67-1.5-1.5-1.5S10 2.67 10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z"/>
+        </svg>
+        QATAR AIRWAYS
+      </span>
+
+      <!-- MASTERCARD: Intersecting Circles Symbol -->
       <span class="brand-badge brand-mastercard">
-        <svg width="16" height="12" viewBox="0 0 24 16"><circle cx="7" cy="8" r="7" fill="#EB001B"/><circle cx="17" cy="8" r="7" fill="#F79E1B" fill-opacity="0.8"/></svg>
+        <svg width="20" height="14" viewBox="0 0 24 16">
+          <circle cx="7" cy="8" r="7" fill="#EB001B"/>
+          <circle cx="17" cy="8" r="7" fill="#F79E1B" fill-opacity="0.8"/>
+        </svg>
         MASTERCARD
       </span>
+
     </div>
   </div>
 
@@ -347,6 +389,7 @@
   </script>
 </body>
 </html>
+
 
 
 
