@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Scout Escort | Digital Talent & Showcase Hub</title>
 
+  <!-- Google Analytics Tracking (Replace G-XXXXXXXXXX with your actual Measurement ID) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -29,7 +31,7 @@
       color: var(--text-dark);
     }
 
-    /* Moving Sponsor Marquee Ticker with Colorful Brand Badges */
+    /* Moving Sponsor Marquee Ticker */
     .sponsor-ticker {
       background-color: #050b07;
       overflow: hidden;
@@ -54,17 +56,17 @@
       font-size: 13px;
       font-weight: 800;
       letter-spacing: 0.8px;
-      padding: 4px 10px;
+      padding: 5px 12px;
       border-radius: 4px;
       text-transform: uppercase;
     }
 
-    /* Individual Brand Colors & Styling */
-    .brand-puma { color: #ff4d4d; background: rgba(255, 77, 77, 0.1); border: 1px solid rgba(255, 77, 77, 0.3); }
+    /* Correct Official Brand Colors & Styling */
+    .brand-puma { color: #ffffff; background: #000000; border: 1px solid #ffffff; }
     .brand-samsung { color: #1428a0; background: #ffffff; border: 1px solid #1428a0; }
-    .brand-mercedes { color: #e0e0e0; background: rgba(255, 255, 255, 0.1); border: 1px solid #ffffff; }
+    .brand-mercedes { color: #ffffff; background: #000000; border: 1px solid #00adef; }
     .brand-bmw { color: #0066b1; background: #ffffff; border: 1px solid #0066b1; }
-    .brand-qatar { color: #58111A; background: #f4e8ea; border: 1px solid #58111A; }
+    .brand-qatar { color: #ffffff; background: #58111A; border: 1px solid #701722; }
     .brand-mastercard { color: #ff5f00; background: #1a1a1a; border: 1px solid #eb001b; }
 
     @keyframes marquee {
@@ -197,25 +199,14 @@
 </head>
 <body>
 
+  <!-- Moving Sponsor Ticker with Accurate Branding -->
   <div class="sponsor-ticker">
     <div class="ticker-content">
-      <span class="brand-badge brand-puma">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
-        PUMA
-      </span>
-      <span class="brand-badge brand-samsung">
-        SAMSUNG
-      </span>
-      <span class="brand-badge brand-mercedes">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15 10L22 12L15 14L12 22L9 14L2 12L9 10L12 2Z"/></svg>
-        MERCEDES
-      </span>
-      <span class="brand-badge brand-bmw">
-        BMW
-      </span>
-      <span class="brand-badge brand-qatar">
-        QATAR AIRWAYS
-      </span>
+      <span class="brand-badge brand-puma">PUMA</span>
+      <span class="brand-badge brand-samsung">SAMSUNG</span>
+      <span class="brand-badge brand-mercedes">MERCEDES-BENZ</span>
+      <span class="brand-badge brand-bmw">BMW</span>
+      <span class="brand-badge brand-qatar">QATAR AIRWAYS</span>
       <span class="brand-badge brand-mastercard">
         <svg width="16" height="12" viewBox="0 0 24 16"><circle cx="7" cy="8" r="7" fill="#EB001B"/><circle cx="17" cy="8" r="7" fill="#F79E1B" fill-opacity="0.8"/></svg>
         MASTERCARD
@@ -223,6 +214,7 @@
     </div>
   </div>
 
+  <!-- Main Navigation Bar -->
   <header>
     <button class="nav-btn active" onclick="switchTab('matches', event)">Matches</button>
     <button class="nav-btn" onclick="switchTab('roster', event)">Talent Hub</button>
@@ -231,6 +223,7 @@
 
   <div class="container">
 
+    <!-- Tab 1: Featured Matches -->
     <div id="matches" class="tab-content active">
       <div class="card">
         <h2>Featured Showcase Matches</h2>
@@ -254,6 +247,7 @@
       </div>
     </div>
 
+    <!-- Tab 2: Talent Database (Scout Book) -->
     <div id="roster" class="tab-content">
       <div class="card">
         <h2>Prospect Scouting Database</h2>
@@ -281,11 +275,13 @@
       </div>
     </div>
 
+    <!-- Tab 3: Detailed Registration -->
     <div id="registration" class="tab-content">
       <div class="card">
         <h2>Talent & Scout Registration</h2>
         <p style="font-size: 13px; color: #666;">Submit your scouting credentials or player data directly to our database.</p>
 
+        <!-- Formspree Endpoint Integration -->
         <form action="https://formspree.io/f/YOUR_FORMSPREE_ID" method="POST">
           <div class="form-group">
             <label>Full Name *</label>
@@ -351,7 +347,6 @@
   </script>
 </body>
 </html>
-
 
 
 
