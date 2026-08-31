@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>Scout Escort | Digital Talent & Showcase Hub</title>
 
-  <!-- Google Analytics Tracking -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -54,7 +53,7 @@
       display: inline-flex;
       align-items: center;
       white-space: nowrap;
-      animation: marquee 20s linear infinite;
+      animation: marquee 25s linear infinite;
     }
 
     .brand-item {
@@ -77,6 +76,7 @@
 
     .samsung-text { color: #3b82f6; }
     .bmw-text { color: #0066b1; }
+    .qatar-text { color: #8a1538; }
 
     @keyframes marquee {
       0% { transform: translateX(100%); }
@@ -219,32 +219,42 @@
 </head>
 <body>
 
-  <!-- Sponsor Ticker Pinned Right at Top -->
   <div class="sponsor-ticker">
     <div class="ticker-content">
 
-      <!-- SAMSUNG -->
+      <span class="brand-item">
+        <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/puma.svg" style="filter: brightness(0) invert(1);" alt="Puma">
+        PUMA
+      </span>
+
+      <span class="brand-item">
+        <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/nike.svg" style="filter: brightness(0) invert(1);" alt="Nike">
+        NIKE
+      </span>
+
       <span class="brand-item samsung-text">
         <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/samsung.svg" style="filter: invert(36%) sepia(85%) saturate(1982%) hue-rotate(209deg) brightness(98%) contrast(96%);" alt="Samsung">
         SAMSUNG
       </span>
 
-      <!-- MERCEDES -->
       <span class="brand-item">
         <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/mercedes.svg" style="filter: brightness(0) invert(1);" alt="Mercedes">
         MERCEDES
       </span>
 
-      <!-- BMW -->
       <span class="brand-item bmw-text">
         <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/bmw.svg" style="filter: invert(27%) sepia(89%) saturate(1832%) hue-rotate(185deg) brightness(91%) contrast(101%);" alt="BMW">
         BMW
       </span>
 
-      <!-- MASTERCARD -->
       <span class="brand-item">
         <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/mastercard.svg" style="filter: invert(53%) sepia(93%) saturate(1455%) hue-rotate(346deg) brightness(101%) contrast(104%);" alt="Mastercard">
         MASTERCARD
+      </span>
+
+      <span class="brand-item qatar-text">
+        <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/qatarairways.svg" style="filter: invert(16%) sepia(76%) saturate(4156%) hue-rotate(328deg) brightness(85%) contrast(98%);" alt="Qatar Airways">
+        QATAR AIRWAYS
       </span>
 
     </div>
@@ -252,7 +262,6 @@
 
   <div class="container">
 
-    <!-- Tab 1: Matches -->
     <div id="matches" class="tab-content active">
       <div class="card">
         <h2>Featured Showcase Matches</h2>
@@ -266,7 +275,6 @@
       </div>
     </div>
 
-    <!-- Tab 2: News -->
     <div id="news" class="tab-content">
       <div class="card">
         <h2>Latest Football News & Transfers</h2>
@@ -288,7 +296,6 @@
       </div>
     </div>
 
-    <!-- Tab 3: Rankings -->
     <div id="rankings" class="tab-content">
       <div class="card">
         <h2>Prospect Scouting Database</h2>
@@ -302,7 +309,6 @@
       </div>
     </div>
 
-    <!-- Tab 4: Registration -->
     <div id="registration" class="tab-content">
       <div class="card">
         <h2>Talent & Scout Registration</h2>
@@ -330,7 +336,6 @@
 
   </div>
 
-  <!-- Navigation Bar -->
   <header>
     <button class="nav-btn active" onclick="switchTab('matches', event)">Matches</button>
     <button class="nav-btn" onclick="switchTab('news', event)">News</button>
@@ -353,6 +358,7 @@
   </script>
 </body>
 </html>
+
 
 
 
