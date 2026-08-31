@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Scout Escort | Digital Talent & Showcase Hub</title>
 
+  <!-- Google Analytics Tracking -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -29,12 +30,12 @@
       color: var(--text-dark);
     }
 
-    /* Clean Ticker Bar matching your screenshot layout */
+    /* Sponsor Ticker Bar */
     .sponsor-ticker {
       background-color: #050b07;
       overflow: hidden;
       white-space: nowrap;
-      padding: 12px 0;
+      padding: 10px 0;
       border-bottom: 1px solid #1a3a25;
       display: flex;
       align-items: center;
@@ -43,52 +44,33 @@
     .ticker-content {
       display: inline-block;
       white-space: nowrap;
-      animation: marquee 20s linear infinite;
+      animation: marquee 22s linear infinite;
     }
 
-    .brand-item {
+    .brand-badge {
       display: inline-flex;
       align-items: center;
-      gap: 10px;
-      margin-right: 40px;
-      font-size: 15px;
+      gap: 8px;
+      margin-right: 25px;
+      font-size: 13px;
       font-weight: 800;
-      letter-spacing: 1px;
-      color: #ffffff;
+      letter-spacing: 0.8px;
+      padding: 6px 14px;
+      border-radius: 6px;
       text-transform: uppercase;
     }
 
-    .samsung-text { color: #4b7bec; }
-    .bmw-text { color: #38ada9; }
+    /* Official Brand Badges */
+    .brand-puma { color: #ffffff; background: #b81414; border: 1px solid #d62828; }
+    .brand-samsung { color: #1428a0; background: #ffffff; border: 1px solid #ffffff; }
+    .brand-mercedes { color: #ffffff; background: #111111; border: 1px solid #444444; }
+    .brand-bmw { color: #0066b1; background: #ffffff; border: 1px solid #0066b1; }
+    .brand-mastercard { color: #ffffff; background: #111111; border: 1px solid #ff5f00; }
+    .brand-qatar { color: #ffffff; background: #58111a; border: 1px solid #701722; }
 
     @keyframes marquee {
       0% { transform: translateX(100%); }
       100% { transform: translateX(-100%); }
-    }
-
-    /* Header Nav */
-    header {
-      background-color: #050b07;
-      color: #ffffff;
-      padding: 12px;
-      display: flex;
-      justify-content: space-around;
-      align-items: center;
-    }
-
-    header button {
-      background: none;
-      border: none;
-      color: #cccccc;
-      font-weight: 600;
-      font-size: 14px;
-      padding: 8px 12px;
-      cursor: pointer;
-    }
-
-    header button.active {
-      color: #ffffff;
-      border-bottom: 2px solid #25d366;
     }
 
     /* Main Container */
@@ -111,6 +93,7 @@
       color: var(--primary-green);
     }
 
+    /* Content Cards */
     .news-item {
       border-bottom: 1px solid #eee;
       padding-bottom: 12px;
@@ -157,6 +140,7 @@
       font-size: 13px;
     }
 
+    /* Registration Form */
     .form-group {
       margin-bottom: 14px;
     }
@@ -188,6 +172,31 @@
       cursor: pointer;
     }
 
+    /* Navigation Bar */
+    header {
+      background-color: #050b07;
+      color: #ffffff;
+      padding: 12px;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+    }
+
+    header button {
+      background: none;
+      border: none;
+      color: #cccccc;
+      font-weight: 600;
+      font-size: 14px;
+      padding: 8px 12px;
+      cursor: pointer;
+    }
+
+    header button.active {
+      color: #ffffff;
+      border-bottom: 2px solid #25d366;
+    }
+
     .tab-content {
       display: none;
     }
@@ -199,18 +208,61 @@
 </head>
 <body>
 
+  <!-- Moving Sponsor Ticker -->
   <div class="sponsor-ticker">
     <div class="ticker-content">
-      <span class="brand-item">PUMA</span>
-      <span class="brand-item samsung-text">SAMSUNG</span>
-      <span class="brand-item">MERCEDES-BENZ</span>
-      <span class="brand-item bmw-text">BMW</span>
-      <span class="brand-item">QATAR AIRWAYS</span>
+      
+      <!-- PUMA -->
+      <span class="brand-badge brand-puma">
+        <svg width="16" height="14" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M19 13c-1.1 0-2.1.4-2.8 1.1-.9.9-1.5 2.1-1.8 3.4-.6-.4-1.4-.7-2.4-.7-2.2 0-4 1.8-4 4h-2c0-3.3 2.7-6 6-6 1 0 1.9.2 2.7.7.5-1.5 1.5-2.8 2.8-3.7-.8-.5-1.8-.8-2.8-.8-2.8 0-5.2 1.9-5.8 4.6H7.1C7.8 11.2 10.6 9 14 9c1.6 0 3.1.5 4.3 1.4.6-.3 1.2-.4 1.7-.4 2.2 0 4 1.8 4 4 0 1.2-.5 2.3-1.4 3.1L21.3 18c.4-.5.7-1.2.7-2 0-1.7-1.3-3-3-3z"/>
+        </svg>
+        PUMA
+      </span>
+
+      <!-- SAMSUNG -->
+      <span class="brand-badge brand-samsung">
+        SAMSUNG
+      </span>
+
+      <!-- MERCEDES-BENZ -->
+      <span class="brand-badge brand-mercedes">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm0 2a8 8 0 0 1 7.2 4.5L12 11.2V4zm-7.2 4.5A8 8 0 0 1 12 4v7.2L4.8 8.5zm.3 7.8 6.9-4 6.9 4A8 8 0 0 1 12 20a8 8 0 0 1-6.9-3.7z"/>
+        </svg>
+        MERCEDES
+      </span>
+
+      <!-- BMW -->
+      <span class="brand-badge brand-bmw">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+          <circle cx="12" cy="12" r="10" stroke="#0066b1" stroke-width="2"/>
+          <path d="M12 2a10 10 0 0 1 10 10h-10V2z" fill="#0066b1"/>
+          <path d="M12 22a10 10 0 0 1-10-10h10v10z" fill="#0066b1"/>
+        </svg>
+        BMW
+      </span>
+
+      <!-- MASTERCARD -->
+      <span class="brand-badge brand-mastercard">
+        <svg width="20" height="14" viewBox="0 0 24 16" fill="none">
+          <circle cx="8" cy="8" r="7" fill="#EB001B"/>
+          <circle cx="16" cy="8" r="7" fill="#F79E1B" fill-opacity="0.8"/>
+        </svg>
+        MASTERCARD
+      </span>
+
+      <!-- QATAR AIRWAYS -->
+      <span class="brand-badge brand-qatar">
+        QATAR AIRWAYS
+      </span>
+
     </div>
   </div>
 
   <div class="container">
 
+    <!-- Tab 1: Matches -->
     <div id="matches" class="tab-content active">
       <div class="card">
         <h2>Featured Showcase Matches</h2>
@@ -224,6 +276,7 @@
       </div>
     </div>
 
+    <!-- Tab 2: News -->
     <div id="news" class="tab-content">
       <div class="card">
         <h2>Latest Football News & Transfers</h2>
@@ -245,6 +298,7 @@
       </div>
     </div>
 
+    <!-- Tab 3: Rankings -->
     <div id="rankings" class="tab-content">
       <div class="card">
         <h2>Prospect Scouting Database</h2>
@@ -258,26 +312,55 @@
       </div>
     </div>
 
+    <!-- Tab 4: Registration -->
     <div id="registration" class="tab-content">
       <div class="card">
         <h2>Talent & Scout Registration</h2>
+        <p style="font-size: 13px; color: #666;">Submit your scouting credentials or player data directly to our database.</p>
+
         <form action="https://formspree.io/f/YOUR_FORMSPREE_ID" method="POST">
           <div class="form-group">
             <label>Full Name *</label>
             <input type="text" name="full_name" placeholder="e.g. Samuel Mensah" required>
           </div>
+
           <div class="form-group">
             <label>Register As *</label>
             <select name="role" required>
               <option value="">Select Role...</option>
               <option value="Player">Player / Prospect</option>
               <option value="Scout">Club Scout / Recruiter</option>
+              <option value="Agent">Player Representative / Agent</option>
             </select>
           </div>
+
+          <div class="form-group">
+            <label>Primary Position (If Player)</label>
+            <select name="position">
+              <option value="N/A">Not Applicable</option>
+              <option value="Goalkeeper">Goalkeeper</option>
+              <option value="Defender">Defender (CB/LB/RB)</option>
+              <option value="Midfielder">Midfielder (CM/CAM/CDM)</option>
+              <option value="Winger">Winger (LW/RW)</option>
+              <option value="Striker">Striker (ST/CF)</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>Highlight Video Link (YouTube/Vimeo)</label>
+            <input type="url" name="video_url" placeholder="https://youtube.com/...">
+          </div>
+
           <div class="form-group">
             <label>Email Address *</label>
             <input type="email" name="email" placeholder="name@example.com" required>
           </div>
+
+          <div class="form-group">
+            <label>Phone / WhatsApp Number *</label>
+            <input type="tel" name="phone" placeholder="+233 24 000 0000" required>
+          </div>
+
           <button type="submit" class="submit-btn">Complete Registration</button>
         </form>
       </div>
@@ -285,6 +368,7 @@
 
   </div>
 
+  <!-- Navigation Tabs -->
   <header>
     <button class="nav-btn active" onclick="switchTab('matches', event)">Matches</button>
     <button class="nav-btn" onclick="switchTab('news', event)">News</button>
