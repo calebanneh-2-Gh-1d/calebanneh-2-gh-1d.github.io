@@ -29,14 +29,23 @@
     html, body {
       margin: 0 !important;
       padding: 0 !important;
+      height: 100vh;
+      width: 100vw;
       background-color: var(--bg-color);
       color: var(--text-dark);
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-      width: 100%;
-      overflow-x: hidden;
+      overflow: hidden;
     }
 
-    /* Pinned Top Sponsor Ticker Bar */
+    /* Main Layout Structure */
+    .app-viewport {
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+      width: 100vw;
+    }
+
+    /* Pinned Top Sponsor Ticker */
     .sponsor-ticker {
       width: 100%;
       background-color: #050b07;
@@ -46,7 +55,7 @@
       border-bottom: 1px solid #1a3a25;
       display: flex;
       align-items: center;
-      margin-top: 0 !important;
+      flex-shrink: 0;
     }
 
     .ticker-content {
@@ -83,18 +92,23 @@
       100% { transform: translateX(-100%); }
     }
 
-    /* Main Content Layout & Positioning */
+    /* Content Area Stretches to Fill Middle Space */
     .container {
-      max-width: 500px;
-      margin: 20px auto;
-      padding: 0 15px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      padding: 12px;
+      overflow-y: auto;
     }
 
+    /* Full Coverage Card */
     .card {
       background: var(--card-bg);
       border-radius: 12px;
       padding: 20px;
-      margin-bottom: 20px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
     }
 
@@ -129,7 +143,7 @@
       text-align: center;
     }
 
-    /* News Content Items */
+    /* News Items */
     .news-item {
       border-bottom: 1px solid #eee;
       padding-bottom: 12px;
@@ -142,8 +156,8 @@
     }
 
     .news-item h3 {
-      margin: 0 0 6px 0;
-      font-size: 16px;
+      margin: 0 0 4px 0;
+      font-size: 15px;
       color: #111;
     }
 
@@ -154,15 +168,16 @@
       line-height: 1.4;
     }
 
-    /* Navigation Bar */
+    /* Fixed Bottom Navigation */
     header {
       background-color: #050b07;
       color: #ffffff;
-      padding: 10px 5px;
+      padding: 12px 5px;
       display: flex;
       justify-content: space-around;
       align-items: center;
       border-top: 1px solid #1a3a25;
+      flex-shrink: 0;
     }
 
     header button {
@@ -171,7 +186,7 @@
       color: #cccccc;
       font-weight: 600;
       font-size: 14px;
-      padding: 8px 10px;
+      padding: 6px 8px;
       cursor: pointer;
     }
 
@@ -180,9 +195,9 @@
       border-bottom: 2px solid #25d366;
     }
 
-    /* Form Styling */
+    /* Form Customization */
     .form-group {
-      margin-bottom: 14px;
+      margin-bottom: 12px;
     }
 
     .form-group label {
@@ -197,6 +212,7 @@
       padding: 10px;
       border: 1px solid #ccc;
       border-radius: 6px;
+      font-size: 13px;
     }
 
     .submit-btn {
@@ -209,145 +225,153 @@
       font-weight: bold;
       border-radius: 6px;
       cursor: pointer;
+      margin-top: auto;
     }
 
     .tab-content {
       display: none;
+      height: 100%;
     }
 
     .tab-content.active {
-      display: block;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
     }
   </style>
 </head>
 <body>
 
-  <div class="sponsor-ticker">
-    <div class="ticker-content">
+  <div class="app-viewport">
 
-      <span class="brand-item">
-        <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/puma.svg" style="filter: brightness(0) invert(1);" alt="Puma">
-        PUMA
-      </span>
+    <div class="sponsor-ticker">
+      <div class="ticker-content">
 
-      <span class="brand-item">
-        <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/nike.svg" style="filter: brightness(0) invert(1);" alt="Nike">
-        NIKE
-      </span>
+        <span class="brand-item">
+          <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/puma.svg" style="filter: brightness(0) invert(1);" alt="Puma">
+          PUMA
+        </span>
 
-      <span class="brand-item samsung-text">
-        <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/samsung.svg" style="filter: invert(36%) sepia(85%) saturate(1982%) hue-rotate(209deg) brightness(98%) contrast(96%);" alt="Samsung">
-        SAMSUNG
-      </span>
+        <span class="brand-item">
+          <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/nike.svg" style="filter: brightness(0) invert(1);" alt="Nike">
+          NIKE
+        </span>
 
-      <span class="brand-item">
-        <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/mercedes.svg" style="filter: brightness(0) invert(1);" alt="Mercedes">
-        MERCEDES
-      </span>
+        <span class="brand-item samsung-text">
+          <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/samsung.svg" style="filter: invert(36%) sepia(85%) saturate(1982%) hue-rotate(209deg) brightness(98%) contrast(96%);" alt="Samsung">
+          SAMSUNG
+        </span>
 
-      <span class="brand-item bmw-text">
-        <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/bmw.svg" style="filter: invert(27%) sepia(89%) saturate(1832%) hue-rotate(185deg) brightness(91%) contrast(101%);" alt="BMW">
-        BMW
-      </span>
+        <span class="brand-item">
+          <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/mercedes.svg" style="filter: brightness(0) invert(1);" alt="Mercedes">
+          MERCEDES
+        </span>
 
-      <span class="brand-item">
-        <svg width="22" height="15" viewBox="0 0 24 16" fill="none" style="vertical-align: middle;">
-          <circle cx="8" cy="8" r="7" fill="#EB001B"/>
-          <circle cx="16" cy="8" r="7" fill="#F79E1B" fill-opacity="0.9"/>
-        </svg>
-        MASTERCARD
-      </span>
+        <span class="brand-item bmw-text">
+          <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/bmw.svg" style="filter: invert(27%) sepia(89%) saturate(1832%) hue-rotate(185deg) brightness(91%) contrast(101%);" alt="BMW">
+          BMW
+        </span>
 
-      <span class="brand-item qatar-text">
-        <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/qatarairways.svg" style="filter: invert(16%) sepia(76%) saturate(4156%) hue-rotate(328deg) brightness(85%) contrast(98%);" alt="Qatar Airways">
-        QATAR AIRWAYS
-      </span>
+        <span class="brand-item">
+          <svg width="22" height="15" viewBox="0 0 24 16" fill="none" style="vertical-align: middle;">
+            <circle cx="8" cy="8" r="7" fill="#EB001B"/>
+            <circle cx="16" cy="8" r="7" fill="#F79E1B" fill-opacity="0.9"/>
+          </svg>
+          MASTERCARD
+        </span>
+
+        <span class="brand-item qatar-text">
+          <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/qatarairways.svg" style="filter: invert(16%) sepia(76%) saturate(4156%) hue-rotate(328deg) brightness(85%) contrast(98%);" alt="Qatar Airways">
+          QATAR AIRWAYS
+        </span>
+
+      </div>
+    </div>
+
+    <div class="container">
+
+      <div id="matches" class="tab-content active">
+        <div class="card">
+          <h2>Featured Showcase Matches</h2>
+          <div class="player-card">
+            <div>
+              <h4 style="margin: 0 0 4px 0; font-size: 15px;">D&R Academy vs. Grassroots XI</h4>
+              <p style="margin: 0; font-size: 12px; color: #666;">Showcase Series • Full Match Tape</p>
+            </div>
+            <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank" rel="noopener" class="btn-action">Watch Tape</a>
+          </div>
+        </div>
+      </div>
+
+      <div id="news" class="tab-content">
+        <div class="card">
+          <h2>Latest Football News & Transfers</h2>
+
+          <div class="news-item">
+            <h3>Transfer Deadline Approaching</h3>
+            <p>Major European clubs are rushing to finalize squad adjustments as the window reaches its final hours.</p>
+          </div>
+
+          <div class="news-item">
+            <h3>Blockbuster Deals in Motion</h3>
+            <p>High-profile moves and medicals are being booked across top leagues, keeping fans on the edge of their seats.</p>
+          </div>
+
+          <div class="news-item">
+            <h3>Scouting Network Expansion</h3>
+            <p>Scout Escort opens up new pathways for young international talent to connect directly with global club representatives.</p>
+          </div>
+        </div>
+      </div>
+
+      <div id="rankings" class="tab-content">
+        <div class="card">
+          <h2>Prospect Scouting Database</h2>
+          <div class="player-card">
+            <div>
+              <h4 style="margin: 0 0 4px 0; font-size: 15px;">K. Mensah (LW / RW)</h4>
+              <p style="margin: 0; font-size: 12px; color: #666;">Age 19 • Free Agent</p>
+            </div>
+            <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank" rel="noopener" class="btn-action">Highlights</a>
+          </div>
+        </div>
+      </div>
+
+      <div id="registration" class="tab-content">
+        <div class="card">
+          <h2>Talent & Scout Registration</h2>
+          <form action="https://formspree.io/f/YOUR_FORMSPREE_ID" method="POST" style="display: flex; flex-direction: column; flex: 1;">
+            <div class="form-group">
+              <label>Full Name *</label>
+              <input type="text" name="full_name" placeholder="e.g. Samuel Mensah" required>
+            </div>
+            <div class="form-group">
+              <label>Register As *</label>
+              <select name="role" required>
+                <option value="">Select Role...</option>
+                <option value="Player">Player / Prospect</option>
+                <option value="Scout">Club Scout / Recruiter</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Email Address *</label>
+              <input type="email" name="email" placeholder="name@example.com" required>
+            </div>
+            <button type="submit" class="submit-btn">Complete Registration</button>
+          </form>
+        </div>
+      </div>
 
     </div>
+
+    <header>
+      <button class="nav-btn active" onclick="switchTab('matches', event)">Matches</button>
+      <button class="nav-btn" onclick="switchTab('news', event)">News</button>
+      <button class="nav-btn" onclick="switchTab('rankings', event)">Rankings</button>
+      <button class="nav-btn" onclick="switchTab('registration', event)">Registration</button>
+    </header>
+
   </div>
-
-  <div class="container">
-
-    <div id="matches" class="tab-content active">
-      <div class="card">
-        <h2>Featured Showcase Matches</h2>
-        <div class="player-card">
-          <div>
-            <h4 style="margin: 0 0 4px 0; font-size: 15px;">D&R Academy vs. Grassroots XI</h4>
-            <p style="margin: 0; font-size: 12px; color: #666;">Showcase Series • Full Match Tape</p>
-          </div>
-          <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank" rel="noopener" class="btn-action">Watch Tape</a>
-        </div>
-      </div>
-    </div>
-
-    <div id="news" class="tab-content">
-      <div class="card">
-        <h2>Latest Football News & Transfers</h2>
-
-        <div class="news-item">
-          <h3>Transfer Deadline Approaching</h3>
-          <p>Major European clubs are rushing to finalize squad adjustments as the window reaches its final hours.</p>
-        </div>
-
-        <div class="news-item">
-          <h3>Blockbuster Deals in Motion</h3>
-          <p>High-profile moves and medicals are being booked across top leagues, keeping fans on the edge of their seats.</p>
-        </div>
-
-        <div class="news-item">
-          <h3>Scouting Network Expansion</h3>
-          <p>Scout Escort opens up new pathways for young international talent to connect directly with global club representatives.</p>
-        </div>
-      </div>
-    </div>
-
-    <div id="rankings" class="tab-content">
-      <div class="card">
-        <h2>Prospect Scouting Database</h2>
-        <div class="player-card">
-          <div>
-            <h4 style="margin: 0 0 4px 0; font-size: 15px;">K. Mensah (LW / RW)</h4>
-            <p style="margin: 0; font-size: 12px; color: #666;">Age 19 • Free Agent</p>
-          </div>
-          <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank" rel="noopener" class="btn-action">Highlights</a>
-        </div>
-      </div>
-    </div>
-
-    <div id="registration" class="tab-content">
-      <div class="card">
-        <h2>Talent & Scout Registration</h2>
-        <form action="https://formspree.io/f/YOUR_FORMSPREE_ID" method="POST">
-          <div class="form-group">
-            <label>Full Name *</label>
-            <input type="text" name="full_name" placeholder="e.g. Samuel Mensah" required>
-          </div>
-          <div class="form-group">
-            <label>Register As *</label>
-            <select name="role" required>
-              <option value="">Select Role...</option>
-              <option value="Player">Player / Prospect</option>
-              <option value="Scout">Club Scout / Recruiter</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label>Email Address *</label>
-            <input type="email" name="email" placeholder="name@example.com" required>
-          </div>
-          <button type="submit" class="submit-btn">Complete Registration</button>
-        </form>
-      </div>
-    </div>
-
-  </div>
-
-  <header>
-    <button class="nav-btn active" onclick="switchTab('matches', event)">Matches</button>
-    <button class="nav-btn" onclick="switchTab('news', event)">News</button>
-    <button class="nav-btn" onclick="switchTab('rankings', event)">Rankings</button>
-    <button class="nav-btn" onclick="switchTab('registration', event)">Registration</button>
-  </header>
 
   <script>
     function switchTab(tabId, event) {
@@ -364,6 +388,7 @@
   </script>
 </body>
 </html>
+
 
 
 
