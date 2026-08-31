@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Scout Escort | Digital Talent & Showcase Hub</title>
 
-  <!-- Google Analytics Tracking -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -30,7 +29,7 @@
       color: var(--text-dark);
     }
 
-    /* Clean Dark Sponsor Ticker */
+    /* Clean Ticker Bar matching your screenshot layout */
     .sponsor-ticker {
       background-color: #050b07;
       overflow: hidden;
@@ -50,7 +49,7 @@
     .brand-item {
       display: inline-flex;
       align-items: center;
-      gap: 8px;
+      gap: 10px;
       margin-right: 40px;
       font-size: 15px;
       font-weight: 800;
@@ -59,8 +58,8 @@
       text-transform: uppercase;
     }
 
-    .samsung-item { color: #2b56d0; }
-    .bmw-item { color: #0066b1; }
+    .samsung-text { color: #4b7bec; }
+    .bmw-text { color: #38ada9; }
 
     @keyframes marquee {
       0% { transform: translateX(100%); }
@@ -92,7 +91,7 @@
       border-bottom: 2px solid #25d366;
     }
 
-    /* Main Content Container */
+    /* Main Container */
     .container {
       max-width: 500px;
       margin: 20px auto;
@@ -200,60 +199,19 @@
 </head>
 <body>
 
-  <!-- Sponsor Ticker with Native Inline Vectors matching your original screenshot -->
   <div class="sponsor-ticker">
     <div class="ticker-content">
-      
-      <!-- PUMA -->
-      <span class="brand-item">
-        <svg width="22" height="18" viewBox="0 0 24 24" fill="#ffffff">
-          <path d="M22.5 10c-.8 0-1.8.5-2.2.9-.6-1.1-1.8-2.4-3.5-3.1 1-.5 1.5-1.5 1.2-2.5-.2-.7-.9-1.2-1.7-1.1-.3 0-.6.1-.9.3 0 0-2.1 1.2-2.6 1.8-.4-.1-.9-.2-1.3-.2-3.1 0-6.1 2.3-7.2 5.1-.3.8-.5 1.7-.5 2.6 0 1.2.3 2.4.9 3.4L2 20h3l2.8-3.4c1.1.6 2.4.9 3.7.9 4.1 0 7.7-2.8 8.8-6.7.7.3 1.3.2 1.7-.1.5-.4.7-1 .5-1.7z"/>
-        </svg>
-        PUMA
-      </span>
-
-      <!-- SAMSUNG -->
-      <span class="brand-item samsung-item">
-        <svg width="22" height="14" viewBox="0 0 24 14" fill="none">
-          <ellipse cx="12" cy="7" rx="11" ry="6" stroke="#2b56d0" stroke-width="2"/>
-        </svg>
-        SAMSUNG
-      </span>
-
-      <!-- MERCEDES -->
-      <span class="brand-item">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="1.8">
-          <circle cx="12" cy="12" r="10"/>
-          <path d="M12 2v10M12 12l-8.66 5M12 12l8.66 5"/>
-        </svg>
-        MERCEDES
-      </span>
-
-      <!-- BMW -->
-      <span class="brand-item bmw-item">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
-          <circle cx="12" cy="12" r="10" stroke="#0066b1" stroke-width="2"/>
-          <path d="M12 2a10 10 0 0 1 10 10h-10V2z" fill="#0066b1"/>
-          <path d="M12 22a10 10 0 0 1-10-10h10v10z" fill="#0066b1"/>
-        </svg>
-        BMW
-      </span>
-
-      <!-- QATAR AIRWAYS -->
-      <span class="brand-item">
-        <svg width="20" height="16" viewBox="0 0 24 24" fill="#ffffff">
-          <path d="M21 16v-2l-8-5V3.5c0-.83-.67-1.5-1.5-1.5S10 2.67 10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z"/>
-        </svg>
-        QATAR AIRWAYS
-      </span>
-
+      <span class="brand-item">PUMA</span>
+      <span class="brand-item samsung-text">SAMSUNG</span>
+      <span class="brand-item">MERCEDES-BENZ</span>
+      <span class="brand-item bmw-text">BMW</span>
+      <span class="brand-item">QATAR AIRWAYS</span>
     </div>
   </div>
 
   <div class="container">
 
-    <!-- Tab 1: Matches -->
-    <div id="matches" class="tab-content">
+    <div id="matches" class="tab-content active">
       <div class="card">
         <h2>Featured Showcase Matches</h2>
         <div class="player-card">
@@ -266,8 +224,7 @@
       </div>
     </div>
 
-    <!-- Tab 2: News -->
-    <div id="news" class="tab-content active">
+    <div id="news" class="tab-content">
       <div class="card">
         <h2>Latest Football News & Transfers</h2>
         
@@ -288,7 +245,6 @@
       </div>
     </div>
 
-    <!-- Tab 3: Rankings / Talent Hub -->
     <div id="rankings" class="tab-content">
       <div class="card">
         <h2>Prospect Scouting Database</h2>
@@ -302,7 +258,6 @@
       </div>
     </div>
 
-    <!-- Tab 4: Registration -->
     <div id="registration" class="tab-content">
       <div class="card">
         <h2>Talent & Scout Registration</h2>
@@ -330,10 +285,9 @@
 
   </div>
 
-  <!-- Bottom Navigation -->
   <header>
-    <button class="nav-btn" onclick="switchTab('matches', event)">Matches</button>
-    <button class="nav-btn active" onclick="switchTab('news', event)">News</button>
+    <button class="nav-btn active" onclick="switchTab('matches', event)">Matches</button>
+    <button class="nav-btn" onclick="switchTab('news', event)">News</button>
     <button class="nav-btn" onclick="switchTab('rankings', event)">Rankings</button>
     <button class="nav-btn" onclick="switchTab('registration', event)">Registration</button>
   </header>
@@ -353,6 +307,7 @@
   </script>
 </body>
 </html>
+
 
 
 
