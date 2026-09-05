@@ -361,10 +361,17 @@
         </div>
       </div>
 
-      <!-- Tab 3: Rankings (4 Rated Prospects) -->
+      <!-- Tab 3: Rankings (Interactive Search & Database) -->
       <div id="rankings" class="tab-content">
         <h2 style="color: var(--primary-green); margin-top:0;">Prospect Scouting Database</h2>
-        <div class="matches-list">
+        <p style="font-size: 13px; color: #666; margin-bottom: 12px;">Search and filter through verified prospects below:</p>
+        
+        <!-- Interactive Search Bar -->
+        <div style="margin-bottom: 14px;">
+          <input type="text" id="playerSearch" placeholder="Search by name, position, or club..." onkeyup="filterPlayers()" style="width: 100%; padding: 10px 12px; border: 1.5px solid #d0d0d0; border-radius: 6px; font-size: 13px; outline: none; background: #fafafa;">
+        </div>
+
+        <div class="matches-list" id="playerList">
           <div class="player-card">
             <div>
               <h4 style="margin: 0 0 4px 0; font-size: 15px;">K. Mensah (LW / RW)</h4>
@@ -492,10 +499,25 @@
       }
       targetBtn.classList.add('active');
     }
+
+    function filterPlayers() {
+      let input = document.getElementById('playerSearch').value.toLowerCase();
+      let cards = document.getElementById('playerList').getElementsByClassName('player-card');
+
+      for (let i = 0; i < cards.length; i++) {
+        let text = cards[i].innerText.toLowerCase();
+        if (text.includes(input)) {
+          cards[i].style.display = "";
+        } else {
+          cards[i].style.display = "none";
+        }
+      }
+    }
   </script>
 </body>
 </html>
 
+    
 
 
 
