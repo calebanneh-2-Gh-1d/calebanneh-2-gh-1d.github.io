@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>Scout Escort | Digital Talent & Showcase Hub</title>
 
-  <!-- Google Analytics Tracking -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-9DMZLL3XQE"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -265,7 +264,6 @@
 </head>
 <body>
 
-  <!-- Pinned Top Sponsor Ticker Bar -->
   <div class="sponsor-ticker">
     <div class="ticker-content">
       <span class="brand-item">
@@ -305,7 +303,6 @@
   <div class="container">
     <div class="card">
 
-      <!-- Tab 1: Matches (4 Featured Matches) -->
       <div id="matches" class="tab-content active">
         <h2 style="color: var(--primary-green); margin-top:0;">Featured Showcase Matches</h2>
         <div class="matches-list" id="matchesList">
@@ -340,7 +337,6 @@
         </div>
       </div>
 
-      <!-- Tab 2: News -->
       <div id="news" class="tab-content">
         <h2 style="color: var(--primary-green); margin-top:0;">Latest Football News & Transfers</h2>
         <div class="news-item">
@@ -361,12 +357,10 @@
         </div>
       </div>
 
-      <!-- Tab 3: Rankings (Interactive Search & Database) -->
       <div id="rankings" class="tab-content">
         <h2 style="color: var(--primary-green); margin-top:0;">Prospect Scouting Database</h2>
         <p style="font-size: 13px; color: #666; margin-bottom: 12px;">Search and filter through players and teams below:</p>
         
-        <!-- Interactive Search Bar -->
         <div style="margin-bottom: 14px;">
           <input type="text" id="playerSearch" placeholder="Search by name, position, or team..." onkeyup="filterPlayers()" style="width: 100%; padding: 10px 12px; border: 1.5px solid #d0d0d0; border-radius: 6px; font-size: 13px; outline: none; background: #fafafa;">
         </div>
@@ -403,7 +397,6 @@
         </div>
       </div>
 
-      <!-- Tab 4: Registration -->
       <div id="registration" class="tab-content" style="background: #ffffff; padding: 20px;">
         <h3 style="color: var(--primary-green); margin-top: 0; margin-bottom: 10px;">Agency Standards & Evaluation Criteria</h3>
         <p style="font-size: 13px; color: #666; line-height: 1.5; margin-bottom: 10px;">
@@ -462,21 +455,20 @@
     </div>
   </div>
 
-  <!-- Bottom Navigation Bar -->
   <nav class="bottom-nav">
-    <button class="active" onclick="switchTab('matches', event)">
+    <button class="active" onclick="switchTab('matches', event)" id="nav-matches">
       <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14.5v-9l6 4.5-6 4.5z"/></svg>
       Matches
     </button>
-    <button onclick="switchTab('news', event)">
+    <button onclick="switchTab('news', event)" id="nav-news">
       <svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/></svg>
       News
     </button>
-    <button onclick="switchTab('rankings', event)">
+    <button onclick="switchTab('rankings', event)" id="nav-rankings">
       <svg viewBox="0 0 24 24"><path d="M16 6l2.29 2.29-4.88 4.88-4-4L2 16.59 3.41 18l6-6 4 4 6.3-6.29L22 12V6z"/></svg>
       Rankings
     </button>
-    <button onclick="switchTab('registration', event)">
+    <button onclick="switchTab('registration', event)" id="nav-registration">
       <svg viewBox="0 0 24 24"><path d="M15 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm-9-2V7H4v3H1v2h3v3h2v-3h3v-2H6zm9 4c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
       Registration
     </button>
@@ -494,15 +486,20 @@
       document.getElementById(tabId).classList.add('active');
       
       let targetBtn = event.target;
-      if (targetBtn.tagName !== 'BUTTON') {
+      if (targetBtn && targetBtn.tagName !== 'BUTTON') {
         targetBtn = targetBtn.closest('button');
       }
-      targetBtn.classList.add('active');
+      if (targetBtn) {
+        targetBtn.classList.add('active');
+      }
     }
 
     function filterPlayers() {
       let input = document.getElementById('playerSearch').value.toLowerCase();
       
+      let matchCount = 0;
+      let rankCount = 0;
+
       // Filter Rankings List
       let rankingsList = document.getElementById('playerList');
       if (rankingsList) {
@@ -511,13 +508,14 @@
           let text = cards[i].innerText.toLowerCase();
           if (text.includes(input)) {
             cards[i].style.display = "";
+            rankCount++;
           } else {
             cards[i].style.display = "none";
           }
         }
       }
 
-      // Filter Matches List (so team searches work too)
+      // Filter Matches List
       let matchesList = document.getElementById('matchesList');
       if (matchesList) {
         let matchCards = matchesList.getElementsByClassName('player-card');
@@ -525,15 +523,34 @@
           let text = matchCards[i].innerText.toLowerCase();
           if (text.includes(input)) {
             matchCards[i].style.display = "";
+            matchCount++;
           } else {
             matchCards[i].style.display = "none";
           }
+        }
+      }
+
+      // Auto-switch tab if searching for something found in matches but not rankings
+      if (input.length > 0) {
+        if (matchCount > 0 && rankCount === 0) {
+          // Switch to matches tab automatically if team is found there
+          document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+          document.querySelectorAll('.bottom-nav button').forEach(b => b.classList.remove('active'));
+          document.getElementById('matches').classList.add('active');
+          document.getElementById('nav-matches').classList.add('active');
+        } else if (rankCount > 0) {
+          // Stay on or switch to rankings if found there
+          document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+          document.querySelectorAll('.bottom-nav button').forEach(b => b.classList.remove('active'));
+          document.getElementById('rankings').classList.add('active');
+          document.getElementById('nav-rankings').classList.add('active');
         }
       }
     }
   </script>
 </body>
 </html>
+
 
 
     
