@@ -194,11 +194,19 @@
     .news-item h3 {
       margin: 0 0 4px 0;
       font-size: 15px;
+    }
+
+    .news-item h3 a {
       color: #111;
+      text-decoration: none;
+    }
+
+    .news-item h3 a:hover {
+      color: var(--primary-green);
     }
 
     .news-item p {
-      margin: 0;
+      margin: 0 0 6px 0;
       font-size: 13px;
       color: #555;
       line-height: 1.4;
@@ -345,25 +353,11 @@
       </div>
 
       <div id="news" class="tab-content">
-        <h2 style="color: var(--primary-green); margin-top:0;">Daily Sports Briefing & Headlines</h2>
-        <p style="font-size: 12px; color: #666; margin-bottom: 14px;">Updated daily with global football news, transfers, and scouting updates.</p>
+        <h2 style="color: var(--primary-green); margin-top:0;">Live Sports & Transfer Feed</h2>
+        <p style="font-size: 12px; color: #666; margin-bottom: 14px;">Automatically updated live headlines from major sports networks.</p>
         
-        <div class="news-item">
-          <h3>Today's Top Story: Global Scouting Window Active</h3>
-          <p>Scouts across Europe and Africa monitor weekend fixtures as academy prospects make their case for international trials.</p>
-          <span style="font-size: 11px; color: #888; font-weight: bold;">Updated Today • Live Feed</span>
-        </div>
-
-        <div class="news-item">
-          <h3>Transfer Market Watch</h3>
-          <p>Clubs in the Premier League and Saudi Pro League prepare strategic moves ahead of upcoming transfer windows.</p>
-          <span style="font-size: 11px; color: #888; font-weight: bold;">Updated Today • Transfer Desk</span>
-        </div>
-
-        <div class="news-item">
-          <h3>African Leagues Spotlight</h3>
-          <p>Intense title races and talent showcases heat up across the Ghana Premier League, Egyptian Premier League, and Botola Pro.</p>
-          <span style="font-size: 11px; color: #888; font-weight: bold;">Updated Today • Regional Desk</span>
+        <div id="liveNewsContainer" class="matches-list">
+          <p style="font-size: 13px; color: #888;">Loading latest live sports headlines...</p>
         </div>
       </div>
 
@@ -559,6 +553,44 @@
         targetBtn.classList.add('active');
       }
     }
+
+    // Automatically fetch live sports feed (BBC Sport Football RSS)
+    async function fetchLiveNews() {
+      const container = document.getElementById('liveNewsContainer');
+      const rssUrl = 'https://feeds.bbci.co.uk/sport/football/rss.xml';
+      const apiUrl = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(rssUrl)}`;
+
+      try {
+        let response = await fetch(apiUrl);
+        let data = await response.json();
+
+        if (data.status === 'ok' && data.items.length > 0) {
+          container.innerHTML = ''; // Clear loading text
+          
+          // Display top 6 live news stories
+          data.items.slice(0, 6).forEach(item => {
+            let newsItem = document.createElement('div');
+            newsItem.className = 'news-item';
+            
+            newsItem.innerHTML = `
+              <h3><a href="${item.link}" target="_blank" rel="noopener">${item.title}</a></h3>
+              <p>${item.description.replace(/<[^>]*>?/gm, '').substring(0, 120)}...</p>
+              <span style="font-size: 11px; color: #888; font-weight: bold;">Live Feed • BBC Sport</span>
+            `;
+            container.appendChild(newsItem);
+          });
+        } else {
+          container.innerHTML = '<p style="font-size: 13px; color: #666;">Unable to load feed at the moment. Please check back later.</p>';
+        }
+      } catch (error) {
+        container.innerHTML = '<p style="font-size: 13px; color: #666;">Connection error. Live feed unavailable.</p>';
+      }
+    }
+
+    // Run news fetch on page load
+    window.addEventListener('DOMContentLoaded', () => {
+      fetchLiveNews();
+    });
 
     function filterPlayers() {
       let input = document.getElementById('playerSearch').value.toLowerCase();
