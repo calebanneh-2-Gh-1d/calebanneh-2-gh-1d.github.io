@@ -308,7 +308,7 @@
       <!-- Tab 1: Matches (4 Featured Matches) -->
       <div id="matches" class="tab-content active">
         <h2 style="color: var(--primary-green); margin-top:0;">Featured Showcase Matches</h2>
-        <div class="matches-list">
+        <div class="matches-list" id="matchesList">
           <div class="player-card">
             <div>
               <h4 style="margin: 0 0 4px 0; font-size: 15px;">D&R Academy vs. Grassroots XI</h4>
@@ -364,11 +364,11 @@
       <!-- Tab 3: Rankings (Interactive Search & Database) -->
       <div id="rankings" class="tab-content">
         <h2 style="color: var(--primary-green); margin-top:0;">Prospect Scouting Database</h2>
-        <p style="font-size: 13px; color: #666; margin-bottom: 12px;">Search and filter through verified prospects below:</p>
+        <p style="font-size: 13px; color: #666; margin-bottom: 12px;">Search and filter through players and teams below:</p>
         
         <!-- Interactive Search Bar -->
         <div style="margin-bottom: 14px;">
-          <input type="text" id="playerSearch" placeholder="Search by name, position, or club..." onkeyup="filterPlayers()" style="width: 100%; padding: 10px 12px; border: 1.5px solid #d0d0d0; border-radius: 6px; font-size: 13px; outline: none; background: #fafafa;">
+          <input type="text" id="playerSearch" placeholder="Search by name, position, or team..." onkeyup="filterPlayers()" style="width: 100%; padding: 10px 12px; border: 1.5px solid #d0d0d0; border-radius: 6px; font-size: 13px; outline: none; background: #fafafa;">
         </div>
 
         <div class="matches-list" id="playerList">
@@ -502,20 +502,39 @@
 
     function filterPlayers() {
       let input = document.getElementById('playerSearch').value.toLowerCase();
-      let cards = document.getElementById('playerList').getElementsByClassName('player-card');
+      
+      // Filter Rankings List
+      let rankingsList = document.getElementById('playerList');
+      if (rankingsList) {
+        let cards = rankingsList.getElementsByClassName('player-card');
+        for (let i = 0; i < cards.length; i++) {
+          let text = cards[i].innerText.toLowerCase();
+          if (text.includes(input)) {
+            cards[i].style.display = "";
+          } else {
+            cards[i].style.display = "none";
+          }
+        }
+      }
 
-      for (let i = 0; i < cards.length; i++) {
-        let text = cards[i].innerText.toLowerCase();
-        if (text.includes(input)) {
-          cards[i].style.display = "";
-        } else {
-          cards[i].style.display = "none";
+      // Filter Matches List (so team searches work too)
+      let matchesList = document.getElementById('matchesList');
+      if (matchesList) {
+        let matchCards = matchesList.getElementsByClassName('player-card');
+        for (let i = 0; i < matchCards.length; i++) {
+          let text = matchCards[i].innerText.toLowerCase();
+          if (text.includes(input)) {
+            matchCards[i].style.display = "";
+          } else {
+            matchCards[i].style.display = "none";
+          }
         }
       }
     }
   </script>
 </body>
 </html>
+
 
     
 
