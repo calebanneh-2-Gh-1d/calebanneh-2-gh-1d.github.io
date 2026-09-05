@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>Scout Escort | Digital Talent & Showcase Hub</title>
 
+  <!-- Google Analytics Tracking -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-9DMZLL3XQE"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -119,7 +120,7 @@
       background: none;
       border: none;
       color: #666666;
-      font-size: 12px;
+      font-size: 11px;
       font-weight: 700;
       display: flex;
       flex-direction: column;
@@ -169,6 +170,16 @@
       text-align: center;
       flex-shrink: 0;
       margin-left: 10px;
+    }
+
+    /* Section Subheaders */
+    .section-title {
+      font-size: 14px;
+      font-weight: 800;
+      color: var(--primary-green);
+      margin: 16px 0 8px 0;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
     }
 
     /* News Items */
@@ -264,6 +275,7 @@
 </head>
 <body>
 
+  <!-- Pinned Top Sponsor Ticker Bar -->
   <div class="sponsor-ticker">
     <div class="ticker-content">
       <span class="brand-item">
@@ -303,6 +315,7 @@
   <div class="container">
     <div class="card">
 
+      <!-- Tab 1: Matches (4 Featured Matches) -->
       <div id="matches" class="tab-content active">
         <h2 style="color: var(--primary-green); margin-top:0;">Featured Showcase Matches</h2>
         <div class="matches-list" id="matchesList">
@@ -337,6 +350,7 @@
         </div>
       </div>
 
+      <!-- Tab 2: News -->
       <div id="news" class="tab-content">
         <h2 style="color: var(--primary-green); margin-top:0;">Latest Football News & Transfers</h2>
         <div class="news-item">
@@ -357,15 +371,95 @@
         </div>
       </div>
 
+      <!-- Tab 3: Leagues & Database (Global & African Leagues Focus) -->
       <div id="rankings" class="tab-content">
-        <h2 style="color: var(--primary-green); margin-top:0;">Prospect Scouting Database</h2>
-        <p style="font-size: 13px; color: #666; margin-bottom: 12px;">Search and filter through players and teams below:</p>
+        <h2 style="color: var(--primary-green); margin-top:0;">Global & African Leagues Directory</h2>
+        <p style="font-size: 13px; color: #666; margin-bottom: 12px;">Search players, clubs, or major world and African leagues:</p>
         
+        <!-- Interactive Search Bar -->
         <div style="margin-bottom: 14px;">
-          <input type="text" id="playerSearch" placeholder="Search by name, position, or team..." onkeyup="filterPlayers()" style="width: 100%; padding: 10px 12px; border: 1.5px solid #d0d0d0; border-radius: 6px; font-size: 13px; outline: none; background: #fafafa;">
+          <input type="text" id="playerSearch" placeholder="Search league, club, or player..." onkeyup="filterPlayers()" style="width: 100%; padding: 10px 12px; border: 1.5px solid #d0d0d0; border-radius: 6px; font-size: 13px; outline: none; background: #fafafa;">
         </div>
 
         <div class="matches-list" id="playerList">
+          <!-- Major World Leagues Hub -->
+          <div class="section-title" style="margin-top:0;">Top Global Leagues</div>
+          <div class="player-card league-card">
+            <div>
+              <h4 style="margin: 0 0 4px 0; font-size: 15px;">🏴󠁧󠁢󠁥󠁮󠁧󠁿 Premier League (England)</h4>
+              <p style="margin: 0; font-size: 12px; color: #666;">Tier 1 • Elite Global Competition</p>
+            </div>
+            <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank" rel="noopener" class="btn-action">Hub</a>
+          </div>
+          <div class="player-card league-card">
+            <div>
+              <h4 style="margin: 0 0 4px 0; font-size: 15px;">🇪🇸 La Liga (Spain)</h4>
+              <p style="margin: 0; font-size: 12px; color: #666;">Tier 1 • Technical Excellence</p>
+            </div>
+            <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank" rel="noopener" class="btn-action">Hub</a>
+          </div>
+          <div class="player-card league-card">
+            <div>
+              <h4 style="margin: 0 0 4px 0; font-size: 15px;">🇩🇪 Bundesliga (Germany)</h4>
+              <p style="margin: 0; font-size: 12px; color: #666;">Tier 1 • High-Intensity Development</p>
+            </div>
+            <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank" rel="noopener" class="btn-action">Hub</a>
+          </div>
+          <div class="player-card league-card">
+            <div>
+              <h4 style="margin: 0 0 4px 0; font-size: 15px;">🇮🇹 Serie A (Italy)</h4>
+              <p style="margin: 0; font-size: 12px; color: #666;">Tier 1 • Tactical Mastery</p>
+            </div>
+            <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank" rel="noopener" class="btn-action">Hub</a>
+          </div>
+          <div class="player-card league-card">
+            <div>
+              <h4 style="margin: 0 0 4px 0; font-size: 15px;">🇫🇷 Ligue 1 (France)</h4>
+              <p style="margin: 0; font-size: 12px; color: #666;">Tier 1 • Premier Talent Incubator</p>
+            </div>
+            <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank" rel="noopener" class="btn-action">Hub</a>
+          </div>
+          <div class="player-card league-card">
+            <div>
+              <h4 style="margin: 0 0 4px 0; font-size: 15px;">🇸🇦 Saudi Pro League (Saudi Arabia)</h4>
+              <p style="margin: 0; font-size: 12px; color: #666;">Tier 1 • International Investment Hub</p>
+            </div>
+            <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank" rel="noopener" class="btn-action">Hub</a>
+          </div>
+
+          <!-- Featured African Leagues Hub -->
+          <div class="section-title">Prominent African Leagues</div>
+          <div class="player-card league-card">
+            <div>
+              <h4 style="margin: 0 0 4px 0; font-size: 15px;">🇬🇭 Ghana Premier League (Ghana)</h4>
+              <p style="margin: 0; font-size: 12px; color: #666;">Domestic Elite • West African Pipeline</p>
+            </div>
+            <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank" rel="noopener" class="btn-action">Hub</a>
+          </div>
+          <div class="player-card league-card">
+            <div>
+              <h4 style="margin: 0 0 4px 0; font-size: 15px;">🇪🇬 Egyptian Premier League (Egypt)</h4>
+              <p style="margin: 0; font-size: 12px; color: #666;">North African Powerhouse Competition</p>
+            </div>
+            <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank" rel="noopener" class="btn-action">Hub</a>
+          </div>
+          <div class="player-card league-card">
+            <div>
+              <h4 style="margin: 0 0 4px 0; font-size: 15px;">🇿🇦 DStv Premiership (South Africa)</h4>
+              <p style="margin: 0; font-size: 12px; color: #666;">Southern African Elite Division</p>
+            </div>
+            <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank" rel="noopener" class="btn-action">Hub</a>
+          </div>
+          <div class="player-card league-card">
+            <div>
+              <h4 style="margin: 0 0 4px 0; font-size: 15px;">🇲🇦 Botola Pro (Morocco)</h4>
+              <p style="margin: 0; font-size: 12px; color: #666;">Maghreb Premier League Showcase</p>
+            </div>
+            <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank" rel="noopener" class="btn-action">Hub</a>
+          </div>
+
+          <!-- Featured Prospects & Free Agents -->
+          <div class="section-title">Verified Prospect Directory</div>
           <div class="player-card">
             <div>
               <h4 style="margin: 0 0 4px 0; font-size: 15px;">K. Mensah (LW / RW)</h4>
@@ -380,23 +474,10 @@
             </div>
             <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank" rel="noopener" class="btn-action">Highlights</a>
           </div>
-          <div class="player-card">
-            <div>
-              <h4 style="margin: 0 0 4px 0; font-size: 15px;">E. Owusu (CB / RB)</h4>
-              <p style="margin: 0; font-size: 12px; color: #666;">Age 20 • D&R Academy</p>
-            </div>
-            <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank" rel="noopener" class="btn-action">Highlights</a>
-          </div>
-          <div class="player-card">
-            <div>
-              <h4 style="margin: 0 0 4px 0; font-size: 15px;">D. Boateng (ST / CF)</h4>
-              <p style="margin: 0; font-size: 12px; color: #666;">Age 19 • Rising Stars</p>
-            </div>
-            <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank" rel="noopener" class="btn-action">Highlights</a>
-          </div>
         </div>
       </div>
 
+      <!-- Tab 4: Registration -->
       <div id="registration" class="tab-content" style="background: #ffffff; padding: 20px;">
         <h3 style="color: var(--primary-green); margin-top: 0; margin-bottom: 10px;">Agency Standards & Evaluation Criteria</h3>
         <p style="font-size: 13px; color: #666; line-height: 1.5; margin-bottom: 10px;">
@@ -455,6 +536,7 @@
     </div>
   </div>
 
+  <!-- Bottom Navigation Bar -->
   <nav class="bottom-nav">
     <button class="active" onclick="switchTab('matches', event)" id="nav-matches">
       <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14.5v-9l6 4.5-6 4.5z"/></svg>
@@ -466,7 +548,7 @@
     </button>
     <button onclick="switchTab('rankings', event)" id="nav-rankings">
       <svg viewBox="0 0 24 24"><path d="M16 6l2.29 2.29-4.88 4.88-4-4L2 16.59 3.41 18l6-6 4 4 6.3-6.29L22 12V6z"/></svg>
-      Rankings
+      Leagues & DB
     </button>
     <button onclick="switchTab('registration', event)" id="nav-registration">
       <svg viewBox="0 0 24 24"><path d="M15 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm-9-2V7H4v3H1v2h3v3h2v-3h3v-2H6zm9 4c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
@@ -500,7 +582,7 @@
       let matchCount = 0;
       let rankCount = 0;
 
-      // Filter Rankings List
+      // Filter Rankings / Leagues List
       let rankingsList = document.getElementById('playerList');
       if (rankingsList) {
         let cards = rankingsList.getElementsByClassName('player-card');
@@ -530,16 +612,14 @@
         }
       }
 
-      // Auto-switch tab if searching for something found in matches but not rankings
+      // Auto-switch tabs intelligently based on search target
       if (input.length > 0) {
         if (matchCount > 0 && rankCount === 0) {
-          // Switch to matches tab automatically if team is found there
           document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
           document.querySelectorAll('.bottom-nav button').forEach(b => b.classList.remove('active'));
           document.getElementById('matches').classList.add('active');
           document.getElementById('nav-matches').classList.add('active');
         } else if (rankCount > 0) {
-          // Stay on or switch to rankings if found there
           document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
           document.querySelectorAll('.bottom-nav button').forEach(b => b.classList.remove('active'));
           document.getElementById('rankings').classList.add('active');
@@ -550,6 +630,7 @@
   </script>
 </body>
 </html>
+
 
 
 
