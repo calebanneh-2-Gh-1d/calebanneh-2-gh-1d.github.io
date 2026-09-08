@@ -103,7 +103,7 @@
       flex-direction: column;
     }
 
-    /* Fixed Bottom Navigation Menu Bar */
+    /* Fixed Bottom Navigation Menu Bar (5 Tabs) */
     .bottom-nav {
       position: fixed;
       bottom: 0;
@@ -114,7 +114,7 @@
       display: flex;
       justify-content: space-around;
       align-items: center;
-      padding: 8px 0;
+      padding: 6px 0;
       box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
       z-index: 1000;
     }
@@ -123,12 +123,12 @@
       background: none;
       border: none;
       color: #666666;
-      font-size: 11px;
+      font-size: 10px;
       font-weight: 700;
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 4px;
+      gap: 3px;
       cursor: pointer;
       flex: 1;
       padding: 4px 0;
@@ -139,8 +139,8 @@
     }
 
     .bottom-nav button svg {
-      width: 20px;
-      height: 20px;
+      width: 18px;
+      height: 18px;
       fill: currentColor;
     }
 
@@ -453,26 +453,43 @@
         </div>
       </div>
 
-      <!-- Tab 4: Registration / Secure Platform Login & Portal -->
+      <!-- Tab 4: Registration Tab -->
       <div id="registration" class="tab-content" style="background: #ffffff; padding: 20px;">
-        <h3 style="color: var(--primary-green); margin-top: 0; margin-bottom: 6px;">Platform Account & Portal</h3>
+        <h3 style="color: var(--primary-green); margin-top: 0; margin-bottom: 6px;">Scout & Prospect Registration</h3>
         <p style="font-size: 13px; color: #666; line-height: 1.4; margin-bottom: 14px;">
-          Log in or create an autonomous account to instantly post and manage verified profiles directly on the live feed.
+          Register your credentials to get verified access to our global scouting network and database features.
+        </p>
+
+        <div style="background: #f9fafb; padding: 15px; border-radius: 8px; border: 1px solid #e5e7eb; margin-bottom: 15px;">
+          <h4 style="margin: 0 0 10px 0; font-size: 14px; color: var(--primary-green);">New Account Registration</h4>
+          <div class="form-group" style="margin-bottom: 8px;">
+            <input type="email" id="reg-email" placeholder="Email Address">
+          </div>
+          <div class="form-group" style="margin-bottom: 10px;">
+            <input type="password" id="reg-password" placeholder="Create Password">
+          </div>
+          <button type="button" onclick="registerAccount()" style="width:100%; background: var(--primary-green); color: white; border: none; padding: 10px; border-radius: 6px; font-weight: bold; cursor: pointer;">Register Now</button>
+          <p id="reg-message" style="font-size: 12px; margin-top: 8px; color: #cc0000;"></p>
+        </div>
+      </div>
+
+      <!-- Tab 5: Portal (Login & Publish Dashboard) -->
+      <div id="portal" class="tab-content" style="background: #ffffff; padding: 20px;">
+        <h3 style="color: var(--primary-green); margin-top: 0; margin-bottom: 6px;">Secure Platform Portal</h3>
+        <p style="font-size: 13px; color: #666; line-height: 1.4; margin-bottom: 14px;">
+          Log in to your account to instantly post and manage verified player profiles directly on the live database feed.
         </p>
 
         <!-- AUTHENTICATION SECTION -->
         <div id="auth-box" style="background: #f9fafb; padding: 15px; border-radius: 8px; border: 1px solid #e5e7eb; margin-bottom: 15px;">
-          <h4 style="margin: 0 0 10px 0; font-size: 14px; color: var(--primary-green);">User Login / Sign Up</h4>
+          <h4 style="margin: 0 0 10px 0; font-size: 14px; color: var(--primary-green);">User Login</h4>
           <div class="form-group" style="margin-bottom: 8px;">
             <input type="email" id="auth-email" placeholder="Email Address">
           </div>
           <div class="form-group" style="margin-bottom: 10px;">
             <input type="password" id="auth-password" placeholder="Password">
           </div>
-          <div style="display: flex; gap: 8px;">
-            <button type="button" onclick="loginUser()" style="flex:1; background: var(--primary-green); color: white; border: none; padding: 10px; border-radius: 6px; font-weight: bold; cursor: pointer;">Log In</button>
-            <button type="button" onclick="signUpUser()" style="flex:1; background: #374151; color: white; border: none; padding: 10px; border-radius: 6px; font-weight: bold; cursor: pointer;">Sign Up</button>
-          </div>
+          <button type="button" onclick="loginUser()" style="width:100%; background: var(--primary-green); color: white; border: none; padding: 10px; border-radius: 6px; font-weight: bold; cursor: pointer;">Log In</button>
           <p id="auth-message" style="font-size: 12px; margin-top: 8px; color: #cc0000;"></p>
         </div>
 
@@ -522,7 +539,7 @@
     </div>
   </div>
 
-  <!-- Bottom Navigation Bar -->
+  <!-- Bottom Navigation Bar (5 Tabs) -->
   <nav class="bottom-nav">
     <button class="active" onclick="switchTab('matches', event)" id="nav-matches">
       <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14.5v-9l6 4.5-6 4.5z"/></svg>
@@ -534,10 +551,14 @@
     </button>
     <button onclick="switchTab('rankings', event)" id="nav-rankings">
       <svg viewBox="0 0 24 24"><path d="M16 6l2.29 2.29-4.88 4.88-4-4L2 16.59 3.41 18l6-6 4 4 6.3-6.29L22 12V6z"/></svg>
-      Leagues & DB
+      Leagues
     </button>
     <button onclick="switchTab('registration', event)" id="nav-registration">
       <svg viewBox="0 0 24 24"><path d="M15 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm-9-2V7H4v3H1v2h3v3h2v-3h3v-2H6zm9 4c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+      Register
+    </button>
+    <button onclick="switchTab('portal', event)" id="nav-portal">
+      <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"/></svg>
       Portal
     </button>
   </nav>
@@ -561,14 +582,15 @@
     }
     checkUserSession();
 
-    async function signUpUser() {
-      const email = document.getElementById('auth-email').value;
-      const password = document.getElementById('auth-password').value;
+    async function registerAccount() {
+      const email = document.getElementById('reg-email').value;
+      const password = document.getElementById('reg-password').value;
       const { error } = await supabaseClient.auth.signUp({ email, password });
       if (error) {
-        document.getElementById('auth-message').innerText = error.message;
+        document.getElementById('reg-message').innerText = error.message;
       } else {
-        alert('Sign up successful! You can now log in.');
+        alert('Registration successful! You can now log in via the Portal tab.');
+        switchTab('portal', { target: document.getElementById('nav-portal') });
       }
     }
 
@@ -674,9 +696,12 @@
 
       document.getElementById(tabId).classList.add('active');
       
-      let targetBtn = event.target;
+      let targetBtn = event ? event.target : null;
       if (targetBtn && targetBtn.tagName !== 'BUTTON') {
         targetBtn = targetBtn.closest('button');
+      }
+      if (!targetBtn) {
+        targetBtn = document.getElementById('nav-' + tabId);
       }
       if (targetBtn) {
         targetBtn.classList.add('active');
@@ -711,6 +736,7 @@
   </script>
 </body>
 </html>
+
 
 
 
