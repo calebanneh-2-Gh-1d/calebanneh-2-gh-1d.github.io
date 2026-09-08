@@ -237,6 +237,7 @@
       margin-top: 10px;
       letter-spacing: 0.5px;
       box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+      text-align: center;
     }
 
     .tab-content {
@@ -456,14 +457,14 @@
       <!-- Tab 4: Professional Registration Tab -->
       <div id="registration" class="tab-content" style="background: #ffffff; padding: 20px;">
         <div style="border-bottom: 2px solid var(--primary-green); padding-bottom: 8px; margin-bottom: 16px;">
-          <h3 style="color: var(--primary-green); margin: 0; font-size: 18px; font-weight: 800;">Official Network Registration</h3>
-          <p style="font-size: 12px; color: #666; margin: 4px 0 0 0;">Join the global talent identification network as a player, scout, or club official.</p>
+          <h3 style="color: var(--primary-green); margin: 0; font-size: 18px; font-weight: 800;">Scout Escort Registration</h3>
+          <p style="font-size: 12px; color: #666; margin: 4px 0 0 0;">Enter your player profile details and credentials below.</p>
         </div>
 
         <div style="background: #f8fafc; padding: 18px; border-radius: 10px; border: 1px solid #e2e8f0;">
           <div class="form-grid">
             <div class="form-group full-width">
-              <label>Select Account Role *</label>
+              <label>Select Role *</label>
               <select id="reg-role" style="font-weight: 600; color: #0f172a;">
                 <option value="player">Football Prospect / Player</option>
                 <option value="scout">Scout / Talent Agent</option>
@@ -472,8 +473,33 @@
             </div>
 
             <div class="form-group full-width">
-              <label>Full Name / Organization *</label>
-              <input type="text" id="reg-fullname" placeholder="e.g. Samuel Mensah or D&R Academy">
+              <label>Full Name *</label>
+              <input type="text" id="reg-fullname" placeholder="e.g. Samuel Mensah">
+            </div>
+
+            <div class="form-group">
+              <label>Position *</label>
+              <input type="text" id="reg-position" placeholder="e.g. LW / RW / CM">
+            </div>
+
+            <div class="form-group">
+              <label>Age *</label>
+              <input type="number" id="reg-age" placeholder="e.g. 18">
+            </div>
+
+            <div class="form-group">
+              <label>Height *</label>
+              <input type="text" id="reg-height" placeholder="e.g. 1.82m or 6ft">
+            </div>
+
+            <div class="form-group">
+              <label>Weight *</label>
+              <input type="text" id="reg-weight" placeholder="e.g. 75kg">
+            </div>
+
+            <div class="form-group full-width">
+              <label>Country / Base *</label>
+              <input type="text" id="reg-country" placeholder="e.g. Ghana">
             </div>
 
             <div class="form-group full-width">
@@ -487,7 +513,7 @@
             </div>
 
             <div class="form-group full-width">
-              <button type="button" onclick="registerAccount()" class="submit-btn" style="margin-top: 6px;">Complete Professional Registration</button>
+              <button type="button" onclick="registerAccount()" class="submit-btn">Register</button>
             </div>
           </div>
           <p id="reg-message" style="font-size: 12px; margin-top: 10px; text-align: center; color: #cc0000; font-weight: 600;"></p>
@@ -606,13 +632,18 @@
     async function registerAccount() {
       const role = document.getElementById('reg-role').value;
       const fullname = document.getElementById('reg-fullname').value;
+      const position = document.getElementById('reg-position').value;
+      const age = document.getElementById('reg-age').value;
+      const height = document.getElementById('reg-height').value;
+      const weight = document.getElementById('reg-weight').value;
+      const country = document.getElementById('reg-country').value;
       const email = document.getElementById('reg-email').value;
       const password = document.getElementById('reg-password').value;
       const msgElem = document.getElementById('reg-message');
 
       msgElem.innerText = '';
 
-      if (!fullname || !email || !password) {
+      if (!fullname || !email || !password || !position) {
         msgElem.innerText = 'Please fill out all required fields.';
         return;
       }
@@ -623,7 +654,12 @@
         options: {
           data: {
             full_name: fullname,
-            account_role: role
+            account_role: role,
+            position: position,
+            age: age,
+            height: height,
+            weight: weight,
+            country: country
           }
         }
       });
@@ -631,7 +667,7 @@
       if (error) {
         msgElem.innerText = error.message;
       } else {
-        alert('Registration successful! You can now log in securely via the Portal tab.');
+        alert('Registration successful! You can now log in.');
         switchTab('portal', { target: document.getElementById('nav-portal') });
       }
     }
