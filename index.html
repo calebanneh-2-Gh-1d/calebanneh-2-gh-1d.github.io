@@ -453,23 +453,44 @@
         </div>
       </div>
 
-      <!-- Tab 4: Registration Tab -->
+      <!-- Tab 4: Professional Registration Tab -->
       <div id="registration" class="tab-content" style="background: #ffffff; padding: 20px;">
-        <h3 style="color: var(--primary-green); margin-top: 0; margin-bottom: 6px;">Scout & Prospect Registration</h3>
-        <p style="font-size: 13px; color: #666; line-height: 1.4; margin-bottom: 14px;">
-          Register your credentials to get verified access to our global scouting network and database features.
-        </p>
+        <div style="border-bottom: 2px solid var(--primary-green); padding-bottom: 8px; margin-bottom: 16px;">
+          <h3 style="color: var(--primary-green); margin: 0; font-size: 18px; font-weight: 800;">Official Network Registration</h3>
+          <p style="font-size: 12px; color: #666; margin: 4px 0 0 0;">Join the global talent identification network as a player, scout, or club official.</p>
+        </div>
 
-        <div style="background: #f9fafb; padding: 15px; border-radius: 8px; border: 1px solid #e5e7eb; margin-bottom: 15px;">
-          <h4 style="margin: 0 0 10px 0; font-size: 14px; color: var(--primary-green);">New Account Registration</h4>
-          <div class="form-group" style="margin-bottom: 8px;">
-            <input type="email" id="reg-email" placeholder="Email Address">
+        <div style="background: #f8fafc; padding: 18px; border-radius: 10px; border: 1px solid #e2e8f0;">
+          <div class="form-grid">
+            <div class="form-group full-width">
+              <label>Select Account Role *</label>
+              <select id="reg-role" style="font-weight: 600; color: #0f172a;">
+                <option value="player">Football Prospect / Player</option>
+                <option value="scout">Scout / Talent Agent</option>
+                <option value="club">Club Representative / Coach</option>
+              </select>
+            </div>
+
+            <div class="form-group full-width">
+              <label>Full Name / Organization *</label>
+              <input type="text" id="reg-fullname" placeholder="e.g. Samuel Mensah or D&R Academy">
+            </div>
+
+            <div class="form-group full-width">
+              <label>Email Address *</label>
+              <input type="email" id="reg-email" placeholder="name@example.com">
+            </div>
+
+            <div class="form-group full-width">
+              <label>Secure Password *</label>
+              <input type="password" id="reg-password" placeholder="At least 6 characters">
+            </div>
+
+            <div class="form-group full-width">
+              <button type="button" onclick="registerAccount()" class="submit-btn" style="margin-top: 6px;">Complete Professional Registration</button>
+            </div>
           </div>
-          <div class="form-group" style="margin-bottom: 10px;">
-            <input type="password" id="reg-password" placeholder="Create Password">
-          </div>
-          <button type="button" onclick="registerAccount()" style="width:100%; background: var(--primary-green); color: white; border: none; padding: 10px; border-radius: 6px; font-weight: bold; cursor: pointer;">Register Now</button>
-          <p id="reg-message" style="font-size: 12px; margin-top: 8px; color: #cc0000;"></p>
+          <p id="reg-message" style="font-size: 12px; margin-top: 10px; text-align: center; color: #cc0000; font-weight: 600;"></p>
         </div>
       </div>
 
@@ -583,13 +604,34 @@
     checkUserSession();
 
     async function registerAccount() {
+      const role = document.getElementById('reg-role').value;
+      const fullname = document.getElementById('reg-fullname').value;
       const email = document.getElementById('reg-email').value;
       const password = document.getElementById('reg-password').value;
-      const { error } = await supabaseClient.auth.signUp({ email, password });
+      const msgElem = document.getElementById('reg-message');
+
+      msgElem.innerText = '';
+
+      if (!fullname || !email || !password) {
+        msgElem.innerText = 'Please fill out all required fields.';
+        return;
+      }
+
+      const { error } = await supabaseClient.auth.signUp({ 
+        email, 
+        password,
+        options: {
+          data: {
+            full_name: fullname,
+            account_role: role
+          }
+        }
+      });
+
       if (error) {
-        document.getElementById('reg-message').innerText = error.message;
+        msgElem.innerText = error.message;
       } else {
-        alert('Registration successful! You can now log in via the Portal tab.');
+        alert('Registration successful! You can now log in securely via the Portal tab.');
         switchTab('portal', { target: document.getElementById('nav-portal') });
       }
     }
@@ -736,6 +778,7 @@
   </script>
 </body>
 </html>
+
 
 
 
