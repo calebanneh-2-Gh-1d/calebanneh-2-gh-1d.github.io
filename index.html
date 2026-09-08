@@ -14,6 +14,9 @@
     gtag('config', 'G-9DMZLL3XQE');
   </script>
 
+  <!-- Include Supabase for Database & Auth -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
   <style>
     :root {
       --bg-color: #0d2818;
@@ -244,6 +247,8 @@
     .tab-content.active {
       display: block;
     }
+    
+    .hidden { display: none !important; }
   </style>
 </head>
 <body>
@@ -441,73 +446,77 @@
           </div>
 
           <!-- Verified Prospects -->
-          <div class="section-title">Verified Prospect Directory</div>
-          <div class="player-card">
-            <div>
-              <h4 style="margin: 0 0 4px 0; font-size: 15px;">K. Mensah (LW / RW)</h4>
-              <p style="margin: 0; font-size: 12px; color: #666;">Age 19 • Free Agent</p>
-            </div>
-            <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank" rel="noopener" class="btn-action">Highlights</a>
-          </div>
-          <div class="player-card">
-            <div>
-              <h4 style="margin: 0 0 4px 0; font-size: 15px;">A. Osei (CAM / CM)</h4>
-              <p style="margin: 0; font-size: 12px; color: #666;">Age 18 • Accra Select</p>
-            </div>
-            <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank" rel="noopener" class="btn-action">Highlights</a>
+          <div class="section-title">Verified Prospect Directory (Live Database Feed)</div>
+          <div id="db-feed-container">
+            <p style="font-size: 13px; color: #666;">Loading live directory profiles...</p>
           </div>
         </div>
       </div>
 
-      <!-- Tab 4: Registration -->
+      <!-- Tab 4: Registration / Secure Platform Login & Portal -->
       <div id="registration" class="tab-content" style="background: #ffffff; padding: 20px;">
-        <h3 style="color: var(--primary-green); margin-top: 0; margin-bottom: 10px;">Agency Standards & Evaluation Criteria</h3>
-        <p style="font-size: 13px; color: #666; line-height: 1.5; margin-bottom: 10px;">
-          Scout Escort serves as an independent research hub and talent database designed for professional clubs, academy directors, and sports journalists.
+        <h3 style="color: var(--primary-green); margin-top: 0; margin-bottom: 6px;">Platform Account & Portal</h3>
+        <p style="font-size: 13px; color: #666; line-height: 1.4; margin-bottom: 14px;">
+          Log in or create an autonomous account to instantly post and manage verified profiles directly on the live feed.
         </p>
 
-        <form action="https://formspree.io/f/xjyvregq" method="POST">
+        <!-- AUTHENTICATION SECTION -->
+        <div id="auth-box" style="background: #f9fafb; padding: 15px; border-radius: 8px; border: 1px solid #e5e7eb; margin-bottom: 15px;">
+          <h4 style="margin: 0 0 10px 0; font-size: 14px; color: var(--primary-green);">User Login / Sign Up</h4>
+          <div class="form-group" style="margin-bottom: 8px;">
+            <input type="email" id="auth-email" placeholder="Email Address">
+          </div>
+          <div class="form-group" style="margin-bottom: 10px;">
+            <input type="password" id="auth-password" placeholder="Password">
+          </div>
+          <div style="display: flex; gap: 8px;">
+            <button type="button" onclick="loginUser()" style="flex:1; background: var(--primary-green); color: white; border: none; padding: 10px; border-radius: 6px; font-weight: bold; cursor: pointer;">Log In</button>
+            <button type="button" onclick="signUpUser()" style="flex:1; background: #374151; color: white; border: none; padding: 10px; border-radius: 6px; font-weight: bold; cursor: pointer;">Sign Up</button>
+          </div>
+          <p id="auth-message" style="font-size: 12px; margin-top: 8px; color: #cc0000;"></p>
+        </div>
+
+        <!-- LOGGED IN DASHBOARD (Hidden until logged in) -->
+        <div id="dashboard-box" class="hidden" style="background: #f0fdf4; padding: 15px; border-radius: 8px; border: 1px solid #bbf7d0;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+            <span id="logged-user-email" style="font-size: 12px; font-weight: bold; color: var(--primary-green);"></span>
+            <button type="button" onclick="logoutUser()" style="background: #dc2626; color: white; border: none; padding: 4px 10px; border-radius: 4px; font-size: 11px; cursor: pointer;">Logout</button>
+          </div>
+
+          <h4 style="margin: 0 0 10px 0; font-size: 14px; color: var(--primary-green);">Publish New Prospect Profile</h4>
+          
           <div class="form-grid">
             <div class="form-group full-width">
-              <label>Full Name *</label>
-              <input type="text" name="full_name" placeholder="e.g. Samuel Mensah" required>
+              <label>Player Name *</label>
+              <input type="text" id="p-name" placeholder="e.g. Samuel Mensah">
             </div>
             
             <div class="form-group">
-              <label>Role *</label>
-              <select name="role" required>
-                <option value="">Select...</option>
-                <option value="Player">Player</option>
-                <option value="Scout">Scout</option>
-                <option value="Agent">Agent</option>
-              </select>
+              <label>Position</label>
+              <input type="text" id="p-position" placeholder="e.g. LW / RW">
             </div>
 
             <div class="form-group">
-              <label>Age / DOB</label>
-              <input type="text" name="age" placeholder="e.g. 19">
+              <label>Age</label>
+              <input type="text" id="p-age" placeholder="e.g. 19">
             </div>
 
             <div class="form-group full-width">
-              <label>Email Address *</label>
-              <input type="email" name="email" placeholder="name@example.com" required>
+              <label>Current Team / Academy</label>
+              <input type="text" id="p-team" placeholder="e.g. Accra Select">
             </div>
 
             <div class="form-group full-width">
-              <label>Primary Position / Organization</label>
-              <input type="text" name="details" placeholder="e.g. Center Forward / Accra FC">
+              <label>Video Highlight Link *</label>
+              <input type="url" id="p-video" placeholder="https://youtube.com/...">
             </div>
 
             <div class="form-group full-width">
-              <label>Video Highlight Link</label>
-              <input type="url" name="video_url" placeholder="https://youtube.com/...">
-            </div>
-
-            <div class="form-group full-width">
-              <button type="submit" class="submit-btn">Submit Application</button>
+              <button type="button" onclick="submitPlayerProfile()" class="submit-btn" style="margin-top: 0;">Publish Profile Live</button>
             </div>
           </div>
-        </form>
+        </div>
+
       </div>
 
     </div>
@@ -529,11 +538,133 @@
     </button>
     <button onclick="switchTab('registration', event)" id="nav-registration">
       <svg viewBox="0 0 24 24"><path d="M15 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm-9-2V7H4v3H1v2h3v3h2v-3h3v-2H6zm9 4c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
-      Registration
+      Portal
     </button>
   </nav>
 
   <script>
+    // --- SUPABASE CONFIGURATION ---
+    // Replace these with your free Supabase project keys from supabase.com
+    const SUPABASE_URL = 'YOUR_SUPABASE_URL';
+    const SUPABASE_ANON_KEY = 'YOUR_SUPABASE_ANON_KEY';
+    
+    const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+    // Check user session on load
+    async function checkUserSession() {
+      const { data: { session } } = await supabaseClient.auth.getSession();
+      if (session) {
+        document.getElementById('auth-box').classList.add('hidden');
+        document.getElementById('dashboard-box').classList.remove('hidden');
+        document.getElementById('logged-user-email').innerText = 'Logged in as: ' + session.user.email;
+      }
+      loadDatabaseFeed();
+    }
+    checkUserSession();
+
+    async function signUpUser() {
+      const email = document.getElementById('auth-email').value;
+      const password = document.getElementById('auth-password').value;
+      const { error } = await supabaseClient.auth.signUp({ email, password });
+      if (error) {
+        document.getElementById('auth-message').innerText = error.message;
+      } else {
+        alert('Sign up successful! You can now log in.');
+      }
+    }
+
+    async function loginUser() {
+      const email = document.getElementById('auth-email').value;
+      const password = document.getElementById('auth-password').value;
+      const { error } = await supabaseClient.auth.signInWithPassword({ email, password });
+      if (error) {
+        document.getElementById('auth-message').innerText = error.message;
+      } else {
+        location.reload();
+      }
+    }
+
+    async function logoutUser() {
+      await supabaseClient.auth.signOut();
+      location.reload();
+    }
+
+    async function submitPlayerProfile() {
+      const name = document.getElementById('p-name').value;
+      const position = document.getElementById('p-position').value;
+      const age = document.getElementById('p-age').value;
+      const team = document.getElementById('p-team').value;
+      const video = document.getElementById('p-video').value;
+
+      if (!name || !video) {
+        alert('Please fill out at least the player name and video link.');
+        return;
+      }
+
+      const { error } = await supabaseClient
+        .from('players')
+        .insert([{ name, position, age, team, video }]);
+
+      if (error) {
+        alert('Error publishing profile: ' + error.message);
+      } else {
+        alert('Profile published live successfully!');
+        document.getElementById('p-name').value = '';
+        document.getElementById('p-position').value = '';
+        document.getElementById('p-age').value = '';
+        document.getElementById('p-team').value = '';
+        document.getElementById('p-video').value = '';
+        loadDatabaseFeed();
+        switchTab('rankings', { target: document.getElementById('nav-rankings') });
+      }
+    }
+
+    async function loadDatabaseFeed() {
+      const container = document.getElementById('db-feed-container');
+      const { data, error } = await supabaseClient
+        .from('players')
+        .select('*')
+        .order('created_at', { ascending: false });
+
+      if (error || !data) {
+        container.innerHTML = `
+          <div class="player-card">
+            <div>
+              <h4 style="margin: 0 0 4px 0; font-size: 15px;">K. Mensah (LW / RW)</h4>
+              <p style="margin: 0; font-size: 12px; color: #666;">Age 19 • Free Agent</p>
+            </div>
+            <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank" rel="noopener" class="btn-action">Highlights</a>
+          </div>
+          <div class="player-card">
+            <div>
+              <h4 style="margin: 0 0 4px 0; font-size: 15px;">A. Osei (CAM / CM)</h4>
+              <p style="margin: 0; font-size: 12px; color: #666;">Age 18 • Accra Select</p>
+            </div>
+            <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank" rel="noopener" class="btn-action">Highlights</a>
+          </div>
+        `;
+        return;
+      }
+
+      if (data.length === 0) {
+        container.innerHTML = '<p style="font-size: 13px; color: #666;">No profiles posted yet. Be the first via the Portal tab!</p>';
+        return;
+      }
+
+      container.innerHTML = '';
+      data.forEach(player => {
+        container.innerHTML += `
+          <div class="player-card">
+            <div>
+              <h4 style="margin: 0 0 4px 0; font-size: 15px;">${player.name} (${player.position || 'Player'})</h4>
+              <p style="margin: 0; font-size: 12px; color: #666;">Age ${player.age || 'N/A'} • ${player.team || 'Independent'}</p>
+            </div>
+            <a href="${player.video}" target="_blank" rel="noopener" class="btn-action">Highlights</a>
+          </div>
+        `;
+      });
+    }
+
     function switchTab(tabId, event) {
       document.querySelectorAll('.tab-content').forEach(tab => {
         tab.classList.remove('active');
@@ -555,8 +686,6 @@
 
     function filterPlayers() {
       let input = document.getElementById('playerSearch').value.toLowerCase();
-      
-      let matchCount = 0;
       let rankCount = 0;
 
       let rankingsList = document.getElementById('playerList');
@@ -573,32 +702,11 @@
         }
       }
 
-      let matchesList = document.getElementById('matchesList');
-      if (matchesList) {
-        let matchCards = matchesList.getElementsByClassName('player-card');
-        for (let i = 0; i < matchCards.length; i++) {
-          let text = matchCards[i].innerText.toLowerCase();
-          if (text.includes(input)) {
-            matchCards[i].style.display = "";
-            matchCount++;
-          } else {
-            matchCards[i].style.display = "none";
-          }
-        }
-      }
-
-      if (input.length > 0) {
-        if (matchCount > 0 && rankCount === 0) {
-          document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
-          document.querySelectorAll('.bottom-nav button').forEach(b => b.classList.remove('active'));
-          document.getElementById('matches').classList.add('active');
-          document.getElementById('nav-matches').classList.add('active');
-        } else if (rankCount > 0) {
-          document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
-          document.querySelectorAll('.bottom-nav button').forEach(b => b.classList.remove('active'));
-          document.getElementById('rankings').classList.add('active');
-          document.getElementById('nav-rankings').classList.add('active');
-        }
+      if (input.length > 0 && rankCount > 0) {
+        document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+        document.querySelectorAll('.bottom-nav button').forEach(b => b.classList.remove('active'));
+        document.getElementById('rankings').classList.add('active');
+        document.getElementById('nav-rankings').classList.add('active');
       }
     }
   </script>
