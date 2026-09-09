@@ -1,422 +1,768 @@
 <!DOCTYPE html>
-<html lang="en" class="dark">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Scout Escort | Global Football Talent & Live Intelligence Hub</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <script>
-        tailwind.config = {
-            darkMode: 'class',
-            theme: {
-                extend: {
-                    colors: {
-                        brandgreen: '#10b981',
-                        darker: '#0b0f19',
-                        cardbg: '#131b2e',
-                        bordercol: '#1e293b'
-                    }
-                }
-            }
-        }
-    </script>
-    <style>
-        ::-webkit-scrollbar {
-            height: 6px;
-            width: 6px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #0b0f19;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #10b981;
-            border-radius: 3px;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Scout Escort | Digital Football Talent & Showcase Hub</title>
+
+  <!-- SEO & Search Engine Meta Tags -->
+  <meta name="description" content="Discover and connect with elite West African football talent, youth prospects, and professional scouts on Scout Escort.">
+  <meta name="keywords" content="football talent scouting, African football prospects, youth football trials Ghana, soccer scout platform, Scout Escort">
+  <meta name="author" content="Caleb Anneh">
+
+  <!-- Social Media Preview Cards (Open Graph Tags for WhatsApp, X, Facebook) -->
+  <meta property="og:title" content="Scout Escort | Digital Football Talent & Showcase Hub">
+  <meta property="og:description" content="Connect emerging West African football talent with global scouts and academies. Browse verified player profiles and live match data.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://scout-escort.github.io">
+  <meta property="og:image" content="https://images.unsplash.com/photo-1508098682722-e99c43a406b2?q=80&w=1200&auto=format&fit=crop">
+
+  <!-- Google Analytics Tracking -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-9DMZLL3XQE"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-9DMZLL3XQE');
+  </script>
+
+  <!-- Include Supabase for Database & Auth -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+  <style>
+    :root {
+      --bg-color: #0d2818;
+      --card-bg: #ffffff;
+      --text-dark: #111111;
+      --accent-red: #cc0000;
+      --primary-green: #044b23;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html, body {
+      margin: 0 !important;
+      padding: 0 !important;
+      min-height: 100vh;
+      background-color: var(--bg-color);
+      color: var(--text-dark);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
+
+    /* Pinned Top Sponsor Ticker */
+    .sponsor-ticker {
+      width: 100%;
+      background-color: #050b07;
+      overflow: hidden;
+      white-space: nowrap;
+      padding: 10px 0;
+      border-bottom: 1px solid #1a3a25;
+      display: flex;
+      align-items: center;
+    }
+
+    .ticker-content {
+      display: inline-flex;
+      align-items: center;
+      white-space: nowrap;
+      animation: marquee 25s linear infinite;
+    }
+
+    .brand-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-right: 35px;
+      font-size: 14px;
+      font-weight: 800;
+      letter-spacing: 1px;
+      color: #ffffff;
+      text-transform: uppercase;
+    }
+
+    .brand-item img {
+      height: 18px;
+      width: auto;
+      object-fit: contain;
+    }
+
+    .samsung-text { color: #3b82f6; }
+    .bmw-text { color: #0066b1; }
+    .qatar-text { color: #8a1538; }
+
+    @keyframes marquee {
+      0% { transform: translateX(100%); }
+      100% { transform: translateX(-100%); }
+    }
+
+    /* Main Container Structure */
+    .container {
+      max-width: 600px;
+      margin: 15px auto;
+      padding: 0 12px;
+      padding-bottom: 70px;
+    }
+
+    .card {
+      background: var(--card-bg);
+      border-radius: 12px;
+      padding: 20px;
+      min-height: 75vh;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Fixed Bottom Navigation Menu Bar (5 Tabs) */
+    .bottom-nav {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background: #ffffff;
+      border-top: 1px solid #e0e0e0;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      padding: 6px 0;
+      box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+      z-index: 1000;
+    }
+
+    .bottom-nav button {
+      background: none;
+      border: none;
+      color: #666666;
+      font-size: 10px;
+      font-weight: 700;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 3px;
+      cursor: pointer;
+      flex: 1;
+      padding: 4px 0;
+    }
+
+    .bottom-nav button.active {
+      color: var(--primary-green);
+    }
+
+    .bottom-nav button svg {
+      width: 18px;
+      height: 18px;
+      fill: currentColor;
+    }
+
+    /* Card Item Lists */
+    .matches-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .player-card {
+      border: 1px solid #e0e0e0;
+      border-radius: 8px;
+      padding: 14px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .btn-action {
+      background-color: var(--accent-red);
+      color: white;
+      border: none;
+      padding: 8px 14px;
+      border-radius: 6px;
+      font-weight: bold;
+      cursor: pointer;
+      text-decoration: none;
+      font-size: 13px;
+      text-align: center;
+      flex-shrink: 0;
+      margin-left: 10px;
+    }
+
+    .section-title {
+      font-size: 14px;
+      font-weight: 800;
+      color: var(--primary-green);
+      margin: 16px 0 8px 0;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .form-group {
+      margin-bottom: 14px;
+    }
+
+    .form-group.full-width {
+      grid-column: span 2;
+    }
+
+    .form-group label {
+      display: block;
+      font-weight: 700;
+      margin-bottom: 6px;
+      font-size: 12px;
+      color: #333;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .form-group input, .form-group select, .form-group textarea {
+      width: 100%;
+      padding: 10px 12px;
+      border: 1.5px solid #d0d0d0;
+      border-radius: 6px;
+      font-size: 13px;
+      outline: none;
+      background: #fafafa;
+      transition: border-color 0.2s;
+    }
+
+    .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+      border-color: var(--primary-green);
+      background: #ffffff;
+    }
+
+    .submit-btn {
+      width: 100%;
+      background-color: var(--primary-green);
+      color: white;
+      border: none;
+      padding: 14px;
+      font-size: 15px;
+      font-weight: bold;
+      border-radius: 6px;
+      cursor: pointer;
+      margin-top: 10px;
+      letter-spacing: 0.5px;
+      box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+
+    .tab-content {
+      display: none;
+      flex: 1;
+    }
+
+    .tab-content.active {
+      display: block;
+    }
+    
+    .hidden { display: none !important; }
+  </style>
 </head>
-<body class="bg-darker text-slate-100 font-sans min-h-screen flex flex-col antialiased selection:bg-brandgreen selection:text-white">
+<body>
 
-    <!-- HEADER & NAVIGATION -->
-    <header class="bg-[#0f172a] border-b border-bordercol sticky top-0 z-50 shadow-2xl">
-        <div class="max-w-7xl mx-auto px-4 py-3.5 flex flex-col sm:flex-row justify-between items-center gap-3">
-            <div class="flex items-center space-x-3">
-                <div class="bg-brandgreen text-white p-2.5 rounded-lg font-black text-xl shadow-lg shadow-brandgreen/30 flex items-center justify-center">
-                    <i class="fa-solid fa-futbol"></i>
-                </div>
-                <div>
-                    <h1 class="text-xl font-black tracking-tight text-white flex items-center gap-2">
-                        SCOUT ESCORT <span class="text-[10px] bg-brandgreen text-white px-2 py-0.5 rounded uppercase font-extrabold tracking-wider">LIVE</span>
-                    </h1>
-                    <p class="text-xs text-slate-400 font-medium">Professional Scouting Intelligence & Senior Score Center</p>
-                </div>
-            </div>
-            <div class="flex items-center gap-3 text-xs bg-darker px-4 py-2 rounded-xl border border-bordercol">
-                <div class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-brandgreen animate-pulse"></span> <span class="text-white font-bold">540+</span> Tracked Prospects</div>
-                <div class="w-px h-3 bg-bordercol"></div>
-                <div><span class="text-white font-bold">42</span> Scouts Active</div>
-            </div>
-        </div>
+  <!-- Pinned Top Sponsor Ticker Bar -->
+  <div class="sponsor-ticker">
+    <div class="ticker-content">
+      <span class="brand-item">
+        <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/puma.svg" style="filter: brightness(0) invert(1);" alt="Puma">
+        PUMA
+      </span>
+      <span class="brand-item">
+        <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/nike.svg" style="filter: brightness(0) invert(1);" alt="Nike">
+        NIKE
+      </span>
+      <span class="brand-item samsung-text">
+        <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/samsung.svg" style="filter: invert(36%) sepia(85%) saturate(1982%) hue-rotate(209deg) brightness(98%) contrast(96%);" alt="Samsung">
+        SAMSUNG
+      </span>
+      <span class="brand-item">
+        <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/mercedes.svg" style="filter: brightness(0) invert(1);" alt="Mercedes">
+        MERCEDES
+      </span>
+      <span class="brand-item bmw-text">
+        <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/bmw.svg" style="filter: invert(27%) sepia(89%) saturate(1832%) hue-rotate(185deg) brightness(91%) contrast(101%);" alt="BMW">
+        BMW
+      </span>
+      <span class="brand-item">
+        <svg width="22" height="15" viewBox="0 0 24 16" fill="none" style="vertical-align: middle;">
+          <circle cx="8" cy="8" r="7" fill="#EB001B"/>
+          <circle cx="16" cy="8" r="7" fill="#F79E1B" fill-opacity="0.9"/>
+        </svg>
+        MASTERCARD
+      </span>
+      <span class="brand-item qatar-text">
+        <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/qatarairways.svg" style="filter: invert(16%) sepia(76%) saturate(4156%) hue-rotate(328deg) brightness(85%) contrast(98%);" alt="Qatar Airways">
+        QATAR AIRWAYS
+      </span>
+    </div>
+  </div>
 
-        <!-- TABS BAR -->
-        <div class="bg-black/85 border-t border-bordercol px-4 py-2">
-            <div class="max-w-7xl mx-auto flex overflow-x-auto space-x-2 pb-1 scrollbar-none">
-                <button onclick="switchTab('fixtures')" id="btn-fixtures" class="tab-btn px-4 py-2 rounded font-bold text-xs transition-all bg-brandgreen text-white shadow-lg flex items-center gap-2 whitespace-nowrap">
-                    <i class="fa-solid fa-satellite-dish"></i> Senior Live Scores
-                </button>
-                <button onclick="switchTab('matches')" id="btn-matches" class="tab-btn px-4 py-2 rounded font-bold text-xs transition-all text-slate-300 hover:bg-slate-800 flex items-center gap-2 whitespace-nowrap">
-                    <i class="fa-solid fa-users"></i> Youth Prospects
-                </button>
-                <button onclick="switchTab('news')" id="btn-news" class="tab-btn px-4 py-2 rounded font-bold text-xs transition-all text-slate-300 hover:bg-slate-800 flex items-center gap-2 whitespace-nowrap">
-                    <i class="fa-solid fa-newspaper"></i> Transfer Desk & News
-                </button>
-                <button onclick="switchTab('leagues')" id="btn-leagues" class="tab-btn px-4 py-2 rounded font-bold text-xs transition-all text-slate-300 hover:bg-slate-800 flex items-center gap-2 whitespace-nowrap">
-                    <i class="fa-solid fa-trophy"></i> Elite Leagues
-                </button>
-                <button onclick="switchTab('register')" id="btn-register" class="tab-btn px-4 py-2 rounded font-bold text-xs transition-all text-slate-300 hover:bg-slate-800 flex items-center gap-2 whitespace-nowrap border border-brandgreen/40 text-brandgreen">
-                    <i class="fa-solid fa-user-plus"></i> Submit Prospect
-                </button>
-                <button onclick="switchTab('portal')" id="btn-portal" class="tab-btn px-4 py-2 rounded font-bold text-xs transition-all text-slate-300 hover:bg-slate-800 flex items-center gap-2 whitespace-nowrap">
-                    <i class="fa-solid fa-lock"></i> Scout Portal
-                </button>
-            </div>
-        </div>
-    </header>
+  <div class="container">
+    <div class="card">
 
-    <!-- MAIN VIEWS CONTAINER -->
-    <main class="max-w-7xl mx-auto px-4 py-6 flex-grow w-full space-y-6">
-
-        <!-- TAB 1: SENIOR LIVE SCORES -->
-        <div id="tab-fixtures" class="tab-content space-y-6">
-            <div class="bg-cardbg p-6 rounded-xl border border-bordercol space-y-6 shadow-xl">
-                <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 pb-4 border-b border-bordercol">
-                    <div>
-                        <h2 class="text-xl font-extrabold text-white flex items-center gap-2.5">
-                            <span class="w-3 h-3 rounded-full bg-brandgreen inline-block"></span> Senior Leagues Real-Time Scoreboard
-                        </h2>
-                        <p class="text-xs text-slate-400 mt-0.5">Live scores, match statuses, and final results across top European and African senior divisions.</p>
-                    </div>
-                    <span class="text-xs bg-brandgreen/10 text-brandgreen px-3 py-1.5 rounded border border-brandgreen/30 font-semibold flex items-center gap-2">
-                        <span class="w-2 h-2 rounded-full bg-brandgreen animate-ping"></span> Live Broadcast Feed
-                    </span>
-                </div>
-
-                <div class="space-y-3">
-                    <div class="bg-darker p-4 rounded border border-bordercol hover:border-brandgreen/50 transition-all flex flex-col md:flex-row justify-between items-center gap-4">
-                        <div class="w-full md:w-1/4 text-xs font-bold text-sky-400 flex items-center gap-2">
-                            <i class="fa-solid fa-circle text-[8px] text-brandgreen"></i> Premier League (England)
-                        </div>
-                        <div class="w-full md:w-2/4 flex items-center justify-center gap-6 font-bold text-sm">
-                            <span class="text-right flex-1 truncate text-slate-200">Arsenal F.C.</span>
-                            <span class="bg-black text-brandgreen px-4 py-1.5 rounded border border-brandgreen/40 font-mono tracking-wider text-base font-black shadow-inner">2 - 1</span>
-                            <span class="text-left flex-1 truncate text-slate-200">Chelsea F.C.</span>
-                        </div>
-                        <div class="w-full md:w-1/4 text-right text-xs font-semibold text-brandgreen">
-                            <span class="bg-brandgreen/10 px-2.5 py-1 rounded border border-brandgreen/20 uppercase font-bold tracking-wider">Full-Time</span>
-                        </div>
-                    </div>
-
-                    <div class="bg-darker p-4 rounded border border-bordercol hover:border-brandgreen/50 transition-all flex flex-col md:flex-row justify-between items-center gap-4">
-                        <div class="w-full md:w-1/4 text-xs font-bold text-sky-400 flex items-center gap-2">
-                            <i class="fa-solid fa-circle text-[8px] text-brandgreen"></i> Premier League (England)
-                        </div>
-                        <div class="w-full md:w-2/4 flex items-center justify-center gap-6 font-bold text-sm">
-                            <span class="text-right flex-1 truncate text-slate-200">Everton F.C.</span>
-                            <span class="bg-black text-brandgreen px-4 py-1.5 rounded border border-brandgreen/40 font-mono tracking-wider text-base font-black shadow-inner">2 - 2</span>
-                            <span class="text-left flex-1 truncate text-slate-200">Manchester United</span>
-                        </div>
-                        <div class="w-full md:w-1/4 text-right text-xs font-semibold text-brandgreen">
-                            <span class="bg-brandgreen/10 px-2.5 py-1 rounded border border-brandgreen/20 uppercase font-bold tracking-wider">Full-Time</span>
-                        </div>
-                    </div>
-
-                    <div class="bg-darker p-4 rounded border border-bordercol hover:border-brandgreen/50 transition-all flex flex-col md:flex-row justify-between items-center gap-4">
-                        <div class="w-full md:w-1/4 text-xs font-bold text-amber-400 flex items-center gap-2">
-                            <i class="fa-solid fa-circle text-[8px] text-brandgreen"></i> La Liga (Spain)
-                        </div>
-                        <div class="w-full md:w-2/4 flex items-center justify-center gap-6 font-bold text-sm">
-                            <span class="text-right flex-1 truncate text-slate-200">Real Madrid</span>
-                            <span class="bg-black text-white px-4 py-1.5 rounded border border-bordercol font-mono tracking-wider text-base font-black">3 - 0</span>
-                            <span class="text-left flex-1 truncate text-slate-200">Villarreal CF</span>
-                        </div>
-                        <div class="w-full md:w-1/4 text-right text-xs font-semibold text-slate-400">
-                            <span class="bg-slate-800 px-2.5 py-1 rounded uppercase tracking-wider font-bold">Full-Time</span>
-                        </div>
-                    </div>
-
-                    <div class="bg-darker p-4 rounded border border-bordercol hover:border-brandgreen/50 transition-all flex flex-col md:flex-row justify-between items-center gap-4">
-                        <div class="w-full md:w-1/4 text-xs font-bold text-emerald-400 flex items-center gap-2">
-                            <i class="fa-solid fa-circle text-[8px] text-brandgreen"></i> Ghana Premier League
-                        </div>
-                        <div class="w-full md:w-2/4 flex items-center justify-center gap-6 font-bold text-sm">
-                            <span class="text-right flex-1 truncate text-slate-200">Accra Hearts of Oak</span>
-                            <span class="bg-black text-brandgreen px-4 py-1.5 rounded border border-brandgreen/40 font-mono tracking-wider text-base font-black shadow-inner">4 - 0</span>
-                            <span class="text-left flex-1 truncate text-slate-200">Berekum Chelsea</span>
-                        </div>
-                        <div class="w-full md:w-1/4 text-right text-xs font-semibold text-brandgreen">
-                            <span class="bg-brandgreen/10 px-2.5 py-1 rounded border border-brandgreen/20 uppercase font-bold tracking-wider">Full-Time</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- TAB 2: YOUTH PROSPECTS -->
-        <div id="tab-matches" class="tab-content hidden space-y-6">
-            <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 bg-cardbg p-5 rounded-xl border border-bordercol shadow-lg">
-                <div>
-                    <h2 class="text-xl font-bold text-white">Verified Youth Prospects Database</h2>
-                    <p class="text-xs text-slate-400 mt-1">Direct video reels and match metrics for international scouts and club directors.</p>
-                </div>
-                <div class="w-full sm:w-auto">
-                    <input type="text" id="playerSearch" onkeyup="filterPlayers()" placeholder="Search name, position, club..." class="bg-darker border border-bordercol px-4 py-2.5 rounded text-xs text-white focus:outline-none focus:border-brandgreen w-full sm:w-72">
-                </div>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="playerGrid">
-                <div class="player-card bg-cardbg rounded-xl border border-bordercol overflow-hidden shadow-xl hover:border-brandgreen/50 transition-all">
-                    <div class="relative bg-slate-900 h-44 flex items-center justify-center border-b border-bordercol">
-                        <i class="fa-solid fa-user-shield text-5xl text-brandgreen/30"></i>
-                        <span class="absolute top-3 left-3 bg-brandgreen text-white font-bold text-xs px-2.5 py-1 rounded">Centre-Back</span>
-                        <span class="absolute top-3 right-3 bg-black/90 text-white font-semibold text-xs px-2.5 py-1 rounded border border-bordercol">Age: 18</span>
-                    </div>
-                    <div class="p-5 space-y-3">
-                        <h3 class="text-lg font-bold text-white">Kofi Mensah</h3>
-                        <p class="text-xs text-slate-400 flex items-center gap-1.5"><i class="fa-solid fa-location-dot text-brandgreen"></i> Accra Academy Stars (Ghana)</p>
-                        <div class="grid grid-cols-2 gap-2 text-xs py-2 border-y border-bordercol text-slate-300">
-                            <div>Height: <span class="font-bold text-white">188 cm</span></div>
-                            <div>Pace Rating: <span class="font-bold text-brandgreen">88/100</span></div>
-                        </div>
-                        <div class="flex gap-2 pt-1">
-                            <button onclick="alert('Loading scout video tape and analytics...')" class="flex-1 bg-brandgreen hover:bg-emerald-600 text-white font-bold py-2.5 px-3 rounded text-xs transition-all flex items-center justify-center gap-2 shadow-md">
-                                <i class="fa-solid fa-play"></i> Watch Tape
-                            </button>
-                            <a href="https://api.whatsapp.com/send?text=Check%20out%20Kofi%20Mensah%20(Centre-Back)%20on%20Scout%20Escort!%20https://scout-escort.github.io" target="_blank" class="bg-black hover:bg-slate-900 text-brandgreen border border-brandgreen/40 p-2.5 rounded text-xs flex items-center justify-center" title="Share via WhatsApp">
-                                <i class="fa-brands fa-whatsapp text-lg"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="player-card bg-cardbg rounded-xl border border-bordercol overflow-hidden shadow-xl hover:border-brandgreen/50 transition-all">
-                    <div class="relative bg-slate-900 h-44 flex items-center justify-center border-b border-bordercol">
-                        <i class="fa-solid fa-user-ninja text-5xl text-brandgreen/30"></i>
-                        <span class="absolute top-3 left-3 bg-brandgreen text-white font-bold text-xs px-2.5 py-1 rounded">Winger</span>
-                        <span class="absolute top-3 right-3 bg-black/90 text-white font-semibold text-xs px-2.5 py-1 rounded border border-bordercol">Age: 17</span>
-                    </div>
-                    <div class="p-5 space-y-3">
-                        <h3 class="text-lg font-bold text-white">Ibrahim Diallo</h3>
-                        <p class="text-xs text-slate-400 flex items-center gap-1.5"><i class="fa-solid fa-location-dot text-brandgreen"></i> Right to Dream Academy</p>
-                        <div class="grid grid-cols-2 gap-2 text-xs py-2 border-y border-bordercol text-slate-300">
-                            <div>Height: <span class="font-bold text-white">174 cm</span></div>
-                            <div>Pace Rating: <span class="font-bold text-brandgreen">95/100</span></div>
-                        </div>
-                        <div class="flex gap-2 pt-1">
-                            <button onclick="alert('Loading scout video tape and analytics...')" class="flex-1 bg-brandgreen hover:bg-emerald-600 text-white font-bold py-2.5 px-3 rounded text-xs transition-all flex items-center justify-center gap-2 shadow-md">
-                                <i class="fa-solid fa-play"></i> Watch Tape
-                            </button>
-                            <a href="https://api.whatsapp.com/send?text=Check%20out%20Ibrahim%20Diallo%20(Winger)%20on%20Scout%20Escort!%20https://scout-escort.github.io" target="_blank" class="bg-black hover:bg-slate-900 text-brandgreen border border-brandgreen/40 p-2.5 rounded text-xs flex items-center justify-center" title="Share via WhatsApp">
-                                <i class="fa-brands fa-whatsapp text-lg"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="player-card bg-cardbg rounded-xl border border-bordercol overflow-hidden shadow-xl hover:border-brandgreen/50 transition-all">
-                    <div class="relative bg-slate-900 h-44 flex items-center justify-center border-b border-bordercol">
-                        <i class="fa-solid fa-user-gear text-5xl text-brandgreen/30"></i>
-                        <span class="absolute top-3 left-3 bg-brandgreen text-white font-bold text-xs px-2.5 py-1 rounded">Midfielder</span>
-                        <span class="absolute top-3 right-3 bg-black/90 text-white font-semibold text-xs px-2.5 py-1 rounded border border-bordercol">Age: 19</span>
-                    </div>
-                    <div class="p-5 space-y-3">
-                        <h3 class="text-lg font-bold text-white">Emmanuel Osei</h3>
-                        <p class="text-xs text-slate-400 flex items-center gap-1.5"><i class="fa-solid fa-location-dot text-brandgreen"></i> Dreams FC Youth (Ghana)</p>
-                        <div class="grid grid-cols-2 gap-2 text-xs py-2 border-y border-bordercol text-slate-300">
-                            <div>Height: <span class="font-bold text-white">182 cm</span></div>
-                            <div>Passing: <span class="font-bold text-brandgreen">91/100</span></div>
-                        </div>
-                        <div class="flex gap-2 pt-1">
-                            <button onclick="alert('Loading scout video tape and analytics...')" class="flex-1 bg-brandgreen hover:bg-emerald-600 text-white font-bold py-2.5 px-3 rounded text-xs transition-all flex items-center justify-center gap-2 shadow-md">
-                                <i class="fa-solid fa-play"></i> Watch Tape
-                            </button>
-                            <a href="https://api.whatsapp.com/send?text=Check%20out%20Emmanuel%20Osei%20(Midfielder)%20on%20Scout%20Escort!%20https://scout-escort.github.io" target="_blank" class="bg-black hover:bg-slate-900 text-brandgreen border border-brandgreen/40 p-2.5 rounded text-xs flex items-center justify-center" title="Share via WhatsApp">
-                                <i class="fa-brands fa-whatsapp text-lg"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- TAB 3: TRANSFER DESK & NEWS -->
-        <div id="tab-news" class="tab-content hidden space-y-6">
-            <div class="flex justify-between items-center pb-2 border-b border-bordercol">
-                <h2 class="text-xl font-extrabold text-white flex items-center gap-2"><i class="fa-solid fa-newspaper text-brandgreen"></i> Global Football Transfer Desk & News</h2>
-                <span class="text-xs text-slate-400">Synced live feeds</span>
-            </div>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div class="bg-cardbg p-6 rounded-xl border border-bordercol space-y-3 hover:border-brandgreen/50 transition-all shadow-lg">
-                    <div class="flex justify-between items-center">
-                        <span class="text-xs text-white font-bold bg-brandgreen px-3 py-1 rounded uppercase tracking-wider">Breaking News</span>
-                        <span class="text-xs text-slate-400 font-semibold">2 hours ago</span>
-                    </div>
-                    <h3 class="text-lg font-bold text-white leading-snug">Villarreal & Spanish Clubs Expand West African Academy Partnerships.</h3>
-                    <p class="text-xs text-slate-400 leading-relaxed">Top European recruitment directors confirm direct scouting pipelines from Accra and Abidjan are yielding elite midfield prospects.</p>
-                </div>
-
-                <div class="bg-cardbg p-6 rounded-xl border border-bordercol space-y-3 hover:border-brandgreen/50 transition-all shadow-lg">
-                    <div class="flex justify-between items-center">
-                        <span class="text-xs text-sky-400 font-bold bg-sky-950 px-3 py-1 rounded border border-sky-800 uppercase tracking-wider">Premier League</span>
-                        <span class="text-xs text-slate-400 font-semibold">5 hours ago</span>
-                    </div>
-                    <h3 class="text-lg font-bold text-white leading-snug">Champions League Group Stage Matchdays Set to Kick Off.</h3>
-                    <p class="text-xs text-slate-400 leading-relaxed">European heavyweights finalize rosters as elite clubs prepare for high-stakes continental matchdays starting next week.</p>
-                </div>
-            </div>
-        </div>
-
-        <!-- TAB 4: ELITE LEAGUES -->
-        <div id="tab-leagues" class="tab-content hidden space-y-6">
-            <h2 class="text-xl font-extrabold text-white">Monitored Leagues & Competition Directory</h2>
-            <div class="grid grid-cols-1 sm:grid-cols-3 gap-5">
-                <div class="bg-cardbg p-6 rounded-xl border border-bordercol space-y-3 shadow-lg">
-                    <i class="fa-solid fa-trophy text-brandgreen text-3xl"></i>
-                    <div class="text-lg font-bold text-white">Ghana Premier League</div>
-                    <div class="text-xs text-slate-400 leading-relaxed">Tracking domestic professional competition, match week fixtures, and standout local MVPs.</div>
-                </div>
-                <div class="bg-cardbg p-6 rounded-xl border border-bordercol space-y-3 shadow-lg">
-                    <i class="fa-solid fa-medal text-amber-400 text-3xl"></i>
-                    <div class="text-lg font-bold text-white">CAF Champions League</div>
-                    <div class="text-xs text-slate-400 leading-relaxed">Monitoring premier continental club battles and top African performers.</div>
-                </div>
-                <div class="bg-cardbg p-6 rounded-xl border border-bordercol space-y-3 shadow-lg">
-                    <i class="fa-solid fa-globe text-sky-400 text-3xl"></i>
-                    <div class="text-lg font-bold text-white">Top 5 European Leagues</div>
-                    <div class="text-xs text-slate-400 leading-relaxed">Premier League, La Liga, Bundesliga, Serie A, and Ligue 1 real-time tables and scores.</div>
-                </div>
-            </div>
-        </div>
-
-        <!-- TAB 5: SUBMIT PROSPECT -->
-        <div id="tab-register" class="tab-content hidden max-w-2xl mx-auto space-y-6 bg-cardbg p-6 sm:p-8 rounded-xl border border-bordercol shadow-2xl">
+      <!-- Tab 1: Matches -->
+      <div id="matches" class="tab-content active">
+        <h2 style="color: var(--primary-green); margin-top:0;">Featured Showcase Matches</h2>
+        <div class="matches-list" id="matchesList">
+          <div class="player-card">
             <div>
-                <h2 class="text-xl font-extrabold text-white">Submit a Prospect Profile</h2>
-                <p class="text-xs text-slate-400 mt-1">Register emerging player talent to feature them in the public database and generate shareable links instantly.</p>
+              <h4 style="margin: 0 0 4px 0; font-size: 15px;">D&R Academy vs. Grassroots XI</h4>
+              <p style="margin: 0; font-size: 12px; color: #666;">Showcase Series • Full Match Tape</p>
             </div>
-            
-            <form onsubmit="handleProspectSubmission(event)" class="space-y-4">
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <div>
-                        <label class="block text-xs font-semibold text-slate-300 mb-1">Player Name</label>
-                        <input type="text" id="subName" required placeholder="e.g. Samuel Tetteh" class="w-full bg-darker border border-bordercol px-3.5 py-3 rounded text-xs text-white focus:outline-none focus:border-brandgreen">
-                    </div>
-                    <div>
-                        <label class="block text-xs font-semibold text-slate-300 mb-1">Position</label>
-                        <select id="subPosition" class="w-full bg-darker border border-bordercol px-3.5 py-3 rounded text-xs text-white focus:outline-none focus:border-brandgreen">
-                            <option>Centre-Back</option>
-                            <option>Winger</option>
-                            <option>Midfielder</option>
-                            <option>Striker</option>
-                            <option>Goalkeeper</option>
-                        </select>
-                    </div>
-                </div>
-
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <div>
-                        <label class="block text-xs font-semibold text-slate-300 mb-1">Age</label>
-                        <input type="number" id="subAge" min="14" max="23" required placeholder="e.g. 18" class="w-full bg-darker border border-bordercol px-3.5 py-3 rounded text-xs text-white focus:outline-none focus:border-brandgreen">
-                    </div>
-                    <div>
-                        <label class="block text-xs font-semibold text-slate-300 mb-1">Current Club / Academy</label>
-                        <input type="text" id="subClub" required placeholder="e.g. Accra Youth FC" class="w-full bg-darker border border-bordercol px-3.5 py-3 rounded text-xs text-white focus:outline-none focus:border-brandgreen">
-                    </div>
-                </div>
-
-                <div>
-                    <label class="block text-xs font-semibold text-slate-300 mb-1">Highlight Video Link (YouTube / Hudl)</label>
-                    <input type="url" id="subVideo" required placeholder="https://youtube.com/watch?v=..." class="w-full bg-darker border border-bordercol px-3.5 py-3 rounded text-xs text-white focus:outline-none focus:border-brandgreen">
-                </div>
-
-                <button type="submit" class="w-full bg-brandgreen hover:bg-emerald-600 text-white font-bold py-3.5 px-4 rounded text-xs transition-all shadow-lg shadow-brandgreen/30">
-                    Publish Prospect Profile
-                </button>
-            </form>
-        </div>
-
-        <!-- TAB 6: SCOUT PORTAL -->
-        <div id="tab-portal" class="tab-content hidden max-w-md mx-auto space-y-6 bg-cardbg p-6 sm:p-8 rounded-xl border border-bordercol shadow-2xl">
+            <a href="https://www.google.com/search?q=football+live+scores" target="_blank" rel="noopener" class="btn-action">Live Scores</a>
+          </div>
+          <div class="player-card">
             <div>
-                <h2 class="text-xl font-extrabold text-white">Scout & Agent Portal</h2>
-                <p class="text-xs text-slate-400 mt-1">Authorized secure access for verified European and African club scouts.</p>
+              <h4 style="margin: 0 0 4px 0; font-size: 15px;">Elite Youth FC vs. Accra Select</h4>
+              <p style="margin: 0; font-size: 12px; color: #666;">U19 Championship • Full Match Tape</p>
             </div>
-            <form onsubmit="event.preventDefault(); alert('Portal login authenticated successfully.');" class="space-y-4">
-                <div>
-                    <label class="block text-xs font-semibold text-slate-300 mb-1">Scout Email</label>
-                    <input type="email" required placeholder="scout@club.eu" class="w-full bg-darker border border-bordercol px-3.5 py-3 rounded text-xs text-white focus:outline-none focus:border-brandgreen">
-                </div>
-                <div>
-                    <label class="block text-xs font-semibold text-slate-300 mb-1">Access Password</label>
-                    <input type="password" required placeholder="••••••••" class="w-full bg-darker border border-bordercol px-3.5 py-3 rounded text-xs text-white focus:outline-none focus:border-brandgreen">
-                </div>
-                <button type="submit" class="w-full bg-brandgreen hover:bg-emerald-600 text-white font-bold py-3.5 px-4 rounded text-xs transition-all">
-                    Access Secure Database
-                </button>
-            </form>
+            <a href="https://www.google.com/search?q=football+live+scores" target="_blank" rel="noopener" class="btn-action">Live Scores</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tab 2: Live Sports Journalism & Transfer Desk -->
+      <div id="news" class="tab-content">
+        <h2 style="color: var(--primary-green); margin-top:0;">Live Sports & Transfer Desk</h2>
+        <p style="font-size: 12px; color: #666; margin-bottom: 14px;">Real-time football headlines, journalist updates, and breaking news.</p>
+        
+        <div class="matches-list">
+          <div class="player-card">
+            <div>
+              <h4 style="margin: 0 0 4px 0; font-size: 15px;">Transfer Window & Breaking News Desk</h4>
+              <p style="margin: 0; font-size: 12px; color: #666;">Live reporting, expert journalist analysis & breaking rumors</p>
+            </div>
+            <a href="https://www.espn.com/soccer/transfer" target="_blank" rel="noopener" class="btn-action">Open Desk</a>
+          </div>
+          <div class="player-card">
+            <div>
+              <h4 style="margin: 0 0 4px 0; font-size: 15px;">BBC Sport Football Live Commentary</h4>
+              <p style="margin: 0; font-size: 12px; color: #666;">Minute-by-minute text commentary, expert views & match analysis</p>
+            </div>
+            <a href="https://www.bbc.com/sport/football" target="_blank" rel="noopener" class="btn-action">Read Live</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tab 3: Leagues & Database -->
+      <div id="rankings" class="tab-content">
+        <h2 style="color: var(--primary-green); margin-top:0;">Global & African Leagues Directory</h2>
+        <p style="font-size: 13px; color: #666; margin-bottom: 12px;">Search players, clubs, or major world and African leagues:</p>
+        
+        <!-- Interactive Search Bar -->
+        <div style="margin-bottom: 14px;">
+          <input type="text" id="playerSearch" placeholder="Search league, club, or player..." onkeyup="filterPlayers()" style="width: 100%; padding: 10px 12px; border: 1.5px solid #d0d0d0; border-radius: 6px; font-size: 13px; outline: none; background: #fafafa;">
         </div>
 
-    </main>
+        <div class="matches-list" id="playerList">
+          <!-- Major World Leagues Hub -->
+          <div class="section-title" style="margin-top:0;">Top Global Leagues</div>
+          <div class="player-card league-card">
+            <div>
+              <h4 style="margin: 0 0 4px 0; font-size: 15px;">🏴󠁧󠁢󠁥󠁮󠁧󠁿 Premier League (England)</h4>
+              <p style="margin: 0; font-size: 12px; color: #666;">Tier 1 • Live Standings & Results</p>
+            </div>
+            <a href="https://www.google.com/search?q=Premier+League+live+scores+table" target="_blank" rel="noopener" class="btn-action">Live Updates</a>
+          </div>
+          <div class="player-card league-card">
+            <div>
+              <h4 style="margin: 0 0 4px 0; font-size: 15px;">🇪🇸 La Liga (Spain)</h4>
+              <p style="margin: 0; font-size: 12px; color: #666;">Tier 1 • Live Standings & Results</p>
+            </div>
+            <a href="https://www.google.com/search?q=La+Liga+live+scores+table" target="_blank" rel="noopener" class="btn-action">Live Updates</a>
+          </div>
 
-    <!-- FOOTER -->
-    <footer class="bg-black border-t border-bordercol mt-auto py-6 text-center text-xs text-slate-500 space-y-2">
-        <p>&copy; 2026 Scout Escort. Empowering West African Football Talent & Global Scouting Operations.</p>
-        <p class="text-slate-400 font-semibold tracking-wide">Official Partners: PUMA | NIKE | QATAR AIRWAYS | MASTERCARD | ADIDAS</p>
-    </footer>
+          <!-- Featured African Leagues Hub -->
+          <div class="section-title">Prominent African Leagues</div>
+          <div class="player-card league-card">
+            <div>
+              <h4 style="margin: 0 0 4px 0; font-size: 15px;">🇬🇭 Ghana Premier League (Ghana)</h4>
+              <p style="margin: 0; font-size: 12px; color: #666;">Domestic Elite • Live Scores & Results</p>
+            </div>
+            <a href="https://www.google.com/search?q=Ghana+Premier+League+live+scores" target="_blank" rel="noopener" class="btn-action">Live Updates</a>
+          </div>
 
-    <!-- INTERACTION LOGIC -->
-    <script>
-        function switchTab(tabId) {
-            document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
-            document.querySelectorAll('.tab-btn').forEach(el => {
-                el.classList.remove('bg-brandgreen', 'text-white', 'shadow-lg');
-                el.classList.add('text-slate-300', 'hover:bg-slate-800');
-            });
+          <!-- Verified Prospects -->
+          <div class="section-title">Verified Prospect Directory (Live Database Feed)</div>
+          <div id="db-feed-container">
+            <p style="font-size: 13px; color: #666;">Loading live directory profiles...</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tab 4: Professional Registration Tab -->
+      <div id="registration" class="tab-content" style="background: #ffffff; padding: 20px;">
+        <div style="border-bottom: 2px solid var(--primary-green); padding-bottom: 8px; margin-bottom: 16px;">
+          <h3 style="color: var(--primary-green); margin: 0; font-size: 18px; font-weight: 800;">Scout Escort Registration</h3>
+          <p style="font-size: 12px; color: #666; margin: 4px 0 0 0;">Enter your player profile details and credentials below.</p>
+        </div>
+
+        <div style="background: #f8fafc; padding: 18px; border-radius: 10px; border: 1px solid #e2e8f0;">
+          <div class="form-grid">
+            <div class="form-group full-width">
+              <label>Select Role *</label>
+              <select id="reg-role" style="font-weight: 600; color: #0f172a;">
+                <option value="player">Football Prospect / Player</option>
+                <option value="scout">Scout / Talent Agent</option>
+                <option value="club">Club Representative / Coach</option>
+              </select>
+            </div>
+
+            <div class="form-group full-width">
+              <label>Full Name *</label>
+              <input type="text" id="reg-fullname" placeholder="e.g. Samuel Mensah">
+            </div>
+
+            <div class="form-group">
+              <label>Position *</label>
+              <input type="text" id="reg-position" placeholder="e.g. LW / RW / CM">
+            </div>
+
+            <div class="form-group">
+              <label>Age *</label>
+              <input type="number" id="reg-age" placeholder="e.g. 18">
+            </div>
+
+            <div class="form-group">
+              <label>Height *</label>
+              <input type="text" id="reg-height" placeholder="e.g. 1.82m or 6ft">
+            </div>
+
+            <div class="form-group">
+              <label>Weight *</label>
+              <input type="text" id="reg-weight" placeholder="e.g. 75kg">
+            </div>
+
+            <div class="form-group full-width">
+              <label>Country / Base *</label>
+              <input type="text" id="reg-country" placeholder="e.g. Ghana">
+            </div>
+
+            <div class="form-group full-width">
+              <label>Email Address *</label>
+              <input type="email" id="reg-email" placeholder="name@example.com">
+            </div>
+
+            <div class="form-group full-width">
+              <label>Secure Password *</label>
+              <input type="password" id="reg-password" placeholder="At least 6 characters">
+            </div>
+
+            <div class="form-group full-width">
+              <button type="button" onclick="registerAccount()" class="submit-btn">Register</button>
+            </div>
+          </div>
+          <p id="reg-message" style="font-size: 12px; margin-top: 10px; text-align: center; color: #cc0000; font-weight: 600;"></p>
+        </div>
+      </div>
+
+      <!-- Tab 5: Portal (Login & Publish Dashboard) -->
+      <div id="portal" class="tab-content" style="background: #ffffff; padding: 20px;">
+        <h3 style="color: var(--primary-green); margin-top: 0; margin-bottom: 6px;">Secure Platform Portal</h3>
+        <p style="font-size: 13px; color: #666; line-height: 1.4; margin-bottom: 14px;">
+          Log in to your account to instantly post and manage verified player profiles directly on the live database feed.
+        </p>
+
+        <!-- AUTHENTICATION SECTION -->
+        <div id="auth-box" style="background: #f9fafb; padding: 15px; border-radius: 8px; border: 1px solid #e5e7eb; margin-bottom: 15px;">
+          <h4 style="margin: 0 0 10px 0; font-size: 14px; color: var(--primary-green);">User Login</h4>
+          <div class="form-group" style="margin-bottom: 8px;">
+            <input type="email" id="auth-email" placeholder="Email Address">
+          </div>
+          <div class="form-group" style="margin-bottom: 10px;">
+            <input type="password" id="auth-password" placeholder="Password">
+          </div>
+          <button type="button" onclick="loginUser()" style="width:100%; background: var(--primary-green); color: white; border: none; padding: 10px; border-radius: 6px; font-weight: bold; cursor: pointer;">Log In</button>
+          <p id="auth-message" style="font-size: 12px; margin-top: 8px; color: #cc0000;"></p>
+        </div>
+
+        <!-- LOGGED IN DASHBOARD (Hidden until logged in) -->
+        <div id="dashboard-box" class="hidden" style="background: #f0fdf4; padding: 15px; border-radius: 8px; border: 1px solid #bbf7d0;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+            <span id="logged-user-email" style="font-size: 12px; font-weight: bold; color: var(--primary-green);"></span>
+            <button type="button" onclick="logoutUser()" style="background: #dc2626; color: white; border: none; padding: 4px 10px; border-radius: 4px; font-size: 11px; cursor: pointer;">Logout</button>
+          </div>
+
+          <h4 style="margin: 0 0 10px 0; font-size: 14px; color: var(--primary-green);">Publish New Prospect Profile</h4>
+          
+          <div class="form-grid">
+            <div class="form-group full-width">
+              <label>Player Name *</label>
+              <input type="text" id="p-name" placeholder="e.g. Samuel Mensah">
+            </div>
             
-            document.getElementById('tab-' + tabId).classList.remove('hidden');
-            const activeBtn = document.getElementById('btn-' + tabId);
-            activeBtn.classList.remove('text-slate-300', 'hover:bg-slate-800');
-            activeBtn.classList.add('bg-brandgreen', 'text-white', 'shadow-lg');
-        }
+            <div class="form-group">
+              <label>Position</label>
+              <input type="text" id="p-position" placeholder="e.g. LW / RW">
+            </div>
 
-        function filterPlayers() {
-            let input = document.getElementById('playerSearch').value.toLowerCase();
-            let cards = document.querySelectorAll('.player-card');
-            
-            cards.forEach(card => {
-                let text = card.innerText.toLowerCase();
-                if(text.includes(input)) {
-                    card.style.display = "block";
-                } else {
-                    card.style.display = "none";
-                }
-            });
-        }
+            <div class="form-group">
+              <label>Age</label>
+              <input type="text" id="p-age" placeholder="e.g. 19">
+            </div>
 
-        function handleProspectSubmission(e) {
-            e.preventDefault();
-            let name = document.getElementById('subName').value;
-            let pos = document.getElementById('subPosition').value;
-            let age = document.getElementById('subAge').value;
-            let club = document.getElementById('subClub').value;
+            <div class="form-group full-width">
+              <label>Current Team / Academy</label>
+              <input type="text" id="p-team" placeholder="e.g. Accra Select">
+            </div>
 
-            alert('Success! ' + name + ' (' + pos + ', ' + age + ') from ' + club + ' has been published live to the scouting feed.');
-            switchTab('matches');
-            e.target.reset();
+            <div class="form-group full-width">
+              <label>Video Highlight Link *</label>
+              <input type="url" id="p-video" placeholder="https://youtube.com/...">
+            </div>
+
+            <div class="form-group full-width">
+              <button type="button" onclick="submitPlayerProfile()" class="submit-btn" style="margin-top: 0;">Publish Profile Live</button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Bottom Navigation Bar (5 Tabs) -->
+  <nav class="bottom-nav">
+    <button class="active" onclick="switchTab('matches', event)" id="nav-matches">
+      <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14.5v-9l6 4.5-6 4.5z"/></svg>
+      Matches
+    </button>
+    <button onclick="switchTab('news', event)" id="nav-news">
+      <svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/></svg>
+      News
+    </button>
+    <button onclick="switchTab('rankings', event)" id="nav-rankings">
+      <svg viewBox="0 0 24 24"><path d="M16 6l2.29 2.29-4.88 4.88-4-4L2 16.59 3.41 18l6-6 4 4 6.3-6.29L22 12V6z"/></svg>
+      Leagues
+    </button>
+    <button onclick="switchTab('registration', event)" id="nav-registration">
+      <svg viewBox="0 0 24 24"><path d="M15 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm-9-2V7H4v3H1v2h3v3h2v-3h3v-2H6zm9 4c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+      Register
+    </button>
+    <button onclick="switchTab('portal', event)" id="nav-portal">
+      <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"/></svg>
+      Portal
+    </button>
+  </nav>
+
+  <script>
+    // --- SUPABASE CONFIGURATION ---
+    const SUPABASE_URL = 'https://ovbybswgoxvifmftxshb.supabase.co';
+    const SUPABASE_ANON_KEY = 'sb_publishable_GVF5j7spmTppoU2oxjLSiw_5fSKZEeg';
+    
+    const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+    // Check user session on load
+    async function checkUserSession() {
+      const { data: { session } } = await supabaseClient.auth.getSession();
+      if (session) {
+        document.getElementById('auth-box').classList.add('hidden');
+        document.getElementById('dashboard-box').classList.remove('hidden');
+        document.getElementById('logged-user-email').innerText = 'Logged in as: ' + session.user.email;
+      }
+      loadDatabaseFeed();
+    }
+    checkUserSession();
+
+    async function registerAccount() {
+      const role = document.getElementById('reg-role').value;
+      const fullname = document.getElementById('reg-fullname').value;
+      const position = document.getElementById('reg-position').value;
+      const age = document.getElementById('reg-age').value;
+      const height = document.getElementById('reg-height').value;
+      const weight = document.getElementById('reg-weight').value;
+      const country = document.getElementById('reg-country').value;
+      const email = document.getElementById('reg-email').value;
+      const password = document.getElementById('reg-password').value;
+      const msgElem = document.getElementById('reg-message');
+
+      msgElem.innerText = '';
+
+      if (!fullname || !email || !password || !position) {
+        msgElem.innerText = 'Please fill out all required fields.';
+        return;
+      }
+
+      const { error } = await supabaseClient.auth.signUp({ 
+        email, 
+        password,
+        options: {
+          data: {
+            full_name: fullname,
+            account_role: role,
+            position: position,
+            age: age,
+            height: height,
+            weight: weight,
+            country: country
+          }
         }
-    </script>
+      });
+
+      if (error) {
+        msgElem.innerText = error.message;
+      } else {
+        alert('Registration successful! You can now log in.');
+        switchTab('portal', { target: document.getElementById('nav-portal') });
+      }
+    }
+
+    async function loginUser() {
+      const email = document.getElementById('auth-email').value;
+      const password = document.getElementById('auth-password').value;
+      const { error } = await supabaseClient.auth.signInWithPassword({ email, password });
+      if (error) {
+        document.getElementById('auth-message').innerText = error.message;
+      } else {
+        location.reload();
+      }
+    }
+
+    async function logoutUser() {
+      await supabaseClient.auth.signOut();
+      location.reload();
+    }
+
+    async function submitPlayerProfile() {
+      const name = document.getElementById('p-name').value;
+      const position = document.getElementById('p-position').value;
+      const age = document.getElementById('p-age').value;
+      const team = document.getElementById('p-team').value;
+      const video = document.getElementById('p-video').value;
+
+      if (!name || !video) {
+        alert('Please fill out at least the player name and video link.');
+        return;
+      }
+
+      const { error } = await supabaseClient
+        .from('players')
+        .insert([{ name, position, age, team, video }]);
+
+      if (error) {
+        alert('Error publishing profile: ' + error.message);
+      } else {
+        alert('Profile published live successfully!');
+        document.getElementById('p-name').value = '';
+        document.getElementById('p-position').value = '';
+        document.getElementById('p-age').value = '';
+        document.getElementById('p-team').value = '';
+        document.getElementById('p-video').value = '';
+        loadDatabaseFeed();
+        switchTab('rankings', { target: document.getElementById('nav-rankings') });
+      }
+    }
+
+    async function loadDatabaseFeed() {
+      const container = document.getElementById('db-feed-container');
+      const { data, error } = await supabaseClient
+        .from('players')
+        .select('*')
+        .order('created_at', { ascending: false });
+
+      if (error || !data) {
+        container.innerHTML = `
+          <div class="player-card">
+            <div>
+              <h4 style="margin: 0 0 4px 0; font-size: 15px;">K. Mensah (LW / RW)</h4>
+              <p style="margin: 0; font-size: 12px; color: #666;">Age 19 • Free Agent</p>
+            </div>
+            <div style="display: flex; gap: 6px;">
+              <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank" rel="noopener" class="btn-action" style="margin-left: 0; padding: 8px 10px;">Highlights</a>
+              <a href="https://api.whatsapp.com/send?text=Check%20out%20K.%20Mensah%20on%20Scout%20Escort!" target="_blank" rel="noopener" class="btn-action" style="margin-left: 0; background-color: #25d366; padding: 8px 10px;" title="Share to WhatsApp">
+                <svg viewBox="0 0 24 24" width="14" height="14" fill="white" style="vertical-align: middle;"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+              </a>
+            </div>
+          </div>
+        `;
+        return;
+      }
+
+      if (data.length === 0) {
+        container.innerHTML = '<p style="font-size: 13px; color: #666;">No profiles posted yet. Be the first via the Portal tab!</p>';
+        return;
+      }
+
+      container.innerHTML = '';
+      data.forEach(player => {
+        const shareText = encodeURIComponent(`Check out ${player.name} (${player.position || 'Player'}), age ${player.age || 'N/A'} on Scout Escort - The Digital Football Talent Hub! Watch highlights here: ${player.video}`);
+        const whatsappUrl = `https://api.whatsapp.com/send?text=${shareText}`;
+
+        container.innerHTML += `
+          <div class="player-card">
+            <div>
+              <h4 style="margin: 0 0 4px 0; font-size: 15px;">${player.name} (${player.position || 'Player'})</h4>
+              <p style="margin: 0; font-size: 12px; color: #666;">Age ${player.age || 'N/A'} • ${player.team || 'Independent'}</p>
+            </div>
+            <div style="display: flex; gap: 6px; align-items: center;">
+              <a href="${player.video}" target="_blank" rel="noopener" class="btn-action" style="margin-left: 0; padding: 8px 10px;">Watch</a>
+              <a href="${whatsappUrl}" target="_blank" rel="noopener" class="btn-action" style="margin-left: 0; background-color: #25d366; padding: 8px 10px;" title="Share to WhatsApp">
+                <svg viewBox="0 0 24 24" width="14" height="14" fill="white" style="vertical-align: middle;"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+              </a>
+            </div>
+          </div>
+        `;
+      });
+    }
+
+    function switchTab(tabId, event) {
+      document.querySelectorAll('.tab-content').forEach(tab => {
+        tab.classList.remove('active');
+      });
+      document.querySelectorAll('.bottom-nav button').forEach(btn => {
+        btn.classList.remove('active');
+      });
+
+      document.getElementById(tabId).classList.add('active');
+      
+      let targetBtn = event ? event.target : null;
+      if (targetBtn && targetBtn.tagName !== 'BUTTON') {
+        targetBtn = targetBtn.closest('button');
+      }
+      if (!targetBtn) {
+        targetBtn = document.getElementById('nav-' + tabId);
+      }
+      if (targetBtn) {
+        targetBtn.classList.add('active');
+      }
+    }
+
+    function filterPlayers() {
+      let input = document.getElementById('playerSearch').value.toLowerCase();
+      let rankCount = 0;
+
+      let rankingsList = document.getElementById('playerList');
+      if (rankingsList) {
+        let cards = rankingsList.getElementsByClassName('player-card');
+        for (let i = 0; i < cards.length; i++) {
+          let text = cards[i].innerText.toLowerCase();
+          if (text.includes(input)) {
+            cards[i].style.display = "";
+            rankCount++;
+          } else {
+            cards[i].style.display = "none";
+          }
+        }
+      }
+
+      if (input.length > 0 && rankCount > 0) {
+        document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+        document.querySelectorAll('.bottom-nav button').forEach(b => b.classList.remove('active'));
+        document.getElementById('rankings').classList.add('active');
+        document.getElementById('nav-rankings').classList.add('active');
+      }
+    }
+  </script>
 </body>
 </html>
+
 
 
 
