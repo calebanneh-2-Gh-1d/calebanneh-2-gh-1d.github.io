@@ -1,345 +1,349 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>Scout Escort | Elite West African Football Talent & Scouting Agency</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scout Escort | West African Football Talent Hub</title>
+    <meta name="description" content="Connecting West African Elite Talent to European Clubs and Academies.">
+    <style>
+        :root {
+            --bg-color: #0b0f19;
+            --card-bg: #131b2e;
+            --accent-green: #00e676;
+            --text-main: #ffffff;
+            --text-muted: #94a3b8;
+            --border-color: #1e293b;
+        }
 
-  <!-- SEO & Search Engine Meta Tags -->
-  <meta name="description" content="Scout Escort is the premier digital football scouting platform connecting elite West African youth prospects and elite talent with professional European clubs and academies.">
-  <meta name="keywords" content="football talent scouting, African football prospects, youth football trials Ghana, soccer scout platform, Scout Escort, player agency">
-  <meta name="author" content="Caleb Anneh">
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
 
-  <!-- Social Media Preview Cards (Open Graph Tags) -->
-  <meta property="og:title" content="Scout Escort | Elite Football Talent & Scouting Hub">
-  <meta property="og:description" content="Connecting West African football talent with global scouts and academies. Browse verified player profiles and live match data.">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://scout-escort.github.io">
-  <meta property="og:image" content="https://images.unsplash.com/photo-1508098682722-e99c43a406b2?q=80&w=1200&auto=format&fit=crop">
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            padding-bottom: 40px;
+        }
 
-  <!-- Google Analytics Tracking -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-9DMZLL3XQE"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-9DMZLL3XQE');
-  </script>
+        /* Sponsor Ticker Bar */
+        .sponsor-ticker {
+            background-color: #05080f;
+            color: var(--text-muted);
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            padding: 8px 0;
+            overflow: hidden;
+            white-space: nowrap;
+            border-bottom: 1px solid var(--border-color);
+        }
 
-  <!-- Include Supabase for Database & Auth -->
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+        .ticker-content {
+            display: inline-block;
+            animation: marquee 25s linear infinite;
+        }
 
-  <style>
-    :root {
-      --bg-main: #090d0a;
-      --bg-surface: #121c15;
-      --bg-card: #18261d;
-      --border-color: #24382b;
-      --text-main: #f3f4f6;
-      --text-muted: #9ca3af;
-      --accent-green: #10b981;
-      --accent-gold: #fbbf24;
-      --accent-red: #ef4444;
-      --whatsapp-green: #25d366;
-    }
+        .brand-item {
+            display: inline-flex;
+            align-items: center;
+            margin-right: 30px;
+            color: var(--text-main);
+            font-weight: 600;
+        }
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+        .brand-item img {
+            width: 14px;
+            height: 14px;
+            margin-right: 6px;
+            object-fit: contain;
+        }
 
-    body {
-      background-color: var(--bg-main);
-      color: var(--text-main);
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      padding-bottom: 75px;
-    }
+        @keyframes marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
 
-    /* Top Partner Ticker */
-    .sponsor-ticker {
-      background-color: #040705;
-      border-bottom: 1px solid var(--border-color);
-      overflow: hidden;
-      white-space: nowrap;
-      padding: 8px 0;
-    }
+        /* Header / Hero */
+        .header {
+            padding: 16px;
+            background: linear-gradient(180deg, #111827 0%, var(--bg-color) 100%);
+            border-bottom: 1px solid var(--border-color);
+        }
 
-    .ticker-content {
-      display: inline-flex;
-      align-items: center;
-      animation: marquee 30s linear infinite;
-    }
+        .top-badges {
+            display: flex;
+            justify-content: space-between;
+            font-size: 11px;
+            color: var(--accent-green);
+            font-weight: 700;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
 
-    .brand-item {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      margin-right: 40px;
-      font-size: 12px;
-      font-weight: 700;
-      letter-spacing: 1px;
-      color: var(--text-muted);
-      text-transform: uppercase;
-    }
+        .hero-title-box {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
 
-    .brand-item img {
-      height: 14px;
-      width: auto;
-      filter: brightness(0) invert(0.7);
-    }
+        .logo-icon {
+            background: linear-gradient(135deg, #00e676, #00b0ff);
+            width: 42px;
+            height: 42px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            color: #0b0f19;
+            box-shadow: 0 4px 12px rgba(0, 230, 118, 0.3);
+        }
 
-    @keyframes marquee {
-      0% { transform: translateX(100%); }
-      100% { transform: translateX(-100%); }
-    }
+        .title-text h1 {
+            font-size: 20px;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+        }
 
-    /* Header & Hero Branding */
-    .site-header {
-      background: linear-gradient(180deg, var(--bg-surface) 0%, var(--bg-main) 100%);
-      border-bottom: 1px solid var(--border-color);
-      padding: 20px 16px;
-      text-align: center;
-    }
+        .title-text p {
+            font-size: 12px;
+            color: var(--text-muted);
+            margin-top: 2px;
+        }
 
-    .site-title {
-      font-size: 22px;
-      font-weight: 900;
-      letter-spacing: 1px;
-      color: #ffffff;
-      text-transform: uppercase;
-    }
+        /* Stats Bar */
+        .stats-bar {
+            display: flex;
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            margin: 16px;
+            padding: 12px;
+            justify-content: space-around;
+            text-align: center;
+        }
 
-    .site-title span {
-      color: var(--accent-green);
-    }
+        .stat-item .stat-num {
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--text-main);
+        }
 
-    .site-subtitle {
-      font-size: 12px;
-      color: var(--text-muted);
-      margin-top: 4px;
-      text-transform: uppercase;
-      letter-spacing: 1.5px;
-    }
+        .stat-item .stat-label {
+            font-size: 10px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            margin-top: 2px;
+        }
 
-    /* Main Content Wrapper */
-    .container {
-      max-width: 700px;
-      width: 100%;
-      margin: 0 auto;
-      padding: 16px;
-      flex: 1;
-    }
+        /* Navigation Tabs */
+        .nav-tabs {
+            display: flex;
+            gap: 8px;
+            padding: 0 16px;
+            margin-bottom: 16px;
+        }
 
-    .tab-content {
-      display: none;
-    }
+        .tab-btn {
+            flex: 1;
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            color: var(--text-muted);
+            padding: 10px;
+            border-radius: 8px;
+            font-size: 12px;
+            font-weight: 600;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
 
-    .tab-content.active {
-      display: block;
-    }
+        .tab-btn.active {
+            background: var(--accent-green);
+            color: #0b0f19;
+            border-color: var(--accent-green);
+        }
 
-    /* Cards & Grid Styling */
-    .section-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 14px;
-      border-left: 3px solid var(--accent-green);
-      padding-left: 10px;
-    }
+        /* Content Containers */
+        .container {
+            padding: 0 16px;
+        }
 
-    .section-title {
-      font-size: 15px;
-      font-weight: 800;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-      color: #ffffff;
-    }
+        .tab-content {
+            display: none;
+        }
 
-    .card-list {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
+        .tab-content.active {
+            display: block;
+        }
 
-    .pro-card {
-      background-color: var(--bg-card);
-      border: 1px solid var(--border-color);
-      border-radius: 10px;
-      padding: 16px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      transition: border-color 0.2s;
-    }
+        .section-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 16px;
+            margin-bottom: 16px;
+        }
 
-    .pro-card:hover {
-      border-color: var(--accent-green);
-    }
+        .section-card h2 {
+            font-size: 15px;
+            font-weight: 700;
+            margin-bottom: 6px;
+        }
 
-    .card-info h4 {
-      font-size: 15px;
-      font-weight: 700;
-      color: #ffffff;
-      margin-bottom: 4px;
-    }
+        .section-card p {
+            font-size: 12px;
+            color: var(--text-muted);
+            margin-bottom: 14px;
+            line-height: 1.4;
+        }
 
-    .card-info p {
-      font-size: 12px;
-      color: var(--text-muted);
-    }
+        /* Search input */
+        .search-input {
+            width: 100%;
+            background: #090d16;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 10px 14px;
+            color: var(--text-main);
+            font-size: 13px;
+            outline: none;
+            margin-bottom: 12px;
+        }
 
-    .badge {
-      display: inline-block;
-      background: rgba(16, 185, 129, 0.15);
-      color: var(--accent-green);
-      font-size: 10px;
-      font-weight: 700;
-      padding: 2px 6px;
-      border-radius: 4px;
-      margin-top: 4px;
-      text-transform: uppercase;
-    }
+        .search-input::placeholder {
+            color: var(--text-muted);
+        }
 
-    /* Action Buttons */
-    .btn {
-      background-color: var(--accent-green);
-      color: #090d0a;
-      border: none;
-      padding: 8px 14px;
-      border-radius: 6px;
-      font-weight: 800;
-      font-size: 12px;
-      cursor: pointer;
-      text-decoration: none;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-      transition: opacity 0.2s;
-      flex-shrink: 0;
-      margin-left: 8px;
-    }
+        /* Prospect Card */
+        .prospect-card {
+            background: #0d1322;
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            overflow: hidden;
+            margin-top: 12px;
+        }
 
-    .btn:hover {
-      opacity: 0.9;
-    }
+        .prospect-header {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 12px;
+            background: rgba(255, 255, 255, 0.02);
+            border-bottom: 1px solid var(--border-color);
+            font-size: 11px;
+        }
 
-    .btn-whatsapp {
-      background-color: var(--whatsapp-green);
-      color: #ffffff;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 8px 10px;
-    }
+        .badge-position {
+            background: rgba(0, 230, 118, 0.15);
+            color: var(--accent-green);
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-weight: 700;
+        }
 
-    /* Forms Styling */
-    .form-container {
-      background-color: var(--bg-surface);
-      border: 1px solid var(--border-color);
-      border-radius: 12px;
-      padding: 20px;
-    }
+        .badge-age {
+            color: var(--text-muted);
+            font-weight: 600;
+        }
 
-    .form-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 12px;
-    }
+        .prospect-body {
+            display: flex;
+            align-items: center;
+            padding: 14px 12px;
+            gap: 12px;
+        }
 
-    .form-group {
-      margin-bottom: 12px;
-    }
+        .prospect-avatar {
+            width: 50px;
+            height: 50px;
+            background: #1e293b;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-muted);
+            font-size: 20px;
+        }
 
-    .form-group.full {
-      grid-column: span 2;
-    }
+        .prospect-info h3 {
+            font-size: 15px;
+            font-weight: 700;
+        }
 
-    .form-group label {
-      display: block;
-      font-size: 11px;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-      color: var(--text-muted);
-      margin-bottom: 6px;
-    }
+        .prospect-info p {
+            font-size: 11px;
+            color: var(--text-muted);
+            margin-top: 2px;
+            margin-bottom: 0;
+        }
 
-    .form-group input, .form-group select, .form-group textarea {
-      width: 100%;
-      background-color: var(--bg-card);
-      border: 1px solid var(--border-color);
-      border-radius: 6px;
-      padding: 10px 12px;
-      color: #ffffff;
-      font-size: 13px;
-      outline: none;
-    }
+        /* News Cards */
+        .news-item {
+            background: #0d1322;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 12px;
+            margin-top: 10px;
+        }
 
-    .form-group input:focus, .form-group select:focus {
-      border-color: var(--accent-green);
-    }
+        .news-tag {
+            font-size: 10px;
+            color: #00b0ff;
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-bottom: 4px;
+            display: block;
+        }
 
-    .submit-btn {
-      width: 100%;
-      background-color: var(--accent-green);
-      color: #090d0a;
-      border: none;
-      padding: 12px;
-      font-weight: 900;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      border-radius: 6px;
-      cursor: pointer;
-      margin-top: 6px;
-    }
+        .news-item h3 {
+            font-size: 13px;
+            font-weight: 700;
+            margin-bottom: 4px;
+            color: var(--text-main);
+        }
 
-    /* Bottom Navigation Bar */
-    .bottom-nav {
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      background-color: var(--bg-surface);
-      border-top: 1px solid var(--border-color);
-      display: flex;
-      justify-content: space-around;
-      align-items: center;
-      padding: 8px 0;
-      z-index: 1000;
-    }
+        .news-item p {
+            font-size: 11px;
+            color: var(--text-muted);
+            margin-bottom: 0;
+        }
 
-    .nav-btn {
-      background: none;
-      border: none;
-      color: var(--text-muted);
-      font-size: 10px;
-      font-weight: 700;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 3px;
-      cursor: pointer;
-      flex: 1;
-      text-transform: uppercase;
-    }
+        /* Fixtures / Live Scores Card */
+        .fixture-card {
+            background: #0d1322;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 12px;
+            margin-top: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
 
-    .nav-btn.active {
-      color: var(--accent-green);
-    }
+        .match-teams {
+            font-size: 13px;
+            font-weight: 700;
+        }
 
-    .nav-btn svg {
-      width: 18px;
-      height: 18px;
-      fill: currentColor;
-    }
+        .match-meta {
+            font-size: 10px;
+            color: var(--text-muted);
+            margin-top: 2px;
+        }
 
-    .hidden { display: none !important; }
-    .msg-feedback { font-size: 12px; margin-top: 8px; text-align: center; font-weight: 700; color: var(--accent-red); }
-  </style>
+        .match-score {
+            background: rgba(0, 230, 118, 0.15);
+            color: var(--accent-green);
+            padding: 4px 8px;
+            border-radius: 6px;
+            font-size: 12px;
+            font-weight: 800;
+        }
+    </style>
 </head>
 <body>
 
@@ -347,8 +351,24 @@
   <div class="sponsor-ticker">
     <div class="ticker-content">
       <span class="brand-item">
+        <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/nike.svg" alt="Nike"> Nike Elite Showcase
+      </span>
+      <span class="brand-item">
+        <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/adidas.svg" alt="Adidas" style="filter: brightness(0) invert(1);"> Adidas Talent Network
+      </span>
+      <span class="brand-item">
         <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/puma.svg" alt="Puma"> Puma Official Partner
       </span>
+      <span class="brand-item">
+        <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/samsung.svg" alt="Samsung"> Samsung Sports Tech
+      </span>
+      <span class="brand-item">
+        <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/mastercard.svg" alt="Mastercard" style="filter: brightness(0) invert(1);"> Mastercard Global
+      </span>
+      <span class="brand-item">
+        <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/qatarairways.svg" alt="Qatar Airways" style="filter: brightness(0) invert(1);"> Qatar Airways Official
+      </span>
+      <!-- Duplicate set for seamless infinite scroll loop -->
       <span class="brand-item">
         <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/nike.svg" alt="Nike"> Nike Elite Showcase
       </span>
@@ -356,405 +376,168 @@
         <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/adidas.svg" alt="Adidas" style="filter: brightness(0) invert(1);"> Adidas Talent Network
       </span>
       <span class="brand-item">
+        <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/puma.svg" alt="Puma"> Puma Official Partner
+      </span>
+      <span class="brand-item">
         <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/samsung.svg" alt="Samsung"> Samsung Sports Tech
+      </span>
+      <span class="brand-item">
+        <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/mastercard.svg" alt="Mastercard" style="filter: brightness(0) invert(1);"> Mastercard Global
+      </span>
+      <span class="brand-item">
+        <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/qatarairways.svg" alt="Qatar Airways" style="filter: brightness(0) invert(1);"> Qatar Airways Official
       </span>
     </div>
   </div>
 
-  <!-- Professional Site Header -->
-  <header class="site-header">
-    <h1 class="site-title">Scout <span>Escort</span></h1>
-    <p class="site-subtitle">West African Football Talent & Scouting Agency</p>
+  <!-- Main Header -->
+  <header class="header">
+    <div class="top-badges">
+      <span>Elite Sponsor: Adidas Academy</span>
+      <span>Global Hub</span>
+    </div>
+    <div class="hero-title-box">
+      <div class="logo-icon">⚽</div>
+      <div class="title-text">
+        <h1>SCOUT ESCORT</h1>
+        <p>Connecting West African Elite Talent to European Clubs</p>
+      </div>
+    </div>
   </header>
 
+  <!-- Live Stats Bar -->
+  <div class="stats-bar">
+    <div class="stat-item">
+      <div class="stat-num">540+</div>
+      <div class="stat-label">Registered Prospects</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">42</div>
+      <div class="stat-label">Scouts Online</div>
+    </div>
+  </div>
+
+  <!-- Navigation Switcher Tabs -->
+  <div class="nav-tabs">
+    <div class="tab-btn active" onclick="switchTab('prospects-tab', this)">Prospects & News</div>
+    <div class="tab-btn" onclick="switchTab('scores-tab', this)">Live Scores & Fixtures</div>
+  </div>
+
+  <!-- Main Body Content Containers -->
   <div class="container">
-
-    <!-- TAB 1: MATCHES & SHOWCASE -->
-    <div id="matches" class="tab-content active">
-      <div class="section-header">
-        <h2 class="section-title">Featured Showcase Tapes</h2>
-      </div>
-      <div class="card-list">
-        <div class="pro-card">
-          <div class="card-info">
-            <h4>D&R Academy vs. Grassroots Select</h4>
-            <p>Full Match Scouting Tape • High Definition</p>
-            <span class="badge">Verified Stream</span>
-          </div>
-          <a href="https://www.google.com/search?q=football+live+scores" target="_blank" rel="noopener" class="btn">Live Scores</a>
-        </div>
-        <div class="pro-card">
-          <div class="card-info">
-            <h4>Elite Youth U19 Championship</h4>
-            <p>Accra Regional Scouting Showcase</p>
-            <span class="badge">Scout Priority</span>
-          </div>
-          <a href="https://www.google.com/search?q=football+live+scores" target="_blank" rel="noopener" class="btn">Live Scores</a>
-        </div>
-      </div>
-    </div>
-
-    <!-- TAB 2: LIVE NEWS & TRANSFERS -->
-    <div id="news" class="tab-content">
-      <div class="section-header">
-        <h2 class="section-title">Transfer Desk & Journalism</h2>
-      </div>
-      <div class="card-list">
-        <div class="pro-card">
-          <div class="card-info">
-            <h4>Global Transfer Window Wire</h4>
-            <p>Breaking rumors, European academy updates & official signings</p>
-            <span class="badge">Live Feed</span>
-          </div>
-          <a href="https://www.espn.com/soccer/transfer" target="_blank" rel="noopener" class="btn">Open Desk</a>
-        </div>
-        <div class="pro-card">
-          <div class="card-info">
-            <h4>BBC Sport Football Live Commentary</h4>
-            <p>Minute-by-minute text commentary and expert analysis</p>
-            <span class="badge">Expert Insights</span>
-          </div>
-          <a href="https://www.bbc.com/sport/football" target="_blank" rel="noopener" class="btn">Read Live</a>
-        </div>
-      </div>
-    </div>
-
-    <!-- TAB 3: LEAGUES & DATABASE -->
-    <div id="rankings" class="tab-content">
-      <div class="section-header">
-        <h2 class="section-title">Leagues & Prospect Directory</h2>
-      </div>
-      
-      <div style="margin-bottom: 14px;">
-        <input type="text" id="playerSearch" placeholder="Search leagues, clubs, or players..." onkeyup="filterPlayers()" style="width: 100%; background-color: var(--bg-surface); border: 1px solid var(--border-color); border-radius: 8px; padding: 12px; color: #fff; font-size: 13px; outline: none;">
-      </div>
-
-      <div class="card-list" id="playerList">
-        <div class="pro-card">
-          <div class="card-info">
-            <h4>🏴󠁧󠁢󠁥󠁮󠁧󠁿 Premier League (England)</h4>
-            <p>Tier 1 • Standings & Results</p>
-          </div>
-          <a href="https://www.google.com/search?q=Premier+League+live+scores+table" target="_blank" rel="noopener" class="btn">Standings</a>
-        </div>
-        <div class="pro-card">
-          <div class="card-info">
-            <h4>🇬🇭 Ghana Premier League (Ghana)</h4>
-            <p>Domestic Elite • Live Feed</p>
-          </div>
-          <a href="https://www.google.com/search?q=Ghana+Premier+League+live+scores" target="_blank" rel="noopener" class="btn">Standings</a>
-        </div>
-
-        <div class="section-header" style="margin-top: 18px;">
-          <h2 class="section-title">Live Database Feed (Verified Prospects)</h2>
-        </div>
-        <div id="db-feed-container">
-          <p style="font-size: 12px; color: var(--text-muted); padding: 10px 0;">Loading verified talent records...</p>
-        </div>
-      </div>
-    </div>
-
-    <!-- TAB 4: REGISTRATION -->
-    <div id="registration" class="tab-content">
-      <div class="section-header">
-        <h2 class="section-title">Talent Registration Desk</h2>
-      </div>
-      <div class="form-container">
-        <div class="form-grid">
-          <div class="form-group full">
-            <label>Select Account Role *</label>
-            <select id="reg-role">
-              <option value="player">Football Prospect / Player</option>
-              <option value="scout">Scout / Talent Agent</option>
-              <option value="club">Club Representative / Coach</option>
-            </select>
-          </div>
-          <div class="form-group full">
-            <label>Full Legal Name *</label>
-            <input type="text" id="reg-fullname" placeholder="e.g. Samuel Mensah">
-          </div>
-          <div class="form-group">
-            <label>Primary Position *</label>
-            <input type="text" id="reg-position" placeholder="e.g. LW / RW / CM">
-          </div>
-          <div class="form-group">
-            <label>Age *</label>
-            <input type="number" id="reg-age" placeholder="e.g. 18">
-          </div>
-          <div class="form-group">
-            <label>Height *</label>
-            <input type="text" id="reg-height" placeholder="e.g. 1.82m">
-          </div>
-          <div class="form-group">
-            <label>Weight *</label>
-            <input type="text" id="reg-weight" placeholder="e.g. 75kg">
-          </div>
-          <div class="form-group full">
-            <label>Country / Base *</label>
-            <input type="text" id="reg-country" placeholder="e.g. Ghana">
-          </div>
-          <div class="form-group full">
-            <label>Email Address *</label>
-            <input type="email" id="reg-email" placeholder="name@example.com">
-          </div>
-          <div class="form-group full">
-            <label>Secure Password *</label>
-            <input type="password" id="reg-password" placeholder="At least 6 characters">
-          </div>
-          <div class="form-group full">
-            <button type="button" onclick="registerAccount()" class="submit-btn">Complete Registration</button>
-          </div>
-        </div>
-        <p id="reg-message" class="msg-feedback"></p>
-      </div>
-    </div>
-
-    <!-- TAB 5: PORTAL & PUBLISH DASHBOARD -->
-    <div id="portal" class="tab-content">
-      <div class="section-header">
-        <h2 class="section-title">Secure Management Portal</h2>
-      </div>
-      
-      <!-- Login Box -->
-      <div id="auth-box" class="form-container" style="margin-bottom: 16px;">
-        <h3 style="font-size: 14px; margin-bottom: 10px; color: #fff;">Authorized Login</h3>
-        <div class="form-group">
-          <input type="email" id="auth-email" placeholder="Email Address">
-        </div>
-        <div class="form-group" style="margin-bottom: 10px;">
-          <input type="password" id="auth-password" placeholder="Password">
-        </div>
-        <button type="button" onclick="loginUser()" class="submit-btn" style="margin-top:0;">Access Dashboard</button>
-        <p id="auth-message" class="msg-feedback"></p>
-      </div>
-
-      <!-- Dashboard Box -->
-      <div id="dashboard-box" class="form-container hidden">
-        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; border-bottom: 1px solid var(--border-color); padding-bottom: 8px;">
-          <span id="logged-user-email" style="font-size: 11px; color: var(--accent-green); font-weight: 700;"></span>
-          <button type="button" onclick="logoutUser()" style="background: var(--accent-red); color: #fff; border: none; padding: 4px 8px; border-radius: 4px; font-size: 10px; cursor: pointer; font-weight: 700;">Logout</button>
-        </div>
-
-        <h3 style="font-size: 14px; margin-bottom: 12px; color: #fff;">Publish Verified Prospect Profile</h3>
+    
+    <!-- Tab 1: Prospects & News -->
+    <div id="prospects-tab" class="tab-content active">
+      <div class="section-card">
+        <h2>Verified Youth Prospects Showcase</h2>
+        <p>Browse verified player highlights, match metrics, and physical profiles ready for international review.</p>
         
-        <div class="form-grid">
-          <div class="form-group full">
-            <label>Player Name *</label>
-            <input type="text" id="p-name" placeholder="e.g. Samuel Mensah">
+        <input type="text" id="prospectSearch" class="search-input" placeholder="Search name, position, or club..." onkeyup="filterProspects()">
+
+        <div id="prospectList">
+          <div class="prospect-card" data-name="kofi mensah" data-details="centre-back accra academy stars ghana">
+            <div class="prospect-header">
+              <span class="badge-position">Centre-Back</span>
+              <span class="badge-age">Age: 18</span>
+            </div>
+            <div class="prospect-body">
+              <div class="prospect-avatar">🛡️</div>
+              <div class="prospect-info">
+                <h3>Kofi Mensah</h3>
+                <p>📍 Accra Academy Stars (Ghana)</p>
+              </div>
+            </div>
           </div>
-          <div class="form-group">
-            <label>Position *</label>
-            <input type="text" id="p-position" placeholder="e.g. Center Midfielder">
+        </div>
+      </div>
+
+      <!-- Live News & Transfer Updates Section -->
+      <div class="section-card">
+        <h2>Global Match & News Feed</h2>
+        <p>Latest updates, European nights, and top-tier league action.</p>
+
+        <div class="news-item">
+          <span class="news-tag">Champions League</span>
+          <h3>European Campaign Kicks Off With High Drama</h3>
+          <p>Erling Haaland shines with a double for Man City, while Real Madrid secure a tight 2-1 win over Inter Milan.</p>
+        </div>
+
+        <div class="news-item">
+          <span class="news-tag">Scout Radar</span>
+          <h3>West African Academies Draw European Eyes</h3>
+          <p>International scouts from La Liga and Premier League clubs closely monitor ongoing youth showcase fixtures.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tab 2: Live Scores & Fixtures -->
+    <div id="scores-tab" class="tab-content">
+      <div class="section-card">
+        <h2>Daily Matchday Scores & Fixtures</h2>
+        <p>Real-time updates across European and domestic competitions.</p>
+
+        <div class="fixture-card">
+          <div>
+            <div class="match-teams">FC Porto vs Manchester City</div>
+            <div class="match-meta">UEFA Champions League • Finished</div>
           </div>
-          <div class="form-group">
-            <label>Age *</label>
-            <input type="text" id="p-age" placeholder="e.g. 19">
+          <div class="match-score">0 - 2</div>
+        </div>
+
+        <div class="fixture-card">
+          <div>
+            <div class="match-teams">Real Madrid vs Inter Milan</div>
+            <div class="match-meta">UEFA Champions League • Finished</div>
           </div>
-          <div class="form-group full">
-            <label>Current Academy / Club</label>
-            <input type="text" id="p-team" placeholder="e.g. Accra Select Academy">
+          <div class="match-score">2 - 1</div>
+        </div>
+
+        <div class="fixture-card">
+          <div>
+            <div class="match-teams">Borussia Dortmund vs Villarreal</div>
+            <div class="match-meta">UEFA Champions League • Finished</div>
           </div>
-          <div class="form-group full">
-            <label>Video Highlight URL (YouTube/Hudl) *</label>
-            <input type="url" id="p-video" placeholder="https://youtube.com/...">
-          </div>
-          <div class="form-group full">
-            <button type="button" onclick="submitPlayerProfile()" class="submit-btn" style="margin-top:0;">Publish Profile Live</button>
-          </div>
+          <div class="match-score">3 - 2</div>
         </div>
       </div>
     </div>
 
   </div>
 
-  <!-- Bottom Navigation Menu -->
-  <nav class="bottom-nav">
-    <button class="nav-btn active" onclick="switchTab('matches', event)" id="nav-matches">
-      <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14.5v-9l6 4.5-6 4.5z"/></svg>
-      Matches
-    </button>
-    <button class="nav-btn" onclick="switchTab('news', event)" id="nav-news">
-      <svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/></svg>
-      News
-    </button>
-    <button class="nav-btn" onclick="switchTab('rankings', event)" id="nav-rankings">
-      <svg viewBox="0 0 24 24"><path d="M16 6l2.29 2.29-4.88 4.88-4-4L2 16.59 3.41 18l6-6 4 4 6.3-6.29L22 12V6z"/></svg>
-      Leagues
-    </button>
-    <button class="nav-btn" onclick="switchTab('registration', event)" id="nav-registration">
-      <svg viewBox="0 0 24 24"><path d="M15 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm-9-2V7H4v3H1v2h3v3h2v-3h3v-2H6zm9 4c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
-      Register
-    </button>
-    <button class="nav-btn" onclick="switchTab('portal', event)" id="nav-portal">
-      <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"/></svg>
-      Portal
-    </button>
-  </nav>
-
+  <!-- JavaScript for Interactive Tabs and Search -->
   <script>
-    const SUPABASE_URL = 'https://ovbybswgoxvifmftxshb.supabase.co';
-    const SUPABASE_ANON_KEY = 'sb_publishable_GVF5j7spmTppoU2oxjLSiw_5fSKZEeg';
-    const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
-
-    async function checkUserSession() {
-      const { data: { session } } = await supabaseClient.auth.getSession();
-      if (session) {
-        document.getElementById('auth-box').classList.add('hidden');
-        document.getElementById('dashboard-box').classList.remove('hidden');
-        document.getElementById('logged-user-email').innerText = 'AUTHORIZED: ' + session.user.email;
-      }
-      loadDatabaseFeed();
-    }
-    checkUserSession();
-
-    async function registerAccount() {
-      const role = document.getElementById('reg-role').value;
-      const fullname = document.getElementById('reg-fullname').value;
-      const position = document.getElementById('reg-position').value;
-      const age = document.getElementById('reg-age').value;
-      const height = document.getElementById('reg-height').value;
-      const weight = document.getElementById('reg-weight').value;
-      const country = document.getElementById('reg-country').value;
-      const email = document.getElementById('reg-email').value;
-      const password = document.getElementById('reg-password').value;
-      const msgElem = document.getElementById('reg-message');
-
-      msgElem.innerText = '';
-      if (!fullname || !email || !password || !position) {
-        msgElem.innerText = 'Please complete all required fields.';
-        return;
-      }
-
-      const { error } = await supabaseClient.auth.signUp({ 
-        email, password,
-        options: { data: { full_name: fullname, account_role: role, position, age, height, weight, country } }
+    function switchTab(tabId, element) {
+      // Hide all tabs
+      document.querySelectorAll('.tab-content').forEach(tab => {
+        tab.classList.remove('active');
       });
-
-      if (error) {
-        msgElem.innerText = error.message;
-      } else {
-        alert('Registration successful! Please log in via the Portal tab.');
-        switchTab('portal', { target: document.getElementById('nav-portal') });
-      }
-    }
-
-    async function loginUser() {
-      const email = document.getElementById('auth-email').value;
-      const password = document.getElementById('auth-password').value;
-      const { error } = await supabaseClient.auth.signInWithPassword({ email, password });
-      if (error) {
-        document.getElementById('auth-message').innerText = error.message;
-      } else {
-        location.reload();
-      }
-    }
-
-    async function logoutUser() {
-      await supabaseClient.auth.signOut();
-      location.reload();
-    }
-
-    async function submitPlayerProfile() {
-      const name = document.getElementById('p-name').value;
-      const position = document.getElementById('p-position').value;
-      const age = document.getElementById('p-age').value;
-      const team = document.getElementById('p-team').value;
-      const video = document.getElementById('p-video').value;
-
-      if (!name || !video) {
-        alert('Player name and video link are required.');
-        return;
-      }
-
-      const { error } = await supabaseClient.from('players').insert([{ name, position, age, team, video }]);
-
-      if (error) {
-        alert('Error publishing profile: ' + error.message);
-      } else {
-        alert('Prospect profile published live successfully!');
-        document.getElementById('p-name').value = '';
-        document.getElementById('p-position').value = '';
-        document.getElementById('p-age').value = '';
-        document.getElementById('p-team').value = '';
-        document.getElementById('p-video').value = '';
-        loadDatabaseFeed();
-        switchTab('rankings', { target: document.getElementById('nav-rankings') });
-      }
-    }
-
-    async function loadDatabaseFeed() {
-      const container = document.getElementById('db-feed-container');
-      const { data, error } = await supabaseClient.from('players').select('*').order('created_at', { ascending: false });
-
-      if (error || !data || data.length === 0) {
-        container.innerHTML = `
-          <div class="pro-card">
-            <div class="card-info">
-              <h4>Samuel Mensah (LW / RW)</h4>
-              <p>Age 19 • Free Agent • Verified Prospect</p>
-              <span class="badge">Scout Featured</span>
-            </div>
-            <div style="display: flex; gap: 6px;">
-              <a href="https://youtube.com" target="_blank" class="btn">Watch</a>
-              <a href="https://api.whatsapp.com/send?text=Check%20out%20Samuel%20Mensah%20on%20Scout%20Escort!" target="_blank" class="btn btn-whatsapp" title="Share via WhatsApp">
-                <svg viewBox="0 0 24 24" width="14" height="14" fill="#ffffff"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
-              </a>
-            </div>
-          </div>
-        `;
-        return;
-      }
-
-      container.innerHTML = '';
-      data.forEach(player => {
-        const shareText = encodeURIComponent(`Discover elite prospect ${player.name} (${player.position || 'Player'}) on Scout Escort! Watch highlights: ${player.video}`);
-        const whatsappUrl = `https://api.whatsapp.com/send?text=${shareText}`;
-
-        container.innerHTML += `
-          <div class="pro-card">
-            <div class="card-info">
-              <h4>${player.name} (${player.position || 'Player'})</h4>
-              <p>Age ${player.age || 'N/A'} • ${player.team || 'Independent'}</p>
-              <span class="badge">Verified Prospect</span>
-            </div>
-            <div style="display: flex; gap: 6px; align-items: center;">
-              <a href="${player.video}" target="_blank" class="btn">Watch</a>
-              <a href="${whatsappUrl}" target="_blank" class="btn btn-whatsapp" title="Share via WhatsApp">
-                <svg viewBox="0 0 24 24" width="14" height="14" fill="#ffffff"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
-              </a>
-            </div>
-          </div>
-        `;
+      // Remove active state from all buttons
+      document.querySelectorAll('.tab-btn').forEach(btn => {
+        btn.classList.remove('active');
       });
-    }
-
-    function switchTab(tabId, event) {
-      document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
-      document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
-
+      // Show target tab and activate button
       document.getElementById(tabId).classList.add('active');
-      let targetBtn = event ? event.target.closest('button') : null;
-      if (!targetBtn) targetBtn = document.getElementById('nav-' + tabId);
-      if (targetBtn) targetBtn.classList.add('active');
+      element.classList.add('active');
     }
 
-    function filterPlayers() {
-      let input = document.getElementById('playerSearch').value.toLowerCase();
-      let rankingsList = document.getElementById('playerList');
-      if (rankingsList) {
-        let cards = rankingsList.getElementsByClassName('pro-card');
-        for (let i = 0; i < cards.length; i++) {
-          let text = cards[i].innerText.toLowerCase();
-          cards[i].style.display = text.includes(input) ? "" : "none";
+    function filterProspects() {
+      let input = document.getElementById('prospectSearch').value.toLowerCase();
+      let cards = document.querySelectorAll('.prospect-card');
+      
+      cards.forEach(card => {
+        let text = card.getAttribute('data-name') + " " + card.getAttribute('data-details');
+        if (text.includes(input)) {
+          card.style.display = "block";
+        } else {
+          card.style.display = "none";
         }
-      }
-      if (input.length > 0) {
-        switchTab('rankings', { target: document.getElementById('nav-rankings') });
-      }
+      });
     }
   </script>
+
 </body>
 </html>
+
 
 
 
