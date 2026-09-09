@@ -3,16 +3,16 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>Scout Escort | Digital Football Talent & Showcase Hub</title>
+  <title>Scout Escort | Elite West African Football Talent & Scouting Agency</title>
 
   <!-- SEO & Search Engine Meta Tags -->
-  <meta name="description" content="Discover and connect with elite West African football talent, youth prospects, and professional scouts on Scout Escort.">
-  <meta name="keywords" content="football talent scouting, African football prospects, youth football trials Ghana, soccer scout platform, Scout Escort">
+  <meta name="description" content="Scout Escort is the premier digital football scouting platform connecting elite West African youth prospects and elite talent with professional European clubs and academies.">
+  <meta name="keywords" content="football talent scouting, African football prospects, youth football trials Ghana, soccer scout platform, Scout Escort, player agency">
   <meta name="author" content="Caleb Anneh">
 
-  <!-- Social Media Preview Cards (Open Graph Tags for WhatsApp, X, Facebook) -->
-  <meta property="og:title" content="Scout Escort | Digital Football Talent & Showcase Hub">
-  <meta property="og:description" content="Connect emerging West African football talent with global scouts and academies. Browse verified player profiles and live match data.">
+  <!-- Social Media Preview Cards (Open Graph Tags) -->
+  <meta property="og:title" content="Scout Escort | Elite Football Talent & Scouting Hub">
+  <meta property="og:description" content="Connecting West African football talent with global scouts and academies. Browse verified player profiles and live match data.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://scout-escort.github.io">
   <meta property="og:image" content="https://images.unsplash.com/photo-1508098682722-e99c43a406b2?q=80&w=1200&auto=format&fit=crop">
@@ -31,169 +31,217 @@
 
   <style>
     :root {
-      --bg-color: #0d2818;
-      --card-bg: #ffffff;
-      --text-dark: #111111;
-      --accent-red: #cc0000;
-      --primary-green: #044b23;
+      --bg-main: #090d0a;
+      --bg-surface: #121c15;
+      --bg-card: #18261d;
+      --border-color: #24382b;
+      --text-main: #f3f4f6;
+      --text-muted: #9ca3af;
+      --accent-green: #10b981;
+      --accent-gold: #fbbf24;
+      --accent-red: #ef4444;
+      --whatsapp-green: #25d366;
     }
 
     * {
       box-sizing: border-box;
+      margin: 0;
+      padding: 0;
     }
 
-    html, body {
-      margin: 0 !important;
-      padding: 0 !important;
-      min-height: 100vh;
-      background-color: var(--bg-color);
-      color: var(--text-dark);
+    body {
+      background-color: var(--bg-main);
+      color: var(--text-main);
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      padding-bottom: 75px;
     }
 
-    /* Pinned Top Sponsor Ticker */
+    /* Top Partner Ticker */
     .sponsor-ticker {
-      width: 100%;
-      background-color: #050b07;
+      background-color: #040705;
+      border-bottom: 1px solid var(--border-color);
       overflow: hidden;
       white-space: nowrap;
-      padding: 10px 0;
-      border-bottom: 1px solid #1a3a25;
-      display: flex;
-      align-items: center;
+      padding: 8px 0;
     }
 
     .ticker-content {
       display: inline-flex;
       align-items: center;
-      white-space: nowrap;
-      animation: marquee 25s linear infinite;
+      animation: marquee 30s linear infinite;
     }
 
     .brand-item {
       display: inline-flex;
       align-items: center;
-      gap: 8px;
-      margin-right: 35px;
-      font-size: 14px;
-      font-weight: 800;
+      gap: 6px;
+      margin-right: 40px;
+      font-size: 12px;
+      font-weight: 700;
       letter-spacing: 1px;
-      color: #ffffff;
+      color: var(--text-muted);
       text-transform: uppercase;
     }
 
     .brand-item img {
-      height: 18px;
+      height: 14px;
       width: auto;
-      object-fit: contain;
+      filter: brightness(0) invert(0.7);
     }
-
-    .samsung-text { color: #3b82f6; }
-    .bmw-text { color: #0066b1; }
-    .qatar-text { color: #8a1538; }
 
     @keyframes marquee {
       0% { transform: translateX(100%); }
       100% { transform: translateX(-100%); }
     }
 
-    /* Main Container Structure */
+    /* Header & Hero Branding */
+    .site-header {
+      background: linear-gradient(180deg, var(--bg-surface) 0%, var(--bg-main) 100%);
+      border-bottom: 1px solid var(--border-color);
+      padding: 20px 16px;
+      text-align: center;
+    }
+
+    .site-title {
+      font-size: 22px;
+      font-weight: 900;
+      letter-spacing: 1px;
+      color: #ffffff;
+      text-transform: uppercase;
+    }
+
+    .site-title span {
+      color: var(--accent-green);
+    }
+
+    .site-subtitle {
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-top: 4px;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+    }
+
+    /* Main Content Wrapper */
     .container {
-      max-width: 600px;
-      margin: 15px auto;
-      padding: 0 12px;
-      padding-bottom: 70px;
-    }
-
-    .card {
-      background: var(--card-bg);
-      border-radius: 12px;
-      padding: 20px;
-      min-height: 75vh;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
-      display: flex;
-      flex-direction: column;
-    }
-
-    /* Fixed Bottom Navigation Menu Bar (5 Tabs) */
-    .bottom-nav {
-      position: fixed;
-      bottom: 0;
-      left: 0;
+      max-width: 700px;
       width: 100%;
-      background: #ffffff;
-      border-top: 1px solid #e0e0e0;
-      display: flex;
-      justify-content: space-around;
-      align-items: center;
-      padding: 6px 0;
-      box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
-      z-index: 1000;
-    }
-
-    .bottom-nav button {
-      background: none;
-      border: none;
-      color: #666666;
-      font-size: 10px;
-      font-weight: 700;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 3px;
-      cursor: pointer;
+      margin: 0 auto;
+      padding: 16px;
       flex: 1;
-      padding: 4px 0;
     }
 
-    .bottom-nav button.active {
-      color: var(--primary-green);
+    .tab-content {
+      display: none;
     }
 
-    .bottom-nav button svg {
-      width: 18px;
-      height: 18px;
-      fill: currentColor;
+    .tab-content.active {
+      display: block;
     }
 
-    /* Card Item Lists */
-    .matches-list {
+    /* Cards & Grid Styling */
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 14px;
+      border-left: 3px solid var(--accent-green);
+      padding-left: 10px;
+    }
+
+    .section-title {
+      font-size: 15px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: #ffffff;
+    }
+
+    .card-list {
       display: flex;
       flex-direction: column;
       gap: 12px;
     }
 
-    .player-card {
-      border: 1px solid #e0e0e0;
-      border-radius: 8px;
-      padding: 14px;
+    .pro-card {
+      background-color: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 10px;
+      padding: 16px;
       display: flex;
       justify-content: space-between;
       align-items: center;
+      transition: border-color 0.2s;
     }
 
-    .btn-action {
-      background-color: var(--accent-red);
-      color: white;
+    .pro-card:hover {
+      border-color: var(--accent-green);
+    }
+
+    .card-info h4 {
+      font-size: 15px;
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 4px;
+    }
+
+    .card-info p {
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    .badge {
+      display: inline-block;
+      background: rgba(16, 185, 129, 0.15);
+      color: var(--accent-green);
+      font-size: 10px;
+      font-weight: 700;
+      padding: 2px 6px;
+      border-radius: 4px;
+      margin-top: 4px;
+      text-transform: uppercase;
+    }
+
+    /* Action Buttons */
+    .btn {
+      background-color: var(--accent-green);
+      color: #090d0a;
       border: none;
       padding: 8px 14px;
       border-radius: 6px;
-      font-weight: bold;
+      font-weight: 800;
+      font-size: 12px;
       cursor: pointer;
       text-decoration: none;
-      font-size: 13px;
-      text-align: center;
-      flex-shrink: 0;
-      margin-left: 10px;
-    }
-
-    .section-title {
-      font-size: 14px;
-      font-weight: 800;
-      color: var(--primary-green);
-      margin: 16px 0 8px 0;
       text-transform: uppercase;
       letter-spacing: 0.5px;
+      transition: opacity 0.2s;
+      flex-shrink: 0;
+      margin-left: 8px;
+    }
+
+    .btn:hover {
+      opacity: 0.9;
+    }
+
+    .btn-whatsapp {
+      background-color: var(--whatsapp-green);
+      color: #ffffff;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 8px 10px;
+    }
+
+    /* Forms Styling */
+    .form-container {
+      background-color: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 20px;
     }
 
     .form-grid {
@@ -203,369 +251,357 @@
     }
 
     .form-group {
-      margin-bottom: 14px;
+      margin-bottom: 12px;
     }
 
-    .form-group.full-width {
+    .form-group.full {
       grid-column: span 2;
     }
 
     .form-group label {
       display: block;
+      font-size: 11px;
       font-weight: 700;
-      margin-bottom: 6px;
-      font-size: 12px;
-      color: #333;
       text-transform: uppercase;
       letter-spacing: 0.5px;
+      color: var(--text-muted);
+      margin-bottom: 6px;
     }
 
     .form-group input, .form-group select, .form-group textarea {
       width: 100%;
-      padding: 10px 12px;
-      border: 1.5px solid #d0d0d0;
+      background-color: var(--bg-card);
+      border: 1px solid var(--border-color);
       border-radius: 6px;
+      padding: 10px 12px;
+      color: #ffffff;
       font-size: 13px;
       outline: none;
-      background: #fafafa;
-      transition: border-color 0.2s;
     }
 
-    .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
-      border-color: var(--primary-green);
-      background: #ffffff;
+    .form-group input:focus, .form-group select:focus {
+      border-color: var(--accent-green);
     }
 
     .submit-btn {
       width: 100%;
-      background-color: var(--primary-green);
-      color: white;
+      background-color: var(--accent-green);
+      color: #090d0a;
       border: none;
-      padding: 14px;
-      font-size: 15px;
-      font-weight: bold;
+      padding: 12px;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 1px;
       border-radius: 6px;
       cursor: pointer;
-      margin-top: 10px;
-      letter-spacing: 0.5px;
-      box-shadow: 0 3px 6px rgba(0,0,0,0.1);
-      text-align: center;
+      margin-top: 6px;
     }
 
-    .tab-content {
-      display: none;
+    /* Bottom Navigation Bar */
+    .bottom-nav {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background-color: var(--bg-surface);
+      border-top: 1px solid var(--border-color);
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      padding: 8px 0;
+      z-index: 1000;
+    }
+
+    .nav-btn {
+      background: none;
+      border: none;
+      color: var(--text-muted);
+      font-size: 10px;
+      font-weight: 700;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 3px;
+      cursor: pointer;
       flex: 1;
+      text-transform: uppercase;
     }
 
-    .tab-content.active {
-      display: block;
+    .nav-btn.active {
+      color: var(--accent-green);
     }
-    
+
+    .nav-btn svg {
+      width: 18px;
+      height: 18px;
+      fill: currentColor;
+    }
+
     .hidden { display: none !important; }
+    .msg-feedback { font-size: 12px; margin-top: 8px; text-align: center; font-weight: 700; color: var(--accent-red); }
   </style>
 </head>
 <body>
 
-  <!-- Pinned Top Sponsor Ticker Bar -->
+  <!-- Top Sponsor Ticker Bar -->
   <div class="sponsor-ticker">
     <div class="ticker-content">
       <span class="brand-item">
-        <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/puma.svg" style="filter: brightness(0) invert(1);" alt="Puma">
-        PUMA
+        <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/puma.svg" alt="Puma"> Puma Official Partner
       </span>
       <span class="brand-item">
-        <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/nike.svg" style="filter: brightness(0) invert(1);" alt="Nike">
-        NIKE
-      </span>
-      <span class="brand-item samsung-text">
-        <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/samsung.svg" style="filter: invert(36%) sepia(85%) saturate(1982%) hue-rotate(209deg) brightness(98%) contrast(96%);" alt="Samsung">
-        SAMSUNG
+        <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/nike.svg" alt="Nike"> Nike Elite Showcase
       </span>
       <span class="brand-item">
-        <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/mercedes.svg" style="filter: brightness(0) invert(1);" alt="Mercedes">
-        MERCEDES
-      </span>
-      <span class="brand-item bmw-text">
-        <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/bmw.svg" style="filter: invert(27%) sepia(89%) saturate(1832%) hue-rotate(185deg) brightness(91%) contrast(101%);" alt="BMW">
-        BMW
+        <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/adidas.svg" alt="Adidas" style="filter: brightness(0) invert(1);"> Adidas Talent Network
       </span>
       <span class="brand-item">
-        <svg width="22" height="15" viewBox="0 0 24 16" fill="none" style="vertical-align: middle;">
-          <circle cx="8" cy="8" r="7" fill="#EB001B"/>
-          <circle cx="16" cy="8" r="7" fill="#F79E1B" fill-opacity="0.9"/>
-        </svg>
-        MASTERCARD
-      </span>
-      <span class="brand-item qatar-text">
-        <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/qatarairways.svg" style="filter: invert(16%) sepia(76%) saturate(4156%) hue-rotate(328deg) brightness(85%) contrast(98%);" alt="Qatar Airways">
-        QATAR AIRWAYS
+        <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/samsung.svg" alt="Samsung"> Samsung Sports Tech
       </span>
     </div>
   </div>
+
+  <!-- Professional Site Header -->
+  <header class="site-header">
+    <h1 class="site-title">Scout <span>Escort</span></h1>
+    <p class="site-subtitle">West African Football Talent & Scouting Agency</p>
+  </header>
 
   <div class="container">
-    <div class="card">
 
-      <!-- Tab 1: Matches -->
-      <div id="matches" class="tab-content active">
-        <h2 style="color: var(--primary-green); margin-top:0;">Featured Showcase Matches</h2>
-        <div class="matches-list" id="matchesList">
-          <div class="player-card">
-            <div>
-              <h4 style="margin: 0 0 4px 0; font-size: 15px;">D&R Academy vs. Grassroots XI</h4>
-              <p style="margin: 0; font-size: 12px; color: #666;">Showcase Series • Full Match Tape</p>
-            </div>
-            <a href="https://www.google.com/search?q=football+live+scores" target="_blank" rel="noopener" class="btn-action">Live Scores</a>
+    <!-- TAB 1: MATCHES & SHOWCASE -->
+    <div id="matches" class="tab-content active">
+      <div class="section-header">
+        <h2 class="section-title">Featured Showcase Tapes</h2>
+      </div>
+      <div class="card-list">
+        <div class="pro-card">
+          <div class="card-info">
+            <h4>D&R Academy vs. Grassroots Select</h4>
+            <p>Full Match Scouting Tape • High Definition</p>
+            <span class="badge">Verified Stream</span>
           </div>
-          <div class="player-card">
-            <div>
-              <h4 style="margin: 0 0 4px 0; font-size: 15px;">Elite Youth FC vs. Accra Select</h4>
-              <p style="margin: 0; font-size: 12px; color: #666;">U19 Championship • Full Match Tape</p>
-            </div>
-            <a href="https://www.google.com/search?q=football+live+scores" target="_blank" rel="noopener" class="btn-action">Live Scores</a>
+          <a href="https://www.google.com/search?q=football+live+scores" target="_blank" rel="noopener" class="btn">Live Scores</a>
+        </div>
+        <div class="pro-card">
+          <div class="card-info">
+            <h4>Elite Youth U19 Championship</h4>
+            <p>Accra Regional Scouting Showcase</p>
+            <span class="badge">Scout Priority</span>
           </div>
+          <a href="https://www.google.com/search?q=football+live+scores" target="_blank" rel="noopener" class="btn">Live Scores</a>
         </div>
       </div>
-
-      <!-- Tab 2: Live Sports Journalism & Transfer Desk -->
-      <div id="news" class="tab-content">
-        <h2 style="color: var(--primary-green); margin-top:0;">Live Sports & Transfer Desk</h2>
-        <p style="font-size: 12px; color: #666; margin-bottom: 14px;">Real-time football headlines, journalist updates, and breaking news.</p>
-        
-        <div class="matches-list">
-          <div class="player-card">
-            <div>
-              <h4 style="margin: 0 0 4px 0; font-size: 15px;">Transfer Window & Breaking News Desk</h4>
-              <p style="margin: 0; font-size: 12px; color: #666;">Live reporting, expert journalist analysis & breaking rumors</p>
-            </div>
-            <a href="https://www.espn.com/soccer/transfer" target="_blank" rel="noopener" class="btn-action">Open Desk</a>
-          </div>
-          <div class="player-card">
-            <div>
-              <h4 style="margin: 0 0 4px 0; font-size: 15px;">BBC Sport Football Live Commentary</h4>
-              <p style="margin: 0; font-size: 12px; color: #666;">Minute-by-minute text commentary, expert views & match analysis</p>
-            </div>
-            <a href="https://www.bbc.com/sport/football" target="_blank" rel="noopener" class="btn-action">Read Live</a>
-          </div>
-        </div>
-      </div>
-
-      <!-- Tab 3: Leagues & Database -->
-      <div id="rankings" class="tab-content">
-        <h2 style="color: var(--primary-green); margin-top:0;">Global & African Leagues Directory</h2>
-        <p style="font-size: 13px; color: #666; margin-bottom: 12px;">Search players, clubs, or major world and African leagues:</p>
-        
-        <!-- Interactive Search Bar -->
-        <div style="margin-bottom: 14px;">
-          <input type="text" id="playerSearch" placeholder="Search league, club, or player..." onkeyup="filterPlayers()" style="width: 100%; padding: 10px 12px; border: 1.5px solid #d0d0d0; border-radius: 6px; font-size: 13px; outline: none; background: #fafafa;">
-        </div>
-
-        <div class="matches-list" id="playerList">
-          <!-- Major World Leagues Hub -->
-          <div class="section-title" style="margin-top:0;">Top Global Leagues</div>
-          <div class="player-card league-card">
-            <div>
-              <h4 style="margin: 0 0 4px 0; font-size: 15px;">🏴󠁧󠁢󠁥󠁮󠁧󠁿 Premier League (England)</h4>
-              <p style="margin: 0; font-size: 12px; color: #666;">Tier 1 • Live Standings & Results</p>
-            </div>
-            <a href="https://www.google.com/search?q=Premier+League+live+scores+table" target="_blank" rel="noopener" class="btn-action">Live Updates</a>
-          </div>
-          <div class="player-card league-card">
-            <div>
-              <h4 style="margin: 0 0 4px 0; font-size: 15px;">🇪🇸 La Liga (Spain)</h4>
-              <p style="margin: 0; font-size: 12px; color: #666;">Tier 1 • Live Standings & Results</p>
-            </div>
-            <a href="https://www.google.com/search?q=La+Liga+live+scores+table" target="_blank" rel="noopener" class="btn-action">Live Updates</a>
-          </div>
-
-          <!-- Featured African Leagues Hub -->
-          <div class="section-title">Prominent African Leagues</div>
-          <div class="player-card league-card">
-            <div>
-              <h4 style="margin: 0 0 4px 0; font-size: 15px;">🇬🇭 Ghana Premier League (Ghana)</h4>
-              <p style="margin: 0; font-size: 12px; color: #666;">Domestic Elite • Live Scores & Results</p>
-            </div>
-            <a href="https://www.google.com/search?q=Ghana+Premier+League+live+scores" target="_blank" rel="noopener" class="btn-action">Live Updates</a>
-          </div>
-
-          <!-- Verified Prospects -->
-          <div class="section-title">Verified Prospect Directory (Live Database Feed)</div>
-          <div id="db-feed-container">
-            <p style="font-size: 13px; color: #666;">Loading live directory profiles...</p>
-          </div>
-        </div>
-      </div>
-
-      <!-- Tab 4: Professional Registration Tab -->
-      <div id="registration" class="tab-content" style="background: #ffffff; padding: 20px;">
-        <div style="border-bottom: 2px solid var(--primary-green); padding-bottom: 8px; margin-bottom: 16px;">
-          <h3 style="color: var(--primary-green); margin: 0; font-size: 18px; font-weight: 800;">Scout Escort Registration</h3>
-          <p style="font-size: 12px; color: #666; margin: 4px 0 0 0;">Enter your player profile details and credentials below.</p>
-        </div>
-
-        <div style="background: #f8fafc; padding: 18px; border-radius: 10px; border: 1px solid #e2e8f0;">
-          <div class="form-grid">
-            <div class="form-group full-width">
-              <label>Select Role *</label>
-              <select id="reg-role" style="font-weight: 600; color: #0f172a;">
-                <option value="player">Football Prospect / Player</option>
-                <option value="scout">Scout / Talent Agent</option>
-                <option value="club">Club Representative / Coach</option>
-              </select>
-            </div>
-
-            <div class="form-group full-width">
-              <label>Full Name *</label>
-              <input type="text" id="reg-fullname" placeholder="e.g. Samuel Mensah">
-            </div>
-
-            <div class="form-group">
-              <label>Position *</label>
-              <input type="text" id="reg-position" placeholder="e.g. LW / RW / CM">
-            </div>
-
-            <div class="form-group">
-              <label>Age *</label>
-              <input type="number" id="reg-age" placeholder="e.g. 18">
-            </div>
-
-            <div class="form-group">
-              <label>Height *</label>
-              <input type="text" id="reg-height" placeholder="e.g. 1.82m or 6ft">
-            </div>
-
-            <div class="form-group">
-              <label>Weight *</label>
-              <input type="text" id="reg-weight" placeholder="e.g. 75kg">
-            </div>
-
-            <div class="form-group full-width">
-              <label>Country / Base *</label>
-              <input type="text" id="reg-country" placeholder="e.g. Ghana">
-            </div>
-
-            <div class="form-group full-width">
-              <label>Email Address *</label>
-              <input type="email" id="reg-email" placeholder="name@example.com">
-            </div>
-
-            <div class="form-group full-width">
-              <label>Secure Password *</label>
-              <input type="password" id="reg-password" placeholder="At least 6 characters">
-            </div>
-
-            <div class="form-group full-width">
-              <button type="button" onclick="registerAccount()" class="submit-btn">Register</button>
-            </div>
-          </div>
-          <p id="reg-message" style="font-size: 12px; margin-top: 10px; text-align: center; color: #cc0000; font-weight: 600;"></p>
-        </div>
-      </div>
-
-      <!-- Tab 5: Portal (Login & Publish Dashboard) -->
-      <div id="portal" class="tab-content" style="background: #ffffff; padding: 20px;">
-        <h3 style="color: var(--primary-green); margin-top: 0; margin-bottom: 6px;">Secure Platform Portal</h3>
-        <p style="font-size: 13px; color: #666; line-height: 1.4; margin-bottom: 14px;">
-          Log in to your account to instantly post and manage verified player profiles directly on the live database feed.
-        </p>
-
-        <!-- AUTHENTICATION SECTION -->
-        <div id="auth-box" style="background: #f9fafb; padding: 15px; border-radius: 8px; border: 1px solid #e5e7eb; margin-bottom: 15px;">
-          <h4 style="margin: 0 0 10px 0; font-size: 14px; color: var(--primary-green);">User Login</h4>
-          <div class="form-group" style="margin-bottom: 8px;">
-            <input type="email" id="auth-email" placeholder="Email Address">
-          </div>
-          <div class="form-group" style="margin-bottom: 10px;">
-            <input type="password" id="auth-password" placeholder="Password">
-          </div>
-          <button type="button" onclick="loginUser()" style="width:100%; background: var(--primary-green); color: white; border: none; padding: 10px; border-radius: 6px; font-weight: bold; cursor: pointer;">Log In</button>
-          <p id="auth-message" style="font-size: 12px; margin-top: 8px; color: #cc0000;"></p>
-        </div>
-
-        <!-- LOGGED IN DASHBOARD (Hidden until logged in) -->
-        <div id="dashboard-box" class="hidden" style="background: #f0fdf4; padding: 15px; border-radius: 8px; border: 1px solid #bbf7d0;">
-          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
-            <span id="logged-user-email" style="font-size: 12px; font-weight: bold; color: var(--primary-green);"></span>
-            <button type="button" onclick="logoutUser()" style="background: #dc2626; color: white; border: none; padding: 4px 10px; border-radius: 4px; font-size: 11px; cursor: pointer;">Logout</button>
-          </div>
-
-          <h4 style="margin: 0 0 10px 0; font-size: 14px; color: var(--primary-green);">Publish New Prospect Profile</h4>
-          
-          <div class="form-grid">
-            <div class="form-group full-width">
-              <label>Player Name *</label>
-              <input type="text" id="p-name" placeholder="e.g. Samuel Mensah">
-            </div>
-            
-            <div class="form-group">
-              <label>Position</label>
-              <input type="text" id="p-position" placeholder="e.g. LW / RW">
-            </div>
-
-            <div class="form-group">
-              <label>Age</label>
-              <input type="text" id="p-age" placeholder="e.g. 19">
-            </div>
-
-            <div class="form-group full-width">
-              <label>Current Team / Academy</label>
-              <input type="text" id="p-team" placeholder="e.g. Accra Select">
-            </div>
-
-            <div class="form-group full-width">
-              <label>Video Highlight Link *</label>
-              <input type="url" id="p-video" placeholder="https://youtube.com/...">
-            </div>
-
-            <div class="form-group full-width">
-              <button type="button" onclick="submitPlayerProfile()" class="submit-btn" style="margin-top: 0;">Publish Profile Live</button>
-            </div>
-          </div>
-        </div>
-
-      </div>
-
     </div>
+
+    <!-- TAB 2: LIVE NEWS & TRANSFERS -->
+    <div id="news" class="tab-content">
+      <div class="section-header">
+        <h2 class="section-title">Transfer Desk & Journalism</h2>
+      </div>
+      <div class="card-list">
+        <div class="pro-card">
+          <div class="card-info">
+            <h4>Global Transfer Window Wire</h4>
+            <p>Breaking rumors, European academy updates & official signings</p>
+            <span class="badge">Live Feed</span>
+          </div>
+          <a href="https://www.espn.com/soccer/transfer" target="_blank" rel="noopener" class="btn">Open Desk</a>
+        </div>
+        <div class="pro-card">
+          <div class="card-info">
+            <h4>BBC Sport Football Live Commentary</h4>
+            <p>Minute-by-minute text commentary and expert analysis</p>
+            <span class="badge">Expert Insights</span>
+          </div>
+          <a href="https://www.bbc.com/sport/football" target="_blank" rel="noopener" class="btn">Read Live</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB 3: LEAGUES & DATABASE -->
+    <div id="rankings" class="tab-content">
+      <div class="section-header">
+        <h2 class="section-title">Leagues & Prospect Directory</h2>
+      </div>
+      
+      <div style="margin-bottom: 14px;">
+        <input type="text" id="playerSearch" placeholder="Search leagues, clubs, or players..." onkeyup="filterPlayers()" style="width: 100%; background-color: var(--bg-surface); border: 1px solid var(--border-color); border-radius: 8px; padding: 12px; color: #fff; font-size: 13px; outline: none;">
+      </div>
+
+      <div class="card-list" id="playerList">
+        <div class="pro-card">
+          <div class="card-info">
+            <h4>🏴󠁧󠁢󠁥󠁮󠁧󠁿 Premier League (England)</h4>
+            <p>Tier 1 • Standings & Results</p>
+          </div>
+          <a href="https://www.google.com/search?q=Premier+League+live+scores+table" target="_blank" rel="noopener" class="btn">Standings</a>
+        </div>
+        <div class="pro-card">
+          <div class="card-info">
+            <h4>🇬🇭 Ghana Premier League (Ghana)</h4>
+            <p>Domestic Elite • Live Feed</p>
+          </div>
+          <a href="https://www.google.com/search?q=Ghana+Premier+League+live+scores" target="_blank" rel="noopener" class="btn">Standings</a>
+        </div>
+
+        <div class="section-header" style="margin-top: 18px;">
+          <h2 class="section-title">Live Database Feed (Verified Prospects)</h2>
+        </div>
+        <div id="db-feed-container">
+          <p style="font-size: 12px; color: var(--text-muted); padding: 10px 0;">Loading verified talent records...</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB 4: REGISTRATION -->
+    <div id="registration" class="tab-content">
+      <div class="section-header">
+        <h2 class="section-title">Talent Registration Desk</h2>
+      </div>
+      <div class="form-container">
+        <div class="form-grid">
+          <div class="form-group full">
+            <label>Select Account Role *</label>
+            <select id="reg-role">
+              <option value="player">Football Prospect / Player</option>
+              <option value="scout">Scout / Talent Agent</option>
+              <option value="club">Club Representative / Coach</option>
+            </select>
+          </div>
+          <div class="form-group full">
+            <label>Full Legal Name *</label>
+            <input type="text" id="reg-fullname" placeholder="e.g. Samuel Mensah">
+          </div>
+          <div class="form-group">
+            <label>Primary Position *</label>
+            <input type="text" id="reg-position" placeholder="e.g. LW / RW / CM">
+          </div>
+          <div class="form-group">
+            <label>Age *</label>
+            <input type="number" id="reg-age" placeholder="e.g. 18">
+          </div>
+          <div class="form-group">
+            <label>Height *</label>
+            <input type="text" id="reg-height" placeholder="e.g. 1.82m">
+          </div>
+          <div class="form-group">
+            <label>Weight *</label>
+            <input type="text" id="reg-weight" placeholder="e.g. 75kg">
+          </div>
+          <div class="form-group full">
+            <label>Country / Base *</label>
+            <input type="text" id="reg-country" placeholder="e.g. Ghana">
+          </div>
+          <div class="form-group full">
+            <label>Email Address *</label>
+            <input type="email" id="reg-email" placeholder="name@example.com">
+          </div>
+          <div class="form-group full">
+            <label>Secure Password *</label>
+            <input type="password" id="reg-password" placeholder="At least 6 characters">
+          </div>
+          <div class="form-group full">
+            <button type="button" onclick="registerAccount()" class="submit-btn">Complete Registration</button>
+          </div>
+        </div>
+        <p id="reg-message" class="msg-feedback"></p>
+      </div>
+    </div>
+
+    <!-- TAB 5: PORTAL & PUBLISH DASHBOARD -->
+    <div id="portal" class="tab-content">
+      <div class="section-header">
+        <h2 class="section-title">Secure Management Portal</h2>
+      </div>
+      
+      <!-- Login Box -->
+      <div id="auth-box" class="form-container" style="margin-bottom: 16px;">
+        <h3 style="font-size: 14px; margin-bottom: 10px; color: #fff;">Authorized Login</h3>
+        <div class="form-group">
+          <input type="email" id="auth-email" placeholder="Email Address">
+        </div>
+        <div class="form-group" style="margin-bottom: 10px;">
+          <input type="password" id="auth-password" placeholder="Password">
+        </div>
+        <button type="button" onclick="loginUser()" class="submit-btn" style="margin-top:0;">Access Dashboard</button>
+        <p id="auth-message" class="msg-feedback"></p>
+      </div>
+
+      <!-- Dashboard Box -->
+      <div id="dashboard-box" class="form-container hidden">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; border-bottom: 1px solid var(--border-color); padding-bottom: 8px;">
+          <span id="logged-user-email" style="font-size: 11px; color: var(--accent-green); font-weight: 700;"></span>
+          <button type="button" onclick="logoutUser()" style="background: var(--accent-red); color: #fff; border: none; padding: 4px 8px; border-radius: 4px; font-size: 10px; cursor: pointer; font-weight: 700;">Logout</button>
+        </div>
+
+        <h3 style="font-size: 14px; margin-bottom: 12px; color: #fff;">Publish Verified Prospect Profile</h3>
+        
+        <div class="form-grid">
+          <div class="form-group full">
+            <label>Player Name *</label>
+            <input type="text" id="p-name" placeholder="e.g. Samuel Mensah">
+          </div>
+          <div class="form-group">
+            <label>Position *</label>
+            <input type="text" id="p-position" placeholder="e.g. Center Midfielder">
+          </div>
+          <div class="form-group">
+            <label>Age *</label>
+            <input type="text" id="p-age" placeholder="e.g. 19">
+          </div>
+          <div class="form-group full">
+            <label>Current Academy / Club</label>
+            <input type="text" id="p-team" placeholder="e.g. Accra Select Academy">
+          </div>
+          <div class="form-group full">
+            <label>Video Highlight URL (YouTube/Hudl) *</label>
+            <input type="url" id="p-video" placeholder="https://youtube.com/...">
+          </div>
+          <div class="form-group full">
+            <button type="button" onclick="submitPlayerProfile()" class="submit-btn" style="margin-top:0;">Publish Profile Live</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
   </div>
 
-  <!-- Bottom Navigation Bar (5 Tabs) -->
+  <!-- Bottom Navigation Menu -->
   <nav class="bottom-nav">
-    <button class="active" onclick="switchTab('matches', event)" id="nav-matches">
+    <button class="nav-btn active" onclick="switchTab('matches', event)" id="nav-matches">
       <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14.5v-9l6 4.5-6 4.5z"/></svg>
       Matches
     </button>
-    <button onclick="switchTab('news', event)" id="nav-news">
+    <button class="nav-btn" onclick="switchTab('news', event)" id="nav-news">
       <svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/></svg>
       News
     </button>
-    <button onclick="switchTab('rankings', event)" id="nav-rankings">
+    <button class="nav-btn" onclick="switchTab('rankings', event)" id="nav-rankings">
       <svg viewBox="0 0 24 24"><path d="M16 6l2.29 2.29-4.88 4.88-4-4L2 16.59 3.41 18l6-6 4 4 6.3-6.29L22 12V6z"/></svg>
       Leagues
     </button>
-    <button onclick="switchTab('registration', event)" id="nav-registration">
+    <button class="nav-btn" onclick="switchTab('registration', event)" id="nav-registration">
       <svg viewBox="0 0 24 24"><path d="M15 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm-9-2V7H4v3H1v2h3v3h2v-3h3v-2H6zm9 4c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
       Register
     </button>
-    <button onclick="switchTab('portal', event)" id="nav-portal">
+    <button class="nav-btn" onclick="switchTab('portal', event)" id="nav-portal">
       <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"/></svg>
       Portal
     </button>
   </nav>
 
   <script>
-    // --- SUPABASE CONFIGURATION ---
     const SUPABASE_URL = 'https://ovbybswgoxvifmftxshb.supabase.co';
     const SUPABASE_ANON_KEY = 'sb_publishable_GVF5j7spmTppoU2oxjLSiw_5fSKZEeg';
-    
     const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
-    // Check user session on load
     async function checkUserSession() {
       const { data: { session } } = await supabaseClient.auth.getSession();
       if (session) {
         document.getElementById('auth-box').classList.add('hidden');
         document.getElementById('dashboard-box').classList.remove('hidden');
-        document.getElementById('logged-user-email').innerText = 'Logged in as: ' + session.user.email;
+        document.getElementById('logged-user-email').innerText = 'AUTHORIZED: ' + session.user.email;
       }
       loadDatabaseFeed();
     }
@@ -584,32 +620,20 @@
       const msgElem = document.getElementById('reg-message');
 
       msgElem.innerText = '';
-
       if (!fullname || !email || !password || !position) {
-        msgElem.innerText = 'Please fill out all required fields.';
+        msgElem.innerText = 'Please complete all required fields.';
         return;
       }
 
       const { error } = await supabaseClient.auth.signUp({ 
-        email, 
-        password,
-        options: {
-          data: {
-            full_name: fullname,
-            account_role: role,
-            position: position,
-            age: age,
-            height: height,
-            weight: weight,
-            country: country
-          }
-        }
+        email, password,
+        options: { data: { full_name: fullname, account_role: role, position, age, height, weight, country } }
       });
 
       if (error) {
         msgElem.innerText = error.message;
       } else {
-        alert('Registration successful! You can now log in.');
+        alert('Registration successful! Please log in via the Portal tab.');
         switchTab('portal', { target: document.getElementById('nav-portal') });
       }
     }
@@ -638,18 +662,16 @@
       const video = document.getElementById('p-video').value;
 
       if (!name || !video) {
-        alert('Please fill out at least the player name and video link.');
+        alert('Player name and video link are required.');
         return;
       }
 
-      const { error } = await supabaseClient
-        .from('players')
-        .insert([{ name, position, age, team, video }]);
+      const { error } = await supabaseClient.from('players').insert([{ name, position, age, team, video }]);
 
       if (error) {
         alert('Error publishing profile: ' + error.message);
       } else {
-        alert('Profile published live successfully!');
+        alert('Prospect profile published live successfully!');
         document.getElementById('p-name').value = '';
         document.getElementById('p-position').value = '';
         document.getElementById('p-age').value = '';
@@ -662,22 +684,20 @@
 
     async function loadDatabaseFeed() {
       const container = document.getElementById('db-feed-container');
-      const { data, error } = await supabaseClient
-        .from('players')
-        .select('*')
-        .order('created_at', { ascending: false });
+      const { data, error } = await supabaseClient.from('players').select('*').order('created_at', { ascending: false });
 
-      if (error || !data) {
+      if (error || !data || data.length === 0) {
         container.innerHTML = `
-          <div class="player-card">
-            <div>
-              <h4 style="margin: 0 0 4px 0; font-size: 15px;">K. Mensah (LW / RW)</h4>
-              <p style="margin: 0; font-size: 12px; color: #666;">Age 19 • Free Agent</p>
+          <div class="pro-card">
+            <div class="card-info">
+              <h4>Samuel Mensah (LW / RW)</h4>
+              <p>Age 19 • Free Agent • Verified Prospect</p>
+              <span class="badge">Scout Featured</span>
             </div>
             <div style="display: flex; gap: 6px;">
-              <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank" rel="noopener" class="btn-action" style="margin-left: 0; padding: 8px 10px;">Highlights</a>
-              <a href="https://api.whatsapp.com/send?text=Check%20out%20K.%20Mensah%20on%20Scout%20Escort!" target="_blank" rel="noopener" class="btn-action" style="margin-left: 0; background-color: #25d366; padding: 8px 10px;" title="Share to WhatsApp">
-                <svg viewBox="0 0 24 24" width="14" height="14" fill="white" style="vertical-align: middle;"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+              <a href="https://youtube.com" target="_blank" class="btn">Watch</a>
+              <a href="https://api.whatsapp.com/send?text=Check%20out%20Samuel%20Mensah%20on%20Scout%20Escort!" target="_blank" class="btn btn-whatsapp" title="Share via WhatsApp">
+                <svg viewBox="0 0 24 24" width="14" height="14" fill="#ffffff"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
               </a>
             </div>
           </div>
@@ -685,26 +705,22 @@
         return;
       }
 
-      if (data.length === 0) {
-        container.innerHTML = '<p style="font-size: 13px; color: #666;">No profiles posted yet. Be the first via the Portal tab!</p>';
-        return;
-      }
-
       container.innerHTML = '';
       data.forEach(player => {
-        const shareText = encodeURIComponent(`Check out ${player.name} (${player.position || 'Player'}), age ${player.age || 'N/A'} on Scout Escort - The Digital Football Talent Hub! Watch highlights here: ${player.video}`);
+        const shareText = encodeURIComponent(`Discover elite prospect ${player.name} (${player.position || 'Player'}) on Scout Escort! Watch highlights: ${player.video}`);
         const whatsappUrl = `https://api.whatsapp.com/send?text=${shareText}`;
 
         container.innerHTML += `
-          <div class="player-card">
-            <div>
-              <h4 style="margin: 0 0 4px 0; font-size: 15px;">${player.name} (${player.position || 'Player'})</h4>
-              <p style="margin: 0; font-size: 12px; color: #666;">Age ${player.age || 'N/A'} • ${player.team || 'Independent'}</p>
+          <div class="pro-card">
+            <div class="card-info">
+              <h4>${player.name} (${player.position || 'Player'})</h4>
+              <p>Age ${player.age || 'N/A'} • ${player.team || 'Independent'}</p>
+              <span class="badge">Verified Prospect</span>
             </div>
             <div style="display: flex; gap: 6px; align-items: center;">
-              <a href="${player.video}" target="_blank" rel="noopener" class="btn-action" style="margin-left: 0; padding: 8px 10px;">Watch</a>
-              <a href="${whatsappUrl}" target="_blank" rel="noopener" class="btn-action" style="margin-left: 0; background-color: #25d366; padding: 8px 10px;" title="Share to WhatsApp">
-                <svg viewBox="0 0 24 24" width="14" height="14" fill="white" style="vertical-align: middle;"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+              <a href="${player.video}" target="_blank" class="btn">Watch</a>
+              <a href="${whatsappUrl}" target="_blank" class="btn btn-whatsapp" title="Share via WhatsApp">
+                <svg viewBox="0 0 24 24" width="14" height="14" fill="#ffffff"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
               </a>
             </div>
           </div>
@@ -713,55 +729,33 @@
     }
 
     function switchTab(tabId, event) {
-      document.querySelectorAll('.tab-content').forEach(tab => {
-        tab.classList.remove('active');
-      });
-      document.querySelectorAll('.bottom-nav button').forEach(btn => {
-        btn.classList.remove('active');
-      });
+      document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+      document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
 
       document.getElementById(tabId).classList.add('active');
-      
-      let targetBtn = event ? event.target : null;
-      if (targetBtn && targetBtn.tagName !== 'BUTTON') {
-        targetBtn = targetBtn.closest('button');
-      }
-      if (!targetBtn) {
-        targetBtn = document.getElementById('nav-' + tabId);
-      }
-      if (targetBtn) {
-        targetBtn.classList.add('active');
-      }
+      let targetBtn = event ? event.target.closest('button') : null;
+      if (!targetBtn) targetBtn = document.getElementById('nav-' + tabId);
+      if (targetBtn) targetBtn.classList.add('active');
     }
 
     function filterPlayers() {
       let input = document.getElementById('playerSearch').value.toLowerCase();
-      let rankCount = 0;
-
       let rankingsList = document.getElementById('playerList');
       if (rankingsList) {
-        let cards = rankingsList.getElementsByClassName('player-card');
+        let cards = rankingsList.getElementsByClassName('pro-card');
         for (let i = 0; i < cards.length; i++) {
           let text = cards[i].innerText.toLowerCase();
-          if (text.includes(input)) {
-            cards[i].style.display = "";
-            rankCount++;
-          } else {
-            cards[i].style.display = "none";
-          }
+          cards[i].style.display = text.includes(input) ? "" : "none";
         }
       }
-
-      if (input.length > 0 && rankCount > 0) {
-        document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
-        document.querySelectorAll('.bottom-nav button').forEach(b => b.classList.remove('active'));
-        document.getElementById('rankings').classList.add('active');
-        document.getElementById('nav-rankings').classList.add('active');
+      if (input.length > 0) {
+        switchTab('rankings', { target: document.getElementById('nav-rankings') });
       }
     }
   </script>
 </body>
 </html>
+
 
 
 
