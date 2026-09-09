@@ -14,30 +14,27 @@
         .animate-marquee {
             display: flex;
             width: 200%;
-            animation: marquee 25s linear infinite;
+            animation: marquee 20s linear infinite;
         }
         .animate-marquee:hover {
             animation-play-state: paused;
         }
         ::-webkit-scrollbar {
-            height: 6px;
-            width: 6px;
+            height: 4px;
+            width: 4px;
         }
         ::-webkit-scrollbar-track {
             background: #020617;
         }
         ::-webkit-scrollbar-thumb {
-            background: #1e293b;
-            border-radius: 4px;
-        }
-        ::-webkit-scrollbar-thumb:hover {
             background: #059669;
+            border-radius: 4px;
         }
     </style>
 </head>
 <body class="bg-slate-950 text-slate-100 font-sans min-h-screen flex flex-col">
 
-    <!-- 1. PINNED TOP SPONSOR TICKER BAR -->
+    <!-- PINNED TOP SPONSOR TICKER BAR -->
     <div class="bg-emerald-950/90 border-b border-emerald-800/40 py-2 overflow-hidden text-xs text-emerald-300 font-medium tracking-wide">
         <div class="animate-marquee whitespace-nowrap flex items-center space-x-12">
             <span class="flex items-center gap-2"><i class="fa-solid fa-bolt text-amber-400"></i> OFFICIAL PARTNER: PUMA FOOTBALL</span>
@@ -57,49 +54,49 @@
                     <i class="fa-solid fa-binoculars"></i>
                 </div>
                 <div>
-                    <h1 class="text-xl font-bold tracking-tight text-white flex items-center gap-2">
+                    <h1 class="text-lg sm:text-xl font-bold tracking-tight text-white flex items-center gap-2">
                         SCOUT ESCORT <span class="text-xs bg-emerald-500/20 text-emerald-400 px-2 py-0.5 rounded-full border border-emerald-500/30">Global Hub</span>
                     </h1>
                     <p class="text-xs text-slate-400">Connecting West African Elite Talent to European Clubs</p>
                 </div>
             </div>
             <!-- QUICK STATS BADGE -->
-            <div class="flex items-center gap-4 text-xs bg-slate-950 px-4 py-2 rounded-xl border border-slate-800">
-                <div><span class="text-emerald-400 font-bold">540+</span> Registered Prospects</div>
+            <div class="flex items-center gap-3 text-xs bg-slate-950 px-3 py-1.5 rounded-xl border border-slate-800">
+                <div><span class="text-emerald-400 font-bold">540+</span> Prospects</div>
                 <div class="w-px h-3 bg-slate-800"></div>
-                <div><span class="text-emerald-400 font-bold">42</span> Scouts Online</div>
+                <div><span class="text-emerald-400 font-bold">42</span> Scouts</div>
             </div>
         </div>
 
-        <!-- 2. EXPANDED NAVIGATION SYSTEM -->
-        <nav class="bg-slate-900/95 border-t border-slate-800/80">
-            <div class="max-w-7xl mx-auto px-4 flex overflow-x-auto space-x-2 sm:space-x-4 py-2.5">
-                <button onclick="switchTab('matches')" id="btn-matches" class="tab-btn px-4 py-2 rounded-lg font-semibold text-xs sm:text-sm transition-all bg-emerald-600 text-slate-950 shadow-md flex items-center gap-2 whitespace-nowrap">
-                    <i class="fa-solid fa-futbol"></i> Prospects & Matches
+        <!-- PROFESSIONAL MOBILE-FRIENDLY GRID NAVIGATION -->
+        <div class="bg-slate-900/95 border-t border-slate-800/80 px-4 py-2.5">
+            <div class="max-w-7xl mx-auto grid grid-cols-4 sm:flex sm:flex-wrap gap-1.5 sm:gap-2">
+                <button onclick="switchTab('matches')" id="btn-matches" class="tab-btn col-span-2 sm:col-span-1 px-3 py-2 rounded-lg font-semibold text-xs transition-all bg-emerald-600 text-slate-950 shadow-md flex items-center justify-center sm:justify-start gap-1.5">
+                    <i class="fa-solid fa-futbol"></i> <span>Prospects</span>
                 </button>
-                <button onclick="switchTab('fixtures')" id="btn-fixtures" class="tab-btn px-4 py-2 rounded-lg font-semibold text-xs sm:text-sm transition-all text-slate-300 hover:bg-slate-800 flex items-center gap-2 whitespace-nowrap">
-                    <i class="fa-solid fa-tv"></i> Live Scores & Fixtures
+                <button onclick="switchTab('fixtures')" id="btn-fixtures" class="tab-btn col-span-2 sm:col-span-1 px-3 py-2 rounded-lg font-semibold text-xs transition-all text-slate-300 hover:bg-slate-800 flex items-center justify-center sm:justify-start gap-1.5">
+                    <i class="fa-solid fa-tv"></i> <span>Live Scores</span>
                 </button>
-                <button onclick="switchTab('news')" id="btn-news" class="tab-btn px-4 py-2 rounded-lg font-semibold text-xs sm:text-sm transition-all text-slate-300 hover:bg-slate-800 flex items-center gap-2 whitespace-nowrap">
-                    <i class="fa-solid fa-newspaper"></i> News & Transfers
+                <button onclick="switchTab('news')" id="btn-news" class="tab-btn col-span-2 sm:col-span-1 px-3 py-2 rounded-lg font-semibold text-xs transition-all text-slate-300 hover:bg-slate-800 flex items-center justify-center sm:justify-start gap-1.5">
+                    <i class="fa-solid fa-newspaper"></i> <span>News</span>
                 </button>
-                <button onclick="switchTab('leagues')" id="btn-leagues" class="tab-btn px-4 py-2 rounded-lg font-semibold text-xs sm:text-sm transition-all text-slate-300 hover:bg-slate-800 flex items-center gap-2 whitespace-nowrap">
-                    <i class="fa-solid fa-trophy"></i> Leagues & Academies
+                <button onclick="switchTab('leagues')" id="btn-leagues" class="tab-btn col-span-2 sm:col-span-1 px-3 py-2 rounded-lg font-semibold text-xs transition-all text-slate-300 hover:bg-slate-800 flex items-center justify-center sm:justify-start gap-1.5">
+                    <i class="fa-solid fa-trophy"></i> <span>Leagues</span>
                 </button>
-                <button onclick="switchTab('directory')" id="btn-directory" class="tab-btn px-4 py-2 rounded-lg font-semibold text-xs sm:text-sm transition-all text-slate-300 hover:bg-slate-800 flex items-center gap-2 whitespace-nowrap">
-                    <i class="fa-solid fa-address-book"></i> Partner Scouts
+                <button onclick="switchTab('directory')" id="btn-directory" class="tab-btn col-span-2 sm:col-span-1 px-3 py-2 rounded-lg font-semibold text-xs transition-all text-slate-300 hover:bg-slate-800 flex items-center justify-center sm:justify-start gap-1.5">
+                    <i class="fa-solid fa-address-book"></i> <span>Scouts</span>
                 </button>
-                <button onclick="switchTab('success')" id="btn-success" class="tab-btn px-4 py-2 rounded-lg font-semibold text-xs sm:text-sm transition-all text-slate-300 hover:bg-slate-800 flex items-center gap-2 whitespace-nowrap">
-                    <i class="fa-solid fa-award"></i> Success Stories
+                <button onclick="switchTab('success')" id="btn-success" class="tab-btn col-span-2 sm:col-span-1 px-3 py-2 rounded-lg font-semibold text-xs transition-all text-slate-300 hover:bg-slate-800 flex items-center justify-center sm:justify-start gap-1.5">
+                    <i class="fa-solid fa-award"></i> <span>Success</span>
                 </button>
-                <button onclick="switchTab('register')" id="btn-register" class="tab-btn px-4 py-2 rounded-lg font-semibold text-xs sm:text-sm transition-all text-slate-300 hover:bg-slate-800 flex items-center gap-2 whitespace-nowrap">
-                    <i class="fa-solid fa-user-plus"></i> Submit Prospect
+                <button onclick="switchTab('register')" id="btn-register" class="tab-btn col-span-2 sm:col-span-1 px-3 py-2 rounded-lg font-semibold text-xs transition-all text-slate-300 hover:bg-slate-800 flex items-center justify-center sm:justify-start gap-1.5 border border-emerald-500/30 text-emerald-400">
+                    <i class="fa-solid fa-user-plus"></i> <span>Submit</span>
                 </button>
-                <button onclick="switchTab('portal')" id="btn-portal" class="tab-btn px-4 py-2 rounded-lg font-semibold text-xs sm:text-sm transition-all text-slate-300 hover:bg-slate-800 flex items-center gap-2 whitespace-nowrap">
-                    <i class="fa-solid fa-lock"></i> Scout Portal
+                <button onclick="switchTab('portal')" id="btn-portal" class="tab-btn col-span-2 sm:col-span-1 px-3 py-2 rounded-lg font-semibold text-xs transition-all text-slate-300 hover:bg-slate-800 flex items-center justify-center sm:justify-start gap-1.5">
+                    <i class="fa-solid fa-lock"></i> <span>Portal</span>
                 </button>
             </div>
-        </nav>
+        </div>
     </header>
 
     <!-- MAIN CONTENT CONTAINER -->
@@ -109,21 +106,21 @@
         <div id="tab-matches" class="tab-content space-y-6">
             <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 bg-slate-900 p-5 rounded-2xl border border-slate-800 shadow-lg">
                 <div>
-                    <h2 class="text-xl font-bold text-white">Verified Youth Prospects Showcase</h2>
-                    <p class="text-xs text-slate-400 mt-1">Browse verified player highlights, match metrics, and physical profiles ready for international review.</p>
+                    <h2 class="text-lg sm:text-xl font-bold text-white">Verified Youth Prospects Showcase</h2>
+                    <p class="text-xs text-slate-400 mt-1">Browse verified player highlights, match metrics, and physical profiles.</p>
                 </div>
-                <div class="flex gap-2 w-full sm:w-auto">
-                    <input type="text" id="playerSearch" onkeyup="filterPlayers()" placeholder="Search name, position, or club..." class="bg-slate-950 border border-slate-800 px-4 py-2.5 rounded-xl text-xs text-white focus:outline-none focus:border-emerald-500 w-full sm:w-72">
+                <div class="w-full sm:w-auto">
+                    <input type="text" id="playerSearch" onkeyup="filterPlayers()" placeholder="Search name, position..." class="bg-slate-950 border border-slate-800 px-4 py-2.5 rounded-xl text-xs text-white focus:outline-none focus:border-emerald-500 w-full sm:w-72">
                 </div>
             </div>
 
-            <!-- PLAYER GRID WITH WHATSAPP VIRAL SHARING -->
+            <!-- PLAYER GRID -->
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="playerGrid">
                 
-                <!-- Prospect Card 1 -->
-                <div class="player-card bg-slate-900 rounded-2xl border border-slate-800 overflow-hidden shadow-xl hover:border-emerald-500/50 transition-all">
-                    <div class="relative bg-slate-800 h-48 flex items-center justify-center">
-                        <i class="fa-solid fa-user-shield text-6xl text-slate-700"></i>
+                <!-- Prospect 1 -->
+                <div class="player-card bg-slate-900 rounded-2xl border border-slate-800 overflow-hidden shadow-xl">
+                    <div class="relative bg-slate-800 h-44 flex items-center justify-center">
+                        <i class="fa-solid fa-user-shield text-5xl text-slate-700"></i>
                         <span class="absolute top-3 left-3 bg-emerald-500 text-slate-950 font-bold text-xs px-2.5 py-1 rounded-lg">Centre-Back</span>
                         <span class="absolute top-3 right-3 bg-slate-950/80 text-white font-semibold text-xs px-2.5 py-1 rounded-lg">Age: 18</span>
                     </div>
@@ -135,20 +132,20 @@
                             <div>Pace Rating: <span class="font-bold text-emerald-400">88/100</span></div>
                         </div>
                         <div class="flex gap-2 pt-1">
-                            <button onclick="alert('Loading scout video tape and match analysis data...')" class="flex-1 bg-emerald-600 hover:bg-emerald-500 text-slate-950 font-bold py-2.5 px-3 rounded-xl text-xs transition-all flex items-center justify-center gap-2">
+                            <button onclick="alert('Loading scout video tape...')" class="flex-1 bg-emerald-600 hover:bg-emerald-500 text-slate-950 font-bold py-2.5 px-3 rounded-xl text-xs transition-all flex items-center justify-center gap-2">
                                 <i class="fa-solid fa-play"></i> Watch Tape
                             </button>
-                            <a href="https://api.whatsapp.com/send?text=Check%20out%20Kofi%20Mensah%20(Centre-Back,%20Age%2018)%20on%20Scout%20Escort!%20https://scout-escort.github.io" target="_blank" class="bg-emerald-900/60 hover:bg-emerald-800 text-emerald-300 border border-emerald-700/50 p-2.5 rounded-xl text-xs transition-all flex items-center justify-center" title="Share via WhatsApp">
+                            <a href="https://api.whatsapp.com/send?text=Check%20out%20Kofi%20Mensah%20on%20Scout%20Escort!%20https://scout-escort.github.io" target="_blank" class="bg-emerald-900/60 hover:bg-emerald-800 text-emerald-300 border border-emerald-700/50 p-2.5 rounded-xl text-xs flex items-center justify-center">
                                 <i class="fa-brands fa-whatsapp text-lg"></i>
                             </a>
                         </div>
                     </div>
                 </div>
 
-                <!-- Prospect Card 2 -->
-                <div class="player-card bg-slate-900 rounded-2xl border border-slate-800 overflow-hidden shadow-xl hover:border-emerald-500/50 transition-all">
-                    <div class="relative bg-slate-800 h-48 flex items-center justify-center">
-                        <i class="fa-solid fa-user-ninja text-6xl text-slate-700"></i>
+                <!-- Prospect 2 -->
+                <div class="player-card bg-slate-900 rounded-2xl border border-slate-800 overflow-hidden shadow-xl">
+                    <div class="relative bg-slate-800 h-44 flex items-center justify-center">
+                        <i class="fa-solid fa-user-ninja text-5xl text-slate-700"></i>
                         <span class="absolute top-3 left-3 bg-emerald-500 text-slate-950 font-bold text-xs px-2.5 py-1 rounded-lg">Winger</span>
                         <span class="absolute top-3 right-3 bg-slate-950/80 text-white font-semibold text-xs px-2.5 py-1 rounded-lg">Age: 17</span>
                     </div>
@@ -160,21 +157,21 @@
                             <div>Pace Rating: <span class="font-bold text-emerald-400">95/100</span></div>
                         </div>
                         <div class="flex gap-2 pt-1">
-                            <button onclick="alert('Loading scout video tape and match analysis data...')" class="flex-1 bg-emerald-600 hover:bg-emerald-500 text-slate-950 font-bold py-2.5 px-3 rounded-xl text-xs transition-all flex items-center justify-center gap-2">
+                            <button onclick="alert('Loading scout video tape...')" class="flex-1 bg-emerald-600 hover:bg-emerald-500 text-slate-950 font-bold py-2.5 px-3 rounded-xl text-xs transition-all flex items-center justify-center gap-2">
                                 <i class="fa-solid fa-play"></i> Watch Tape
                             </button>
-                            <a href="https://api.whatsapp.com/send?text=Check%20out%20Ibrahim%20Diallo%20(Winger,%20Age%2017)%20on%20Scout%20Escort!%20https://scout-escort.github.io" target="_blank" class="bg-emerald-900/60 hover:bg-emerald-800 text-emerald-300 border border-emerald-700/50 p-2.5 rounded-xl text-xs transition-all flex items-center justify-center" title="Share via WhatsApp">
+                            <a href="https://api.whatsapp.com/send?text=Check%20out%20Ibrahim%20Diallo%20on%20Scout%20Escort!%20https://scout-escort.github.io" target="_blank" class="bg-emerald-900/60 hover:bg-emerald-800 text-emerald-300 border border-emerald-700/50 p-2.5 rounded-xl text-xs flex items-center justify-center">
                                 <i class="fa-brands fa-whatsapp text-lg"></i>
                             </a>
                         </div>
                     </div>
                 </div>
 
-                <!-- Prospect Card 3 -->
-                <div class="player-card bg-slate-900 rounded-2xl border border-slate-800 overflow-hidden shadow-xl hover:border-emerald-500/50 transition-all">
-                    <div class="relative bg-slate-800 h-48 flex items-center justify-center">
-                        <i class="fa-solid fa-user-gear text-6xl text-slate-700"></i>
-                        <span class="absolute top-3 left-3 bg-emerald-500 text-slate-950 font-bold text-xs px-2.5 py-1 rounded-lg">Central Midfielder</span>
+                <!-- Prospect 3 -->
+                <div class="player-card bg-slate-900 rounded-2xl border border-slate-800 overflow-hidden shadow-xl">
+                    <div class="relative bg-slate-800 h-44 flex items-center justify-center">
+                        <i class="fa-solid fa-user-gear text-5xl text-slate-700"></i>
+                        <span class="absolute top-3 left-3 bg-emerald-500 text-slate-950 font-bold text-xs px-2.5 py-1 rounded-lg">Midfielder</span>
                         <span class="absolute top-3 right-3 bg-slate-950/80 text-white font-semibold text-xs px-2.5 py-1 rounded-lg">Age: 19</span>
                     </div>
                     <div class="p-5 space-y-3">
@@ -185,10 +182,10 @@
                             <div>Passing: <span class="font-bold text-emerald-400">91/100</span></div>
                         </div>
                         <div class="flex gap-2 pt-1">
-                            <button onclick="alert('Loading scout video tape and match analysis data...')" class="flex-1 bg-emerald-600 hover:bg-emerald-500 text-slate-950 font-bold py-2.5 px-3 rounded-xl text-xs transition-all flex items-center justify-center gap-2">
+                            <button onclick="alert('Loading scout video tape...')" class="flex-1 bg-emerald-600 hover:bg-emerald-500 text-slate-950 font-bold py-2.5 px-3 rounded-xl text-xs transition-all flex items-center justify-center gap-2">
                                 <i class="fa-solid fa-play"></i> Watch Tape
                             </button>
-                            <a href="https://api.whatsapp.com/send?text=Check%20out%20Emmanuel%20Osei%20(Midfielder,%20Age%2019)%20on%20Scout%20Escort!%20https://scout-escort.github.io" target="_blank" class="bg-emerald-900/60 hover:bg-emerald-800 text-emerald-300 border border-emerald-700/50 p-2.5 rounded-xl text-xs transition-all flex items-center justify-center" title="Share via WhatsApp">
+                            <a href="https://api.whatsapp.com/send?text=Check%20out%20Emmanuel%20Osei%20on%20Scout%20Escort!%20https://scout-escort.github.io" target="_blank" class="bg-emerald-900/60 hover:bg-emerald-800 text-emerald-300 border border-emerald-700/50 p-2.5 rounded-xl text-xs flex items-center justify-center">
                                 <i class="fa-brands fa-whatsapp text-lg"></i>
                             </a>
                         </div>
@@ -202,12 +199,12 @@
         <div id="tab-fixtures" class="tab-content hidden space-y-6">
             <div class="bg-slate-900 p-5 rounded-2xl border border-slate-800 space-y-4">
                 <div class="flex justify-between items-center">
-                    <h2 class="text-lg font-bold text-white">Live Academy Matches & Showcase Fixtures</h2>
-                    <span class="text-xs bg-emerald-500/20 text-emerald-400 px-3 py-1 rounded-full border border-emerald-500/30 flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span> Matches Live</span>
+                    <h2 class="text-lg font-bold text-white">Live Academy Matches</h2>
+                    <span class="text-xs bg-emerald-500/20 text-emerald-400 px-3 py-1 rounded-full border border-emerald-500/30 flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span> Live</span>
                 </div>
                 <div class="space-y-3">
-                    <div class="bg-slate-950 p-4 rounded-xl border border-slate-800 flex flex-col sm:flex-row justify-between items-center gap-4">
-                        <div class="text-xs text-slate-400">Accra U-20 Showcase Cup</div>
+                    <div class="bg-slate-950 p-4 rounded-xl border border-slate-800 flex flex-col sm:flex-row justify-between items-center gap-3">
+                        <div class="text-xs text-slate-400">Accra U-20 Cup</div>
                         <div class="flex items-center gap-3 font-bold text-sm">
                             <span>Accra Academy Stars</span>
                             <span class="bg-emerald-950 text-emerald-400 px-3 py-1 rounded-lg border border-emerald-800">2 - 1</span>
@@ -215,32 +212,18 @@
                         </div>
                         <div class="text-xs text-emerald-400 font-semibold">84' (2nd Half)</div>
                     </div>
-                    <div class="bg-slate-950 p-4 rounded-xl border border-slate-800 flex flex-col sm:flex-row justify-between items-center gap-4">
-                        <div class="text-xs text-slate-400">West African Elite Invitational</div>
-                        <div class="flex items-center gap-3 font-bold text-sm">
-                            <span>Dreams FC Youth</span>
-                            <span class="bg-slate-900 text-white px-3 py-1 rounded-lg border border-slate-800">0 - 0</span>
-                            <span>WAFA Academy</span>
-                        </div>
-                        <div class="text-xs text-slate-400">Scheduled: 16:00 GMT</div>
-                    </div>
                 </div>
             </div>
         </div>
 
         <!-- TAB 3: NEWS & TRANSFERS -->
         <div id="tab-news" class="tab-content hidden space-y-6">
-            <h2 class="text-xl font-bold text-white">Scouting & Transfer Intelligence Desk</h2>
+            <h2 class="text-xl font-bold text-white">Scouting & Transfer Intelligence</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div class="bg-slate-900 p-6 rounded-2xl border border-slate-800 space-y-3">
                     <span class="text-xs text-emerald-400 font-semibold bg-emerald-950 px-3 py-1 rounded-md border border-emerald-800/50">Villarreal Scout Tour</span>
-                    <h3 class="text-lg font-bold text-white">European scouts confirm comprehensive scouting tour across West African academies.</h3>
-                    <p class="text-xs text-slate-400 leading-relaxed">Representatives from La Liga and Portuguese academies have outlined key metrics they evaluate in young box-to-box midfielders and agile wingers.</p>
-                </div>
-                <div class="bg-slate-900 p-6 rounded-2xl border border-slate-800 space-y-3">
-                    <span class="text-xs text-emerald-400 font-semibold bg-emerald-950 px-3 py-1 rounded-md border border-emerald-800/50">Platform Milestone</span>
-                    <h3 class="text-lg font-bold text-white">Over 500 player video reels verified on the Scout Escort database.</h3>
-                    <p class="text-xs text-slate-400 leading-relaxed">Local academies are increasingly utilizing direct digital profile links to showcase player statistics to international recruitment directors.</p>
+                    <h3 class="text-lg font-bold text-white">European scouts confirm comprehensive tour across West African academies.</h3>
+                    <p class="text-xs text-slate-400 leading-relaxed">Representatives from La Liga and Portuguese academies outline key metrics evaluated in young midfielders and wingers.</p>
                 </div>
             </div>
         </div>
@@ -252,43 +235,32 @@
                 <div class="bg-slate-900 p-5 rounded-2xl border border-slate-800 space-y-2">
                     <i class="fa-solid fa-trophy text-emerald-400 text-2xl mb-2"></i>
                     <div class="text-base font-bold text-white">Ghana Premier League</div>
-                    <div class="text-xs text-slate-400 leading-relaxed">Active talent pool tracking top professional matches and reserve team fixtures.</div>
+                    <div class="text-xs text-slate-400">Active talent pool tracking professional matches.</div>
                 </div>
                 <div class="bg-slate-900 p-5 rounded-2xl border border-slate-800 space-y-2">
                     <i class="fa-solid fa-medal text-emerald-400 text-2xl mb-2"></i>
                     <div class="text-base font-bold text-white">CAF Youth Champions</div>
-                    <div class="text-xs text-slate-400 leading-relaxed">Continental tournament scans highlighting breakthrough U-17 and U-20 performers.</div>
+                    <div class="text-xs text-slate-400">Continental tournament scans highlighting U-17 and U-20 performers.</div>
                 </div>
                 <div class="bg-slate-900 p-5 rounded-2xl border border-slate-800 space-y-2">
                     <i class="fa-solid fa-globe text-emerald-400 text-2xl mb-2"></i>
                     <div class="text-base font-bold text-white">European Academies</div>
-                    <div class="text-xs text-slate-400 leading-relaxed">Partner networks facilitating direct trials and data sharing with Spanish and Portuguese clubs.</div>
+                    <div class="text-xs text-slate-400">Direct trial facilitation and data sharing with Spanish and Portuguese clubs.</div>
                 </div>
             </div>
         </div>
 
         <!-- TAB 5: PARTNER SCOUTS DIRECTORY -->
         <div id="tab-directory" class="tab-content hidden space-y-6">
-            <h2 class="text-xl font-bold text-white">Verified International Scouts & Agencies</h2>
+            <h2 class="text-xl font-bold text-white">Verified International Scouts</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div class="bg-slate-900 p-5 rounded-2xl border border-slate-800 flex items-center gap-4">
                     <div class="bg-emerald-950 text-emerald-400 p-4 rounded-xl border border-emerald-800">
-                        <i class="fa-solid fa-user-tie text-2xl"></i>
+                        <i class="fa-solid fa-user-tie text-xl"></i>
                     </div>
                     <div>
                         <h3 class="text-base font-bold text-white">Javier Mendez</h3>
-                        <p class="text-xs text-emerald-400 font-medium">Senior Talent Scout | Villarreal CF (Spain)</p>
-                        <p class="text-xs text-slate-400 mt-1">Specializes in West African defensive structures and central midfield distribution.</p>
-                    </div>
-                </div>
-                <div class="bg-slate-900 p-5 rounded-2xl border border-slate-800 flex items-center gap-4">
-                    <div class="bg-emerald-950 text-emerald-400 p-4 rounded-xl border border-emerald-800">
-                        <i class="fa-solid fa-user-tie text-2xl"></i>
-                    </div>
-                    <div>
-                        <h3 class="text-base font-bold text-white">Marco Silva</h3>
-                        <p class="text-xs text-emerald-400 font-medium">Head of African Operations | Global Sports Agency</p>
-                        <p class="text-xs text-slate-400 mt-1">Focuses on elite pace wingers and goalscoring forwards for European placement.</p>
+                        <p class="text-xs text-emerald-400 font-medium">Senior Scout | Villarreal CF (Spain)</p>
                     </div>
                 </div>
             </div>
@@ -297,17 +269,10 @@
         <!-- TAB 6: SUCCESS STORIES -->
         <div id="tab-success" class="tab-content hidden space-y-6">
             <h2 class="text-xl font-bold text-white">Player Placement Success Stories</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div class="bg-slate-900 p-6 rounded-2xl border border-slate-800 space-y-3">
-                    <span class="text-xs bg-emerald-500/20 text-emerald-400 px-3 py-1 rounded-full border border-emerald-500/30">Signed in Europe</span>
-                    <h3 class="text-lg font-bold text-white">Abdul Fatawu (Secured Trial & Contract)</h3>
-                    <p class="text-xs text-slate-400 leading-relaxed">"Scout Escort helped display my match highlights directly to scouts. Within weeks, my academy received direct inquiries leading to my European placement."</p>
-                </div>
-                <div class="bg-slate-900 p-6 rounded-2xl border border-slate-800 space-y-3">
-                    <span class="text-xs bg-emerald-500/20 text-emerald-400 px-3 py-1 rounded-full border border-emerald-500/30">Academy Spotlight</span>
-                    <h3 class="text-lg font-bold text-white">Accra Youth Stars Academy</h3>
-                    <p class="text-xs text-slate-400 leading-relaxed">"We list all our top prospects on Scout Escort. It makes sharing profile reels with international contacts effortless and professional."</p>
-                </div>
+            <div class="bg-slate-900 p-6 rounded-2xl border border-slate-800 space-y-3">
+                <span class="text-xs bg-emerald-500/20 text-emerald-400 px-3 py-1 rounded-full border border-emerald-500/35">Signed in Europe</span>
+                <h3 class="text-lg font-bold text-white">Abdul Fatawu (Secured Trial & Contract)</h3>
+                <p class="text-xs text-slate-400 leading-relaxed">"Scout Escort helped display my match highlights directly to international scouts, leading to my professional European placement."</p>
             </div>
         </div>
 
@@ -315,22 +280,22 @@
         <div id="tab-register" class="tab-content hidden max-w-2xl mx-auto space-y-6 bg-slate-900 p-6 sm:p-8 rounded-2xl border border-slate-800 shadow-xl">
             <div>
                 <h2 class="text-xl font-bold text-white">Submit a Prospect Profile</h2>
-                <p class="text-xs text-slate-400 mt-1">Register player talent to feature them in the public database and generate instant shareable links for scouts.</p>
+                <p class="text-xs text-slate-400 mt-1">Register talent to feature them in the public database instantly.</p>
             </div>
             
             <form onsubmit="handleProspectSubmission(event)" class="space-y-4">
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
-                        <label class="block text-xs font-semibold text-slate-300 mb-1">Player Full Name</label>
+                        <label class="block text-xs font-semibold text-slate-300 mb-1">Player Name</label>
                         <input type="text" id="subName" required placeholder="e.g. Samuel Tetteh" class="w-full bg-slate-950 border border-slate-800 px-3 py-2.5 rounded-xl text-xs text-white focus:outline-none focus:border-emerald-500">
                     </div>
                     <div>
-                        <label class="block text-xs font-semibold text-slate-300 mb-1">Primary Position</label>
+                        <label class="block text-xs font-semibold text-slate-300 mb-1">Position</label>
                         <select id="subPosition" class="w-full bg-slate-950 border border-slate-800 px-3 py-2.5 rounded-xl text-xs text-white focus:outline-none focus:border-emerald-500">
                             <option>Centre-Back</option>
                             <option>Winger</option>
-                            <option>Central Midfielder</option>
-                            <option>Striker / Forward</option>
+                            <option>Midfielder</option>
+                            <option>Striker</option>
                             <option>Goalkeeper</option>
                         </select>
                     </div>
@@ -342,18 +307,18 @@
                         <input type="number" id="subAge" min="14" max="23" required placeholder="e.g. 18" class="w-full bg-slate-950 border border-slate-800 px-3 py-2.5 rounded-xl text-xs text-white focus:outline-none focus:border-emerald-500">
                     </div>
                     <div>
-                        <label class="block text-xs font-semibold text-slate-300 mb-1">Current Club / Academy</label>
+                        <label class="block text-xs font-semibold text-slate-300 mb-1">Current Club</label>
                         <input type="text" id="subClub" required placeholder="e.g. Accra Youth FC" class="w-full bg-slate-950 border border-slate-800 px-3 py-2.5 rounded-xl text-xs text-white focus:outline-none focus:border-emerald-500">
                     </div>
                 </div>
 
                 <div>
-                    <label class="block text-xs font-semibold text-slate-300 mb-1">Highlight Video Link (YouTube / Hudl / Drive)</label>
+                    <label class="block text-xs font-semibold text-slate-300 mb-1">Highlight Video Link</label>
                     <input type="url" id="subVideo" required placeholder="https://youtube.com/watch?v=..." class="w-full bg-slate-950 border border-slate-800 px-3 py-2.5 rounded-xl text-xs text-white focus:outline-none focus:border-emerald-500">
                 </div>
 
-                <button type="submit" class="w-full bg-emerald-600 hover:bg-emerald-500 text-slate-950 font-bold py-3 px-4 rounded-xl text-xs transition-all flex items-center justify-center gap-2 shadow-lg shadow-emerald-600/20">
-                    <i class="fa-solid fa-cloud-arrow-up"></i> Publish Prospect Profile
+                <button type="submit" class="w-full bg-emerald-600 hover:bg-emerald-500 text-slate-950 font-bold py-3 px-4 rounded-xl text-xs transition-all shadow-lg shadow-emerald-600/20">
+                    Publish Prospect Profile
                 </button>
             </form>
         </div>
@@ -362,19 +327,19 @@
         <div id="tab-portal" class="tab-content hidden max-w-md mx-auto space-y-6 bg-slate-900 p-6 sm:p-8 rounded-2xl border border-slate-800 shadow-xl">
             <div>
                 <h2 class="text-xl font-bold text-white">Scout & Agent Portal</h2>
-                <p class="text-xs text-slate-400 mt-1">Authorized secure access for verified international club scouts.</p>
+                <p class="text-xs text-slate-400 mt-1">Authorized secure access for verified club scouts.</p>
             </div>
-            <form onsubmit="event.preventDefault(); alert('Secure portal login authenticated.');" class="space-y-4">
+            <form onsubmit="event.preventDefault(); alert('Portal authenticated.');" class="space-y-4">
                 <div>
-                    <label class="block text-xs font-semibold text-slate-300 mb-1">Scout Email</label>
+                    <label class="block text-xs font-semibold text-slate-300 mb-1">Email</label>
                     <input type="email" required placeholder="scout@club.eu" class="w-full bg-slate-950 border border-slate-800 px-3 py-2.5 rounded-xl text-xs text-white focus:outline-none focus:border-emerald-500">
                 </div>
                 <div>
-                    <label class="block text-xs font-semibold text-slate-300 mb-1">Access Key</label>
+                    <label class="block text-xs font-semibold text-slate-300 mb-1">Password</label>
                     <input type="password" required placeholder="••••••••" class="w-full bg-slate-950 border border-slate-800 px-3 py-2.5 rounded-xl text-xs text-white focus:outline-none focus:border-emerald-500">
                 </div>
                 <button type="submit" class="w-full bg-emerald-600 hover:bg-emerald-500 text-slate-950 font-bold py-3 px-4 rounded-xl text-xs transition-all">
-                    Access Database
+                    Login
                 </button>
             </form>
         </div>
@@ -383,7 +348,7 @@
 
     <!-- FOOTER -->
     <footer class="bg-slate-900 border-t border-slate-800 mt-auto py-6 text-center text-xs text-slate-500">
-        <p>&copy; 2026 Scout Escort. Empowering West African Football Talent & Global Scouting.</p>
+        <p>&copy; 2026 Scout Escort. Empowering West African Football Talent.</p>
     </footer>
 
     <!-- JAVASCRIPT LOGIC -->
@@ -422,8 +387,7 @@
             let age = document.getElementById('subAge').value;
             let club = document.getElementById('subClub').value;
 
-            alert('Success! ' + name + ' (' + pos + ', ' + age + ') from ' + club + ' has been submitted and added to the public scouting feed.');
-            
+            alert('Success! ' + name + ' (' + pos + ', ' + age + ') from ' + club + ' has been published.');
             switchTab('matches');
             e.target.reset();
         }
