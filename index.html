@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Scout Escort | West African Football Talent & Prospect Hub</title>
+    <title>Scout Escort | West African Football Talent & Global Scouting Hub</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -14,14 +14,14 @@
         .animate-marquee {
             display: flex;
             width: 200%;
-            animation: marquee 20s linear infinite;
+            animation: marquee 30s linear infinite;
         }
         .animate-marquee:hover {
             animation-play-state: paused;
         }
         ::-webkit-scrollbar {
-            height: 4px;
-            width: 4px;
+            height: 5px;
+            width: 5px;
         }
         ::-webkit-scrollbar-track {
             background: #020617;
@@ -32,43 +32,50 @@
         }
     </style>
 </head>
-<body class="bg-slate-950 text-slate-100 font-sans min-h-screen flex flex-col">
+<body class="bg-slate-950 text-slate-100 font-sans min-h-screen flex flex-col selection:bg-emerald-500 selection:text-slate-950">
 
-    <!-- PINNED TOP SPONSOR TICKER BAR -->
-    <div class="bg-emerald-950/90 border-b border-emerald-800/40 py-2 overflow-hidden text-xs text-emerald-300 font-medium tracking-wide">
+    <!-- ELITE SPONSOR & PARTNER TICKER -->
+    <div class="bg-slate-900 border-b border-emerald-500/20 py-2.5 overflow-hidden text-xs font-semibold tracking-wider text-slate-300">
         <div class="animate-marquee whitespace-nowrap flex items-center space-x-12">
-            <span class="flex items-center gap-2"><i class="fa-solid fa-bolt text-amber-400"></i> OFFICIAL PARTNER: PUMA FOOTBALL</span>
-            <span class="flex items-center gap-2"><i class="fa-solid fa-shield text-sky-400"></i> ELITE SPONSOR: NIKE ACADEMY</span>
-            <span class="flex items-center gap-2"><i class="fa-solid fa-globe text-emerald-400"></i> GLOBAL SCOUTING NETWORK: SAMSUNG</span>
-            <span class="flex items-center gap-2"><i class="fa-solid fa-star text-amber-400"></i> PREMIER PARTNER: MERCEDES-BENZ</span>
-            <span class="flex items-center gap-2"><i class="fa-solid fa-bolt text-amber-400"></i> OFFICIAL PARTNER: PUMA FOOTBALL</span>
-            <span class="flex items-center gap-2"><i class="fa-solid fa-shield text-sky-400"></i> ELITE SPONSOR: NIKE ACADEMY</span>
+            <span class="flex items-center gap-2 text-emerald-400"><i class="fa-solid fa-bolt text-amber-400"></i> PUMA FOOTBALL</span>
+            <span class="flex items-center gap-2 text-sky-400"><i class="fa-solid fa-shield text-sky-400"></i> NIKE ACADEMY</span>
+            <span class="flex items-center gap-2 text-rose-400"><i class="fa-solid fa-plane text-rose-400"></i> QATAR AIRWAYS</span>
+            <span class="flex items-center gap-2 text-amber-400"><i class="fa-solid fa-credit-card text-amber-400"></i> MASTERCARD</span>
+            <span class="flex items-center gap-2 text-blue-400"><i class="fa-solid fa-mobile-screen text-blue-400"></i> SAMSUNG</span>
+            <span class="flex items-center gap-2 text-slate-100"><i class="fa-solid fa-star text-emerald-400"></i> ADIDAS ELITE</span>
+            <!-- Duplicate for smooth infinite loop -->
+            <span class="flex items-center gap-2 text-emerald-400"><i class="fa-solid fa-bolt text-amber-400"></i> PUMA FOOTBALL</span>
+            <span class="flex items-center gap-2 text-sky-400"><i class="fa-solid fa-shield text-sky-400"></i> NIKE ACADEMY</span>
+            <span class="flex items-center gap-2 text-rose-400"><i class="fa-solid fa-plane text-rose-400"></i> QATAR AIRWAYS</span>
+            <span class="flex items-center gap-2 text-amber-400"><i class="fa-solid fa-credit-card text-amber-400"></i> MASTERCARD</span>
+            <span class="flex items-center gap-2 text-blue-400"><i class="fa-solid fa-mobile-screen text-blue-400"></i> SAMSUNG</span>
+            <span class="flex items-center gap-2 text-slate-100"><i class="fa-solid fa-star text-emerald-400"></i> ADIDAS ELITE</span>
         </div>
     </div>
 
-    <!-- HEADER / LOGO -->
-    <header class="bg-slate-900 border-b border-slate-800 sticky top-0 z-50 shadow-2xl">
+    <!-- HEADER / BRANDING -->
+    <header class="bg-slate-900/95 backdrop-blur border-b border-slate-800 sticky top-0 z-50 shadow-2xl">
         <div class="max-w-7xl mx-auto px-4 py-3 flex flex-col sm:flex-row justify-between items-center gap-3">
             <div class="flex items-center space-x-3">
-                <div class="bg-emerald-600 text-slate-950 p-2.5 rounded-xl font-black text-xl tracking-wider shadow-lg shadow-emerald-600/30">
+                <div class="bg-gradient-to-br from-emerald-500 to-emerald-700 text-slate-950 p-2.5 rounded-xl font-black text-xl tracking-wider shadow-lg shadow-emerald-600/30">
                     <i class="fa-solid fa-binoculars"></i>
                 </div>
                 <div>
-                    <h1 class="text-lg sm:text-xl font-bold tracking-tight text-white flex items-center gap-2">
-                        SCOUT ESCORT <span class="text-xs bg-emerald-500/20 text-emerald-400 px-2 py-0.5 rounded-full border border-emerald-500/30">Global Hub</span>
+                    <h1 class="text-lg sm:text-xl font-extrabold tracking-tight text-white flex items-center gap-2">
+                        SCOUT ESCORT <span class="text-xs bg-emerald-500/20 text-emerald-400 px-2 py-0.5 rounded-full border border-emerald-500/30 font-medium">Global Network</span>
                     </h1>
-                    <p class="text-xs text-slate-400">Connecting West African Elite Talent to European Clubs</p>
+                    <p class="text-xs text-slate-400">Bridging West African Elite Football Talent & European Clubs</p>
                 </div>
             </div>
-            <!-- QUICK STATS BADGE -->
-            <div class="flex items-center gap-3 text-xs bg-slate-950 px-3 py-1.5 rounded-xl border border-slate-800">
-                <div><span class="text-emerald-400 font-bold">540+</span> Prospects</div>
+            <!-- LIVE METRICS BADGE -->
+            <div class="flex items-center gap-3 text-xs bg-slate-950 px-3.5 py-2 rounded-xl border border-slate-800 shadow-inner">
+                <div class="flex items-center gap-1.5"><span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span> <span class="text-emerald-400 font-bold">540+</span> Prospects</div>
                 <div class="w-px h-3 bg-slate-800"></div>
-                <div><span class="text-emerald-400 font-bold">42</span> Scouts</div>
+                <div><span class="text-emerald-400 font-bold">42</span> Scouts Online</div>
             </div>
         </div>
 
-        <!-- PROFESSIONAL MOBILE-FRIENDLY GRID NAVIGATION -->
+        <!-- RESPONSIVE NAVIGATION TABS -->
         <div class="bg-slate-900/95 border-t border-slate-800/80 px-4 py-2.5">
             <div class="max-w-7xl mx-auto grid grid-cols-4 sm:flex sm:flex-wrap gap-1.5 sm:gap-2">
                 <button onclick="switchTab('matches')" id="btn-matches" class="tab-btn col-span-2 sm:col-span-1 px-3 py-2 rounded-lg font-semibold text-xs transition-all bg-emerald-600 text-slate-950 shadow-md flex items-center justify-center sm:justify-start gap-1.5">
@@ -78,10 +85,10 @@
                     <i class="fa-solid fa-tv"></i> <span>Live Scores</span>
                 </button>
                 <button onclick="switchTab('news')" id="btn-news" class="tab-btn col-span-2 sm:col-span-1 px-3 py-2 rounded-lg font-semibold text-xs transition-all text-slate-300 hover:bg-slate-800 flex items-center justify-center sm:justify-start gap-1.5">
-                    <i class="fa-solid fa-newspaper"></i> <span>News</span>
+                    <i class="fa-solid fa-newspaper"></i> <span>News Desk</span>
                 </button>
                 <button onclick="switchTab('leagues')" id="btn-leagues" class="tab-btn col-span-2 sm:col-span-1 px-3 py-2 rounded-lg font-semibold text-xs transition-all text-slate-300 hover:bg-slate-800 flex items-center justify-center sm:justify-start gap-1.5">
-                    <i class="fa-solid fa-trophy"></i> <span>Leagues</span>
+                    <i class="fa-solid fa-trophy"></i> <span>Top Leagues</span>
                 </button>
                 <button onclick="switchTab('directory')" id="btn-directory" class="tab-btn col-span-2 sm:col-span-1 px-3 py-2 rounded-lg font-semibold text-xs transition-all text-slate-300 hover:bg-slate-800 flex items-center justify-center sm:justify-start gap-1.5">
                     <i class="fa-solid fa-address-book"></i> <span>Scouts</span>
@@ -107,10 +114,10 @@
             <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 bg-slate-900 p-5 rounded-2xl border border-slate-800 shadow-lg">
                 <div>
                     <h2 class="text-lg sm:text-xl font-bold text-white">Verified Youth Prospects Showcase</h2>
-                    <p class="text-xs text-slate-400 mt-1">Browse verified player highlights, match metrics, and physical profiles.</p>
+                    <p class="text-xs text-slate-400 mt-1">Browse verified player highlights, match metrics, and physical profiles ready for European scouts.</p>
                 </div>
                 <div class="w-full sm:w-auto">
-                    <input type="text" id="playerSearch" onkeyup="filterPlayers()" placeholder="Search name, position..." class="bg-slate-950 border border-slate-800 px-4 py-2.5 rounded-xl text-xs text-white focus:outline-none focus:border-emerald-500 w-full sm:w-72">
+                    <input type="text" id="playerSearch" onkeyup="filterPlayers()" placeholder="Search name, position, club..." class="bg-slate-950 border border-slate-800 px-4 py-2.5 rounded-xl text-xs text-white focus:outline-none focus:border-emerald-500 w-full sm:w-72">
                 </div>
             </div>
 
@@ -118,9 +125,9 @@
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="playerGrid">
                 
                 <!-- Prospect 1 -->
-                <div class="player-card bg-slate-900 rounded-2xl border border-slate-800 overflow-hidden shadow-xl">
+                <div class="player-card bg-slate-900 rounded-2xl border border-slate-800 overflow-hidden shadow-xl hover:border-emerald-500/40 transition-all">
                     <div class="relative bg-slate-800 h-44 flex items-center justify-center">
-                        <i class="fa-solid fa-user-shield text-5xl text-slate-700"></i>
+                        <i class="fa-solid fa-user-shield text-5xl text-emerald-500/40"></i>
                         <span class="absolute top-3 left-3 bg-emerald-500 text-slate-950 font-bold text-xs px-2.5 py-1 rounded-lg">Centre-Back</span>
                         <span class="absolute top-3 right-3 bg-slate-950/80 text-white font-semibold text-xs px-2.5 py-1 rounded-lg">Age: 18</span>
                     </div>
@@ -132,10 +139,10 @@
                             <div>Pace Rating: <span class="font-bold text-emerald-400">88/100</span></div>
                         </div>
                         <div class="flex gap-2 pt-1">
-                            <button onclick="alert('Loading scout video tape...')" class="flex-1 bg-emerald-600 hover:bg-emerald-500 text-slate-950 font-bold py-2.5 px-3 rounded-xl text-xs transition-all flex items-center justify-center gap-2">
+                            <button onclick="alert('Loading scout video tape and analytics...')" class="flex-1 bg-emerald-600 hover:bg-emerald-500 text-slate-950 font-bold py-2.5 px-3 rounded-xl text-xs transition-all flex items-center justify-center gap-2 shadow-md">
                                 <i class="fa-solid fa-play"></i> Watch Tape
                             </button>
-                            <a href="https://api.whatsapp.com/send?text=Check%20out%20Kofi%20Mensah%20on%20Scout%20Escort!%20https://scout-escort.github.io" target="_blank" class="bg-emerald-900/60 hover:bg-emerald-800 text-emerald-300 border border-emerald-700/50 p-2.5 rounded-xl text-xs flex items-center justify-center">
+                            <a href="https://api.whatsapp.com/send?text=Check%20out%20Kofi%20Mensah%20(Centre-Back)%20on%20Scout%20Escort!%20https://scout-escort.github.io" target="_blank" class="bg-emerald-900/60 hover:bg-emerald-800 text-emerald-300 border border-emerald-700/50 p-2.5 rounded-xl text-xs flex items-center justify-center" title="Share via WhatsApp">
                                 <i class="fa-brands fa-whatsapp text-lg"></i>
                             </a>
                         </div>
@@ -143,9 +150,9 @@
                 </div>
 
                 <!-- Prospect 2 -->
-                <div class="player-card bg-slate-900 rounded-2xl border border-slate-800 overflow-hidden shadow-xl">
+                <div class="player-card bg-slate-900 rounded-2xl border border-slate-800 overflow-hidden shadow-xl hover:border-emerald-500/40 transition-all">
                     <div class="relative bg-slate-800 h-44 flex items-center justify-center">
-                        <i class="fa-solid fa-user-ninja text-5xl text-slate-700"></i>
+                        <i class="fa-solid fa-user-ninja text-5xl text-emerald-500/40"></i>
                         <span class="absolute top-3 left-3 bg-emerald-500 text-slate-950 font-bold text-xs px-2.5 py-1 rounded-lg">Winger</span>
                         <span class="absolute top-3 right-3 bg-slate-950/80 text-white font-semibold text-xs px-2.5 py-1 rounded-lg">Age: 17</span>
                     </div>
@@ -157,10 +164,10 @@
                             <div>Pace Rating: <span class="font-bold text-emerald-400">95/100</span></div>
                         </div>
                         <div class="flex gap-2 pt-1">
-                            <button onclick="alert('Loading scout video tape...')" class="flex-1 bg-emerald-600 hover:bg-emerald-500 text-slate-950 font-bold py-2.5 px-3 rounded-xl text-xs transition-all flex items-center justify-center gap-2">
+                            <button onclick="alert('Loading scout video tape and analytics...')" class="flex-1 bg-emerald-600 hover:bg-emerald-500 text-slate-950 font-bold py-2.5 px-3 rounded-xl text-xs transition-all flex items-center justify-center gap-2 shadow-md">
                                 <i class="fa-solid fa-play"></i> Watch Tape
                             </button>
-                            <a href="https://api.whatsapp.com/send?text=Check%20out%20Ibrahim%20Diallo%20on%20Scout%20Escort!%20https://scout-escort.github.io" target="_blank" class="bg-emerald-900/60 hover:bg-emerald-800 text-emerald-300 border border-emerald-700/50 p-2.5 rounded-xl text-xs flex items-center justify-center">
+                            <a href="https://api.whatsapp.com/send?text=Check%20out%20Ibrahim%20Diallo%20(Winger)%20on%20Scout%20Escort!%20https://scout-escort.github.io" target="_blank" class="bg-emerald-900/60 hover:bg-emerald-800 text-emerald-300 border border-emerald-700/50 p-2.5 rounded-xl text-xs flex items-center justify-center" title="Share via WhatsApp">
                                 <i class="fa-brands fa-whatsapp text-lg"></i>
                             </a>
                         </div>
@@ -168,9 +175,9 @@
                 </div>
 
                 <!-- Prospect 3 -->
-                <div class="player-card bg-slate-900 rounded-2xl border border-slate-800 overflow-hidden shadow-xl">
+                <div class="player-card bg-slate-900 rounded-2xl border border-slate-800 overflow-hidden shadow-xl hover:border-emerald-500/40 transition-all">
                     <div class="relative bg-slate-800 h-44 flex items-center justify-center">
-                        <i class="fa-solid fa-user-gear text-5xl text-slate-700"></i>
+                        <i class="fa-solid fa-user-gear text-5xl text-emerald-500/40"></i>
                         <span class="absolute top-3 left-3 bg-emerald-500 text-slate-950 font-bold text-xs px-2.5 py-1 rounded-lg">Midfielder</span>
                         <span class="absolute top-3 right-3 bg-slate-950/80 text-white font-semibold text-xs px-2.5 py-1 rounded-lg">Age: 19</span>
                     </div>
@@ -182,10 +189,10 @@
                             <div>Passing: <span class="font-bold text-emerald-400">91/100</span></div>
                         </div>
                         <div class="flex gap-2 pt-1">
-                            <button onclick="alert('Loading scout video tape...')" class="flex-1 bg-emerald-600 hover:bg-emerald-500 text-slate-950 font-bold py-2.5 px-3 rounded-xl text-xs transition-all flex items-center justify-center gap-2">
+                            <button onclick="alert('Loading scout video tape and analytics...')" class="flex-1 bg-emerald-600 hover:bg-emerald-500 text-slate-950 font-bold py-2.5 px-3 rounded-xl text-xs transition-all flex items-center justify-center gap-2 shadow-md">
                                 <i class="fa-solid fa-play"></i> Watch Tape
                             </button>
-                            <a href="https://api.whatsapp.com/send?text=Check%20out%20Emmanuel%20Osei%20on%20Scout%20Escort!%20https://scout-escort.github.io" target="_blank" class="bg-emerald-900/60 hover:bg-emerald-800 text-emerald-300 border border-emerald-700/50 p-2.5 rounded-xl text-xs flex items-center justify-center">
+                            <a href="https://api.whatsapp.com/send?text=Check%20out%20Emmanuel%20Osei%20(Midfielder)%20on%20Scout%20Escort!%20https://scout-escort.github.io" target="_blank" class="bg-emerald-900/60 hover:bg-emerald-800 text-emerald-300 border border-emerald-700/50 p-2.5 rounded-xl text-xs flex items-center justify-center" title="Share via WhatsApp">
                                 <i class="fa-brands fa-whatsapp text-lg"></i>
                             </a>
                         </div>
@@ -195,72 +202,167 @@
             </div>
         </div>
 
-        <!-- TAB 2: LIVE SCORES & FIXTURES -->
+        <!-- TAB 2: LIVE SCORES & SENIOR LEAGUE FIXTURES -->
         <div id="tab-fixtures" class="tab-content hidden space-y-6">
-            <div class="bg-slate-900 p-5 rounded-2xl border border-slate-800 space-y-4">
-                <div class="flex justify-between items-center">
-                    <h2 class="text-lg font-bold text-white">Live Academy Matches</h2>
-                    <span class="text-xs bg-emerald-500/20 text-emerald-400 px-3 py-1 rounded-full border border-emerald-500/30 flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span> Live</span>
+            <div class="bg-slate-900 p-5 rounded-2xl border border-slate-800 space-y-4 shadow-xl">
+                <div class="flex justify-between items-center pb-2 border-b border-slate-800">
+                    <h2 class="text-lg font-bold text-white flex items-center gap-2"><i class="fa-solid fa-tv text-emerald-400"></i> Global Senior Leagues Live Scores</h2>
+                    <span class="text-xs bg-emerald-500/20 text-emerald-400 px-3 py-1 rounded-full border border-emerald-500/30 flex items-center gap-2 font-medium"><span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span> Live Center</span>
                 </div>
+
                 <div class="space-y-3">
-                    <div class="bg-slate-950 p-4 rounded-xl border border-slate-800 flex flex-col sm:flex-row justify-between items-center gap-3">
-                        <div class="text-xs text-slate-400">Accra U-20 Cup</div>
-                        <div class="flex items-center gap-3 font-bold text-sm">
-                            <span>Accra Academy Stars</span>
+                    <!-- Premier League -->
+                    <div class="bg-slate-950 p-4 rounded-xl border border-slate-800/80 flex flex-col sm:flex-row justify-between items-center gap-3">
+                        <div class="text-xs text-sky-400 font-bold flex items-center gap-1.5"><i class="fa-solid fa-circle-dot"></i> Premier League (England)</div>
+                        <div class="flex items-center gap-4 font-bold text-sm">
+                            <span class="text-right w-32">Arsenal</span>
                             <span class="bg-emerald-950 text-emerald-400 px-3 py-1 rounded-lg border border-emerald-800">2 - 1</span>
-                            <span>Right to Dream U-20</span>
+                            <span class="text-left w-32">Manchester City</span>
                         </div>
-                        <div class="text-xs text-emerald-400 font-semibold">84' (2nd Half)</div>
+                        <div class="text-xs text-emerald-400 font-semibold bg-emerald-950/50 px-2.5 py-1 rounded">78' (2nd Half)</div>
+                    </div>
+
+                    <!-- La Liga -->
+                    <div class="bg-slate-950 p-4 rounded-xl border border-slate-800/80 flex flex-col sm:flex-row justify-between items-center gap-3">
+                        <div class="text-xs text-amber-400 font-bold flex items-center gap-1.5"><i class="fa-solid fa-circle-dot"></i> La Liga (Spain)</div>
+                        <div class="flex items-center gap-4 font-bold text-sm">
+                            <span class="text-right w-32">Real Madrid</span>
+                            <span class="bg-emerald-950 text-emerald-400 px-3 py-1 rounded-lg border border-emerald-800">3 - 0</span>
+                            <span class="text-left w-32">Villarreal</span>
+                        </div>
+                        <div class="text-xs text-emerald-400 font-semibold bg-emerald-950/50 px-2.5 py-1 rounded">FT (Final)</div>
+                    </div>
+
+                    <!-- Bundesliga -->
+                    <div class="bg-slate-950 p-4 rounded-xl border border-slate-800/80 flex flex-col sm:flex-row justify-between items-center gap-3">
+                        <div class="text-xs text-rose-400 font-bold flex items-center gap-1.5"><i class="fa-solid fa-circle-dot"></i> Bundesliga (Germany)</div>
+                        <div class="flex items-center gap-4 font-bold text-sm">
+                            <span class="text-right w-32">Bayern Munich</span>
+                            <span class="bg-slate-900 text-white px-3 py-1 rounded-lg border border-slate-800">1 - 1</span>
+                            <span class="text-left w-32">Borussia Dortmund</span>
+                        </div>
+                        <div class="text-xs text-slate-400 font-semibold bg-slate-900 px-2.5 py-1 rounded">HT (Half-Time)</div>
+                    </div>
+
+                    <!-- Serie A -->
+                    <div class="bg-slate-950 p-4 rounded-xl border border-slate-800/80 flex flex-col sm:flex-row justify-between items-center gap-3">
+                        <div class="text-xs text-blue-400 font-bold flex items-center gap-1.5"><i class="fa-solid fa-circle-dot"></i> Serie A (Italy)</div>
+                        <div class="flex items-center gap-4 font-bold text-sm">
+                            <span class="text-right w-32">AC Milan</span>
+                            <span class="bg-slate-900 text-white px-3 py-1 rounded-lg border border-slate-800">0 - 0</span>
+                            <span class="text-left w-32">Juventus</span>
+                        </div>
+                        <div class="text-xs text-slate-400 font-semibold bg-slate-900 px-2.5 py-1 rounded">21:00 GMT</div>
+                    </div>
+
+                    <!-- Ghana Premier League -->
+                    <div class="bg-slate-950 p-4 rounded-xl border border-slate-800/80 flex flex-col sm:flex-row justify-between items-center gap-3">
+                        <div class="text-xs text-emerald-400 font-bold flex items-center gap-1.5"><i class="fa-solid fa-circle-dot"></i> Ghana Premier League</div>
+                        <div class="flex items-center gap-4 font-bold text-sm">
+                            <span class="text-right w-32">Asante Kotoko</span>
+                            <span class="bg-emerald-950 text-emerald-400 px-3 py-1 rounded-lg border border-emerald-800">1 - 0</span>
+                            <span class="text-left w-32">Hearts of Oak</span>
+                        </div>
+                        <div class="text-xs text-emerald-400 font-semibold bg-emerald-950/50 px-2.5 py-1 rounded">65' (2nd Half)</div>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- TAB 3: NEWS & TRANSFERS -->
+        <!-- TAB 3: NEWS & TRANSFERS DESK -->
         <div id="tab-news" class="tab-content hidden space-y-6">
-            <h2 class="text-xl font-bold text-white">Scouting & Transfer Intelligence</h2>
+            <div class="flex justify-between items-center">
+                <h2 class="text-xl font-bold text-white flex items-center gap-2"><i class="fa-solid fa-newspaper text-emerald-400"></i> Global Football News & Transfer Desk</h2>
+                <span class="text-xs text-slate-400">Synced with major sports wires</span>
+            </div>
+            
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div class="bg-slate-900 p-6 rounded-2xl border border-slate-800 space-y-3">
-                    <span class="text-xs text-emerald-400 font-semibold bg-emerald-950 px-3 py-1 rounded-md border border-emerald-800/50">Villarreal Scout Tour</span>
-                    <h3 class="text-lg font-bold text-white">European scouts confirm comprehensive tour across West African academies.</h3>
-                    <p class="text-xs text-slate-400 leading-relaxed">Representatives from La Liga and Portuguese academies outline key metrics evaluated in young midfielders and wingers.</p>
+                <!-- News 1 -->
+                <div class="bg-slate-900 p-6 rounded-2xl border border-slate-800 space-y-3 hover:border-emerald-500/40 transition-all">
+                    <div class="flex justify-between items-center">
+                        <span class="text-xs text-emerald-400 font-semibold bg-emerald-950 px-3 py-1 rounded-md border border-emerald-800/50">La Liga Scouting</span>
+                        <span class="text-xs text-slate-500">2 hours ago</span>
+                    </div>
+                    <h3 class="text-lg font-bold text-white leading-snug">Villarreal & Spanish Clubs Expand West African Academy Partnerships for Summer Window.</h3>
+                    <p class="text-xs text-slate-400 leading-relaxed">Top scouts confirm direct scouting pipelines from Accra and Abidjan are yielding elite midfield prospects for European reserve divisions.</p>
+                </div>
+
+                <!-- News 2 -->
+                <div class="bg-slate-900 p-6 rounded-2xl border border-slate-800 space-y-3 hover:border-emerald-500/40 transition-all">
+                    <div class="flex justify-between items-center">
+                        <span class="text-xs text-sky-400 font-semibold bg-sky-950 px-3 py-1 rounded-md border border-sky-800/50">Premier League</span>
+                        <span class="text-xs text-slate-500">5 hours ago</span>
+                    </div>
+                    <h3 class="text-lg font-bold text-white leading-snug">UEFA Champions League Group Stage Fixtures Draw Confirmed in Monaco.</h3>
+                    <p class="text-xs text-slate-400 leading-relaxed">European heavyweights discover their path as elite clubs prepare for high-stakes continental matchdays starting next week.</p>
+                </div>
+
+                <!-- News 3 -->
+                <div class="bg-slate-900 p-6 rounded-2xl border border-slate-800 space-y-3 hover:border-emerald-500/40 transition-all">
+                    <div class="flex justify-between items-center">
+                        <span class="text-xs text-amber-400 font-semibold bg-amber-950 px-3 py-1 rounded-md border border-amber-800/50">Transfer Market</span>
+                        <span class="text-xs text-slate-500">1 day ago</span>
+                    </div>
+                    <h3 class="text-lg font-bold text-white leading-snug">Record Youth Investments Set Benchmark for African Football Talent Management.</h3>
+                    <p class="text-xs text-slate-400 leading-relaxed">Digital scouting infrastructure is transforming how clubs evaluate raw talent before formal trials and contract offers.</p>
+                </div>
+
+                <!-- News 4 -->
+                <div class="bg-slate-900 p-6 rounded-2xl border border-slate-800 space-y-3 hover:border-emerald-500/40 transition-all">
+                    <div class="flex justify-between items-center">
+                        <span class="text-xs text-emerald-400 font-semibold bg-emerald-950 px-3 py-1 rounded-md border border-emerald-800/50">CAF Updates</span>
+                        <span class="text-xs text-slate-500">1 day ago</span>
+                    </div>
+                    <h3 class="text-lg font-bold text-white leading-snug">CAF Youth Championship Qualifiers Showcase Exceptional West African Technical Skill.</h3>
+                    <p class="text-xs text-slate-400 leading-relaxed">Scouts from across Europe praise the elevated tactical discipline and physical conditioning displayed in regional youth tournaments.</p>
                 </div>
             </div>
         </div>
 
-        <!-- TAB 4: LEAGUES & ACADEMIES -->
+        <!-- TAB 4: TOP LEAGUES & NETWORKS -->
         <div id="tab-leagues" class="tab-content hidden space-y-6">
             <h2 class="text-xl font-bold text-white">Monitored Leagues & Partner Networks</h2>
             <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
                 <div class="bg-slate-900 p-5 rounded-2xl border border-slate-800 space-y-2">
                     <i class="fa-solid fa-trophy text-emerald-400 text-2xl mb-2"></i>
                     <div class="text-base font-bold text-white">Ghana Premier League</div>
-                    <div class="text-xs text-slate-400">Active talent pool tracking professional matches.</div>
+                    <div class="text-xs text-slate-400">Active professional talent pool tracking senior league fixtures.</div>
                 </div>
                 <div class="bg-slate-900 p-5 rounded-2xl border border-slate-800 space-y-2">
                     <i class="fa-solid fa-medal text-emerald-400 text-2xl mb-2"></i>
-                    <div class="text-base font-bold text-white">CAF Youth Champions</div>
-                    <div class="text-xs text-slate-400">Continental tournament scans highlighting U-17 and U-20 performers.</div>
+                    <div class="text-base font-bold text-white">CAF Champions & Youth</div>
+                    <div class="text-xs text-slate-400">Continental tournament scans highlighting top U-17 and U-20 performers.</div>
                 </div>
                 <div class="bg-slate-900 p-5 rounded-2xl border border-slate-800 space-y-2">
                     <i class="fa-solid fa-globe text-emerald-400 text-2xl mb-2"></i>
-                    <div class="text-base font-bold text-white">European Academies</div>
-                    <div class="text-xs text-slate-400">Direct trial facilitation and data sharing with Spanish and Portuguese clubs.</div>
+                    <div class="text-base font-bold text-white">Top 5 European Leagues</div>
+                    <div class="text-xs text-slate-400">Direct trial facilitation and data sharing with Spanish, English, and German clubs.</div>
                 </div>
             </div>
         </div>
 
         <!-- TAB 5: PARTNER SCOUTS DIRECTORY -->
         <div id="tab-directory" class="tab-content hidden space-y-6">
-            <h2 class="text-xl font-bold text-white">Verified International Scouts</h2>
+            <h2 class="text-xl font-bold text-white">Verified International Scouts & Agencies</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div class="bg-slate-900 p-5 rounded-2xl border border-slate-800 flex items-center gap-4">
                     <div class="bg-emerald-950 text-emerald-400 p-4 rounded-xl border border-emerald-800">
-                        <i class="fa-solid fa-user-tie text-xl"></i>
+                        <i class="fa-solid fa-user-tie text-2xl"></i>
                     </div>
                     <div>
                         <h3 class="text-base font-bold text-white">Javier Mendez</h3>
-                        <p class="text-xs text-emerald-400 font-medium">Senior Scout | Villarreal CF (Spain)</p>
+                        <p class="text-xs text-emerald-400 font-medium">Senior Talent Scout | Villarreal CF (Spain)</p>
+                        <p class="text-xs text-slate-400 mt-1">Specializes in defensive structures and central midfield distribution.</p>
+                    </div>
+                </div>
+                <div class="bg-slate-900 p-5 rounded-2xl border border-slate-800 flex items-center gap-4">
+                    <div class="bg-emerald-950 text-emerald-400 p-4 rounded-xl border border-emerald-800">
+                        <i class="fa-solid fa-user-tie text-2xl"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-base font-bold text-white">Marco Silva</h3>
+                        <p class="text-xs text-emerald-400 font-medium">Head of African Operations | Global Sports Agency</p>
+                        <p class="text-xs text-slate-400 mt-1">Focuses on elite pace wingers and goalscoring forwards for European placement.</p>
                     </div>
                 </div>
             </div>
@@ -269,10 +371,17 @@
         <!-- TAB 6: SUCCESS STORIES -->
         <div id="tab-success" class="tab-content hidden space-y-6">
             <h2 class="text-xl font-bold text-white">Player Placement Success Stories</h2>
-            <div class="bg-slate-900 p-6 rounded-2xl border border-slate-800 space-y-3">
-                <span class="text-xs bg-emerald-500/20 text-emerald-400 px-3 py-1 rounded-full border border-emerald-500/35">Signed in Europe</span>
-                <h3 class="text-lg font-bold text-white">Abdul Fatawu (Secured Trial & Contract)</h3>
-                <p class="text-xs text-slate-400 leading-relaxed">"Scout Escort helped display my match highlights directly to international scouts, leading to my professional European placement."</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="bg-slate-900 p-6 rounded-2xl border border-slate-800 space-y-3">
+                    <span class="text-xs bg-emerald-500/20 text-emerald-400 px-3 py-1 rounded-full border border-emerald-500/35">Signed in Europe</span>
+                    <h3 class="text-lg font-bold text-white">Abdul Fatawu (Secured Trial & Contract)</h3>
+                    <p class="text-xs text-slate-400 leading-relaxed">"Scout Escort helped display my match highlights directly to international scouts, leading to my professional European placement."</p>
+                </div>
+                <div class="bg-slate-900 p-6 rounded-2xl border border-slate-800 space-y-3">
+                    <span class="text-xs bg-emerald-500/20 text-emerald-400 px-3 py-1 rounded-full border border-emerald-500/35">Academy Spotlight</span>
+                    <h3 class="text-lg font-bold text-white">Accra Youth Stars Academy</h3>
+                    <p class="text-xs text-slate-400 leading-relaxed">"We list all our top prospects on Scout Escort. It makes sharing profile reels with international contacts effortless and professional."</p>
+                </div>
             </div>
         </div>
 
@@ -280,7 +389,7 @@
         <div id="tab-register" class="tab-content hidden max-w-2xl mx-auto space-y-6 bg-slate-900 p-6 sm:p-8 rounded-2xl border border-slate-800 shadow-xl">
             <div>
                 <h2 class="text-xl font-bold text-white">Submit a Prospect Profile</h2>
-                <p class="text-xs text-slate-400 mt-1">Register talent to feature them in the public database instantly.</p>
+                <p class="text-xs text-slate-400 mt-1">Register talent to feature them in the public database instantly and generate shareable links.</p>
             </div>
             
             <form onsubmit="handleProspectSubmission(event)" class="space-y-4">
@@ -307,13 +416,13 @@
                         <input type="number" id="subAge" min="14" max="23" required placeholder="e.g. 18" class="w-full bg-slate-950 border border-slate-800 px-3 py-2.5 rounded-xl text-xs text-white focus:outline-none focus:border-emerald-500">
                     </div>
                     <div>
-                        <label class="block text-xs font-semibold text-slate-300 mb-1">Current Club</label>
+                        <label class="block text-xs font-semibold text-slate-300 mb-1">Current Club / Academy</label>
                         <input type="text" id="subClub" required placeholder="e.g. Accra Youth FC" class="w-full bg-slate-950 border border-slate-800 px-3 py-2.5 rounded-xl text-xs text-white focus:outline-none focus:border-emerald-500">
                     </div>
                 </div>
 
                 <div>
-                    <label class="block text-xs font-semibold text-slate-300 mb-1">Highlight Video Link</label>
+                    <label class="block text-xs font-semibold text-slate-300 mb-1">Highlight Video Link (YouTube / Hudl)</label>
                     <input type="url" id="subVideo" required placeholder="https://youtube.com/watch?v=..." class="w-full bg-slate-950 border border-slate-800 px-3 py-2.5 rounded-xl text-xs text-white focus:outline-none focus:border-emerald-500">
                 </div>
 
@@ -329,7 +438,7 @@
                 <h2 class="text-xl font-bold text-white">Scout & Agent Portal</h2>
                 <p class="text-xs text-slate-400 mt-1">Authorized secure access for verified club scouts.</p>
             </div>
-            <form onsubmit="event.preventDefault(); alert('Portal authenticated.');" class="space-y-4">
+            <form onsubmit="event.preventDefault(); alert('Portal authenticated successfully.');" class="space-y-4">
                 <div>
                     <label class="block text-xs font-semibold text-slate-300 mb-1">Email</label>
                     <input type="email" required placeholder="scout@club.eu" class="w-full bg-slate-950 border border-slate-800 px-3 py-2.5 rounded-xl text-xs text-white focus:outline-none focus:border-emerald-500">
@@ -347,8 +456,9 @@
     </main>
 
     <!-- FOOTER -->
-    <footer class="bg-slate-900 border-t border-slate-800 mt-auto py-6 text-center text-xs text-slate-500">
-        <p>&copy; 2026 Scout Escort. Empowering West African Football Talent.</p>
+    <footer class="bg-slate-900 border-t border-slate-800 mt-auto py-6 text-center text-xs text-slate-500 space-y-1">
+        <p>&copy; 2026 Scout Escort. Empowering West African Football Talent & Global Scouting.</p>
+        <p class="text-slate-600">Official Partner Networks: Puma, Nike, Qatar Airways, Mastercard, Samsung, Adidas</p>
     </footer>
 
     <!-- JAVASCRIPT LOGIC -->
@@ -394,6 +504,7 @@
     </script>
 </body>
 </html>
+
 
 
 
