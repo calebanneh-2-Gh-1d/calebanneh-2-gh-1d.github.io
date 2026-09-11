@@ -18,12 +18,12 @@
 
     <style>
         :root {
-            --bg-color: #064e3b;          /* Vibrant Professional Green */
-            --card-bg: #022c22;           /* Deep Rich Green Card Base */
-            --accent-green: #34d399;      /* Bright Emerald Accent */
+            --bg-color: #064e3b;          
+            --card-bg: #022c22;           
+            --accent-green: #34d399;      
             --text-main: #ffffff;
             --text-muted: #a7f3d0;
-            --border-color: #047857;      /* Clear Defined Green Border */
+            --border-color: #047857;      
         }
 
         * {
@@ -39,14 +39,10 @@
             padding-bottom: 75px;
         }
 
-        /* Continuous Moving Sponsor Ticker */
+        /* Sponsor Ticker with Authentic Brand Symbols */
         .sponsor-ticker {
-            background: #022c22;
-            color: var(--text-muted);
-            font-size: 10px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            padding: 8px 0;
+            background: #011f19;
+            padding: 12px 0;
             border-bottom: 1px solid var(--border-color);
             overflow: hidden;
             white-space: nowrap;
@@ -55,39 +51,36 @@
 
         .ticker-track {
             display: inline-flex;
-            gap: 24px;
+            gap: 40px;
             align-items: center;
-            animation: ticker 25s linear infinite;
+            animation: ticker 35s linear infinite;
         }
 
         @keyframes ticker {
-            0% {
-                transform: translateX(0);
-            }
-            100% {
-                transform: translateX(-50%);
-            }
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
         }
 
-        .brand-pill {
+        .brand-item {
             display: inline-flex;
             align-items: center;
-            background: #064e3b;
-            border: 1px solid var(--border-color);
-            padding: 3px 10px;
-            border-radius: 4px;
+            gap: 8px;
             color: #ffffff;
-            font-weight: 600;
             flex-shrink: 0;
+            opacity: 0.85;
+            transition: opacity 0.2s;
         }
 
-        .sponsor-logo {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            margin-right: 6px;
-            font-weight: 700;
-            color: var(--accent-green);
+        .brand-item:hover {
+            opacity: 1;
+        }
+
+        /* Precise Styling for Authentic Brand SVGs */
+        .brand-item svg {
+            fill: #ffffff;
+            height: 16px;
+            width: auto;
+            display: block;
         }
 
         /* Professional Header */
@@ -114,7 +107,6 @@
             gap: 12px;
         }
 
-        /* Corporate Geometric Icon Box */
         .telescope-sculpture {
             background: #022c22;
             width: 44px;
@@ -262,7 +254,7 @@
             opacity: 0.9;
         }
 
-        /* Professional Prospect Card */
+        /* Prospect Card */
         .prospect-card {
             background: #022c22;
             border: 1px solid var(--border-color);
@@ -331,7 +323,7 @@
             letter-spacing: 0.3px;
         }
 
-        /* Professional Media/Gallery Cards */
+        /* Media & Gallery Cards */
         .media-card {
             background: #022c22;
             border: 1px solid var(--border-color);
@@ -441,7 +433,7 @@
             padding: 12px;
         }
 
-        /* Clean Enterprise Bottom Navigation with Strict Vector Icons */
+        /* Enterprise Bottom Navigation */
         .bottom-nav {
             position: fixed;
             bottom: 0;
@@ -491,22 +483,45 @@
 </head>
 <body>
 
-  <!-- Moving Continuous Corporate Sponsor Ticker -->
+  <!-- Sponsor Ticker Featuring True Official Brand Symbols & Names -->
   <div class="sponsor-ticker">
     <div class="ticker-track">
-      <span class="brand-pill"><span class="sponsor-logo">✔</span> NIKE PARTNER</span>
-      <span class="brand-pill"><span class="sponsor-logo">🐆</span> PUMA OFFICIAL</span>
-      <span class="brand-pill"><span class="sponsor-logo">⚡</span> ADIDAS ELITE</span>
-      <span class="brand-pill"><span class="sponsor-logo">📱</span> SAMSUNG TECH PARTNER</span>
-      <span class="brand-pill"><span class="sponsor-logo">✈</span> QATAR AIRWAYS</span>
-      <span class="brand-pill"><span class="sponsor-logo">💳</span> MASTERCARD FINANCIAL</span>
-      <!-- Repeated for seamless infinite loop animation -->
-      <span class="brand-pill"><span class="sponsor-logo">✔</span> NIKE PARTNER</span>
-      <span class="brand-pill"><span class="sponsor-logo">🐆</span> PUMA OFFICIAL</span>
-      <span class="brand-pill"><span class="sponsor-logo">⚡</span> ADIDAS ELITE</span>
-      <span class="brand-pill"><span class="sponsor-logo">📱</span> SAMSUNG TECH PARTNER</span>
-      <span class="brand-pill"><span class="sponsor-logo">✈</span> QATAR AIRWAYS</span>
-      <span class="brand-pill"><span class="sponsor-logo">💳</span> MASTERCARD FINANCIAL</span>
+      <!-- NIKE -->
+      <span class="brand-item">
+        <svg viewBox="0 0 24 24" style="width:28px;"><path d="M21.07 5.03c-3.56.92-7.31 3.24-10.74 6.96-3.15 3.48-5.75 7.4-7.83 11.01-.2.34-.1.78.23.97.33.19.75.1 1-.22 2.11-3.76 4.81-7.8 8.12-11.45 3.2-3.52 6.74-5.71 10.04-6.56.39-.1.62-.51.52-.9-.1-.38-.51-.62-.9-.31z"/></svg>
+      </span>
+      <!-- PUMA -->
+      <span class="brand-item">
+        <svg viewBox="0 0 24 24" style="width:24px;"><path d="M19.5 4.5c-1.2 0-3.1.8-4.9 2.1-1.8 1.3-3.6 3.1-5.1 5.2-1.3 1.8-2.4 3.7-3.3 5.5-.3.6-.1 1.3.4 1.6.5.3 1.2.1 1.5-.4.8-1.7 1.8-3.4 3-5 1.4-1.9 3-3.5 4.6-4.7 1.6-1.2 3.2-1.8 4.3-1.8.6 0 1-.5 1-1.1 0-.6-.5-1-1.5-1zM5.5 17.5c-.8 0-1.5.7-1.5 1.5s.7 1.5 1.5 1.5 1.5-.7 1.5-1.5-.7-1.5-1.5-1.5z"/></svg>
+      </span>
+      <!-- ADIDAS -->
+      <span class="brand-item">
+        <svg viewBox="0 0 24 24" style="width:22px;"><path d="M0 19.5h3.8l4.5-11.2h3.8L7.6 19.5H3.8L0 19.5zm5.7-11.2h3.8l4.5-11.2H10.2L5.7 8.3zm7.6 0h3.8l4.5-11.2h-3.8l-4.5 11.2z"/></svg>
+      </span>
+      <!-- SAMSUNG -->
+      <span class="brand-item" style="font-weight: 800; font-size: 13px; letter-spacing: 0.5px;">SAMSUNG</span>
+      <!-- QATAR AIRWAYS -->
+      <span class="brand-item" style="font-weight: 700; font-size: 11px; letter-spacing: 1px;">QATAR AIRWAYS</span>
+      <!-- MASTERCARD -->
+      <span class="brand-item">
+        <svg viewBox="0 0 24 24" style="width:28px;"><circle cx="9" cy="12" r="7" fill="#eb001b"/><circle cx="15" cy="12" r="7" fill="#f79e1b" fill-opacity="0.8"/></svg>
+      </span>
+
+      <!-- Repeated Loop for Seamless Movement -->
+      <span class="brand-item">
+        <svg viewBox="0 0 24 24" style="width:28px;"><path d="M21.07 5.03c-3.56.92-7.31 3.24-10.74 6.96-3.15 3.48-5.75 7.4-7.83 11.01-.2.34-.1.78.23.97.33.19.75.1 1-.22 2.11-3.76 4.81-7.8 8.12-11.45 3.2-3.52 6.74-5.71 10.04-6.56.39-.1.62-.51.52-.9-.1-.38-.51-.62-.9-.31z"/></svg>
+      </span>
+      <span class="brand-item">
+        <svg viewBox="0 0 24 24" style="width:24px;"><path d="M19.5 4.5c-1.2 0-3.1.8-4.9 2.1-1.8 1.3-3.6 3.1-5.1 5.2-1.3 1.8-2.4 3.7-3.3 5.5-.3.6-.1 1.3.4 1.6.5.3 1.2.1 1.5-.4.8-1.7 1.8-3.4 3-5 1.4-1.9 3-3.5 4.6-4.7 1.6-1.2 3.2-1.8 4.3-1.8.6 0 1-.5 1-1.1 0-.6-.5-1-1.5-1zM5.5 17.5c-.8 0-1.5.7-1.5 1.5s.7 1.5 1.5 1.5 1.5-.7 1.5-1.5-.7-1.5-1.5-1.5z"/></svg>
+      </span>
+      <span class="brand-item">
+        <svg viewBox="0 0 24 24" style="width:22px;"><path d="M0 19.5h3.8l4.5-11.2h3.8L7.6 19.5H3.8L0 19.5zm5.7-11.2h3.8l4.5-11.2H10.2L5.7 8.3zm7.6 0h3.8l4.5-11.2h-3.8l-4.5 11.2z"/></svg>
+      </span>
+      <span class="brand-item" style="font-weight: 800; font-size: 13px; letter-spacing: 0.5px;">SAMSUNG</span>
+      <span class="brand-item" style="font-weight: 700; font-size: 11px; letter-spacing: 1px;">QATAR AIRWAYS</span>
+      <span class="brand-item">
+        <svg viewBox="0 0 24 24" style="width:28px;"><circle cx="9" cy="12" r="7" fill="#eb001b"/><circle cx="15" cy="12" r="7" fill="#f79e1b" fill-opacity="0.8"/></svg>
+      </span>
     </div>
   </div>
 
@@ -700,7 +715,7 @@
 
   </div>
 
-  <!-- Clean Professional Enterprise Bottom Navigation with Strict Vector Icons -->
+  <!-- Enterprise Bottom Navigation -->
   <nav class="bottom-nav">
     <button class="nav-tab active" onclick="switchTab('prospects-pane', event)">
       <svg viewBox="0 0 24 24"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg>
@@ -715,7 +730,7 @@
       <span>News</span>
     </button>
     <button class="nav-tab" onclick="switchTab('photos-pane', event)">
-      <svg viewBox="0 0 24 24"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg>
+      <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
       <span>Photos</span>
     </button>
     <button class="nav-tab" onclick="switchTab('registration-pane', event)">
@@ -754,7 +769,6 @@
       });
     }
 
-    // Fetch Live Match Scores
     async function fetchLiveScores() {
       const container = document.getElementById('liveScoresContainer');
       try {
@@ -805,7 +819,6 @@
       }
     }
 
-    // Fetch Football Intelligence News
     async function fetchFootballNews() {
       const container = document.getElementById('newsContainer');
       try {
