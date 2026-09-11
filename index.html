@@ -36,10 +36,10 @@
         body {
             background-color: var(--bg-color);
             color: var(--text-main);
-            padding-bottom: 60px;
+            padding-bottom: 80px;
         }
 
-        /* Clean Sponsor Ticker */
+        /* 1. Sponsor Marquee Ticker at the absolute top */
         .sponsor-ticker {
             background: linear-gradient(90deg, #05080f, #0f172a, #05080f);
             color: var(--text-muted);
@@ -77,37 +77,12 @@
             font-size: 13px;
         }
 
-        .mc-circles {
-            position: relative;
-            width: 18px;
-            height: 12px;
-            display: inline-block;
-        }
-        .mc-circles::before, .mc-circles::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            width: 11px;
-            height: 11px;
-            border-radius: 50%;
-        }
-        .mc-circles::before {
-            left: 0;
-            background-color: #eb001b;
-            opacity: 0.9;
-        }
-        .mc-circles::after {
-            right: 0;
-            background-color: #f79e1b;
-            opacity: 0.9;
-        }
-
         @keyframes marquee {
             0% { transform: translateX(0); }
             100% { transform: translateX(-50%); }
         }
 
-        /* Header / Hero with Pure Telescope Branding */
+        /* Main Header with Telescope Branding */
         .header {
             padding: 20px 16px;
             background: linear-gradient(180deg, #111827 0%, var(--bg-color) 100%);
@@ -131,7 +106,6 @@
             gap: 14px;
         }
 
-        /* Pure Telescope Icon Element */
         .telescope-sculpture {
             background: linear-gradient(135deg, #00e676, #00b0ff);
             width: 52px;
@@ -157,43 +131,7 @@
             margin-top: 2px;
         }
 
-        /* Sub-Header Tab Navigation (Positioned Under Header & Stats) */
-        .sub-navigation {
-            background: rgba(13, 19, 34, 0.95);
-            border-bottom: 1px solid var(--border-color);
-            padding: 0 16px;
-            display: flex;
-            gap: 8px;
-            overflow-x: auto;
-            white-space: nowrap;
-            margin-bottom: 16px;
-        }
-
-        .nav-tab {
-            background: transparent;
-            border: none;
-            color: var(--text-muted);
-            padding: 14px 16px;
-            font-size: 12px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.8px;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            border-bottom: 2px solid transparent;
-        }
-
-        .nav-tab:hover {
-            color: var(--text-main);
-        }
-
-        .nav-tab.active {
-            color: var(--accent-green);
-            border-bottom-color: var(--accent-green);
-            background: rgba(0, 230, 118, 0.03);
-        }
-
-        /* Stats Bar */
+        /* Clean Professional Stats Bar (No fake live counters) */
         .stats-bar {
             display: flex;
             background: var(--card-bg);
@@ -219,7 +157,7 @@
             letter-spacing: 0.5px;
         }
 
-        /* Main Container for Tab Contents */
+        /* Main Container for Tab Panes */
         .container {
             padding: 0 16px;
         }
@@ -432,41 +370,85 @@
             text-align: center;
             padding: 15px;
         }
+
+        /* 2. Bottom Fixed Navigation Bar (Pinned cleanly to bottom) */
+        .bottom-nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: #080d17;
+            border-top: 1px solid var(--border-color);
+            display: flex;
+            justify-content: space-around;
+            padding: 8px 4px;
+            z-index: 1000;
+            box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.5);
+        }
+
+        .nav-tab {
+            background: transparent;
+            border: none;
+            color: var(--text-muted);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 3px;
+            padding: 6px 8px;
+            font-size: 10px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            cursor: pointer;
+            transition: color 0.2s ease;
+            flex: 1;
+        }
+
+        .nav-tab span.nav-icon {
+            font-size: 16px;
+        }
+
+        .nav-tab:hover {
+            color: var(--text-main);
+        }
+
+        .nav-tab.active {
+            color: var(--accent-green);
+        }
     </style>
 </head>
 <body>
 
-  <!-- Sponsor Marquee Ticker -->
+  <!-- 1. Sponsor Marquee Ticker (Positioned at the Absolute Top) -->
   <div class="sponsor-ticker">
     <div class="ticker-content">
       <span class="brand-pill"><span class="sponsor-logo">✔</span> Nike</span>
       <span class="brand-pill"><span class="sponsor-logo">📱</span> Samsung</span>
-      <span class="brand-pill"><span class="sponsor-logo"><div class="mc-circles"></div></span> Mastercard</span>
-      <span class="brand-pill"><span class="sponsor-logo">🦌</span> Qatar Airways</span>
-      <span class="brand-pill"><span class="sponsor-logo">⭐</span> Benz</span>
+      <span class="brand-pill"><span class="sponsor-logo">💳</span> Mastercard</span>
+      <span class="brand-pill"><span class="sponsor-logo">✈️</span> Qatar Airways</span>
+      <span class="brand-pill"><span class="sponsor-logo">⭐</span> Mercedes-Benz</span>
       <span class="brand-pill"><span class="sponsor-logo">🐆</span> Puma</span>
-      <span class="brand-pill"><span class="sponsor-logo">✈️</span> Emirates</span>
+      <span class="brand-pill"><span class="sponsor-logo">🌐</span> Emirates</span>
       <span class="brand-pill"><span class="sponsor-logo">⊿</span> Adidas</span>
-      <!-- Loop duplicate for continuous smooth scrolling motion -->
+      <!-- Continuous loop duplicate -->
       <span class="brand-pill"><span class="sponsor-logo">✔</span> Nike</span>
       <span class="brand-pill"><span class="sponsor-logo">📱</span> Samsung</span>
-      <span class="brand-pill"><span class="sponsor-logo"><div class="mc-circles"></div></span> Mastercard</span>
-      <span class="brand-pill"><span class="sponsor-logo">🦌</span> Qatar Airways</span>
-      <span class="brand-pill"><span class="sponsor-logo">⭐</span> Benz</span>
+      <span class="brand-pill"><span class="sponsor-logo">💳</span> Mastercard</span>
+      <span class="brand-pill"><span class="sponsor-logo">✈️</span> Qatar Airways</span>
+      <span class="brand-pill"><span class="sponsor-logo">⭐</span> Mercedes-Benz</span>
       <span class="brand-pill"><span class="sponsor-logo">🐆</span> Puma</span>
-      <span class="brand-pill"><span class="sponsor-logo">✈️</span> Emirates</span>
+      <span class="brand-pill"><span class="sponsor-logo">🌐</span> Emirates</span>
       <span class="brand-pill"><span class="sponsor-logo">⊿</span> Adidas</span>
     </div>
   </div>
 
-  <!-- Main Header with Pure Telescope Branding -->
+  <!-- Main Header with Telescope Branding -->
   <header class="header">
     <div class="top-badges">
       <span>Partner: Adidas</span>
       <span>Accra Hub</span>
     </div>
     <div class="hero-title-box">
-      <!-- Pure Telescope Logo Icon -->
       <div class="telescope-sculpture">🔭</div>
       <div class="title-text">
         <h1>SCOUT ESCORT</h1>
@@ -475,27 +457,17 @@
     </div>
   </header>
 
-  <!-- Live Stats Bar -->
+  <!-- Clean Professional Stats Bar -->
   <div class="stats-bar">
     <div class="stat-item">
-      <div class="stat-num" id="prospectCount">542</div>
-      <div class="stat-label">Registered Prospects</div>
+      <div class="stat-num">Verified</div>
+      <div class="stat-label">Regional Hub</div>
     </div>
     <div class="stat-item">
-      <div class="stat-num" id="scoutCount">48</div>
-      <div class="stat-label">Scouts Online</div>
+      <div class="stat-num">Direct</div>
+      <div class="stat-label">Club Access</div>
     </div>
   </div>
-
-  <!-- Sub-Header Tab Navigation (Placed Under Header & Stats) -->
-  <nav class="sub-navigation">
-    <button class="nav-tab active" onclick="switchTab('prospects-pane', event)">Prospects</button>
-    <button class="nav-tab" onclick="switchTab('registration-pane', event)">Registration</button>
-    <button class="nav-tab" onclick="switchTab('photos-pane', event)">Photos</button>
-    <button class="nav-tab" onclick="switchTab('matches-pane', event)">Matches</button>
-    <button class="nav-tab" onclick="switchTab('news-pane', event)">News & Leaks</button>
-    <button class="nav-tab" onclick="switchTab('login-pane', event)">Login</button>
-  </nav>
 
   <!-- MAIN CONTAINER: Tab Panes -->
   <div class="container">
@@ -504,12 +476,12 @@
     <div id="prospects-pane" class="tab-pane active">
       <div class="section-card">
         <h2>Verified Youth Prospects</h2>
-        <p>Browse verified player highlights and metrics ready for international review.</p>
+        <p>Browse verified player profiles and athletic performance metrics ready for institutional review.</p>
         
-        <input type="text" id="prospectSearch" class="search-input" placeholder="Search name, position, or club..." onkeyup="filterProspects()">
+        <input type="text" id="prospectSearch" class="search-input" placeholder="Search position, tier, or region..." onkeyup="filterProspects()">
 
         <div id="prospectList">
-          <div class="prospect-card" data-name="kofi mensah" data-details="centre-back accra academy stars ghana">
+          <div class="prospect-card" data-name="player profile elite central defender" data-details="centre-back ghana academy tier-1">
             <div class="prospect-header">
               <span class="badge-position">Centre-Back</span>
               <span class="badge-age">Age: 18</span>
@@ -517,13 +489,13 @@
             <div class="prospect-body">
               <div class="prospect-avatar">🛡️</div>
               <div class="prospect-info">
-                <h3>Kofi Mensah</h3>
-                <p>📍 Accra Academy Stars (Ghana)</p>
+                <h3>Player Profile #01</h3>
+                <p>📍 Verified Academy Prospect (Ghana)</p>
               </div>
             </div>
           </div>
 
-          <div class="prospect-card" data-name="ibrahim musah" data-details="attacking midfielder right to dream ghana">
+          <div class="prospect-card" data-name="player profile elite attacking midfielder" data-details="attacking midfield ghana academy tier-1">
             <div class="prospect-header">
               <span class="badge-position">Attacking Midfield</span>
               <span class="badge-age">Age: 17</span>
@@ -531,13 +503,13 @@
             <div class="prospect-body">
               <div class="prospect-avatar">⚡</div>
               <div class="prospect-info">
-                <h3>Ibrahim Musah</h3>
-                <p>📍 Right to Dream Academy (Ghana)</p>
+                <h3>Player Profile #02</h3>
+                <p>📍 Verified Academy Prospect (Ghana)</p>
               </div>
             </div>
           </div>
 
-          <div class="prospect-card" data-name="yaw boateng" data-details="winger greater accra youth fc ghana">
+          <div class="prospect-card" data-name="player profile elite winger" data-details="winger ghana academy tier-1">
             <div class="prospect-header">
               <span class="badge-position">Winger</span>
               <span class="badge-age">Age: 19</span>
@@ -545,8 +517,8 @@
             <div class="prospect-body">
               <div class="prospect-avatar">🎯</div>
               <div class="prospect-info">
-                <h3>Yaw Boateng</h3>
-                <p>📍 Greater Accra Youth FC (Ghana)</p>
+                <h3>Player Profile #03</h3>
+                <p>📍 Verified Academy Prospect (Ghana)</p>
               </div>
             </div>
           </div>
@@ -558,7 +530,7 @@
     <div id="registration-pane" class="tab-pane">
       <div class="section-card">
         <h2>Talent Registration Portal</h2>
-        <p>Submit your player credentials to join the official Scout Escort database for European academy evaluation.</p>
+        <p>Submit player credentials to join the official Scout Escort database for professional European evaluation.</p>
 
         <form onsubmit="event.preventDefault(); alert('Registration submitted successfully! Our scouting team will review your application.');">
           <div class="form-group">
@@ -603,13 +575,13 @@
         <div class="media-card">
           <div class="media-thumb">🎥</div>
           <h3>West African Showcase Highlights</h3>
-          <p>Top goals and defensive tackles from the recent Accra Regional Youth Trials.</p>
+          <p>Top goals and defensive actions from regional youth trials.</p>
         </div>
 
         <div class="media-card">
           <div class="media-thumb">📸</div>
           <h3>European Scouts Visit Training Grounds</h3>
-          <p>Photo gallery of delegates from La Liga and Premier League academies inspecting local facilities.</p>
+          <p>Photo gallery of delegates from professional academies inspecting local facilities.</p>
         </div>
       </div>
     </div>
@@ -625,10 +597,10 @@
       </div>
     </div>
 
-    <!-- TAB 5: NEWS & LEAKS -->
+    <!-- TAB 5: NEWS -->
     <div id="news-pane" class="tab-pane">
       <div class="section-card">
-        <h2>Global Football News & Leaks</h2>
+        <h2>Global Football News</h2>
         <p>Latest updates, transfer intelligence, and insights from professional leagues worldwide.</p>
         <div id="newsContainer">
           <div class="loading-text">Loading live football news headlines...</div>
@@ -658,6 +630,34 @@
 
   </div>
 
+  <!-- 2. Bottom Fixed Navigation Bar -->
+  <nav class="bottom-nav">
+    <button class="nav-tab active" onclick="switchTab('prospects-pane', event)">
+      <span class="nav-icon">🛡️</span>
+      <span>Prospects</span>
+    </button>
+    <button class="nav-tab" onclick="switchTab('registration-pane', event)">
+      <span class="nav-icon">📝</span>
+      <span>Register</span>
+    </button>
+    <button class="nav-tab" onclick="switchTab('photos-pane', event)">
+      <span class="nav-icon">📸</span>
+      <span>Photos</span>
+    </button>
+    <button class="nav-tab" onclick="switchTab('matches-pane', event)">
+      <span class="nav-icon">⚽</span>
+      <span>Matches</span>
+    </button>
+    <button class="nav-tab" onclick="switchTab('news-pane', event)">
+      <span class="nav-icon">📰</span>
+      <span>News</span>
+    </button>
+    <button class="nav-tab" onclick="switchTab('login-pane', event)">
+      <span class="nav-icon">🔐</span>
+      <span>Login</span>
+    </button>
+  </nav>
+
   <!-- JavaScript for Tabs, Filtering & Live Data -->
   <script>
     function switchTab(paneId, event) {
@@ -665,7 +665,10 @@
       document.querySelectorAll('.nav-tab').forEach(btn => btn.classList.remove('active'));
       
       document.getElementById(paneId).classList.add('active');
-      event.currentTarget.classList.add('active');
+      // Traverse up to ensure button element is targeted correctly
+      let btn = event.currentTarget.closest('.nav-tab');
+      if(btn) btn.classList.add('active');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
     function filterProspects() {
@@ -740,7 +743,7 @@
         const data = await res.json();
         
         if (data && data.items && data.items.length > 0) {
-          container.innerHTML = '';
+          container.innerHTML = ``;
           data.items.slice(0, 3).forEach(item => {
             container.innerHTML += `
               <div class="news-item" onclick="window.open('${item.link}', '_blank')" style="cursor:pointer;">
@@ -765,17 +768,6 @@
     // Initialize live data calls on load
     fetchLiveScores();
     fetchFootballNews();
-
-    // Dynamic counter fluctuation to simulate real-time scout activity traffic
-    setInterval(() => {
-      let scoutElement = document.getElementById('scoutCount');
-      if (scoutElement) {
-        let currentScouts = parseInt(scoutElement.innerText);
-        let change = Math.random() > 0.5 ? 1 : -1;
-        let newCount = Math.max(42, Math.min(68, currentScouts + change));
-        scoutElement.innerText = newCount;
-      }
-    }, 4000);
   </script>
 
 </body>
