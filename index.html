@@ -3,8 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO & Analytics -->
     <title>Scout Escort | Global Digital Scouting & Talent Hub</title>
     <meta name="description" content="Remote football scouting platform connecting upcoming global talent with international clubs. Scout players online without costly travel.">
+    
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-9DMZLL3XQE"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-9DMZLL3XQE');
+    </script>
+
     <style>
         :root {
             --bg-color: #080c14;
@@ -26,10 +38,10 @@
         body {
             background-color: var(--bg-color);
             color: var(--text-main);
-            padding-bottom: 50px;
+            padding-bottom: 90px; /* Extra space for bottom nav bar */
         }
 
-        /* Top Bar / Ticker */
+        /* Top Bar / Sponsor Ticker */
         .global-ticker {
             background: #04060b;
             color: var(--text-muted);
@@ -69,7 +81,7 @@
             100% { transform: translateX(-50%); }
         }
 
-        /* Header / Hero with Correct Two-Eyed Telescope Logo */
+        /* Header / Hero with Shadow-Style Two-Eyed Telescope Logo */
         .header {
             padding: 20px 16px;
             background: linear-gradient(180deg, #111827 0%, var(--bg-color) 100%);
@@ -82,28 +94,29 @@
             gap: 14px;
         }
 
-        /* Two-Eyed Telescope / Binocular Custom Vector Icon */
+        /* Sleek Black Shadow-Style Two-Eyed Telescope Icon */
         .telescope-logo {
-            background: linear-gradient(135deg, #111827, #1f2937);
+            background: #04060b;
             width: 52px;
             height: 52px;
             border-radius: 14px;
             display: flex;
             align-items: center;
             justify-content: center;
-            border: 1px solid var(--accent-green);
-            box-shadow: 0 4px 20px rgba(0, 230, 118, 0.25);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6), inset 0 2px 4px rgba(255, 255, 255, 0.05);
             flex-shrink: 0;
         }
 
         .telescope-logo svg {
             width: 30px;
             height: 30px;
+            fill: #1e293b; /* Shadow color tone */
             stroke: var(--accent-green);
-            fill: none;
-            stroke-width: 2;
+            stroke-width: 1.5;
             stroke-linecap: round;
             stroke-linejoin: round;
+            filter: drop-shadow(0px 2px 4px rgba(0, 0, 0, 0.8));
         }
 
         .title-text h1 {
@@ -120,7 +133,7 @@
             line-height: 1.3;
         }
 
-        /* Value Proposition Banner (Explaining Remote Scouting) */
+        /* Vision Banner */
         .vision-banner {
             background: linear-gradient(135deg, rgba(0, 230, 118, 0.08), rgba(0, 176, 255, 0.08));
             border: 1px solid rgba(0, 230, 118, 0.2);
@@ -143,35 +156,6 @@
             font-size: 11px;
             color: var(--text-muted);
             line-height: 1.4;
-        }
-
-        /* Navigation Tabs */
-        .nav-tabs {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 8px;
-            padding: 0 16px;
-            margin-bottom: 16px;
-        }
-
-        .tab-btn {
-            background: var(--card-bg);
-            border: 1px solid var(--border-color);
-            color: var(--text-muted);
-            padding: 11px;
-            border-radius: 10px;
-            font-size: 11px;
-            font-weight: 700;
-            text-align: center;
-            cursor: pointer;
-            transition: all 0.2s ease;
-        }
-
-        .tab-btn.active {
-            background: var(--accent-green);
-            color: #080c14;
-            border-color: var(--accent-green);
-            box-shadow: 0 4px 12px rgba(0, 230, 118, 0.2);
         }
 
         .container {
@@ -207,7 +191,7 @@
             line-height: 1.4;
         }
 
-        /* Form & Search Inputs */
+        /* Inputs & Forms */
         .search-input, .form-input, .form-select {
             width: 100%;
             background: #060911;
@@ -255,7 +239,7 @@
             border: 1px solid var(--border-color);
             border-radius: 10px;
             overflow: hidden;
-            margin-top: 10px;
+            margin-top: 12px;
         }
 
         .prospect-header {
@@ -275,9 +259,11 @@
             font-weight: 700;
         }
 
-        .badge-region {
+        .badge-profile {
             color: var(--accent-blue);
             font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
         .prospect-body {
@@ -309,6 +295,43 @@
             color: var(--text-muted);
             margin-top: 2px;
             margin-bottom: 0;
+        }
+
+        /* Social Share Bar inside Player Profiles */
+        .social-share-bar {
+            display: flex;
+            gap: 8px;
+            padding: 10px 12px;
+            background: rgba(0, 0, 0, 0.2);
+            border-top: 1px solid var(--border-color);
+        }
+
+        .share-btn {
+            flex: 1;
+            padding: 6px 10px;
+            border-radius: 6px;
+            font-size: 10px;
+            font-weight: 700;
+            text-align: center;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+            cursor: pointer;
+            border: 1px solid var(--border-color);
+        }
+
+        .share-whatsapp {
+            background: rgba(37, 211, 102, 0.1);
+            color: #25d366;
+            border-color: rgba(37, 211, 102, 0.3);
+        }
+
+        .share-facebook {
+            background: rgba(24, 119, 242, 0.1);
+            color: #1877f2;
+            border-color: rgba(24, 119, 242, 0.3);
         }
 
         /* Media / News / Fixtures */
@@ -369,6 +392,43 @@
             margin-bottom: 4px;
             display: block;
         }
+
+        /* Fixed Bottom Navigation Bar */
+        .bottom-nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: #04060b;
+            border-top: 1px solid var(--border-color);
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 4px;
+            padding: 8px;
+            z-index: 1000;
+            box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.5);
+        }
+
+        .tab-btn {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            color: var(--text-muted);
+            padding: 8px 4px;
+            border-radius: 8px;
+            font-size: 10px;
+            font-weight: 700;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-transform: uppercase;
+        }
+
+        .tab-btn.active {
+            background: var(--accent-green);
+            color: #080c14;
+            border-color: var(--accent-green);
+            box-shadow: 0 4px 12px rgba(0, 230, 118, 0.2);
+        }
     </style>
 </head>
 <body>
@@ -379,37 +439,36 @@
       <span class="ticker-pill"><span>🌍</span> Global Remote Scouting Active</span>
       <span class="ticker-pill"><span>⚽</span> Transfer Market Window Open</span>
       <span class="ticker-pill"><span>💡</span> Zero Travel Cost Scouting</span>
-      <span class="ticker-pill"><span>🔥</span> Upcoming Talent Database</span>
-      <!-- Seamless repeat -->
+      <span class="ticker-pill"><span>🔥</span> Player Profile Database</span>
       <span class="ticker-pill"><span>🌍</span> Global Remote Scouting Active</span>
       <span class="ticker-pill"><span>⚽</span> Transfer Market Window Open</span>
       <span class="ticker-pill"><span>💡</span> Zero Travel Cost Scouting</span>
-      <span class="ticker-pill"><span>🔥</span> Upcoming Talent Database</span>
+      <span class="ticker-pill"><span>🔥</span> Player Profile Database</span>
     </div>
   </div>
 
-  <!-- Header with Two-Eyed Telescope Logo -->
+  <!-- Header with Shadow-Style Two-Eyed Telescope Logo -->
   <header class="header">
     <div class="hero-box">
-      <!-- Correct Two-Eyed Binocular / Telescope SVG Icon -->
+      <!-- Shadow-style Two-Eyed Telescope / Binocular Vector Icon -->
       <div class="telescope-logo">
         <svg viewBox="0 0 24 24">
-          <!-- Left Scope Barrel -->
-          <path d="M3 6h4v10H3z"></path>
-          <path d="M1 6l2-2h4l2 2"></path>
-          <!-- Right Scope Barrel -->
-          <path d="M14 6h4v10h-4z"></path>
-          <path d="M12 6l2-2h4l2 2"></path>
-          <!-- Bridge connecting them -->
-          <path d="M7 10h7"></path>
-          <!-- Lenses / View Finder lines -->
-          <line x1="3" y1="16" x2="7" y2="16"></line>
-          <line x1="14" y1="16" x2="18" y2="16"></line>
+          <!-- Left Lens Barrel -->
+          <path d="M3 5h5v11H3z" />
+          <path d="M2 5l2-2h5l2 2" />
+          <!-- Right Lens Barrel -->
+          <path d="M13 5h5v11h-5z" />
+          <path d="M12 5l2-2h5l2 2" />
+          <!-- Central Connection Bridge -->
+          <path d="M8 9h5" />
+          <!-- Lenses Base Highlights -->
+          <line x1="3" y1="16" x2="8" y2="16" />
+          <line x1="13" y1="16" x2="18" y2="16" />
         </svg>
       </div>
       <div class="title-text">
         <h1>SCOUT ESCORT</h1>
-        <p>Global Remote Scouting & Player Registration Platform</p>
+        <p>Global Remote Scouting & Player Profile Hub</p>
       </div>
     </div>
   </header>
@@ -417,68 +476,75 @@
   <!-- Vision Explanation Banner -->
   <div class="vision-banner">
     <h3>🔭 Scout From Anywhere</h3>
-    <p>Clubs in Spain, America, or anywhere worldwide can evaluate upcoming talent directly through our online database and match feeds—eliminating expensive international travel.</p>
-  </div>
-
-  <!-- Navigation Tabs (4 Tabs) -->
-  <div class="nav-tabs">
-    <div class="tab-btn active" onclick="switchTab('prospects-tab', this)">Global Prospects</div>
-    <div class="tab-btn" onclick="switchTab('register-tab', this)">Player Registration</div>
-    <div class="tab-btn" onclick="switchTab('watch-tab', this)">Highlights & Media</div>
-    <div class="tab-btn" onclick="switchTab('news-tab', this)">News & Scores</div>
+    <p>Clubs worldwide can evaluate upcoming talent directly through our online player profiles and match feeds—eliminating expensive international travel.</p>
   </div>
 
   <!-- Main Body Content Containers -->
   <div class="container">
     
-    <!-- Tab 1: Global Prospects (Internet Scouting) -->
+    <!-- Tab 1: Player Profiles (Internet Scouting) -->
     <div id="prospects-tab" class="tab-content active">
       <div class="section-card">
-        <h2>Remote Talent Directory</h2>
-        <p>Browse registered upcoming players worldwide. Clubs can analyze videos, stats, and positions online.</p>
+        <h2>Verified Player Profile Directory</h2>
+        <p>Browse registered upcoming players. Clubs can analyze videos, stats, and positions online.</p>
         
-        <input type="text" id="prospectSearch" class="search-input" placeholder="Search by name, position, or country..." onkeyup="filterProspects()">
+        <input type="text" id="prospectSearch" class="search-input" placeholder="Search by position or profile details..." onkeyup="filterProspects()">
 
         <div id="prospectList">
-          <div class="prospect-card" data-name="kofi mensah ghana centre-back" data-details="centre-back ghana">
+          <!-- Profile 1 -->
+          <div class="prospect-card" data-name="centre-back profile defender" data-details="centre-back">
             <div class="prospect-header">
               <span class="badge-position">Centre-Back</span>
-              <span class="badge-region">🌍 Ghana</span>
+              <span class="badge-profile">Player Profile #01</span>
             </div>
             <div class="prospect-body">
               <div class="prospect-avatar">🛡️</div>
               <div class="prospect-info">
-                <h3>Kofi Mensah</h3>
-                <p>Age: 18 • Ready for International Review</p>
+                <h3>Player Profile</h3>
+                <p>Age: 18 • Verified Video Reel Available</p>
               </div>
+            </div>
+            <div class="social-share-bar">
+              <a href="https://api.whatsapp.com/send?text=Check%20out%20this%20Player%20Profile%20on%20Scout%20Escort:%20https://alebthetrader.github.io/scout-escort/" target="_blank" class="share-btn share-whatsapp">💬 WhatsApp</a>
+              <a href="https://www.facebook.com/sharer/sharer.php?u=https://alebthetrader.github.io/scout-escort/" target="_blank" class="share-btn share-facebook">📘 Facebook</a>
             </div>
           </div>
 
-          <div class="prospect-card" data-name="carlos silva brazil winger" data-details="winger brazil">
+          <!-- Profile 2 -->
+          <div class="prospect-card" data-name="winger profile forward" data-details="winger">
             <div class="prospect-header">
               <span class="badge-position">Winger</span>
-              <span class="badge-region">🌍 Brazil</span>
+              <span class="badge-profile">Player Profile #02</span>
             </div>
             <div class="prospect-body">
               <div class="prospect-avatar">⚡</div>
               <div class="prospect-info">
-                <h3>Carlos Silva</h3>
-                <p>Age: 17 • Verified Video Highlights Available</p>
+                <h3>Player Profile</h3>
+                <p>Age: 17 • Verified Performance Metrics</p>
               </div>
+            </div>
+            <div class="social-share-bar">
+              <a href="https://api.whatsapp.com/send?text=Check%20out%20this%20Player%20Profile%20on%20Scout%20Escort:%20https://alebthetrader.github.io/scout-escort/" target="_blank" class="share-btn share-whatsapp">💬 WhatsApp</a>
+              <a href="https://www.facebook.com/sharer/sharer.php?u=https://alebthetrader.github.io/scout-escort/" target="_blank" class="share-btn share-facebook">📘 Facebook</a>
             </div>
           </div>
 
-          <div class="prospect-card" data-name="lucas martinez argentina midfielder" data-details="midfielder argentina">
+          <!-- Profile 3 -->
+          <div class="prospect-card" data-name="central midfield profile playmaker" data-details="midfield">
             <div class="prospect-header">
               <span class="badge-position">Central Midfield</span>
-              <span class="badge-region">🌍 Argentina</span>
+              <span class="badge-profile">Player Profile #03</span>
             </div>
             <div class="prospect-body">
               <div class="prospect-avatar">🎯</div>
               <div class="prospect-info">
-                <h3>Lucas Martinez</h3>
+                <h3>Player Profile</h3>
                 <p>Age: 19 • Open for Club Inquiries</p>
               </div>
+            </div>
+            <div class="social-share-bar">
+              <a href="https://api.whatsapp.com/send?text=Check%20out%20this%20Player%20Profile%20on%20Scout%20Escort:%20https://alebthetrader.github.io/scout-escort/" target="_blank" class="share-btn share-whatsapp">💬 WhatsApp</a>
+              <a href="https://www.facebook.com/sharer/sharer.php?u=https://alebthetrader.github.io/scout-escort/" target="_blank" class="share-btn share-facebook">📘 Facebook</a>
             </div>
           </div>
         </div>
@@ -488,17 +554,13 @@
     <!-- Tab 2: Player Registration -->
     <div id="register-tab" class="tab-content">
       <div class="section-card">
-        <h2>Global Talent Registration</h2>
+        <h2>Global Player Registration Session</h2>
         <p>Upcoming players worldwide can submit their credentials so international scouts can discover them without travel.</p>
 
         <form onsubmit="event.preventDefault(); alert('Profile registered successfully! Your details are now live for global club scouts.');">
           <div class="form-group">
             <label>Full Name</label>
             <input type="text" class="form-input" placeholder="e.g. Samuel Osei" required>
-          </div>
-          <div class="form-group">
-            <label>Country / Region</label>
-            <input type="text" class="form-input" placeholder="e.g. Ghana, Brazil, USA..." required>
           </div>
           <div class="form-group">
             <label>Primary Position</label>
@@ -552,7 +614,7 @@
     <!-- Tab 4: News & Live Scores -->
     <div id="news-tab" class="tab-content">
       <div class="section-card">
-        <h2>Live Scores & Fixtures</h2>
+        <h2>Live Scores Match Feed</h2>
         <p>Real-time updates across international and domestic competitions.</p>
 
         <div class="fixture-card">
@@ -563,7 +625,7 @@
           <div class="match-score">0 - 2</div>
         </div>
 
-        <div class="fixture-card">
+        <div class="fixture-card" style="margin-top: 10px;">
           <div>
             <div class="match-teams">Real Madrid vs Inter Milan</div>
             <div class="match-meta">UEFA Champions League • Full Time</div>
@@ -573,7 +635,7 @@
       </div>
 
       <div class="section-card">
-        <h2>Global Football & Transfer News</h2>
+        <h2>Transfer News Session</h2>
         <p>Latest updates on transfer windows, scouting reports, and football world developments.</p>
 
         <div class="news-item">
@@ -586,6 +648,14 @@
 
   </div>
 
+  <!-- Fixed Bottom Navigation Bar -->
+  <nav class="bottom-nav">
+    <div class="tab-btn active" onclick="switchTab('prospects-tab', this)">Profiles</div>
+    <div class="tab-btn" onclick="switchTab('register-tab', this)">Registration</div>
+    <div class="tab-btn" onclick="switchTab('watch-tab', this)">Highlights</div>
+    <div class="tab-btn" onclick="switchTab('news-tab', this)">News & Scores</div>
+  </nav>
+
   <!-- JavaScript -->
   <script>
     function switchTab(tabId, element) {
@@ -597,6 +667,7 @@
       });
       document.getElementById(tabId).classList.add('active');
       element.classList.add('active');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
     function filterProspects() {
