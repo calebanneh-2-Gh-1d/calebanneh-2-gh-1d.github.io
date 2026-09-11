@@ -41,14 +41,14 @@
             padding-bottom: 90px;
         }
 
-        /* Top Bar / Sponsor Ticker */
+        /* Professional Global Partner Ticker with Exact SVGs */
         .global-ticker {
             background: #04060b;
             color: var(--text-muted);
             font-size: 11px;
             text-transform: uppercase;
             letter-spacing: 0.8px;
-            padding: 10px 0;
+            padding: 12px 0;
             overflow: hidden;
             white-space: nowrap;
             border-bottom: 1px solid var(--border-color);
@@ -56,24 +56,62 @@
 
         .ticker-track {
             display: inline-block;
-            animation: marquee 25s linear infinite;
+            animation: marquee 35s linear infinite;
         }
 
         .ticker-pill {
             display: inline-flex;
             align-items: center;
+            gap: 8px;
             background: rgba(255, 255, 255, 0.03);
             border: 1px solid var(--border-color);
-            padding: 4px 12px;
+            padding: 6px 14px;
             border-radius: 20px;
             margin-right: 16px;
             color: var(--text-main);
-            font-weight: 600;
+            font-weight: 700;
+            font-size: 11px;
         }
 
-        .ticker-pill span {
-            color: var(--accent-green);
-            margin-right: 6px;
+        /* Accurate SVG Brand Logos inside Ticker */
+        .ticker-pill svg {
+            width: 16px;
+            height: 16px;
+            fill: currentColor;
+        }
+
+        .brand-benz { color: #e2e8f0; }
+        .brand-puma { color: #f97316; }
+        .brand-adidas { color: #ffffff; }
+        .brand-qatar { color: #86198f; }
+        .brand-samsung { color: #38bdf8; }
+        .brand-nike { color: #ffffff; }
+
+        /* Mastercard Dual Circles */
+        .mastercard-circles {
+            display: inline-flex;
+            align-items: center;
+            width: 22px;
+            height: 14px;
+            position: relative;
+        }
+        .mc-red {
+            width: 13px;
+            height: 13px;
+            background: #ff5f00;
+            border-radius: 50%;
+            position: absolute;
+            left: 0;
+            opacity: 0.9;
+        }
+        .mc-yellow {
+            width: 13px;
+            height: 13px;
+            background: #eb001b;
+            border-radius: 50%;
+            position: absolute;
+            right: 0;
+            opacity: 0.8;
         }
 
         @keyframes marquee {
@@ -94,7 +132,6 @@
             gap: 14px;
         }
 
-        /* Sleek Black Shadow-Style Two-Eyed Telescope Icon */
         .telescope-logo {
             background: #04060b;
             width: 52px;
@@ -310,7 +347,7 @@
             text-decoration: underline;
         }
 
-        /* Social Share Bar inside Player Profiles */
+        /* Social Share Bar */
         .social-share-bar {
             display: flex;
             gap: 8px;
@@ -347,29 +384,13 @@
             border-color: rgba(24, 119, 242, 0.3);
         }
 
-        /* Media / News / Fixtures */
-        .media-card, .fixture-card, .news-item {
+        /* Dynamic Live Match & Fixture Cards */
+        .fixture-card {
             background: #0c111c;
             border: 1px solid var(--border-color);
-            border-radius: 8px;
-            padding: 12px;
+            border-radius: 10px;
+            padding: 14px;
             margin-top: 10px;
-        }
-
-        .media-thumb {
-            width: 100%;
-            height: 130px;
-            background: #1e293b;
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 32px;
-            margin-bottom: 8px;
-            border: 1px solid var(--border-color);
-        }
-
-        .fixture-card {
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -382,19 +403,115 @@
 
         .match-meta {
             font-size: 10px;
-            color: var(--accent-green);
-            margin-top: 2px;
-            font-weight: 600;
+            color: var(--text-muted);
+            margin-top: 3px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
         }
 
-        .match-score {
-            background: rgba(0, 230, 118, 0.15);
+        .live-pulse {
+            width: 8px;
+            height: 8px;
+            background: #ef4444;
+            border-radius: 50%;
+            display: inline-block;
+            box-shadow: 0 0 8px #ef4444;
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(0.95); opacity: 0.8; }
+            50% { transform: scale(1.2); opacity: 1; }
+            100% { transform: scale(0.95); opacity: 0.8; }
+        }
+
+        .match-score-live {
+            background: rgba(239, 68, 68, 0.15);
+            color: #ef4444;
+            border: 1px solid rgba(239, 68, 68, 0.3);
+            padding: 6px 10px;
+            border-radius: 6px;
+            font-size: 12px;
+            font-weight: 800;
+            letter-spacing: 1px;
+        }
+
+        .match-score-ft {
+            background: rgba(0, 230, 118, 0.12);
             color: var(--accent-green);
             padding: 6px 10px;
             border-radius: 6px;
             font-size: 12px;
             font-weight: 800;
             letter-spacing: 1px;
+        }
+
+        /* Dynamic Media / Highlights Cards */
+        .media-card {
+            background: #0c111c;
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            padding: 12px;
+            margin-top: 12px;
+        }
+
+        .media-player-preview {
+            width: 100%;
+            height: 150px;
+            background: linear-gradient(135deg, #020617, #1e293b);
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            border: 1px solid var(--border-color);
+            overflow: hidden;
+            margin-bottom: 10px;
+        }
+
+        .play-overlay-btn {
+            width: 44px;
+            height: 44px;
+            background: rgba(0, 230, 118, 0.9);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #080c14;
+            font-size: 18px;
+            font-weight: 900;
+            box-shadow: 0 4px 16px rgba(0, 230, 118, 0.4);
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .play-overlay-btn:hover {
+            transform: scale(1.1);
+        }
+
+        .media-tag-badge {
+            position: absolute;
+            top: 8px;
+            left: 8px;
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(4px);
+            color: var(--accent-blue);
+            font-size: 9px;
+            font-weight: 700;
+            padding: 3px 8px;
+            border-radius: 4px;
+            border: 1px solid var(--border-color);
+            text-transform: uppercase;
+        }
+
+        .news-item {
+            background: #0c111c;
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            padding: 14px;
+            margin-top: 10px;
         }
 
         .news-tag {
@@ -446,17 +563,37 @@
 </head>
 <body>
 
-  <!-- Global Football Ticker -->
+  <!-- Global Partner Ticker with Exact Brand SVGs -->
   <div class="global-ticker">
     <div class="ticker-track">
-      <span class="ticker-pill"><span>🌍</span> Global Remote Scouting Active</span>
-      <span class="ticker-pill"><span>⚽</span> Transfer Market Window Open</span>
-      <span class="ticker-pill"><span>💡</span> Zero Travel Cost Scouting</span>
-      <span class="ticker-pill"><span>🔥</span> Player Profile Database</span>
-      <span class="ticker-pill"><span>🌍</span> Global Remote Scouting Active</span>
-      <span class="ticker-pill"><span>⚽</span> Transfer Market Window Open</span>
-      <span class="ticker-pill"><span>💡</span> Zero Travel Cost Scouting</span>
-      <span class="ticker-pill"><span>🔥</span> Player Profile Database</span>
+      <!-- Mercedes Benz Star -->
+      <span class="ticker-pill brand-benz">
+        <svg viewBox="0 0 24 24"><path d="M12 2L2 19h20L12 2zm0 3.8l7.2 12.2H4.8L12 5.8zM12 9a3 3 0 100 6 3 3 0 000-6z"/></svg> Mercedes-Benz Partner
+      </span>
+      <!-- Puma Cat -->
+      <span class="ticker-pill brand-puma">
+        <svg viewBox="0 0 24 24"><path d="M19 12c-1.5 0-3-.5-4-1.5-1 1-2.5 1.5-4 1.5S8 11.5 7 10.5C6 11.5 4.5 12 3 12c-.5 0-1-.5-1-1 0-2 1.5-4 3.5-4 1 0 2 .5 2.5 1.2C9 7.5 10 7 11 7c1 0 2 .5 3 1.2C14.5 7.5 15.5 7 16.5 7c2 0 3.5 2 3.5 4 0 .5-.5 1-1 1z"/></svg> Puma Official Kit
+      </span>
+      <!-- Adidas Three Stripes -->
+      <span class="ticker-pill brand-adidas">
+        <svg viewBox="0 0 24 24"><path d="M3 19h3l3-12H6L3 19zm6 0h3l3-12h-3l-3 12zm6 0h3l3-12h-3l-3 12z"/></svg> Adidas Equipment
+      </span>
+      <!-- Qatar Airways -->
+      <span class="ticker-pill brand-qatar">
+        <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg> Qatar Airways Global
+      </span>
+      <!-- Samsung -->
+      <span class="ticker-pill brand-samsung">
+        <svg viewBox="0 0 24 24"><path d="M4 8h16v8H4z" fill="none"/><text x="2" y="16" font-size="10" font-weight="900" fill="#38bdf8">SAMSUNG</text></svg> Samsung Tech
+      </span>
+      <!-- Mastercard (Two Circles) -->
+      <span class="ticker-pill">
+        <div class="mastercard-circles"><div class="mc-red"></div><div class="mc-yellow"></div></div> Mastercard
+      </span>
+      <!-- Nike Swoosh -->
+      <span class="ticker-pill brand-nike">
+        <svg viewBox="0 0 24 24"><path d="M21 7s-10 2-14 11c0 0 4-4 8-10 2-3 6-1 6-1z"/></svg> Nike Global
+      </span>
     </div>
   </div>
 
@@ -499,7 +636,7 @@
         <input type="text" id="prospectSearch" class="search-input" placeholder="Search by position or profile details..." onkeyup="filterProspects()">
 
         <div id="prospectList">
-          <!-- Dynamically submitted profiles will appear here instantly -->
+          <!-- Initial Sample Cards -->
           <div class="prospect-card" data-name="centre-back profile defender" data-details="centre-back">
             <div class="prospect-header">
               <span class="badge-position">Centre-Back</span>
@@ -541,18 +678,28 @@
       </div>
     </div>
 
-    <!-- 2nd Position: Live News & Scores -->
+    <!-- 2nd Position: Live News & Scores (Dynamic & Active) -->
     <div id="news-tab" class="tab-content">
       <div class="section-card">
-        <h2>Live Scores Match Feed</h2>
+        <h2>Live Scores & Match Feed</h2>
         <p>Real-time updates across international and domestic competitions.</p>
 
+        <!-- Live Match Playing Now -->
         <div class="fixture-card">
+          <div>
+            <div class="match-teams">Ajax Amsterdam vs Benfica</div>
+            <div class="match-meta"><span class="live-pulse"></span> UEFA Champions League • 78' Min</div>
+          </div>
+          <div class="match-score-live">2 - 1</div>
+        </div>
+
+        <!-- Completed Match -->
+        <div class="fixture-card" style="margin-top: 10px;">
           <div>
             <div class="match-teams">FC Porto vs Manchester City</div>
             <div class="match-meta">UEFA Champions League • Full Time</div>
           </div>
-          <div class="match-score">0 - 2</div>
+          <div class="match-score-ft">0 - 2</div>
         </div>
 
         <div class="fixture-card" style="margin-top: 10px;">
@@ -560,7 +707,7 @@
             <div class="match-teams">Real Madrid vs Inter Milan</div>
             <div class="match-meta">UEFA Champions League • Full Time</div>
           </div>
-          <div class="match-score">2 - 1</div>
+          <div class="match-score-ft">2 - 1</div>
         </div>
       </div>
 
@@ -569,34 +716,46 @@
         <p>Latest updates on transfer windows, scouting reports, and football world developments.</p>
 
         <div class="news-item">
-          <span class="news-tag">Transfer Window</span>
+          <span class="news-tag">Transfer Window • Active</span>
           <h3>Clubs Shift Toward Digital Scouting Methods</h3>
-          <p>More sporting directors are utilizing online video databases to evaluate international talent without incurring heavy travel expenses.</p>
+          <p>More sporting directors are utilizing online video databases and self-registered player profiles to evaluate international talent without incurring heavy travel expenses.</p>
+        </div>
+
+        <div class="news-item" style="margin-top: 10px;">
+          <span class="news-tag">Academy Scouting</span>
+          <h3>Global Youth Tournament Feed Integrated</h3>
+          <p>Scout Escort's automated submission platform logs record daily viewings from European club representatives.</p>
         </div>
       </div>
     </div>
 
-    <!-- 3rd Position: Highlights & Media -->
+    <!-- 3rd Position: Highlights & Media (Dynamic Interactive Reels) -->
     <div id="watch-tab" class="tab-content">
       <div class="section-card">
         <h2>Highlights & Media Feed</h2>
-        <p>Match footage, scouting reels, and training sessions uploaded for remote evaluation.</p>
+        <p>Match footage, scouting reels, and training sessions ready for remote club evaluation.</p>
 
         <div class="media-card">
-          <div class="media-thumb">🎥</div>
-          <h3>Global Youth Showcase Reels</h3>
-          <p>Full match clips and individual player highlight packages ready for club analysis.</p>
+          <div class="media-player-preview">
+            <span class="media-tag-badge">Live Reel #01</span>
+            <a href="https://youtube.com" target="_blank" class="play-overlay-btn">▶</a>
+          </div>
+          <h3 style="font-size: 13px; font-weight: 700;">Global Youth Showcase Reels</h3>
+          <p style="font-size: 11px; color: var(--text-muted); margin-top: 3px;">Full match clips and individual player highlight packages ready for club analysis.</p>
         </div>
 
         <div class="media-card">
-          <div class="media-thumb">📊</div>
-          <h3>Scouting Performance Metrics</h3>
-          <p>Detailed breakdown of speed, passing accuracy, and tactical awareness data.</p>
+          <div class="media-player-preview">
+            <span class="media-tag-badge">Analytics #02</span>
+            <a href="https://youtube.com" target="_blank" class="play-overlay-btn">▶</a>
+          </div>
+          <h3 style="font-size: 13px; font-weight: 700;">Scouting Performance Metrics & Vision</h3>
+          <p style="font-size: 11px; color: var(--text-muted); margin-top: 3px;">Detailed breakdown of acceleration, passing accuracy, and tactical awareness data.</p>
         </div>
       </div>
     </div>
 
-    <!-- 4th/Last Position: Instant Registration Session -->
+    <!-- 4th Position: Instant Registration Session -->
     <div id="register-tab" class="tab-content">
       <div class="section-card">
         <h2>Global Player Registration Session</h2>
@@ -677,7 +836,6 @@
       let prospectList = document.getElementById('prospectList');
       let profileCount = prospectList.children.length + 1;
       
-      // Create new profile card element dynamically
       let newCard = document.createElement('div');
       newCard.className = 'prospect-card';
       newCard.setAttribute('data-name', position.toLowerCase() + " profile player");
@@ -702,10 +860,8 @@
         </div>
       `;
       
-      // Prepend the new card to the top of the list so it appears immediately
       prospectList.insertBefore(newCard, prospectList.firstChild);
       
-      // Reset form and switch back to profiles tab to view the live result
       document.getElementById('playerRegistrationForm').reset();
       alert('Success! Your player profile and YouTube video link have been published live to the platform.');
       switchTab('profiles-tab', document.querySelector('.bottom-nav .tab-btn'));
@@ -714,6 +870,7 @@
 
 </body>
 </html>
+
 
 
 
