@@ -39,7 +39,7 @@
             padding-bottom: 75px;
         }
 
-        /* Professional Sponsor Marquee Ticker (Absolute Top) */
+        /* Accurate Official Sponsor Marquee Ticker (Absolute Top) */
         .sponsor-ticker {
             background: #07090e;
             color: var(--text-muted);
@@ -74,7 +74,8 @@
             align-items: center;
             justify-content: center;
             margin-right: 6px;
-            color: #9ca3af;
+            font-weight: 700;
+            color: #ffffff;
         }
 
         @keyframes marquee {
@@ -82,7 +83,7 @@
             100% { transform: translateX(-50%); }
         }
 
-        /* Clean Professional Header */
+        /* Professional Header */
         .header {
             padding: 16px;
             background: var(--bg-color);
@@ -106,8 +107,9 @@
             gap: 12px;
         }
 
+        /* Professional Solid Black Telescope Box */
         .telescope-sculpture {
-            background: #1f2937;
+            background: #000000;
             width: 44px;
             height: 44px;
             border-radius: 8px;
@@ -116,7 +118,7 @@
             justify-content: center;
             font-size: 22px;
             border: 1px solid var(--border-color);
-            color: var(--accent-green);
+            color: #ffffff;
         }
 
         .title-text h1 {
@@ -241,7 +243,7 @@
             margin-top: 4px;
         }
 
-        /* Professional Prospect Card (No fake human names) */
+        /* Professional Prospect Card (Clean Player Name Format) */
         .prospect-card {
             background: #0d121c;
             border: 1px solid var(--border-color);
@@ -308,7 +310,7 @@
             letter-spacing: 0.3px;
         }
 
-        /* Clean Media/Gallery Cards (No childish illustrations) */
+        /* Professional Media/Gallery Cards (Clean Football Styling) */
         .media-card {
             background: #0d121c;
             border: 1px solid var(--border-color);
@@ -450,24 +452,20 @@
 </head>
 <body>
 
-  <!-- Sponsor Marquee Ticker (Absolute Top) -->
+  <!-- Accurate Official Sponsor Marquee Ticker (Absolute Top) -->
   <div class="sponsor-ticker">
     <div class="ticker-content">
-      <span class="brand-pill"><span class="sponsor-logo">▲</span> ADIDAS</span>
-      <span class="brand-pill"><span class="sponsor-logo">✔</span> NIKE</span>
-      <span class="brand-pill"><span class="sponsor-logo">◆</span> PUMA</span>
-      <span class="brand-pill"><span class="sponsor-logo">💳</span> MASTERCARD</span>
-      <span class="brand-pill"><span class="sponsor-logo">✈</span> EMIRATES</span>
-      <span class="brand-pill"><span class="sponsor-logo">⭐</span> QATAR AIRWAYS</span>
-      <span class="brand-pill"><span class="sponsor-logo">📱</span> SAMSUNG</span>
+      <span class="brand-pill"><span class="sponsor-logo">adidas</span> OFFICIAL PARTNER</span>
+      <span class="brand-pill"><span class="sponsor-logo">NIKE</span> GLOBAL SUPPLIER</span>
+      <span class="brand-pill"><span class="sponsor-logo">MASTERCARD</span> OFFICIAL PAYMENT PARTNER</span>
+      <span class="brand-pill"><span class="sponsor-logo">PUMA</span> TECHNICAL PARTNER</span>
+      <span class="brand-pill"><span class="sponsor-logo">EMIRATES</span> AVIATION PARTNER</span>
       <!-- Continuous loop duplicate -->
-      <span class="brand-pill"><span class="sponsor-logo">▲</span> ADIDAS</span>
-      <span class="brand-pill"><span class="sponsor-logo">✔</span> NIKE</span>
-      <span class="brand-pill"><span class="sponsor-logo">◆</span> PUMA</span>
-      <span class="brand-pill"><span class="sponsor-logo">💳</span> MASTERCARD</span>
-      <span class="brand-pill"><span class="sponsor-logo">✈</span> EMIRATES</span>
-      <span class="brand-pill"><span class="sponsor-logo">⭐</span> QATAR AIRWAYS</span>
-      <span class="brand-pill"><span class="sponsor-logo">📱</span> SAMSUNG</span>
+      <span class="brand-pill"><span class="sponsor-logo">adidas</span> OFFICIAL PARTNER</span>
+      <span class="brand-pill"><span class="sponsor-logo">NIKE</span> GLOBAL SUPPLIER</span>
+      <span class="brand-pill"><span class="sponsor-logo">MASTERCARD</span> OFFICIAL PAYMENT PARTNER</span>
+      <span class="brand-pill"><span class="sponsor-logo">PUMA</span> TECHNICAL PARTNER</span>
+      <span class="brand-pill"><span class="sponsor-logo">EMIRATES</span> AVIATION PARTNER</span>
     </div>
   </div>
 
@@ -478,7 +476,7 @@
       <span>Accra, Ghana</span>
     </div>
     <div class="hero-title-box">
-      <div class="telescope-sculpture">⚡</div>
+      <div class="telescope-sculpture">🔭</div>
       <div class="title-text">
         <h1>SCOUT ESCORT</h1>
         <p>Connecting West African Elite Talent to European Clubs</p>
@@ -662,11 +660,11 @@
   <!-- Bottom Fixed Navigation Bar (Strictly Ordered) -->
   <nav class="bottom-nav">
     <button class="nav-tab active" onclick="switchTab('prospects-pane', event)">
-      <span class="nav-icon">🛡️</span>
+      <span class="nav-icon">⚽</span>
       <span>Prospects</span>
     </button>
     <button class="nav-tab" onclick="switchTab('matches-pane', event)">
-      <span class="nav-icon">⚽</span>
+      <span class="nav-icon">📊</span>
       <span>Matches</span>
     </button>
     <button class="nav-tab" onclick="switchTab('news-pane', event)">
@@ -682,7 +680,7 @@
       <span>Register</span>
     </button>
     <button class="nav-tab" onclick="switchTab('login-pane', event)">
-      <span class="nav-icon">🔐</span>
+      <span class="nav-icon">🔒</span>
       <span>Login</span>
     </button>
   </nav>
@@ -744,17 +742,10 @@
           container.innerHTML = `
             <div class="fixture-card">
               <div>
-                <div class="match-teams">Accra Hearts of Oak vs Asante Kotoko</div>
-                <div class="match-meta">Ghana Premier League • Upcoming</div>
+                <div class="match-teams">Ghana Premier League Showcase</div>
+                <div class="match-meta">Accra Sports Stadium • Scheduled</div>
               </div>
               <div class="match-score">VS</div>
-            </div>
-            <div class="fixture-card">
-              <div>
-                <div class="match-teams">Real Madrid vs Barcelona</div>
-                <div class="match-meta">La Liga • Finished</div>
-              </div>
-              <div class="match-score">2 - 1</div>
             </div>
           `;
         }
