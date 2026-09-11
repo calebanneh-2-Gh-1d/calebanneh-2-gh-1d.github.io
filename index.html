@@ -3,43 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <!-- SEO & Indexing Meta Tags -->
-    <title>Scout Escort | Global Football Talent & Scouting Platform</title>
-    <meta name="description" content="Connecting elite youth football talent and verified academy prospects directly to European professional clubs and scouts.">
-    <meta name="robots" content="index, follow">
-    <link rel="canonical" href="https://alebthetrader.github.io/scout-escort/">
-
-    <!-- Schema.org Structured Data -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "SportsOrganization",
-      "name": "Scout Escort",
-      "url": "https://alebthetrader.github.io/scout-escort/",
-      "description": "Connecting elite football talent to European clubs.",
-      "sport": "Football"
-    }
-    </script>
-
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-9DMZLL3XQE"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-9DMZLL3XQE');
-    </script>
-
+    <title>Scout Escort | Global Digital Scouting & Talent Hub</title>
+    <meta name="description" content="Remote football scouting platform connecting upcoming global talent with international clubs. Scout players online without costly travel.">
     <style>
         :root {
-            --bg-color: #07090e;
-            --card-bg: #0d121c;
-            --accent-green: #00d26a;
-            --accent-glow: rgba(0, 210, 106, 0.2);
+            --bg-color: #080c14;
+            --card-bg: #111827;
+            --accent-green: #00e676;
+            --accent-blue: #00b0ff;
             --text-main: #ffffff;
-            --text-muted: #8a99ad;
-            --border-color: #192233;
+            --text-muted: #94a3b8;
+            --border-color: #1e293b;
         }
 
         * {
@@ -53,40 +27,39 @@
             background-color: var(--bg-color);
             color: var(--text-main);
             padding-bottom: 50px;
-            -webkit-font-smoothing: antialiased;
         }
 
-        /* Professional Global Sponsor Ticker */
-        .sponsor-ticker {
-            background: #05070a;
+        /* Top Bar / Ticker */
+        .global-ticker {
+            background: #04060b;
             color: var(--text-muted);
             font-size: 11px;
             text-transform: uppercase;
-            letter-spacing: 1.2px;
-            padding: 11px 0;
+            letter-spacing: 0.8px;
+            padding: 10px 0;
             overflow: hidden;
             white-space: nowrap;
             border-bottom: 1px solid var(--border-color);
         }
 
-        .ticker-content {
+        .ticker-track {
             display: inline-block;
             animation: marquee 25s linear infinite;
         }
 
-        .brand-pill {
+        .ticker-pill {
             display: inline-flex;
             align-items: center;
-            background: #0d121c;
+            background: rgba(255, 255, 255, 0.03);
             border: 1px solid var(--border-color);
-            padding: 5px 14px;
-            border-radius: 6px;
+            padding: 4px 12px;
+            border-radius: 20px;
             margin-right: 16px;
             color: var(--text-main);
-            font-weight: 800;
+            font-weight: 600;
         }
 
-        .brand-pill span {
+        .ticker-pill span {
             color: var(--accent-green);
             margin-right: 6px;
         }
@@ -96,36 +69,38 @@
             100% { transform: translateX(-50%); }
         }
 
-        /* Header / Hero */
+        /* Header / Hero with Correct Two-Eyed Telescope Logo */
         .header {
-            padding: 20px 16px 16px 16px;
-            background: linear-gradient(180deg, #0d121c 0%, var(--bg-color) 100%);
+            padding: 20px 16px;
+            background: linear-gradient(180deg, #111827 0%, var(--bg-color) 100%);
             border-bottom: 1px solid var(--border-color);
         }
 
-        .hero-title-box {
+        .hero-box {
             display: flex;
             align-items: center;
             gap: 14px;
         }
 
-        .logo-icon {
-            background: linear-gradient(135deg, #0d121c, rgba(0, 210, 106, 0.15));
-            width: 50px;
-            height: 50px;
-            border-radius: 12px;
+        /* Two-Eyed Telescope / Binocular Custom Vector Icon */
+        .telescope-logo {
+            background: linear-gradient(135deg, #111827, #1f2937);
+            width: 52px;
+            height: 52px;
+            border-radius: 14px;
             display: flex;
             align-items: center;
             justify-content: center;
             border: 1px solid var(--accent-green);
-            box-shadow: 0 0 20px var(--accent-glow);
+            box-shadow: 0 4px 20px rgba(0, 230, 118, 0.25);
+            flex-shrink: 0;
         }
 
-        .logo-icon svg {
-            width: 24px;
-            height: 24px;
-            fill: none;
+        .telescope-logo svg {
+            width: 30px;
+            height: 30px;
             stroke: var(--accent-green);
+            fill: none;
             stroke-width: 2;
             stroke-linecap: round;
             stroke-linejoin: round;
@@ -134,56 +109,43 @@
         .title-text h1 {
             font-size: 20px;
             font-weight: 800;
-            letter-spacing: 0.5px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .global-badge {
-            background: rgba(0, 210, 106, 0.12);
-            color: var(--accent-green);
-            font-size: 9px;
-            padding: 2px 6px;
-            border-radius: 4px;
-            font-weight: 700;
-            border: 1px solid rgba(0, 210, 106, 0.2);
+            letter-spacing: -0.5px;
+            color: var(--text-main);
         }
 
         .title-text p {
             font-size: 11px;
             color: var(--text-muted);
             margin-top: 3px;
+            line-height: 1.3;
         }
 
-        /* Stats Bar */
-        .stats-bar {
-            display: flex;
-            background: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 10px;
+        /* Value Proposition Banner (Explaining Remote Scouting) */
+        .vision-banner {
+            background: linear-gradient(135deg, rgba(0, 230, 118, 0.08), rgba(0, 176, 255, 0.08));
+            border: 1px solid rgba(0, 230, 118, 0.2);
+            border-radius: 12px;
             margin: 16px;
-            padding: 12px;
-            justify-content: space-around;
-            text-align: center;
+            padding: 14px;
         }
 
-        .stat-item .stat-num {
-            font-size: 16px;
-            font-weight: 800;
-            color: var(--accent-green);
-        }
-
-        .stat-item .stat-label {
-            font-size: 10px;
-            color: var(--text-muted);
-            text-transform: uppercase;
-            margin-top: 2px;
-            letter-spacing: 0.5px;
+        .vision-banner h3 {
+            font-size: 13px;
             font-weight: 700;
+            color: var(--accent-green);
+            margin-bottom: 4px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
         }
 
-        /* Navigation Tabs Grid */
+        .vision-banner p {
+            font-size: 11px;
+            color: var(--text-muted);
+            line-height: 1.4;
+        }
+
+        /* Navigation Tabs */
         .nav-tabs {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -197,24 +159,21 @@
             border: 1px solid var(--border-color);
             color: var(--text-muted);
             padding: 11px;
-            border-radius: 8px;
+            border-radius: 10px;
             font-size: 11px;
             font-weight: 700;
             text-align: center;
             cursor: pointer;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
             transition: all 0.2s ease;
         }
 
         .tab-btn.active {
             background: var(--accent-green);
-            color: #07090e;
+            color: #080c14;
             border-color: var(--accent-green);
-            box-shadow: 0 4px 15px rgba(0, 210, 106, 0.2);
+            box-shadow: 0 4px 12px rgba(0, 230, 118, 0.2);
         }
 
-        /* Content Containers */
         .container {
             padding: 0 16px;
         }
@@ -236,10 +195,9 @@
         }
 
         .section-card h2 {
-            font-size: 16px;
-            font-weight: 800;
+            font-size: 15px;
+            font-weight: 700;
             margin-bottom: 4px;
-            letter-spacing: 0.3px;
         }
 
         .section-card p {
@@ -249,13 +207,13 @@
             line-height: 1.4;
         }
 
-        /* Inputs & Forms */
+        /* Form & Search Inputs */
         .search-input, .form-input, .form-select {
             width: 100%;
-            background: #05070a;
+            background: #060911;
             border: 1px solid var(--border-color);
             border-radius: 8px;
-            padding: 11px 14px;
+            padding: 12px 14px;
             color: var(--text-main);
             font-size: 12px;
             outline: none;
@@ -273,31 +231,27 @@
         .form-group label {
             display: block;
             font-size: 11px;
-            font-weight: 700;
+            font-weight: 600;
             color: var(--text-muted);
             margin-bottom: 4px;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
         }
 
         .submit-btn {
             width: 100%;
             background: var(--accent-green);
-            color: #07090e;
+            color: #080c14;
             font-weight: 800;
             border: none;
             padding: 12px;
             border-radius: 8px;
             cursor: pointer;
             font-size: 12px;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
             margin-top: 6px;
         }
 
         /* Prospect Card */
         .prospect-card {
-            background: #05070a;
+            background: #0c111c;
             border: 1px solid var(--border-color);
             border-radius: 10px;
             overflow: hidden;
@@ -307,106 +261,76 @@
         .prospect-header {
             display: flex;
             justify-content: space-between;
-            padding: 9px 14px;
-            background: var(--card-bg);
+            padding: 8px 12px;
+            background: rgba(255, 255, 255, 0.02);
             border-bottom: 1px solid var(--border-color);
-            font-size: 10px;
+            font-size: 11px;
         }
 
         .badge-position {
-            background: rgba(0, 210, 106, 0.15);
+            background: rgba(0, 230, 118, 0.15);
             color: var(--accent-green);
-            padding: 3px 8px;
-            border-radius: 5px;
+            padding: 2px 8px;
+            border-radius: 4px;
             font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
         }
 
-        .badge-age {
-            background: #141c2c;
-            color: var(--text-main);
-            padding: 3px 8px;
-            border-radius: 5px;
-            font-weight: 700;
-            letter-spacing: 0.5px;
+        .badge-region {
+            color: var(--accent-blue);
+            font-weight: 600;
         }
 
         .prospect-body {
             display: flex;
             align-items: center;
-            padding: 14px;
+            padding: 12px;
             gap: 12px;
         }
 
         .prospect-avatar {
-            width: 48px;
-            height: 48px;
-            background: #101828;
+            width: 44px;
+            height: 44px;
+            background: #1e293b;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 20px;
+            font-size: 18px;
             border: 1px solid var(--border-color);
         }
 
         .prospect-info h3 {
-            font-size: 15px;
-            font-weight: 800;
-            color: var(--text-main);
+            font-size: 14px;
+            font-weight: 700;
         }
 
         .prospect-info p {
             font-size: 11px;
-            color: var(--accent-green);
-            margin-top: 3px;
+            color: var(--text-muted);
+            margin-top: 2px;
             margin-bottom: 0;
-            font-weight: 600;
         }
 
-        /* Media / Watch Cards */
-        .media-card {
-            background: #05070a;
+        /* Media / News / Fixtures */
+        .media-card, .fixture-card, .news-item {
+            background: #0c111c;
             border: 1px solid var(--border-color);
-            border-radius: 10px;
-            padding: 14px;
+            border-radius: 8px;
+            padding: 12px;
             margin-top: 10px;
         }
 
         .media-thumb {
             width: 100%;
-            height: 140px;
-            background: radial-gradient(circle at center, #101828 0%, #05070a 100%);
+            height: 130px;
+            background: #1e293b;
             border-radius: 8px;
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 32px;
-            margin-bottom: 10px;
+            margin-bottom: 8px;
             border: 1px solid var(--border-color);
-            color: var(--accent-green);
-        }
-
-        .media-card h3 {
-            font-size: 14px;
-            font-weight: 800;
-            margin-bottom: 4px;
-        }
-
-        .media-card p {
-            font-size: 11px;
-            color: var(--text-muted);
-            margin-bottom: 0;
-        }
-
-        /* Fixtures & News Cards */
-        .fixture-card, .news-item {
-            background: #05070a;
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
-            padding: 12px;
-            margin-top: 10px;
         }
 
         .fixture-card {
@@ -416,7 +340,7 @@
         }
 
         .match-teams {
-            font-size: 12px;
+            font-size: 13px;
             font-weight: 700;
         }
 
@@ -425,11 +349,10 @@
             color: var(--accent-green);
             margin-top: 2px;
             font-weight: 600;
-            text-transform: uppercase;
         }
 
         .match-score {
-            background: rgba(0, 210, 106, 0.15);
+            background: rgba(0, 230, 118, 0.15);
             color: var(--accent-green);
             padding: 6px 10px;
             border-radius: 6px;
@@ -440,109 +363,121 @@
 
         .news-tag {
             font-size: 10px;
-            color: #00b0ff;
+            color: var(--accent-blue);
             font-weight: 700;
             text-transform: uppercase;
             margin-bottom: 4px;
             display: block;
         }
-
-        .news-item h3 {
-            font-size: 13px;
-            font-weight: 800;
-            margin-bottom: 4px;
-        }
-
-        .news-item p {
-            font-size: 11px;
-            color: var(--text-muted);
-            margin-bottom: 0;
-        }
     </style>
 </head>
 <body>
 
-  <!-- Official Brand Sponsors Ticker Bar -->
-  <div class="sponsor-ticker">
-    <div class="ticker-content">
-      <span class="brand-pill"><span>⚡</span> Nike</span>
-      <span class="brand-pill"><span>💳</span> Mastercard</span>
-      <span class="brand-pill"><span>⭐</span> Benz</span>
-      <span class="brand-pill"><span>🐾</span> Puma</span>
-      <span class="brand-pill"><span>🔺</span> Adidas</span>
-      <span class="brand-pill"><span>📱</span> Samsung</span>
-      <span class="brand-pill"><span>✈️</span> Qatar Airways</span>
-      <!-- Loop duplicate for seamless smooth ticker motion -->
-      <span class="brand-pill"><span>⚡</span> Nike</span>
-      <span class="brand-pill"><span>💳</span> Mastercard</span>
-      <span class="brand-pill"><span>⭐</span> Benz</span>
-      <span class="brand-pill"><span>🐾</span> Puma</span>
-      <span class="brand-pill"><span>🔺</span> Adidas</span>
-      <span class="brand-pill"><span>📱</span> Samsung</span>
-      <span class="brand-pill"><span>✈️</span> Qatar Airways</span>
+  <!-- Global Football Ticker -->
+  <div class="global-ticker">
+    <div class="ticker-track">
+      <span class="ticker-pill"><span>🌍</span> Global Remote Scouting Active</span>
+      <span class="ticker-pill"><span>⚽</span> Transfer Market Window Open</span>
+      <span class="ticker-pill"><span>💡</span> Zero Travel Cost Scouting</span>
+      <span class="ticker-pill"><span>🔥</span> Upcoming Talent Database</span>
+      <!-- Seamless repeat -->
+      <span class="ticker-pill"><span>🌍</span> Global Remote Scouting Active</span>
+      <span class="ticker-pill"><span>⚽</span> Transfer Market Window Open</span>
+      <span class="ticker-pill"><span>💡</span> Zero Travel Cost Scouting</span>
+      <span class="ticker-pill"><span>🔥</span> Upcoming Talent Database</span>
     </div>
   </div>
 
-  <!-- Main Header -->
+  <!-- Header with Two-Eyed Telescope Logo -->
   <header class="header">
-    <div class="hero-title-box">
-      <div class="logo-icon">
+    <div class="hero-box">
+      <!-- Correct Two-Eyed Binocular / Telescope SVG Icon -->
+      <div class="telescope-logo">
         <svg viewBox="0 0 24 24">
-          <circle cx="6" cy="18" r="3"></circle>
-          <path d="M13 6l3 3L7 18l-3-3L13 6z"></path>
-          <line x1="16" y1="3" x2="21" y2="8"></line>
-          <line x1="19" y1="5" x2="21" y2="3"></line>
+          <!-- Left Scope Barrel -->
+          <path d="M3 6h4v10H3z"></path>
+          <path d="M1 6l2-2h4l2 2"></path>
+          <!-- Right Scope Barrel -->
+          <path d="M14 6h4v10h-4z"></path>
+          <path d="M12 6l2-2h4l2 2"></path>
+          <!-- Bridge connecting them -->
+          <path d="M7 10h7"></path>
+          <!-- Lenses / View Finder lines -->
+          <line x1="3" y1="16" x2="7" y2="16"></line>
+          <line x1="14" y1="16" x2="18" y2="16"></line>
         </svg>
       </div>
       <div class="title-text">
-        <h1>SCOUT ESCORT <span class="global-badge">Global Hub</span></h1>
-        <p>Connecting Elite Youth Talent to European Professional Clubs</p>
+        <h1>SCOUT ESCORT</h1>
+        <p>Global Remote Scouting & Player Registration Platform</p>
       </div>
     </div>
   </header>
 
-  <!-- Live Stats Bar -->
-  <div class="stats-bar">
-    <div class="stat-item">
-      <div class="stat-num" id="prospectCount">142</div>
-      <div class="stat-label">Verified Prospects</div>
-    </div>
-    <div class="stat-item">
-      <div class="stat-num" id="scoutCount">18</div>
-      <div class="stat-label">Scouts Online</div>
-    </div>
+  <!-- Vision Explanation Banner -->
+  <div class="vision-banner">
+    <h3>🔭 Scout From Anywhere</h3>
+    <p>Clubs in Spain, America, or anywhere worldwide can evaluate upcoming talent directly through our online database and match feeds—eliminating expensive international travel.</p>
   </div>
 
-  <!-- Navigation Switcher Tabs (4 Tabs) -->
+  <!-- Navigation Tabs (4 Tabs) -->
   <div class="nav-tabs">
-    <div class="tab-btn active" onclick="switchTab('prospects-tab', this)">Prospects</div>
+    <div class="tab-btn active" onclick="switchTab('prospects-tab', this)">Global Prospects</div>
     <div class="tab-btn" onclick="switchTab('register-tab', this)">Player Registration</div>
-    <div class="tab-btn" onclick="switchTab('watch-tab', this)">Photos & Watch</div>
+    <div class="tab-btn" onclick="switchTab('watch-tab', this)">Highlights & Media</div>
     <div class="tab-btn" onclick="switchTab('news-tab', this)">News & Scores</div>
   </div>
 
   <!-- Main Body Content Containers -->
   <div class="container">
     
-    <!-- Tab 1: Prospects Showcase -->
+    <!-- Tab 1: Global Prospects (Internet Scouting) -->
     <div id="prospects-tab" class="tab-content active">
       <div class="section-card">
-        <h2>Verified Youth Prospects</h2>
-        <p>Browse verified player highlights, metrics, and profiles ready for international review.</p>
+        <h2>Remote Talent Directory</h2>
+        <p>Browse registered upcoming players worldwide. Clubs can analyze videos, stats, and positions online.</p>
         
-        <input type="text" id="prospectSearch" class="search-input" placeholder="Search position or tier..." onkeyup="filterProspects()">
+        <input type="text" id="prospectSearch" class="search-input" placeholder="Search by name, position, or country..." onkeyup="filterProspects()">
 
         <div id="prospectList">
-          <div class="prospect-card" data-name="player profile" data-details="centre-back verified professional">
+          <div class="prospect-card" data-name="kofi mensah ghana centre-back" data-details="centre-back ghana">
             <div class="prospect-header">
               <span class="badge-position">Centre-Back</span>
-              <span class="badge-age">Age: 18</span>
+              <span class="badge-region">🌍 Ghana</span>
             </div>
             <div class="prospect-body">
               <div class="prospect-avatar">🛡️</div>
               <div class="prospect-info">
-                <h3>Player Profile</h3>
-                <p>📍 Verified Academy Prospect</p>
+                <h3>Kofi Mensah</h3>
+                <p>Age: 18 • Ready for International Review</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="prospect-card" data-name="carlos silva brazil winger" data-details="winger brazil">
+            <div class="prospect-header">
+              <span class="badge-position">Winger</span>
+              <span class="badge-region">🌍 Brazil</span>
+            </div>
+            <div class="prospect-body">
+              <div class="prospect-avatar">⚡</div>
+              <div class="prospect-info">
+                <h3>Carlos Silva</h3>
+                <p>Age: 17 • Verified Video Highlights Available</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="prospect-card" data-name="lucas martinez argentina midfielder" data-details="midfielder argentina">
+            <div class="prospect-header">
+              <span class="badge-position">Central Midfield</span>
+              <span class="badge-region">🌍 Argentina</span>
+            </div>
+            <div class="prospect-body">
+              <div class="prospect-avatar">🎯</div>
+              <div class="prospect-info">
+                <h3>Lucas Martinez</h3>
+                <p>Age: 19 • Open for Club Inquiries</p>
               </div>
             </div>
           </div>
@@ -553,13 +488,17 @@
     <!-- Tab 2: Player Registration -->
     <div id="register-tab" class="tab-content">
       <div class="section-card">
-        <h2>Talent Registration Portal</h2>
-        <p>Submit your player credentials to join the official Scout Escort database for European academy evaluation.</p>
+        <h2>Global Talent Registration</h2>
+        <p>Upcoming players worldwide can submit their credentials so international scouts can discover them without travel.</p>
 
-        <form onsubmit="event.preventDefault(); alert('Registration submitted successfully! Our scouting team will review your application.');">
+        <form onsubmit="event.preventDefault(); alert('Profile registered successfully! Your details are now live for global club scouts.');">
           <div class="form-group">
             <label>Full Name</label>
             <input type="text" class="form-input" placeholder="e.g. Samuel Osei" required>
+          </div>
+          <div class="form-group">
+            <label>Country / Region</label>
+            <input type="text" class="form-input" placeholder="e.g. Ghana, Brazil, USA..." required>
           </div>
           <div class="form-group">
             <label>Primary Position</label>
@@ -578,44 +517,43 @@
             <input type="number" class="form-input" placeholder="e.g. 17" min="14" max="23" required>
           </div>
           <div class="form-group">
-            <label>Current Academy / Club</label>
-            <input type="text" class="form-input" placeholder="e.g. Elite Football Academy" required>
+            <label>Current Academy or Club</label>
+            <input type="text" class="form-input" placeholder="e.g. Local Youth Academy" required>
           </div>
           <div class="form-group">
             <label>Highlight Video Link (YouTube / Hudl)</label>
-            <input type="url" class="form-input" placeholder="https://youtube.com/...">
+            <input type="url" class="form-input" placeholder="https://youtube.com/..." required>
           </div>
-          <button type="submit" class="submit-btn">Submit Profile for Scouting</button>
+          <button type="submit" class="submit-btn">Publish Profile for Global Scouts</button>
         </form>
       </div>
     </div>
 
-    <!-- Tab 3: Photos & Watch -->
+    <!-- Tab 3: Highlights & Media -->
     <div id="watch-tab" class="tab-content">
       <div class="section-card">
-        <h2>Photos & Watch Gallery</h2>
-        <p>Exclusive scouting footage, training sessions, and elite showcase matches.</p>
+        <h2>Highlights & Media Feed</h2>
+        <p>Match footage, scouting reels, and training sessions uploaded for remote evaluation.</p>
 
         <div class="media-card">
           <div class="media-thumb">🎥</div>
-          <h3>International Showcase Highlights</h3>
-          <p>Top match metrics and defensive recoveries from recent regional youth trials.</p>
+          <h3>Global Youth Showcase Reels</h3>
+          <p>Full match clips and individual player highlight packages ready for club analysis.</p>
         </div>
 
         <div class="media-card">
-          <div class="media-thumb">📸</div>
-          <h3>European Scouts Visit Training Grounds</h3>
-          <p>Photo gallery of delegates inspecting high-performance facilities.</p>
+          <div class="media-thumb">📊</div>
+          <h3>Scouting Performance Metrics</h3>
+          <p>Detailed breakdown of speed, passing accuracy, and tactical awareness data.</p>
         </div>
       </div>
     </div>
 
     <!-- Tab 4: News & Live Scores -->
     <div id="news-tab" class="tab-content">
-      <!-- Live Match Scores Section -->
       <div class="section-card">
         <h2>Live Scores & Fixtures</h2>
-        <p>Real-time updates across European and international competitions.</p>
+        <p>Real-time updates across international and domestic competitions.</p>
 
         <div class="fixture-card">
           <div>
@@ -634,28 +572,21 @@
         </div>
       </div>
 
-      <!-- Global News Feed Section -->
       <div class="section-card">
-        <h2>Global Match & News Feed</h2>
-        <p>Latest updates, European nights, and top-tier league action.</p>
+        <h2>Global Football & Transfer News</h2>
+        <p>Latest updates on transfer windows, scouting reports, and football world developments.</p>
 
         <div class="news-item">
-          <span class="news-tag">Champions League</span>
-          <h3>European Campaign Kicks Off With High Drama</h3>
-          <p>Top clubs secure crucial victories as international scouts track standout performers.</p>
-        </div>
-
-        <div class="news-item" style="margin-top:10px;">
-          <span class="news-tag">Scout Radar</span>
-          <h3>Elite Academies Draw International Eyes</h3>
-          <p>Professional scouts from major leagues closely monitor upcoming youth showcase fixtures.</p>
+          <span class="news-tag">Transfer Window</span>
+          <h3>Clubs Shift Toward Digital Scouting Methods</h3>
+          <p>More sporting directors are utilizing online video databases to evaluate international talent without incurring heavy travel expenses.</p>
         </div>
       </div>
     </div>
 
   </div>
 
-  <!-- JavaScript for Interactive Controls & Live Simulation -->
+  <!-- JavaScript -->
   <script>
     function switchTab(tabId, element) {
       document.querySelectorAll('.tab-content').forEach(tab => {
@@ -681,21 +612,11 @@
         }
       });
     }
-
-    // Dynamic counter fluctuation to simulate real-time traffic naturally
-    setInterval(() => {
-      let scoutElement = document.getElementById('scoutCount');
-      if (scoutElement) {
-        let currentScouts = parseInt(scoutElement.innerText);
-        let change = Math.random() > 0.5 ? 1 : -1;
-        let newCount = Math.max(14, Math.min(26, currentScouts + change));
-        scoutElement.innerText = newCount;
-      }
-    }, 5000);
   </script>
 
 </body>
 </html>
+
 
 
 
