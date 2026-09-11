@@ -18,12 +18,12 @@
 
     <style>
         :root {
-            --bg-color: #050d08;
-            --card-bg: #0d1f14;
-            --accent-green: #10b981;
-            --text-main: #f3f4f6;
-            --text-muted: #9ca3af;
-            --border-color: #163622;
+            --bg-color: #064e3b;          /* Vibrant Professional Green */
+            --card-bg: #022c22;           /* Deep Rich Green Card Base */
+            --accent-green: #34d399;      /* Bright Emerald Accent */
+            --text-main: #ffffff;
+            --text-muted: #a7f3d0;
+            --border-color: #047857;      /* Clear Defined Green Border */
         }
 
         * {
@@ -36,50 +36,49 @@
         body {
             background-color: var(--bg-color);
             color: var(--text-main);
-            padding-top: 36px; /* Prevents content from hiding under the fixed ticker */
-            padding-bottom: 80px;
+            padding-bottom: 75px;
         }
 
-        /* FIXED TOP TICKER - Perfectly locked above header */
+        /* Continuous Moving Sponsor Ticker */
         .sponsor-ticker {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 36px;
-            background: #020704;
+            background: #022c22;
             color: var(--text-muted);
             font-size: 10px;
             text-transform: uppercase;
             letter-spacing: 1px;
+            padding: 8px 0;
+            border-bottom: 1px solid var(--border-color);
             overflow: hidden;
             white-space: nowrap;
-            border-bottom: 1px solid var(--border-color);
-            z-index: 1100;
-            display: flex;
+            position: relative;
+        }
+
+        .ticker-track {
+            display: inline-flex;
+            gap: 24px;
             align-items: center;
+            animation: ticker 25s linear infinite;
         }
 
-        .ticker-content {
-            display: inline-block;
-            white-space: nowrap;
-            animation: marquee 35s linear infinite;
-        }
-
-        .ticker-content:hover {
-            animation-play-state: paused;
+        @keyframes ticker {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-50%);
+            }
         }
 
         .brand-pill {
             display: inline-flex;
             align-items: center;
-            background: #0d1f14;
+            background: #064e3b;
             border: 1px solid var(--border-color);
             padding: 3px 10px;
             border-radius: 4px;
-            margin-right: 16px;
-            color: #d1d5db;
+            color: #ffffff;
             font-weight: 600;
+            flex-shrink: 0;
         }
 
         .sponsor-logo {
@@ -87,12 +86,8 @@
             align-items: center;
             justify-content: center;
             margin-right: 6px;
+            font-weight: 700;
             color: var(--accent-green);
-        }
-
-        @keyframes marquee {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); }
         }
 
         /* Professional Header */
@@ -119,17 +114,19 @@
             gap: 12px;
         }
 
-        /* Telescope Icon Box */
+        /* Corporate Geometric Icon Box */
         .telescope-sculpture {
-            background: #000000;
+            background: #022c22;
             width: 44px;
             height: 44px;
             border-radius: 8px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 22px;
+            font-size: 20px;
             border: 1px solid var(--accent-green);
+            color: var(--accent-green);
+            flex-shrink: 0;
         }
 
         .title-text h1 {
@@ -213,7 +210,7 @@
         /* Inputs & Forms */
         .search-input, .form-input, .form-select {
             width: 100%;
-            background: #020704;
+            background: #022c22;
             border: 1px solid var(--border-color);
             border-radius: 6px;
             padding: 10px 12px;
@@ -228,7 +225,8 @@
         }
 
         .search-input::placeholder, .form-input::placeholder {
-            color: #4b5563;
+            color: #a7f3d0;
+            opacity: 0.6;
         }
 
         .form-group {
@@ -248,7 +246,7 @@
         .submit-btn {
             width: 100%;
             background: var(--accent-green);
-            color: #050d08;
+            color: #022c22;
             font-weight: 700;
             border: none;
             padding: 11px;
@@ -266,7 +264,7 @@
 
         /* Professional Prospect Card */
         .prospect-card {
-            background: #020704;
+            background: #022c22;
             border: 1px solid var(--border-color);
             border-radius: 6px;
             overflow: hidden;
@@ -277,13 +275,13 @@
             display: flex;
             justify-content: space-between;
             padding: 6px 10px;
-            background: rgba(16, 185, 129, 0.05);
+            background: rgba(52, 211, 153, 0.1);
             border-bottom: 1px solid var(--border-color);
             font-size: 10px;
         }
 
         .badge-position {
-            background: rgba(16, 185, 129, 0.2);
+            background: rgba(52, 211, 153, 0.2);
             color: var(--accent-green);
             padding: 2px 6px;
             border-radius: 3px;
@@ -306,7 +304,7 @@
         .prospect-avatar {
             width: 36px;
             height: 36px;
-            background: #0d1f14;
+            background: #064e3b;
             border-radius: 4px;
             display: flex;
             align-items: center;
@@ -315,6 +313,7 @@
             border: 1px solid var(--border-color);
             color: var(--accent-green);
             font-weight: 700;
+            flex-shrink: 0;
         }
 
         .prospect-info h3 {
@@ -334,7 +333,7 @@
 
         /* Professional Media/Gallery Cards */
         .media-card {
-            background: #020704;
+            background: #022c22;
             border: 1px solid var(--border-color);
             border-radius: 6px;
             padding: 12px;
@@ -344,7 +343,7 @@
         .media-thumb {
             width: 100%;
             height: 110px;
-            background: #0d1f14;
+            background: #064e3b;
             border-radius: 4px;
             display: flex;
             align-items: center;
@@ -373,7 +372,7 @@
 
         /* Fixtures & News Cards */
         .fixture-card, .news-item {
-            background: #020704;
+            background: #022c22;
             border: 1px solid var(--border-color);
             border-radius: 6px;
             padding: 12px;
@@ -402,13 +401,14 @@
         }
 
         .match-score {
-            background: rgba(16, 185, 129, 0.2);
+            background: rgba(52, 211, 153, 0.2);
             color: var(--accent-green);
             padding: 5px 8px;
             border-radius: 4px;
             font-size: 11px;
             font-weight: 700;
             letter-spacing: 0.5px;
+            flex-shrink: 0;
         }
 
         .news-tag {
@@ -441,19 +441,19 @@
             padding: 12px;
         }
 
-        /* Clean Professional Bottom Navigation */
+        /* Clean Enterprise Bottom Navigation with Strict Vector Icons */
         .bottom-nav {
             position: fixed;
             bottom: 0;
             left: 0;
             width: 100%;
-            background: #020704;
+            background: #022c22;
             border-top: 1px solid var(--border-color);
             display: flex;
             justify-content: space-around;
             padding: 8px 4px;
             z-index: 1000;
-            box-shadow: 0 -4px 15px rgba(0, 0, 0, 0.8);
+            box-shadow: 0 -4px 15px rgba(0, 0, 0, 0.5);
         }
 
         .nav-tab {
@@ -463,7 +463,7 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 3px;
+            gap: 4px;
             padding: 4px 6px;
             font-size: 9px;
             font-weight: 600;
@@ -474,8 +474,10 @@
             flex: 1;
         }
 
-        .nav-tab span.nav-icon {
-            font-size: 16px;
+        .nav-tab svg {
+            width: 18px;
+            height: 18px;
+            fill: currentColor;
         }
 
         .nav-tab:hover {
@@ -489,18 +491,22 @@
 </head>
 <body>
 
-  <!-- FIXED TOP TICKER -->
+  <!-- Moving Continuous Corporate Sponsor Ticker -->
   <div class="sponsor-ticker">
-    <div class="ticker-content">
-      <span class="brand-pill"><span class="sponsor-logo">⚽</span> FIFA OFFICIAL PARTNER</span>
-      <span class="brand-pill"><span class="sponsor-logo">🏆</span> CAF LICENSED SCOUTING HUB</span>
-      <span class="brand-pill"><span class="sponsor-logo">⚡</span> GLOBAL TALENT NETWORK</span>
-      <span class="brand-pill"><span class="sponsor-logo">⭐</span> ELITE ACADEMY ALLIANCE</span>
-      <!-- Duplicate set for seamless infinite loop -->
-      <span class="brand-pill"><span class="sponsor-logo">⚽</span> FIFA OFFICIAL PARTNER</span>
-      <span class="brand-pill"><span class="sponsor-logo">🏆</span> CAF LICENSED SCOUTING HUB</span>
-      <span class="brand-pill"><span class="sponsor-logo">⚡</span> GLOBAL TALENT NETWORK</span>
-      <span class="brand-pill"><span class="sponsor-logo">⭐</span> ELITE ACADEMY ALLIANCE</span>
+    <div class="ticker-track">
+      <span class="brand-pill"><span class="sponsor-logo">✔</span> NIKE PARTNER</span>
+      <span class="brand-pill"><span class="sponsor-logo">🐆</span> PUMA OFFICIAL</span>
+      <span class="brand-pill"><span class="sponsor-logo">⚡</span> ADIDAS ELITE</span>
+      <span class="brand-pill"><span class="sponsor-logo">📱</span> SAMSUNG TECH PARTNER</span>
+      <span class="brand-pill"><span class="sponsor-logo">✈</span> QATAR AIRWAYS</span>
+      <span class="brand-pill"><span class="sponsor-logo">💳</span> MASTERCARD FINANCIAL</span>
+      <!-- Repeated for seamless infinite loop animation -->
+      <span class="brand-pill"><span class="sponsor-logo">✔</span> NIKE PARTNER</span>
+      <span class="brand-pill"><span class="sponsor-logo">🐆</span> PUMA OFFICIAL</span>
+      <span class="brand-pill"><span class="sponsor-logo">⚡</span> ADIDAS ELITE</span>
+      <span class="brand-pill"><span class="sponsor-logo">📱</span> SAMSUNG TECH PARTNER</span>
+      <span class="brand-pill"><span class="sponsor-logo">✈</span> QATAR AIRWAYS</span>
+      <span class="brand-pill"><span class="sponsor-logo">💳</span> MASTERCARD FINANCIAL</span>
     </div>
   </div>
 
@@ -511,7 +517,9 @@
       <span>Accra, Ghana</span>
     </div>
     <div class="hero-title-box">
-      <div class="telescope-sculpture">🔭</div>
+      <div class="telescope-sculpture">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+      </div>
       <div class="title-text">
         <h1>SCOUT ESCORT</h1>
         <p>Connecting West African Elite Talent to European Clubs</p>
@@ -692,30 +700,30 @@
 
   </div>
 
-  <!-- Clean Professional Bottom Navigation -->
+  <!-- Clean Professional Enterprise Bottom Navigation with Strict Vector Icons -->
   <nav class="bottom-nav">
     <button class="nav-tab active" onclick="switchTab('prospects-pane', event)">
-      <span class="nav-icon">👥</span>
+      <svg viewBox="0 0 24 24"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg>
       <span>Prospects</span>
     </button>
     <button class="nav-tab" onclick="switchTab('matches-pane', event)">
-      <span class="nav-icon">⚽</span>
+      <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
       <span>Matches</span>
     </button>
     <button class="nav-tab" onclick="switchTab('news-pane', event)">
-      <span class="nav-icon">📰</span>
+      <svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/></svg>
       <span>News</span>
     </button>
     <button class="nav-tab" onclick="switchTab('photos-pane', event)">
-      <span class="nav-icon">🖼️</span>
+      <svg viewBox="0 0 24 24"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg>
       <span>Photos</span>
     </button>
     <button class="nav-tab" onclick="switchTab('registration-pane', event)">
-      <span class="nav-icon">✍️</span>
+      <svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-2 10h-4v4h-2v-4H7v-2h4V7h2v4h4v2z"/></svg>
       <span>Register</span>
     </button>
     <button class="nav-tab" onclick="switchTab('login-pane', event)">
-      <span class="nav-icon">👤</span>
+      <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"/></svg>
       <span>Login</span>
     </button>
   </nav>
@@ -833,14 +841,6 @@
 
 </body>
 </html>
-
-
-
-
-
-
-
-
 
 
 
