@@ -18,12 +18,12 @@
 
     <style>
         :root {
-            --bg-color: #030712;
-            --card-bg: #0b0f19;
+            --bg-color: #06120b;
+            --card-bg: #0b1f14;
             --accent-green: #10b981;
             --text-main: #f3f4f6;
             --text-muted: #9ca3af;
-            --border-color: #131e2f;
+            --border-color: #133822;
         }
 
         * {
@@ -39,9 +39,9 @@
             padding-bottom: 75px;
         }
 
-        /* Professional Sponsor Marquee Ticker (Absolute Top) */
+        /* Professional Clean Sponsor Ticker */
         .sponsor-ticker {
-            background: #000000;
+            background: #020804;
             color: var(--text-muted);
             font-size: 10px;
             text-transform: uppercase;
@@ -60,7 +60,7 @@
         .brand-pill {
             display: inline-flex;
             align-items: center;
-            background: #030712;
+            background: rgba(16, 185, 129, 0.03);
             border: 1px solid var(--border-color);
             padding: 4px 12px;
             border-radius: 4px;
@@ -107,7 +107,7 @@
             gap: 12px;
         }
 
-        /* Strictly Black Telescope Icon Box with Green Accent */
+        /* Pure Solid Black Telescope Icon Box with Green Border */
         .telescope-sculpture {
             background: #000000;
             width: 44px;
@@ -119,7 +119,6 @@
             font-size: 22px;
             border: 1px solid var(--accent-green);
             color: #000000;
-            box-shadow: 0 0 10px rgba(16, 185, 129, 0.2);
         }
 
         .title-text h1 {
@@ -135,7 +134,7 @@
             margin-top: 2px;
         }
 
-        /* Minimalist Institutional Metrics Bar */
+        /* Institutional Metrics Bar */
         .stats-bar {
             display: flex;
             background: var(--card-bg);
@@ -203,7 +202,7 @@
         /* Inputs & Forms */
         .search-input, .form-input, .form-select {
             width: 100%;
-            background: #000000;
+            background: #020804;
             border: 1px solid var(--border-color);
             border-radius: 6px;
             padding: 10px 12px;
@@ -238,7 +237,7 @@
         .submit-btn {
             width: 100%;
             background: var(--accent-green);
-            color: #000000;
+            color: #06120b;
             font-weight: 700;
             border: none;
             padding: 11px;
@@ -256,7 +255,7 @@
 
         /* Professional Prospect Card */
         .prospect-card {
-            background: #000000;
+            background: #020804;
             border: 1px solid var(--border-color);
             border-radius: 6px;
             overflow: hidden;
@@ -296,7 +295,7 @@
         .prospect-avatar {
             width: 36px;
             height: 36px;
-            background: #0b0f19;
+            background: #0b1f14;
             border-radius: 4px;
             display: flex;
             align-items: center;
@@ -322,9 +321,9 @@
             letter-spacing: 0.3px;
         }
 
-        /* Professional Media/Gallery Cards (Pure Black Theme) */
+        /* Professional Media/Gallery Cards */
         .media-card {
-            background: #000000;
+            background: #020804;
             border: 1px solid var(--border-color);
             border-radius: 6px;
             padding: 12px;
@@ -334,7 +333,7 @@
         .media-thumb {
             width: 100%;
             height: 110px;
-            background: #0b0f19;
+            background: #0b1f14;
             border-radius: 4px;
             display: flex;
             align-items: center;
@@ -363,7 +362,7 @@
 
         /* Fixtures & News Cards */
         .fixture-card, .news-item {
-            background: #000000;
+            background: #020804;
             border: 1px solid var(--border-color);
             border-radius: 6px;
             padding: 12px;
@@ -431,17 +430,17 @@
             padding: 12px;
         }
 
-        /* Bottom Fixed Navigation Bar (Strict Black & Green Theme) */
+        /* Clean Professional Bottom Navigation (Strict Text Labels & Clean Professional Icons) */
         .bottom-nav {
             position: fixed;
             bottom: 0;
             left: 0;
             width: 100%;
-            background: #000000;
+            background: #020804;
             border-top: 1px solid var(--border-color);
             display: flex;
             justify-content: space-around;
-            padding: 6px 2px;
+            padding: 8px 4px;
             z-index: 1000;
             box-shadow: 0 -4px 15px rgba(0, 0, 0, 0.8);
         }
@@ -453,7 +452,7 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 2px;
+            gap: 3px;
             padding: 4px 6px;
             font-size: 9px;
             font-weight: 600;
@@ -465,7 +464,7 @@
         }
 
         .nav-tab span.nav-icon {
-            font-size: 15px;
+            font-size: 16px;
         }
 
         .nav-tab:hover {
@@ -684,14 +683,14 @@
 
   </div>
 
-  <!-- Bottom Fixed Navigation Bar -->
+  <!-- Clean Professional Bottom Navigation -->
   <nav class="bottom-nav">
     <button class="nav-tab active" onclick="switchTab('prospects-pane', event)">
-      <span class="nav-icon">🛡️</span>
+      <span class="nav-icon">👥</span>
       <span>Prospects</span>
     </button>
     <button class="nav-tab" onclick="switchTab('matches-pane', event)">
-      <span class="nav-icon">📊</span>
+      <span class="nav-icon">⚽</span>
       <span>Matches</span>
     </button>
     <button class="nav-tab" onclick="switchTab('news-pane', event)">
@@ -699,15 +698,15 @@
       <span>News</span>
     </button>
     <button class="nav-tab" onclick="switchTab('photos-pane', event)">
-      <span class="nav-icon">📁</span>
+      <span class="nav-icon">🖼️</span>
       <span>Photos</span>
     </button>
     <button class="nav-tab" onclick="switchTab('registration-pane', event)">
-      <span class="nav-icon">📝</span>
+      <span class="nav-icon">✍️</span>
       <span>Register</span>
     </button>
     <button class="nav-tab" onclick="switchTab('login-pane', event)">
-      <span class="nav-icon">🔑</span>
+      <span class="nav-icon">👤</span>
       <span>Login</span>
     </button>
   </nav>
@@ -825,7 +824,6 @@
 
 </body>
 </html>
-
 
 
 
