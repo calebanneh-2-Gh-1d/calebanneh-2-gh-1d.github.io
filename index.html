@@ -18,12 +18,12 @@
 
     <style>
         :root {
-            --bg-color: #0b0f17;
-            --card-bg: #111827;
+            --bg-color: #030712;
+            --card-bg: #0b0f19;
             --accent-green: #10b981;
             --text-main: #f3f4f6;
             --text-muted: #9ca3af;
-            --border-color: #1f2937;
+            --border-color: #131e2f;
         }
 
         * {
@@ -39,9 +39,9 @@
             padding-bottom: 75px;
         }
 
-        /* Accurate Official Sponsor Marquee Ticker (Absolute Top) */
+        /* Professional Sponsor Marquee Ticker (Absolute Top) */
         .sponsor-ticker {
-            background: #07090e;
+            background: #000000;
             color: var(--text-muted);
             font-size: 10px;
             text-transform: uppercase;
@@ -60,7 +60,7 @@
         .brand-pill {
             display: inline-flex;
             align-items: center;
-            background: rgba(255, 255, 255, 0.02);
+            background: #030712;
             border: 1px solid var(--border-color);
             padding: 4px 12px;
             border-radius: 4px;
@@ -75,7 +75,7 @@
             justify-content: center;
             margin-right: 6px;
             font-weight: 700;
-            color: #ffffff;
+            color: var(--accent-green);
         }
 
         @keyframes marquee {
@@ -107,7 +107,7 @@
             gap: 12px;
         }
 
-        /* Professional Solid Black Telescope Box */
+        /* Strictly Black Telescope Icon Box with Green Accent */
         .telescope-sculpture {
             background: #000000;
             width: 44px;
@@ -117,14 +117,16 @@
             align-items: center;
             justify-content: center;
             font-size: 22px;
-            border: 1px solid var(--border-color);
-            color: #ffffff;
+            border: 1px solid var(--accent-green);
+            color: #000000;
+            box-shadow: 0 0 10px rgba(16, 185, 129, 0.2);
         }
 
         .title-text h1 {
             font-size: 20px;
             font-weight: 700;
             letter-spacing: -0.3px;
+            color: #ffffff;
         }
 
         .title-text p {
@@ -148,7 +150,7 @@
         .stat-item .stat-num {
             font-size: 13px;
             font-weight: 700;
-            color: var(--text-main);
+            color: var(--accent-green);
             text-transform: uppercase;
         }
 
@@ -188,6 +190,7 @@
             margin-bottom: 4px;
             text-transform: uppercase;
             letter-spacing: 0.5px;
+            color: #ffffff;
         }
 
         .section-card p {
@@ -200,7 +203,7 @@
         /* Inputs & Forms */
         .search-input, .form-input, .form-select {
             width: 100%;
-            background: #07090e;
+            background: #000000;
             border: 1px solid var(--border-color);
             border-radius: 6px;
             padding: 10px 12px;
@@ -210,8 +213,12 @@
             margin-bottom: 12px;
         }
 
+        .search-input:focus, .form-input:focus, .form-select:focus {
+            border-color: var(--accent-green);
+        }
+
         .search-input::placeholder, .form-input::placeholder {
-            color: #6b7280;
+            color: #4b5563;
         }
 
         .form-group {
@@ -231,7 +238,7 @@
         .submit-btn {
             width: 100%;
             background: var(--accent-green);
-            color: #0b0f17;
+            color: #000000;
             font-weight: 700;
             border: none;
             padding: 11px;
@@ -243,9 +250,13 @@
             margin-top: 4px;
         }
 
-        /* Professional Prospect Card (Clean Player Name Format) */
+        .submit-btn:hover {
+            opacity: 0.9;
+        }
+
+        /* Professional Prospect Card */
         .prospect-card {
-            background: #0d121c;
+            background: #000000;
             border: 1px solid var(--border-color);
             border-radius: 6px;
             overflow: hidden;
@@ -256,13 +267,13 @@
             display: flex;
             justify-content: space-between;
             padding: 6px 10px;
-            background: rgba(255, 255, 255, 0.01);
+            background: rgba(16, 185, 129, 0.03);
             border-bottom: 1px solid var(--border-color);
             font-size: 10px;
         }
 
         .badge-position {
-            background: rgba(16, 185, 129, 0.1);
+            background: rgba(16, 185, 129, 0.15);
             color: var(--accent-green);
             padding: 2px 6px;
             border-radius: 3px;
@@ -285,14 +296,15 @@
         .prospect-avatar {
             width: 36px;
             height: 36px;
-            background: #1f2937;
+            background: #0b0f19;
             border-radius: 4px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 14px;
+            font-size: 12px;
             border: 1px solid var(--border-color);
-            color: var(--text-muted);
+            color: var(--accent-green);
+            font-weight: 700;
         }
 
         .prospect-info h3 {
@@ -310,9 +322,9 @@
             letter-spacing: 0.3px;
         }
 
-        /* Professional Media/Gallery Cards (Clean Football Styling) */
+        /* Professional Media/Gallery Cards (Pure Black Theme) */
         .media-card {
-            background: #0d121c;
+            background: #000000;
             border: 1px solid var(--border-color);
             border-radius: 6px;
             padding: 12px;
@@ -322,23 +334,24 @@
         .media-thumb {
             width: 100%;
             height: 110px;
-            background: #1f2937;
+            background: #0b0f19;
             border-radius: 4px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 20px;
-            color: var(--text-muted);
+            font-size: 14px;
+            color: var(--accent-green);
             margin-bottom: 8px;
             border: 1px solid var(--border-color);
             text-transform: uppercase;
-            font-weight: 600;
+            font-weight: 700;
             letter-spacing: 1px;
         }
 
         .media-card h3 {
             font-size: 13px;
             font-weight: 600;
+            color: #ffffff;
         }
 
         .media-card p {
@@ -350,7 +363,7 @@
 
         /* Fixtures & News Cards */
         .fixture-card, .news-item {
-            background: #0d121c;
+            background: #000000;
             border: 1px solid var(--border-color);
             border-radius: 6px;
             padding: 12px;
@@ -366,6 +379,7 @@
         .match-teams {
             font-size: 12px;
             font-weight: 600;
+            color: #ffffff;
         }
 
         .match-meta {
@@ -378,7 +392,7 @@
         }
 
         .match-score {
-            background: rgba(16, 185, 129, 0.1);
+            background: rgba(16, 185, 129, 0.15);
             color: var(--accent-green);
             padding: 5px 8px;
             border-radius: 4px;
@@ -389,12 +403,25 @@
 
         .news-tag {
             font-size: 9px;
-            color: #38bdf8;
+            color: var(--accent-green);
             font-weight: 600;
             text-transform: uppercase;
             margin-bottom: 3px;
             display: block;
             letter-spacing: 0.5px;
+        }
+
+        .news-item h3 {
+            color: #ffffff;
+            font-size: 13px;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .news-item p {
+            color: var(--text-muted);
+            font-size: 11px;
+            margin: 0;
         }
 
         .loading-text {
@@ -404,19 +431,19 @@
             padding: 12px;
         }
 
-        /* Bottom Fixed Navigation Bar (Strict Order: 1. Prospects, 2. Matches, 3. News, 4. Photos, 5. Register, 6. Login) */
+        /* Bottom Fixed Navigation Bar (Strict Black & Green Theme) */
         .bottom-nav {
             position: fixed;
             bottom: 0;
             left: 0;
             width: 100%;
-            background: #07090e;
+            background: #000000;
             border-top: 1px solid var(--border-color);
             display: flex;
             justify-content: space-around;
             padding: 6px 2px;
             z-index: 1000;
-            box-shadow: 0 -4px 15px rgba(0, 0, 0, 0.4);
+            box-shadow: 0 -4px 15px rgba(0, 0, 0, 0.8);
         }
 
         .nav-tab {
@@ -438,7 +465,7 @@
         }
 
         .nav-tab span.nav-icon {
-            font-size: 14px;
+            font-size: 15px;
         }
 
         .nav-tab:hover {
@@ -452,20 +479,20 @@
 </head>
 <body>
 
-  <!-- Accurate Official Sponsor Marquee Ticker (Absolute Top) -->
+  <!-- Official Sponsor Marquee Ticker (Absolute Top) -->
   <div class="sponsor-ticker">
     <div class="ticker-content">
-      <span class="brand-pill"><span class="sponsor-logo">adidas</span> OFFICIAL PARTNER</span>
-      <span class="brand-pill"><span class="sponsor-logo">NIKE</span> GLOBAL SUPPLIER</span>
-      <span class="brand-pill"><span class="sponsor-logo">MASTERCARD</span> OFFICIAL PAYMENT PARTNER</span>
-      <span class="brand-pill"><span class="sponsor-logo">PUMA</span> TECHNICAL PARTNER</span>
-      <span class="brand-pill"><span class="sponsor-logo">EMIRATES</span> AVIATION PARTNER</span>
-      <!-- Continuous loop duplicate -->
-      <span class="brand-pill"><span class="sponsor-logo">adidas</span> OFFICIAL PARTNER</span>
-      <span class="brand-pill"><span class="sponsor-logo">NIKE</span> GLOBAL SUPPLIER</span>
-      <span class="brand-pill"><span class="sponsor-logo">MASTERCARD</span> OFFICIAL PAYMENT PARTNER</span>
-      <span class="brand-pill"><span class="sponsor-logo">PUMA</span> TECHNICAL PARTNER</span>
-      <span class="brand-pill"><span class="sponsor-logo">EMIRATES</span> AVIATION PARTNER</span>
+      <span class="brand-pill"><span class="sponsor-logo">▲</span> ADIDAS OFFICIAL PARTNER</span>
+      <span class="brand-pill"><span class="sponsor-logo">✔</span> NIKE GLOBAL SUPPLIER</span>
+      <span class="brand-pill"><span class="sponsor-logo">◆</span> MASTERCARD PAYMENT PARTNER</span>
+      <span class="brand-pill"><span class="sponsor-logo">●</span> PUMA TECHNICAL PARTNER</span>
+      <span class="brand-pill"><span class="sponsor-logo">✈</span> EMIRATES AVIATION PARTNER</span>
+      <!-- Loop duplicate -->
+      <span class="brand-pill"><span class="sponsor-logo">▲</span> ADIDAS OFFICIAL PARTNER</span>
+      <span class="brand-pill"><span class="sponsor-logo">✔</span> NIKE GLOBAL SUPPLIER</span>
+      <span class="brand-pill"><span class="sponsor-logo">◆</span> MASTERCARD PAYMENT PARTNER</span>
+      <span class="brand-pill"><span class="sponsor-logo">●</span> PUMA TECHNICAL PARTNER</span>
+      <span class="brand-pill"><span class="sponsor-logo">✈</span> EMIRATES AVIATION PARTNER</span>
     </div>
   </div>
 
@@ -484,14 +511,14 @@
     </div>
   </header>
 
-  <!-- Clean Professional Metrics Bar -->
+  <!-- Institutional Metrics Bar -->
   <div class="stats-bar">
     <div class="stat-item">
-      <div class="stat-num">Verified Hub</div>
+      <div class="stat-num">Verified</div>
       <div class="stat-label">System Status</div>
     </div>
     <div class="stat-item">
-      <div class="stat-num">Direct Access</div>
+      <div class="stat-num">Active</div>
       <div class="stat-label">Club Network</div>
     </div>
   </div>
@@ -516,7 +543,7 @@
             <div class="prospect-body">
               <div class="prospect-avatar">01</div>
               <div class="prospect-info">
-                <h3>Player Name</h3>
+                <h3>Player Profile #01</h3>
                 <p>Verified Academy Prospect • Accra</p>
               </div>
             </div>
@@ -530,7 +557,7 @@
             <div class="prospect-body">
               <div class="prospect-avatar">02</div>
               <div class="prospect-info">
-                <h3>Player Name</h3>
+                <h3>Player Profile #02</h3>
                 <p>Verified Academy Prospect • Accra</p>
               </div>
             </div>
@@ -544,7 +571,7 @@
             <div class="prospect-body">
               <div class="prospect-avatar">03</div>
               <div class="prospect-info">
-                <h3>Player Name</h3>
+                <h3>Player Profile #03</h3>
                 <p>Verified Academy Prospect • Accra</p>
               </div>
             </div>
@@ -657,10 +684,10 @@
 
   </div>
 
-  <!-- Bottom Fixed Navigation Bar (Strictly Ordered) -->
+  <!-- Bottom Fixed Navigation Bar -->
   <nav class="bottom-nav">
     <button class="nav-tab active" onclick="switchTab('prospects-pane', event)">
-      <span class="nav-icon">⚽</span>
+      <span class="nav-icon">🛡️</span>
       <span>Prospects</span>
     </button>
     <button class="nav-tab" onclick="switchTab('matches-pane', event)">
@@ -680,7 +707,7 @@
       <span>Register</span>
     </button>
     <button class="nav-tab" onclick="switchTab('login-pane', event)">
-      <span class="nav-icon">🔒</span>
+      <span class="nav-icon">🔑</span>
       <span>Login</span>
     </button>
   </nav>
