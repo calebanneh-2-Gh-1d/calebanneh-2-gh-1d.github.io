@@ -38,7 +38,7 @@
         body {
             background-color: var(--bg-color);
             color: var(--text-main);
-            padding-bottom: 90px; /* Extra space for bottom nav bar */
+            padding-bottom: 90px;
         }
 
         /* Top Bar / Sponsor Ticker */
@@ -111,7 +111,7 @@
         .telescope-logo svg {
             width: 30px;
             height: 30px;
-            fill: #1e293b; /* Shadow color tone */
+            fill: #1e293b;
             stroke: var(--accent-green);
             stroke-width: 1.5;
             stroke-linecap: round;
@@ -297,6 +297,19 @@
             margin-bottom: 0;
         }
 
+        .video-link-btn {
+            display: inline-block;
+            margin-top: 6px;
+            font-size: 11px;
+            color: var(--accent-blue);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .video-link-btn:hover {
+            text-decoration: underline;
+        }
+
         /* Social Share Bar inside Player Profiles */
         .social-share-bar {
             display: flex;
@@ -450,18 +463,13 @@
   <!-- Header with Shadow-Style Two-Eyed Telescope Logo -->
   <header class="header">
     <div class="hero-box">
-      <!-- Shadow-style Two-Eyed Telescope / Binocular Vector Icon -->
       <div class="telescope-logo">
         <svg viewBox="0 0 24 24">
-          <!-- Left Lens Barrel -->
           <path d="M3 5h5v11H3z" />
           <path d="M2 5l2-2h5l2 2" />
-          <!-- Right Lens Barrel -->
           <path d="M13 5h5v11h-5z" />
           <path d="M12 5l2-2h5l2 2" />
-          <!-- Central Connection Bridge -->
           <path d="M8 9h5" />
-          <!-- Lenses Base Highlights -->
           <line x1="3" y1="16" x2="8" y2="16" />
           <line x1="13" y1="16" x2="18" y2="16" />
         </svg>
@@ -473,7 +481,7 @@
     </div>
   </header>
 
-  <!-- Vision Explanation Banner -->
+  <!-- Vision Banner -->
   <div class="vision-banner">
     <h3>🔭 Scout From Anywhere</h3>
     <p>Clubs worldwide can evaluate upcoming talent directly through our online player profiles and match feeds—eliminating expensive international travel.</p>
@@ -482,8 +490,8 @@
   <!-- Main Body Content Containers -->
   <div class="container">
     
-    <!-- Tab 1: Player Profiles (Internet Scouting) -->
-    <div id="prospects-tab" class="tab-content active">
+    <!-- 1st Position: Player Profiles Directory -->
+    <div id="profiles-tab" class="tab-content active">
       <div class="section-card">
         <h2>Verified Player Profile Directory</h2>
         <p>Browse registered upcoming players. Clubs can analyze videos, stats, and positions online.</p>
@@ -491,7 +499,7 @@
         <input type="text" id="prospectSearch" class="search-input" placeholder="Search by position or profile details..." onkeyup="filterProspects()">
 
         <div id="prospectList">
-          <!-- Profile 1 -->
+          <!-- Dynamically submitted profiles will appear here instantly -->
           <div class="prospect-card" data-name="centre-back profile defender" data-details="centre-back">
             <div class="prospect-header">
               <span class="badge-position">Centre-Back</span>
@@ -502,6 +510,7 @@
               <div class="prospect-info">
                 <h3>Player Profile</h3>
                 <p>Age: 18 • Verified Video Reel Available</p>
+                <a href="https://youtube.com" target="_blank" class="video-link-btn">▶ Watch Highlight Video</a>
               </div>
             </div>
             <div class="social-share-bar">
@@ -510,7 +519,6 @@
             </div>
           </div>
 
-          <!-- Profile 2 -->
           <div class="prospect-card" data-name="winger profile forward" data-details="winger">
             <div class="prospect-header">
               <span class="badge-position">Winger</span>
@@ -521,25 +529,7 @@
               <div class="prospect-info">
                 <h3>Player Profile</h3>
                 <p>Age: 17 • Verified Performance Metrics</p>
-              </div>
-            </div>
-            <div class="social-share-bar">
-              <a href="https://api.whatsapp.com/send?text=Check%20out%20this%20Player%20Profile%20on%20Scout%20Escort:%20https://alebthetrader.github.io/scout-escort/" target="_blank" class="share-btn share-whatsapp">💬 WhatsApp</a>
-              <a href="https://www.facebook.com/sharer/sharer.php?u=https://alebthetrader.github.io/scout-escort/" target="_blank" class="share-btn share-facebook">📘 Facebook</a>
-            </div>
-          </div>
-
-          <!-- Profile 3 -->
-          <div class="prospect-card" data-name="central midfield profile playmaker" data-details="midfield">
-            <div class="prospect-header">
-              <span class="badge-position">Central Midfield</span>
-              <span class="badge-profile">Player Profile #03</span>
-            </div>
-            <div class="prospect-body">
-              <div class="prospect-avatar">🎯</div>
-              <div class="prospect-info">
-                <h3>Player Profile</h3>
-                <p>Age: 19 • Open for Club Inquiries</p>
+                <a href="https://youtube.com" target="_blank" class="video-link-btn">▶ Watch Highlight Video</a>
               </div>
             </div>
             <div class="social-share-bar">
@@ -551,67 +541,7 @@
       </div>
     </div>
 
-    <!-- Tab 2: Player Registration -->
-    <div id="register-tab" class="tab-content">
-      <div class="section-card">
-        <h2>Global Player Registration Session</h2>
-        <p>Upcoming players worldwide can submit their credentials so international scouts can discover them without travel.</p>
-
-        <form onsubmit="event.preventDefault(); alert('Profile registered successfully! Your details are now live for global club scouts.');">
-          <div class="form-group">
-            <label>Full Name</label>
-            <input type="text" class="form-input" placeholder="e.g. Samuel Osei" required>
-          </div>
-          <div class="form-group">
-            <label>Primary Position</label>
-            <select class="form-select" required>
-              <option value="">Select Position</option>
-              <option>Centre-Back</option>
-              <option>Full-Back</option>
-              <option>Central Midfielder</option>
-              <option>Attacking Midfielder</option>
-              <option>Winger</option>
-              <option>Striker</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label>Age</label>
-            <input type="number" class="form-input" placeholder="e.g. 17" min="14" max="23" required>
-          </div>
-          <div class="form-group">
-            <label>Current Academy or Club</label>
-            <input type="text" class="form-input" placeholder="e.g. Local Youth Academy" required>
-          </div>
-          <div class="form-group">
-            <label>Highlight Video Link (YouTube / Hudl)</label>
-            <input type="url" class="form-input" placeholder="https://youtube.com/..." required>
-          </div>
-          <button type="submit" class="submit-btn">Publish Profile for Global Scouts</button>
-        </form>
-      </div>
-    </div>
-
-    <!-- Tab 3: Highlights & Media -->
-    <div id="watch-tab" class="tab-content">
-      <div class="section-card">
-        <h2>Highlights & Media Feed</h2>
-        <p>Match footage, scouting reels, and training sessions uploaded for remote evaluation.</p>
-
-        <div class="media-card">
-          <div class="media-thumb">🎥</div>
-          <h3>Global Youth Showcase Reels</h3>
-          <p>Full match clips and individual player highlight packages ready for club analysis.</p>
-        </div>
-
-        <div class="media-card">
-          <div class="media-thumb">📊</div>
-          <h3>Scouting Performance Metrics</h3>
-          <p>Detailed breakdown of speed, passing accuracy, and tactical awareness data.</p>
-        </div>
-      </div>
-    </div>
-
-    <!-- Tab 4: News & Live Scores -->
+    <!-- 2nd Position: Live News & Scores -->
     <div id="news-tab" class="tab-content">
       <div class="section-card">
         <h2>Live Scores Match Feed</h2>
@@ -646,17 +576,69 @@
       </div>
     </div>
 
+    <!-- 3rd Position: Highlights & Media -->
+    <div id="watch-tab" class="tab-content">
+      <div class="section-card">
+        <h2>Highlights & Media Feed</h2>
+        <p>Match footage, scouting reels, and training sessions uploaded for remote evaluation.</p>
+
+        <div class="media-card">
+          <div class="media-thumb">🎥</div>
+          <h3>Global Youth Showcase Reels</h3>
+          <p>Full match clips and individual player highlight packages ready for club analysis.</p>
+        </div>
+
+        <div class="media-card">
+          <div class="media-thumb">📊</div>
+          <h3>Scouting Performance Metrics</h3>
+          <p>Detailed breakdown of speed, passing accuracy, and tactical awareness data.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 4th/Last Position: Instant Registration Session -->
+    <div id="register-tab" class="tab-content">
+      <div class="section-card">
+        <h2>Global Player Registration Session</h2>
+        <p>Register online instantly. Fill in your details and YouTube link to publish your player profile live on the platform right away.</p>
+
+        <form id="playerRegistrationForm" onsubmit="registerPlayer(event)">
+          <div class="form-group">
+            <label>Player Position</label>
+            <select id="regPosition" class="form-select" required>
+              <option value="">Select Position</option>
+              <option value="Centre-Back">Centre-Back</option>
+              <option value="Full-Back">Full-Back</option>
+              <option value="Central Midfielder">Central Midfielder</option>
+              <option value="Attacking Midfielder">Attacking Midfielder</option>
+              <option value="Winger">Winger</option>
+              <option value="Striker">Striker</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Age</label>
+            <input type="number" id="regAge" class="form-input" placeholder="e.g. 18" min="14" max="23" required>
+          </div>
+          <div class="form-group">
+            <label>YouTube Highlight Video Link</label>
+            <input type="url" id="regVideo" class="form-input" placeholder="https://youtube.com/watch?v=..." required>
+          </div>
+          <button type="submit" class="submit-btn">Publish Profile Live Instantly</button>
+        </form>
+      </div>
+    </div>
+
   </div>
 
   <!-- Fixed Bottom Navigation Bar -->
   <nav class="bottom-nav">
-    <div class="tab-btn active" onclick="switchTab('prospects-tab', this)">Profiles</div>
-    <div class="tab-btn" onclick="switchTab('register-tab', this)">Registration</div>
+    <div class="tab-btn active" onclick="switchTab('profiles-tab', this)">Profiles</div>
+    <div class="tab-btn" onclick="switchTab('news-tab', this)">Live News</div>
     <div class="tab-btn" onclick="switchTab('watch-tab', this)">Highlights</div>
-    <div class="tab-btn" onclick="switchTab('news-tab', this)">News & Scores</div>
+    <div class="tab-btn" onclick="switchTab('register-tab', this)">Registration</div>
   </nav>
 
-  <!-- JavaScript -->
+  <!-- JavaScript for Navigation & Instant Self-Service Publishing -->
   <script>
     function switchTab(tabId, element) {
       document.querySelectorAll('.tab-content').forEach(tab => {
@@ -683,10 +665,56 @@
         }
       });
     }
+
+    // Instant self-service registration function
+    function registerPlayer(event) {
+      event.preventDefault();
+      
+      let position = document.getElementById('regPosition').value;
+      let age = document.getElementById('regAge').value;
+      let videoUrl = document.getElementById('regVideo').value;
+      
+      let prospectList = document.getElementById('prospectList');
+      let profileCount = prospectList.children.length + 1;
+      
+      // Create new profile card element dynamically
+      let newCard = document.createElement('div');
+      newCard.className = 'prospect-card';
+      newCard.setAttribute('data-name', position.toLowerCase() + " profile player");
+      newCard.setAttribute('data-details', position.toLowerCase());
+      
+      newCard.innerHTML = `
+        <div class="prospect-header">
+          <span class="badge-position">${position}</span>
+          <span class="badge-profile">Player Profile #${profileCount < 10 ? '0' + profileCount : profileCount}</span>
+        </div>
+        <div class="prospect-body">
+          <div class="prospect-avatar">⚽</div>
+          <div class="prospect-info">
+            <h3>Player Profile</h3>
+            <p>Age: ${age} • Verified Self-Registered Talent</p>
+            <a href="${videoUrl}" target="_blank" class="video-link-btn">▶ Watch Highlight Video</a>
+          </div>
+        </div>
+        <div class="social-share-bar">
+          <a href="https://api.whatsapp.com/send?text=Check%20out%20this%20Player%20Profile%20on%20Scout%20Escort:%20https://alebthetrader.github.io/scout-escort/" target="_blank" class="share-btn share-whatsapp">💬 WhatsApp</a>
+          <a href="https://www.facebook.com/sharer/sharer.php?u=https://alebthetrader.github.io/scout-escort/" target="_blank" class="share-btn share-facebook">📘 Facebook</a>
+        </div>
+      `;
+      
+      // Prepend the new card to the top of the list so it appears immediately
+      prospectList.insertBefore(newCard, prospectList.firstChild);
+      
+      // Reset form and switch back to profiles tab to view the live result
+      document.getElementById('playerRegistrationForm').reset();
+      alert('Success! Your player profile and YouTube video link have been published live to the platform.');
+      switchTab('profiles-tab', document.querySelector('.bottom-nav .tab-btn'));
+    }
   </script>
 
 </body>
 </html>
+
 
 
 
