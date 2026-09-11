@@ -4,14 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <!-- SEO & Organic Search Indexing Tags for Google -->
+    <!-- SEO & Search Indexing Metadata -->
     <title>Scout Escort | West African Football Talent & Scouting Platform</title>
-    <meta name="description" content="Scout Escort connects elite West African youth football talent and verified academy prospects from Accra, Ghana directly to European professional clubs and scouts.">
-    <meta name="keywords" content="West African football scouting, Ghana football talent, soccer prospects Accra, European football trials">
+    <meta name="description" content="Connecting West African elite youth football talent and verified academy prospects directly to European professional clubs and scouts.">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://alebthetrader.github.io/scout-escort/">
 
-    <!-- Schema.org Structured Data for Google Rich Snippets -->
+    <!-- Schema.org Structured Data -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -28,7 +27,7 @@
     }
     </script>
 
-    <!-- Google Analytics Tracking -->
+    <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-9DMZLL3XQE"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -38,15 +37,14 @@
     </script>
 
     <style>
-        /* Unified Platform Theme Color Palette */
         :root {
-            --platform-bg: #0b0f17;         /* Exact Deep Platform Background */
-            --card-surface: #121824;        /* Unified Card Surface Color */
-            --border-line: #1e293b;         /* Clean Subtle Border */
-            --accent-emerald: #10b981;      /* Professional Green Accents */
-            --accent-glow: rgba(16, 185, 129, 0.1);
-            --text-primary: #ffffff;
-            --text-secondary: #8a99ad;
+            --bg-deep: #07090e;
+            --card-surface: #0d121c;
+            --border-subtle: #192233;
+            --accent-green: #00d26a;
+            --accent-glow: rgba(0, 210, 106, 0.25);
+            --text-main: #ffffff;
+            --text-muted: #8a99ad;
         }
 
         * {
@@ -57,92 +55,134 @@
         }
 
         body {
-            background-color: var(--platform-bg);
-            color: var(--text-primary);
-            padding-bottom: 90px;
+            background-color: var(--bg-deep);
+            color: var(--text-main);
+            padding-bottom: 40px;
             -webkit-font-smoothing: antialiased;
         }
 
-        /* Top Header Area */
-        .top-meta-bar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 14px 16px 8px 16px;
-            font-size: 10px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            color: var(--accent-emerald);
+        /* Sponsors Ticker Bar */
+        .sponsor-ticker-wrap {
+            background: #05070a;
+            border-bottom: 1px solid var(--border-subtle);
+            overflow: hidden;
+            white-space: nowrap;
+            padding: 10px 0;
+            position: relative;
         }
 
-        .header-brand-wrap {
+        .sponsor-ticker-track {
+            display: inline-flex;
+            gap: 40px;
+            align-items: center;
+            animation: tickerScroll 30s linear infinite;
+        }
+
+        .sponsor-item {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 11px;
+            font-weight: 800;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--text-muted);
+        }
+
+        .sponsor-item svg {
+            width: 16px;
+            height: 16px;
+            fill: currentColor;
+        }
+
+        @keyframes tickerScroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        /* Main Header Brand */
+        .header-brand {
             display: flex;
             align-items: center;
             gap: 12px;
-            padding: 0 16px 14px 16px;
-            border-bottom: 1px solid var(--border-line);
+            padding: 20px 16px 16px 16px;
         }
 
-        .brand-logo-box {
-            width: 44px;
-            height: 44px;
-            background: var(--card-surface);
-            border: 1px solid var(--accent-emerald);
-            border-radius: 10px;
+        .telescope-icon-box {
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, #0d121c, #00d26a15);
+            border: 1px solid var(--accent-green);
+            border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: var(--accent-emerald);
+            color: var(--accent-green);
+            box-shadow: 0 0 20px var(--accent-glow);
             flex-shrink: 0;
         }
 
-        .brand-titles h1 {
-            font-size: 18px;
+        .brand-info h1 {
+            font-size: 19px;
             font-weight: 800;
             letter-spacing: 0.5px;
-            color: var(--text-primary);
+            color: var(--text-main);
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
 
-        .brand-titles p {
-            font-size: 10px;
-            color: var(--text-secondary);
-            margin-top: 2px;
+        .global-hub-tag {
+            background: rgba(0, 210, 106, 0.12);
+            color: var(--accent-green);
+            font-size: 9px;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            border: 1px solid rgba(0, 210, 106, 0.2);
         }
 
-        /* Metrics Bar */
-        .metrics-grid {
+        .brand-info p {
+            font-size: 11px;
+            color: var(--text-muted);
+            margin-top: 3px;
+        }
+
+        /* Toggle Nav Buttons */
+        .tab-toggle-container {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 12px;
-            padding: 14px 16px;
+            gap: 10px;
+            padding: 0 16px;
+            margin-bottom: 16px;
         }
 
-        .metric-card {
+        .tab-toggle-btn {
             background: var(--card-surface);
-            border: 1px solid var(--border-line);
-            border-radius: 8px;
+            border: 1px solid var(--border-subtle);
+            color: var(--text-muted);
             padding: 10px;
-            text-align: center;
-        }
-
-        .metric-val {
-            font-size: 12px;
+            border-radius: 8px;
+            font-size: 11px;
             font-weight: 700;
-            color: var(--accent-emerald);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            cursor: pointer;
             text-transform: uppercase;
             letter-spacing: 0.5px;
+            transition: all 0.2s ease;
         }
 
-        .metric-lbl {
-            font-size: 9px;
-            color: var(--text-secondary);
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            margin-top: 2px;
+        .tab-toggle-btn.active {
+            background: var(--accent-green);
+            color: #07090e;
+            border-color: var(--accent-green);
         }
 
-        /* Main Container & Sections */
+        /* Main Container Panes */
         .main-container {
             padding: 0 16px;
         }
@@ -157,337 +197,261 @@
             display: flex;
         }
 
+        /* Content Box */
         .content-box {
             background: var(--card-surface);
-            border: 1px solid var(--border-line);
-            border-radius: 10px;
+            border: 1px solid var(--border-subtle);
+            border-radius: 12px;
             padding: 16px;
         }
 
         .content-box h2 {
-            font-size: 14px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            color: var(--text-primary);
+            font-size: 16px;
+            font-weight: 800;
+            color: var(--text-main);
             margin-bottom: 4px;
+            letter-spacing: 0.3px;
         }
 
         .content-box p {
             font-size: 11px;
-            color: var(--text-secondary);
+            color: var(--text-muted);
             line-height: 1.4;
-            margin-bottom: 12px;
+            margin-bottom: 14px;
         }
 
-        /* Search & Form Controls */
-        .search-field, .form-input, .form-select {
+        .search-field {
             width: 100%;
-            background: var(--platform-bg);
-            border: 1px solid var(--border-line);
-            border-radius: 6px;
-            padding: 10px 12px;
-            color: var(--text-primary);
+            background: #05070a;
+            border: 1px solid var(--border-subtle);
+            border-radius: 8px;
+            padding: 11px 14px;
+            color: var(--text-main);
             font-size: 12px;
             outline: none;
-            margin-bottom: 12px;
+            margin-bottom: 14px;
         }
 
-        .search-field:focus, .form-input:focus, .form-select:focus {
-            border-color: var(--accent-emerald);
+        .search-field:focus {
+            border-color: var(--accent-green);
         }
 
-        .form-group {
-            margin-bottom: 10px;
-        }
-
-        .form-group label {
-            display: block;
-            font-size: 10px;
-            font-weight: 700;
-            color: var(--text-secondary);
-            margin-bottom: 4px;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .submit-action-btn {
-            width: 100%;
-            background: var(--accent-emerald);
-            color: #0b0f17;
-            font-weight: 800;
-            border: none;
-            padding: 11px;
-            border-radius: 6px;
-            cursor: pointer;
-            font-size: 12px;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            margin-top: 4px;
-        }
-
-        /* Prospect Cards */
-        .prospect-card-item {
-            background: var(--platform-bg);
-            border: 1px solid var(--border-line);
-            border-radius: 8px;
+        /* Prospect Showcase Card */
+        .prospect-showcase-card {
+            background: #05070a;
+            border: 1px solid var(--border-subtle);
+            border-radius: 10px;
             overflow: hidden;
             margin-top: 10px;
         }
 
-        .prospect-subhead {
+        .card-top-tags {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 6px 12px;
+            padding: 10px 14px;
             background: var(--card-surface);
-            border-bottom: 1px solid var(--border-line);
-            font-size: 10px;
+            border-bottom: 1px solid var(--border-subtle);
         }
 
-        .pos-badge {
-            background: var(--accent-glow);
-            color: var(--accent-emerald);
-            padding: 2px 6px;
-            border-radius: 4px;
+        .position-badge {
+            background: rgba(0, 210, 106, 0.15);
+            color: var(--accent-green);
+            padding: 3px 8px;
+            border-radius: 5px;
+            font-size: 10px;
             font-weight: 700;
             text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
         .age-badge {
-            color: var(--text-secondary);
-            font-weight: 600;
+            background: #141c2c;
+            color: var(--text-main);
+            padding: 3px 8px;
+            border-radius: 5px;
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
         }
 
-        .prospect-main-row {
-            display: flex;
-            align-items: center;
-            padding: 10px 12px;
-            gap: 12px;
-        }
-
-        .prospect-icon-box {
-            width: 36px;
-            height: 36px;
-            background: var(--card-surface);
-            border: 1px solid var(--border-line);
-            border-radius: 6px;
+        .player-silhouette-box {
+            width: 100%;
+            height: 160px;
+            background: radial-gradient(circle at center, #101828 0%, #05070a 100%);
             display: flex;
             align-items: center;
             justify-content: center;
-            color: var(--accent-emerald);
-            flex-shrink: 0;
+            color: #243049;
+            border-bottom: 1px solid var(--border-subtle);
         }
 
-        .prospect-text-info h3 {
-            font-size: 13px;
-            font-weight: 700;
-            color: var(--text-primary);
+        .player-details-footer {
+            padding: 14px;
+            background: #05070a;
         }
 
-        .prospect-text-info p {
-            font-size: 10px;
-            color: var(--text-secondary);
-            margin: 2px 0 0 0;
-            text-transform: uppercase;
-            letter-spacing: 0.3px;
+        .player-name {
+            font-size: 15px;
+            font-weight: 800;
+            color: var(--text-main);
+            margin-bottom: 4px;
         }
 
-        /* Feed & Media Items */
+        .player-location {
+            font-size: 11px;
+            color: var(--accent-green);
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        /* Generic Feed Item */
         .feed-item {
-            background: var(--platform-bg);
-            border: 1px solid var(--border-line);
+            background: #05070a;
+            border: 1px solid var(--border-subtle);
             border-radius: 8px;
             padding: 12px;
             margin-top: 10px;
         }
 
-        .match-layout {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .match-title {
+        .feed-title {
             font-size: 12px;
             font-weight: 700;
-            color: var(--text-primary);
+            color: var(--text-main);
         }
 
-        .match-sub {
-            font-size: 9px;
-            color: var(--accent-emerald);
+        .feed-sub {
+            font-size: 10px;
+            color: var(--accent-green);
             margin-top: 2px;
             font-weight: 600;
             text-transform: uppercase;
-        }
-
-        .score-pill {
-            background: var(--accent-glow);
-            color: var(--accent-emerald);
-            padding: 5px 8px;
-            border-radius: 4px;
-            font-size: 11px;
-            font-weight: 700;
-        }
-
-        .media-thumb-preview {
-            width: 100%;
-            height: 110px;
-            background: var(--platform-bg);
-            border: 1px solid var(--border-line);
-            border-radius: 6px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--accent-emerald);
-            font-size: 11px;
-            font-weight: 700;
-            letter-spacing: 1px;
-            margin-bottom: 8px;
-            text-transform: uppercase;
-        }
-
-        /* Bottom Navigation Bar */
-        .bottom-navigation {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            background: var(--platform-bg);
-            border-top: 1px solid var(--border-line);
-            display: flex;
-            justify-content: space-around;
-            padding: 8px 4px;
-            z-index: 1000;
-        }
-
-        .nav-button {
-            background: transparent;
-            border: none;
-            color: var(--text-secondary);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 4px;
-            padding: 4px;
-            font-size: 9px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.3px;
-            cursor: pointer;
-            flex: 1;
-            transition: color 0.2s;
-        }
-
-        .nav-button svg {
-            width: 18px;
-            height: 18px;
-            fill: currentColor;
-        }
-
-        .nav-button:hover {
-            color: var(--text-primary);
-        }
-
-        .nav-button.active {
-            color: var(--accent-emerald);
-        }
-
-        .loading-state {
-            font-size: 11px;
-            color: var(--text-secondary);
-            text-align: center;
-            padding: 12px;
         }
     </style>
 </head>
 <body>
 
-  <!-- Top Bar Layout matching platform color scheme -->
-  <div class="top-meta-bar">
-    <span>Partner: Adidas</span>
-    <span>Accra Hub</span>
+  <!-- Official Brand Sponsors Ticker -->
+  <div class="sponsor-ticker-wrap">
+    <div class="sponsor-ticker-track">
+      <!-- Item Set 1 -->
+      <div class="sponsor-item">
+        <svg viewBox="0 0 24 24"><path d="M21 7L9 19L3.5 13.5L5 12L9 16L19.5 5.5L21 7Z"/></svg>
+        Nike
+      </div>
+      <div class="sponsor-item">
+        <svg viewBox="0 0 24 24"><circle cx="9" cy="12" r="7" fill="#eb001b" opacity="0.8"/><circle cx="15" cy="12" r="7" fill="#f79e1b" opacity="0.8"/></svg>
+        Mastercard
+      </div>
+      <div class="sponsor-item">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 3v18M3 12h18"/></svg>
+        Mercedes-Benz
+      </div>
+      <div class="sponsor-item">
+        <svg viewBox="0 0 24 24"><path d="M11 2L3 13h7l-2 9 10-12h-7l2-8z"/></svg>
+        Puma
+      </div>
+      <div class="sponsor-item">
+        <svg viewBox="0 0 24 24"><path d="M4 18h16v-2H4v2zm0-5h16v-2H4v2zm0-7v2h16V6H4z"/></svg>
+        Adidas
+      </div>
+      <div class="sponsor-item">
+        <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/></svg>
+        Samsung
+      </div>
+      <div class="sponsor-item">
+        <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+        Qatar Airways
+      </div>
+
+      <!-- Duplicate Set for Seamless Infinite Loop -->
+      <div class="sponsor-item">
+        <svg viewBox="0 0 24 24"><path d="M21 7L9 19L3.5 13.5L5 12L9 16L19.5 5.5L21 7Z"/></svg>
+        Nike
+      </div>
+      <div class="sponsor-item">
+        <svg viewBox="0 0 24 24"><circle cx="9" cy="12" r="7" fill="#eb001b" opacity="0.8"/><circle cx="15" cy="12" r="7" fill="#f79e1b" opacity="0.8"/></svg>
+        Mastercard
+      </div>
+      <div class="sponsor-item">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 3v18M3 12h18"/></svg>
+        Mercedes-Benz
+      </div>
+      <div class="sponsor-item">
+        <svg viewBox="0 0 24 24"><path d="M11 2L3 13h7l-2 9 10-12h-7l2-8z"/></svg>
+        Puma
+      </div>
+      <div class="sponsor-item">
+        <svg viewBox="0 0 24 24"><path d="M4 18h16v-2H4v2zm0-5h16v-2H4v2zm0-7v2h16V6H4z"/></svg>
+        Adidas
+      </div>
+      <div class="sponsor-item">
+        <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/></svg>
+        Samsung
+      </div>
+      <div class="sponsor-item">
+        <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+        Qatar Airways
+      </div>
+    </div>
   </div>
 
-  <header class="header-brand-wrap">
-    <div class="brand-logo-box">
-      <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+  <!-- Main Header with Telescope Icon -->
+  <header class="header-brand">
+    <div class="telescope-icon-box">
+      <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="6" cy="18" r="3"></circle>
+        <path d="M13 6l3 3L7 18l-3-3L13 6z"></path>
+        <line x1="16" y1="3" x2="21" y2="8"></line>
+        <line x1="19" y1="5" x2="21" y2="3"></line>
+      </svg>
     </div>
-    <div class="brand-titles">
-      <h1>SCOUT ESCORT</h1>
+    <div class="brand-info">
+      <h1>SCOUT ESCORT <span class="global-hub-tag">Global Hub</span></h1>
       <p>Connecting West African Elite Talent to European Clubs</p>
     </div>
   </header>
 
-  <!-- Metrics Bar -->
-  <div class="metrics-grid">
-    <div class="metric-card">
-      <div class="metric-val">Verified</div>
-      <div class="metric-lbl">Regional Hub</div>
-    </div>
-    <div class="metric-card">
-      <div class="metric-val">Direct</div>
-      <div class="metric-lbl">Club Access</div>
-    </div>
+  <!-- Tab Toggle Bar -->
+  <div class="tab-toggle-container">
+    <button class="tab-toggle-btn active" onclick="switchMainTab('prospects-pane', this)">
+      ⚽ Prospects & Matches
+    </button>
+    <button class="tab-toggle-btn" onclick="switchMainTab('fixtures-pane', this)">
+      📺 Live Scores & Fixtures
+    </button>
   </div>
 
-  <!-- Main Content Panes -->
+  <!-- Main Container -->
   <div class="main-container">
     
-    <!-- 1. PROSPECTS -->
-    <div id="pane-prospects" class="tab-pane active">
+    <!-- Tab 1: Prospects & Matches -->
+    <div id="prospects-pane" class="tab-pane active">
       <div class="content-box">
-        <h2>Verified Youth Prospects</h2>
-        <p>Browse verified player profiles and athletic performance metrics ready for institutional review.</p>
+        <h2>Verified Youth Prospects Showcase</h2>
+        <p>Browse verified player highlights, match metrics, and physical profiles ready for international review.</p>
         
-        <input type="text" id="prospectSearch" class="search-field" placeholder="Search position, tier, or region..." onkeyup="filterProspects()">
+        <input type="text" id="searchInput" class="search-field" placeholder="Search position, tier, or region..." onkeyup="filterProspects()">
 
-        <div id="prospectList">
-          <div class="prospect-card-item" data-search="centre-back ghana 18">
-            <div class="prospect-subhead">
-              <span class="pos-badge">Centre-Back</span>
+        <div id="prospectsList">
+          <div class="prospect-showcase-card" data-search="centre-back age 18 ghana">
+            <div class="card-top-tags">
+              <span class="position-badge">Centre-Back</span>
               <span class="age-badge">Age: 18</span>
             </div>
-            <div class="prospect-main-row">
-              <div class="prospect-icon-box">
-                <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg>
-              </div>
-              <div class="prospect-text-info">
-                <h3>Player Profile #01</h3>
-                <p>📍 Verified Academy Prospect (Ghana)</p>
-              </div>
+            
+            <div class="player-silhouette-box">
+              <svg viewBox="0 0 24 24" width="64" height="64" fill="currentColor">
+                <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+              </svg>
             </div>
-          </div>
 
-          <div class="prospect-card-item" data-search="attacking midfield 17">
-            <div class="prospect-subhead">
-              <span class="pos-badge">Attacking Midfield</span>
-              <span class="age-badge">Age: 17</span>
-            </div>
-            <div class="prospect-main-row">
-              <div class="prospect-icon-box">
-                <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
-              </div>
-              <div class="prospect-text-info">
-                <h3>Player Profile #02</h3>
-                <p>📍 Verified Academy Prospect (Ghana)</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="prospect-card-item" data-search="winger 19">
-            <div class="prospect-subhead">
-              <span class="pos-badge">Winger</span>
-              <span class="age-badge">Age: 19</span>
-            </div>
-            <div class="prospect-main-row">
-              <div class="prospect-icon-box">
-                <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8 8 0 0 1-8 8zm1-13h-2v6h6v-2h-4z"/></svg>
-              </div>
-              <div class="prospect-text-info">
-                <h3>Player Profile #03</h3>
-                <p>📍 Verified Academy Prospect (Ghana)</p>
+            <div class="player-details-footer">
+              <div class="player-name">Player Profile</div>
+              <div class="player-location">
+                📍 Verified Academy Prospect (Ghana)
               </div>
             </div>
           </div>
@@ -495,210 +459,43 @@
       </div>
     </div>
 
-    <!-- 2. REGISTER -->
-    <div id="pane-register" class="tab-pane">
+    <!-- Tab 2: Live Scores & Fixtures -->
+    <div id="fixtures-pane" class="tab-pane">
       <div class="content-box">
-        <h2>Talent Registration Portal</h2>
-        <p>Submit player credentials for professional evaluation.</p>
-        <form onsubmit="event.preventDefault(); alert('Profile submitted successfully.');">
-          <div class="form-group">
-            <label>Full Name</label>
-            <input type="text" class="form-input" placeholder="e.g. Kwame Mensah" required>
-          </div>
-          <div class="form-group">
-            <label>Primary Position</label>
-            <select class="form-select" required>
-              <option value="">Select Position</option>
-              <option>Centre-Back</option>
-              <option>Midfielder</option>
-              <option>Winger</option>
-              <option>Striker</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label>Age</label>
-            <input type="number" class="form-input" placeholder="17" required>
-          </div>
-          <button type="submit" class="submit-action-btn">Submit Profile</button>
-        </form>
-      </div>
-    </div>
-
-    <!-- 3. PHOTOS -->
-    <div id="pane-photos" class="tab-pane">
-      <div class="content-box">
-        <h2>Scouting Gallery</h2>
-        <p>Visual documentation of regional training combines in Accra.</p>
+        <h2>Live Scores & Fixtures</h2>
+        <p>Real-time tournament tracking across West African academies and European scout viewings.</p>
+        
         <div class="feed-item">
-          <div class="media-thumb-preview">ARCHIVE FOOTAGE</div>
-          <h3 class="match-title">West African Combine 2026</h3>
-          <p class="match-sub">Accra Training Ground</p>
+          <div class="feed-title">Accra Elite Showcase vs Right to Dream</div>
+          <div class="feed-sub">Live • Matchday 3</div>
         </div>
-      </div>
-    </div>
-
-    <!-- 4. MATCHES -->
-    <div id="pane-matches" class="tab-pane">
-      <div class="content-box">
-        <h2>Live Fixtures</h2>
-        <p>Active match trackers and scouting timetables.</p>
-        <div id="scoresContainer">
-          <div class="loading-state">Fetching live match schedule...</div>
+        <div class="feed-item">
+          <div class="feed-title">West African Youth Cup Final</div>
+          <div class="feed-sub">Scheduled • Accra Sports Stadium</div>
         </div>
-      </div>
-    </div>
-
-    <!-- 5. NEWS -->
-    <div id="pane-news" class="tab-pane">
-      <div class="content-box">
-        <h2>Scouting Intelligence</h2>
-        <p>Latest updates from European club scouts.</p>
-        <div id="newsContainer">
-          <div class="loading-state">Loading intelligence feeds...</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- 6. LOGIN -->
-    <div id="pane-login" class="tab-pane">
-      <div class="content-box">
-        <h2>Scout & Director Login</h2>
-        <p>Secure terminal access for institutional scouts.</p>
-        <form onsubmit="event.preventDefault(); alert('Authenticating institutional credentials...');">
-          <div class="form-group">
-            <label>Institutional Email</label>
-            <input type="email" class="form-input" placeholder="scout@club.eu" required>
-          </div>
-          <div class="form-group">
-            <label>Access Key</label>
-            <input type="password" class="form-input" placeholder="••••••••" required>
-          </div>
-          <button type="submit" class="submit-action-btn">Authenticate</button>
-        </form>
       </div>
     </div>
 
   </div>
-
-  <!-- Bottom Navigation Bar -->
-  <nav class="bottom-navigation">
-    <button class="nav-button active" onclick="switchTab('pane-prospects', event)">
-      <svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg>
-      <span>Prospects</span>
-    </button>
-    <button class="nav-button" onclick="switchTab('pane-register', event)">
-      <svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-2 10h-4v4h-2v-4H7v-2h4V7h2v4h4v2z"/></svg>
-      <span>Register</span>
-    </button>
-    <button class="nav-button" onclick="switchTab('pane-photos', event)">
-      <svg viewBox="0 0 24 24"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg>
-      <span>Photos</span>
-    </button>
-    <button class="nav-button" onclick="switchTab('pane-matches', event)">
-      <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
-      <span>Matches</span>
-    </button>
-    <button class="nav-button" onclick="switchTab('pane-news', event)">
-      <svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/></svg>
-      <span>News</span>
-    </button>
-    <button class="nav-button" onclick="switchTab('pane-login', event)">
-      <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"/></svg>
-      <span>Login</span>
-    </button>
-  </nav>
 
   <!-- Script Engine -->
   <script>
-    function switchTab(paneId, event) {
+    function switchMainTab(paneId, btnElement) {
       document.querySelectorAll('.tab-pane').forEach(pane => pane.classList.remove('active'));
-      document.querySelectorAll('.nav-button').forEach(btn => btn.classList.remove('active'));
+      document.querySelectorAll('.tab-toggle-btn').forEach(btn => btn.classList.remove('active'));
       
       document.getElementById(paneId).classList.add('active');
-      let btn = event.currentTarget.closest('.nav-button');
-      if (btn) btn.classList.add('active');
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      btnElement.classList.add('active');
     }
 
     function filterProspects() {
-      let query = document.getElementById('prospectSearch').value.toLowerCase();
-      let items = document.querySelectorAll('.prospect-card-item');
-      items.forEach(item => {
-        let text = item.getAttribute('data-search') + " " + item.innerText.toLowerCase();
-        item.style.display = text.includes(query) ? "block" : "none";
+      let query = document.getElementById('searchInput').value.toLowerCase();
+      let cards = document.querySelectorAll('.prospect-showcase-card');
+      cards.forEach(card => {
+        let text = card.getAttribute('data-search') + " " + card.innerText.toLowerCase();
+        card.style.display = text.includes(query) ? "block" : "none";
       });
     }
-
-    async function fetchLiveScores() {
-      const container = document.getElementById('scoresContainer');
-      try {
-        const response = await fetch('https://www.thesportsdb.com/api/v1/json/3/eventsday.php?d=' + new Date().toISOString().split('T')[0]);
-        const data = await response.json();
-        if (data && data.events && data.events.length > 0) {
-          container.innerHTML = '';
-          data.events.slice(0, 5).forEach(match => {
-            container.innerHTML += `
-              <div class="feed-item">
-                <div class="match-layout">
-                  <div>
-                    <div class="match-title">${match.strHomeTeam} vs ${match.strAwayTeam}</div>
-                    <div class="match-sub">${match.strLeague || 'Global Match'} • ${match.strStatus || 'Live'}</div>
-                  </div>
-                  <div class="score-pill">${match.intHomeScore ?? '-'} : ${match.intAwayScore ?? '-'}</div>
-                </div>
-              </div>
-            `;
-          });
-        } else {
-          fallbackScores(container);
-        }
-      } catch (e) {
-        fallbackScores(container);
-      }
-    }
-
-    function fallbackScores(container) {
-      container.innerHTML = `
-        <div class="feed-item">
-          <div class="match-layout">
-            <div>
-              <div class="match-title">Ghana Premier League Showcase</div>
-              <div class="match-sub">Accra Sports Stadium • Scheduled</div>
-            </div>
-            <div class="score-pill">VS</div>
-          </div>
-        </div>
-      `;
-    }
-
-    async function fetchNews() {
-      const container = document.getElementById('newsContainer');
-      try {
-        const res = await fetch('https://api.rss2json.com/v1/api.json?rss_url=https://www.skysports.com/rss/12040');
-        const data = await res.json();
-        if (data && data.items && data.items.length > 0) {
-          container.innerHTML = '';
-          data.items.slice(0, 3).forEach(item => {
-            container.innerHTML += `
-              <div class="feed-item" onclick="window.open('${item.link}', '_blank')" style="cursor:pointer;">
-                <span class="match-sub">Sky Sports Football</span>
-                <div class="match-title" style="margin-top:2px;">${item.title}</div>
-              </div>
-            `;
-          });
-        }
-      } catch (e) {
-        container.innerHTML = `
-          <div class="feed-item">
-            <span class="match-sub">Scout Radar</span>
-            <div class="match-title" style="margin-top:2px;">West African Academies Draw European Attention</div>
-          </div>
-        `;
-      }
-    }
-
-    fetchLiveScores();
-    fetchNews();
   </script>
 </body>
 </html>
