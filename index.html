@@ -61,43 +61,37 @@
             -webkit-font-smoothing: antialiased;
         }
 
-        /* Sponsors Ticker Bar */
-        .sponsor-ticker-wrap {
+        /* Clean Sponsor Bar */
+        .sponsor-bar {
             background: #05070a;
             border-bottom: 1px solid var(--border-subtle);
-            overflow: hidden;
+            padding: 10px 14px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            overflow-x: auto;
             white-space: nowrap;
-            padding: 10px 0;
-            position: relative;
+            gap: 20px;
+            scrollbar-width: none; /* Firefox */
         }
 
-        .sponsor-ticker-track {
-            display: inline-flex;
-            gap: 40px;
-            align-items: center;
-            animation: tickerScroll 30s linear infinite;
+        .sponsor-bar::-webkit-scrollbar {
+            display: none; /* Chrome/Safari */
         }
 
-        .sponsor-item {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            font-size: 11px;
+        .sponsor-brand {
+            font-size: 10px;
             font-weight: 800;
-            letter-spacing: 1.5px;
+            letter-spacing: 1.2px;
             text-transform: uppercase;
             color: var(--text-muted);
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
         }
 
-        .sponsor-item svg {
-            width: 16px;
-            height: 16px;
-            fill: currentColor;
-        }
-
-        @keyframes tickerScroll {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); }
+        .sponsor-brand span {
+            color: var(--accent-green);
         }
 
         /* Main Header Brand */
@@ -105,7 +99,7 @@
             display: flex;
             align-items: center;
             gap: 12px;
-            padding: 20px 16px 16px 16px;
+            padding: 18px 16px 14px 16px;
         }
 
         .telescope-icon-box {
@@ -333,79 +327,25 @@
 </head>
 <body>
 
-  <!-- Official Brand Sponsors Ticker -->
-  <div class="sponsor-ticker-wrap">
-    <div class="sponsor-ticker-track">
-      <!-- Item Set 1 -->
-      <div class="sponsor-item">
-        <svg viewBox="0 0 24 24"><path d="M21 7L9 19L3.5 13.5L5 12L9 16L19.5 5.5L21 7Z"/></svg>
-        Nike
-      </div>
-      <div class="sponsor-item">
-        <svg viewBox="0 0 24 24"><circle cx="9" cy="12" r="7" fill="#eb001b" opacity="0.8"/><circle cx="15" cy="12" r="7" fill="#f79e1b" opacity="0.8"/></svg>
-        Mastercard
-      </div>
-      <div class="sponsor-item">
-        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 3v18M3 12h18"/></svg>
-        Mercedes-Benz
-      </div>
-      <div class="sponsor-item">
-        <svg viewBox="0 0 24 24"><path d="M11 2L3 13h7l-2 9 10-12h-7l2-8z"/></svg>
-        Puma
-      </div>
-      <div class="sponsor-item">
-        <svg viewBox="0 0 24 24"><path d="M4 18h16v-2H4v2zm0-5h16v-2H4v2zm0-7v2h16V6H4z"/></svg>
-        Adidas
-      </div>
-      <div class="sponsor-item">
-        <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/></svg>
-        Samsung
-      </div>
-      <div class="sponsor-item">
-        <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
-        Qatar Airways
-      </div>
-
-      <!-- Duplicate Set for Seamless Infinite Loop -->
-      <div class="sponsor-item">
-        <svg viewBox="0 0 24 24"><path d="M21 7L9 19L3.5 13.5L5 12L9 16L19.5 5.5L21 7Z"/></svg>
-        Nike
-      </div>
-      <div class="sponsor-item">
-        <svg viewBox="0 0 24 24"><circle cx="9" cy="12" r="7" fill="#eb001b" opacity="0.8"/><circle cx="15" cy="12" r="7" fill="#f79e1b" opacity="0.8"/></svg>
-        Mastercard
-      </div>
-      <div class="sponsor-item">
-        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 3v18M3 12h18"/></svg>
-        Mercedes-Benz
-      </div>
-      <div class="sponsor-item">
-        <svg viewBox="0 0 24 24"><path d="M11 2L3 13h7l-2 9 10-12h-7l2-8z"/></svg>
-        Puma
-      </div>
-      <div class="sponsor-item">
-        <svg viewBox="0 0 24 24"><path d="M4 18h16v-2H4v2zm0-5h16v-2H4v2zm0-7v2h16V6H4z"/></svg>
-        Adidas
-      </div>
-      <div class="sponsor-item">
-        <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/></svg>
-        Samsung
-      </div>
-      <div class="sponsor-item">
-        <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
-        Qatar Airways
-      </div>
-    </div>
+  <!-- Official Brand Sponsors Bar -->
+  <div class="sponsor-bar">
+    <div class="sponsor-brand">Nike</div>
+    <div class="sponsor-brand">Mastercard</div>
+    <div class="sponsor-brand">Benz</div>
+    <div class="sponsor-brand">Puma</div>
+    <div class="sponsor-brand">Adidas</div>
+    <div class="sponsor-brand">Samsung</div>
+    <div class="sponsor-brand">Qatar Airways</div>
   </div>
 
-  <!-- Main Header with Telescope Icon -->
+  <!-- Main Header with Upright Telescope Icon -->
   <header class="header-brand">
     <div class="telescope-icon-box">
+      <!-- Upright Telescope / Binocular Icon -->
       <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <circle cx="6" cy="18" r="3"></circle>
-        <path d="M13 6l3 3L7 18l-3-3L13 6z"></path>
-        <line x1="16" y1="3" x2="21" y2="8"></line>
-        <line x1="19" y1="5" x2="21" y2="3"></line>
+        <path d="M2 6h4l3 6h6l3-6h4v2l-3 7v4a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-4L2 8V6z"></path>
+        <circle cx="9" cy="14" r="2"></circle>
+        <circle cx="15" cy="14" r="2"></circle>
       </svg>
     </div>
     <div class="brand-info">
