@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <!-- SEO & Search Indexing Metadata -->
-    <title>Scout Escort | West African Football Talent & Scouting Platform</title>
-    <meta name="description" content="Connecting West African elite youth football talent and verified academy prospects directly to European professional clubs and scouts.">
+    <title>Scout Escort | Global Football Talent & Scouting Platform</title>
+    <meta name="description" content="Connecting elite youth football talent and verified academy prospects directly to European professional clubs and scouts.">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://alebthetrader.github.io/scout-escort/">
 
@@ -17,12 +17,7 @@
       "@type": "SportsOrganization",
       "name": "Scout Escort",
       "url": "https://alebthetrader.github.io/scout-escort/",
-      "description": "Connecting West African elite football talent to European clubs.",
-      "address": {
-        "@type": "PostalAddress",
-        "addressLocality": "Accra",
-        "addressCountry": "Ghana"
-      },
+      "description": "Connecting elite football talent to European clubs.",
       "sport": "Football"
     }
     </script>
@@ -61,50 +56,56 @@
             -webkit-font-smoothing: antialiased;
         }
 
-        /* Clean Sponsor Bar */
-        .sponsor-bar {
+        /* Official Global Brand Sponsors Ticker */
+        .sponsor-ticker-wrap {
             background: #05070a;
             border-bottom: 1px solid var(--border-subtle);
-            padding: 10px 14px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            overflow-x: auto;
+            overflow: hidden;
             white-space: nowrap;
-            gap: 20px;
-            scrollbar-width: none; /* Firefox */
+            padding: 12px 0;
+            position: relative;
         }
 
-        .sponsor-bar::-webkit-scrollbar {
-            display: none; /* Chrome/Safari */
+        .sponsor-ticker-track {
+            display: inline-flex;
+            gap: 48px;
+            align-items: center;
+            animation: tickerScroll 35s linear infinite;
         }
 
-        .sponsor-brand {
-            font-size: 10px;
-            font-weight: 800;
-            letter-spacing: 1.2px;
-            text-transform: uppercase;
-            color: var(--text-muted);
+        .sponsor-item {
             display: inline-flex;
             align-items: center;
-            gap: 5px;
+            gap: 10px;
+            font-size: 11px;
+            font-weight: 800;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: var(--text-muted);
         }
 
-        .sponsor-brand span {
-            color: var(--accent-green);
+        .sponsor-item svg {
+            height: 18px;
+            width: auto;
+            fill: currentColor;
+        }
+
+        @keyframes tickerScroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
         }
 
         /* Main Header Brand */
         .header-brand {
             display: flex;
             align-items: center;
-            gap: 12px;
-            padding: 18px 16px 14px 16px;
+            gap: 14px;
+            padding: 20px 16px 16px 16px;
         }
 
         .telescope-icon-box {
-            width: 48px;
-            height: 48px;
+            width: 50px;
+            height: 50px;
             background: linear-gradient(135deg, #0d121c, #00d26a15);
             border: 1px solid var(--accent-green);
             border-radius: 12px;
@@ -117,7 +118,7 @@
         }
 
         .brand-info h1 {
-            font-size: 19px;
+            font-size: 20px;
             font-weight: 800;
             letter-spacing: 0.5px;
             color: var(--text-main);
@@ -156,7 +157,7 @@
             background: var(--card-surface);
             border: 1px solid var(--border-subtle);
             color: var(--text-muted);
-            padding: 10px;
+            padding: 11px;
             border-radius: 8px;
             font-size: 11px;
             font-weight: 700;
@@ -327,21 +328,74 @@
 </head>
 <body>
 
-  <!-- Official Brand Sponsors Bar -->
-  <div class="sponsor-bar">
-    <div class="sponsor-brand">Nike</div>
-    <div class="sponsor-brand">Mastercard</div>
-    <div class="sponsor-brand">Benz</div>
-    <div class="sponsor-brand">Puma</div>
-    <div class="sponsor-brand">Adidas</div>
-    <div class="sponsor-brand">Samsung</div>
-    <div class="sponsor-brand">Qatar Airways</div>
+  <!-- Official Brand Sponsors Ticker -->
+  <div class="sponsor-ticker-wrap">
+    <div class="sponsor-ticker-track">
+      <!-- Set 1 -->
+      <div class="sponsor-item">
+        <svg viewBox="0 0 24 24"><path d="M21 7L9 19L3.5 13.5L5 12L9 16L19.5 5.5L21 7Z"/></svg>
+        Nike
+      </div>
+      <div class="sponsor-item">
+        <svg viewBox="0 0 24 24" style="width:28px;"><circle cx="9" cy="12" r="8" fill="#eb001b" opacity="0.85"/><circle cx="15" cy="12" r="8" fill="#f79e1b" opacity="0.85"/></svg>
+        Mastercard
+      </div>
+      <div class="sponsor-item">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 3v18M3 12h18"/></svg>
+        Mercedes-Benz
+      </div>
+      <div class="sponsor-item">
+        <svg viewBox="0 0 24 24"><path d="M11 2L3 13h7l-2 9 10-12h-7l2-8z"/></svg>
+        Puma
+      </div>
+      <div class="sponsor-item">
+        <svg viewBox="0 0 24 24"><path d="M4 18h16v-2H4v2zm0-5h16v-2H4v2zm0-7v2h16V6H4z"/></svg>
+        Adidas
+      </div>
+      <div class="sponsor-item">
+        <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/></svg>
+        Samsung
+      </div>
+      <div class="sponsor-item">
+        <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+        Qatar Airways
+      </div>
+
+      <!-- Set 2 (Seamless Infinite Loop) -->
+      <div class="sponsor-item">
+        <svg viewBox="0 0 24 24"><path d="M21 7L9 19L3.5 13.5L5 12L9 16L19.5 5.5L21 7Z"/></svg>
+        Nike
+      </div>
+      <div class="sponsor-item">
+        <svg viewBox="0 0 24 24" style="width:28px;"><circle cx="9" cy="12" r="8" fill="#eb001b" opacity="0.85"/><circle cx="15" cy="12" r="8" fill="#f79e1b" opacity="0.85"/></svg>
+        Mastercard
+      </div>
+      <div class="sponsor-item">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 3v18M3 12h18"/></svg>
+        Mercedes-Benz
+      </div>
+      <div class="sponsor-item">
+        <svg viewBox="0 0 24 24"><path d="M11 2L3 13h7l-2 9 10-12h-7l2-8z"/></svg>
+        Puma
+      </div>
+      <div class="sponsor-item">
+        <svg viewBox="0 0 24 24"><path d="M4 18h16v-2H4v2zm0-5h16v-2H4v2zm0-7v2h16V6H4z"/></svg>
+        Adidas
+      </div>
+      <div class="sponsor-item">
+        <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/></svg>
+        Samsung
+      </div>
+      <div class="sponsor-item">
+        <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+        Qatar Airways
+      </div>
+    </div>
   </div>
 
   <!-- Main Header with Upright Telescope Icon -->
   <header class="header-brand">
     <div class="telescope-icon-box">
-      <!-- Upright Telescope / Binocular Icon -->
       <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
         <path d="M2 6h4l3 6h6l3-6h4v2l-3 7v4a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-4L2 8V6z"></path>
         <circle cx="9" cy="14" r="2"></circle>
@@ -350,7 +404,7 @@
     </div>
     <div class="brand-info">
       <h1>SCOUT ESCORT <span class="global-hub-tag">Global Hub</span></h1>
-      <p>Connecting West African Elite Talent to European Clubs</p>
+      <p>Connecting Elite Talent to European Clubs</p>
     </div>
   </header>
 
@@ -376,7 +430,7 @@
         <input type="text" id="searchInput" class="search-field" placeholder="Search position, tier, or region..." onkeyup="filterProspects()">
 
         <div id="prospectsList">
-          <div class="prospect-showcase-card" data-search="centre-back age 18 ghana">
+          <div class="prospect-showcase-card" data-search="centre-back age 18 professional">
             <div class="card-top-tags">
               <span class="position-badge">Centre-Back</span>
               <span class="age-badge">Age: 18</span>
@@ -391,7 +445,7 @@
             <div class="player-details-footer">
               <div class="player-name">Player Profile</div>
               <div class="player-location">
-                📍 Verified Academy Prospect (Ghana)
+                📍 Verified Academy Prospect
               </div>
             </div>
           </div>
@@ -403,15 +457,15 @@
     <div id="fixtures-pane" class="tab-pane">
       <div class="content-box">
         <h2>Live Scores & Fixtures</h2>
-        <p>Real-time tournament tracking across West African academies and European scout viewings.</p>
+        <p>Real-time tournament tracking across global academies and European scout viewings.</p>
         
         <div class="feed-item">
-          <div class="feed-title">Accra Elite Showcase vs Right to Dream</div>
+          <div class="feed-title">International Elite Showcase vs Global Academy</div>
           <div class="feed-sub">Live • Matchday 3</div>
         </div>
         <div class="feed-item">
-          <div class="feed-title">West African Youth Cup Final</div>
-          <div class="feed-sub">Scheduled • Accra Sports Stadium</div>
+          <div class="feed-title">International Youth Cup Final</div>
+          <div class="feed-sub">Scheduled • Central Arena</div>
         </div>
       </div>
     </div>
@@ -439,6 +493,7 @@
   </script>
 </body>
 </html>
+
 
 
 
