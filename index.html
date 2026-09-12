@@ -3,16 +3,16 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>Scout Escort | Digital Football Talent & Showcase Hub</title>
+  <title>Scout Escort | Elite Digital Football Talent & Scouting Hub</title>
 
   <!-- SEO & Search Engine Meta Tags -->
-  <meta name="description" content="Discover and connect with elite West African football talent, youth prospects, and professional scouts on Scout Escort.">
-  <meta name="keywords" content="football talent scouting, African football prospects, youth football trials Ghana, soccer scout platform, Scout Escort">
+  <meta name="description" content="Discover, showcase, and connect elite international football talent, youth prospects, and professional scouts globally on Scout Escort.">
+  <meta name="keywords" content="football talent scouting, African football prospects, youth football trials, soccer scout platform, Scout Escort, live football scores">
   <meta name="author" content="Caleb Anneh">
 
   <!-- Social Media Preview Cards (Open Graph Tags for WhatsApp, X, Facebook) -->
-  <meta property="og:title" content="Scout Escort | Digital Football Talent & Showcase Hub">
-  <meta property="og:description" content="Connect emerging West African football talent with global scouts and academies. Browse verified player profiles and live match data.">
+  <meta property="og:title" content="Scout Escort | Elite Digital Football Talent & Scouting Hub">
+  <meta property="og:description" content="Connect emerging football talent with professional global scouts and clubs. Browse verified player profiles, live match feeds, and transfer news.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://scout-escort.github.io">
   <meta property="og:image" content="https://images.unsplash.com/photo-1508098682722-e99c43a406b2?q=80&w=1200&auto=format&fit=crop">
@@ -36,6 +36,7 @@
       --text-dark: #111111;
       --accent-red: #cc0000;
       --primary-green: #044b23;
+      --gold-accent: #f59e0b;
     }
 
     * {
@@ -115,6 +116,49 @@
       flex-direction: column;
     }
 
+    /* Professional Brand Header & Logo Styling */
+    .brand-header {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      background: linear-gradient(135deg, #052e16 0%, #064e3b 100%);
+      padding: 16px;
+      border-radius: 10px;
+      margin-bottom: 18px;
+      color: white;
+      box-shadow: 0 4px 12px rgba(4, 75, 35, 0.2);
+    }
+
+    .brand-logo-container {
+      width: 52px;
+      height: 52px;
+      background: #ffffff;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+      border: 2px solid var(--gold-accent);
+    }
+
+    .brand-title-group h1 {
+      margin: 0;
+      font-size: 18px;
+      font-weight: 900;
+      letter-spacing: 0.5px;
+      color: #ffffff;
+      text-transform: uppercase;
+    }
+
+    .brand-title-group p {
+      margin: 3px 0 0 0;
+      font-size: 11px;
+      color: #cbd5e1;
+      letter-spacing: 0.3px;
+      font-weight: 500;
+    }
+
     /* Fixed Bottom Navigation Menu Bar (5 Tabs) */
     .bottom-nav {
       position: fixed;
@@ -164,12 +208,19 @@
     }
 
     .player-card {
-      border: 1px solid #e0e0e0;
+      border: 1px solid #e2e8f0;
       border-radius: 8px;
       padding: 14px;
       display: flex;
       justify-content: space-between;
       align-items: center;
+      background: #ffffff;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    .player-card:hover {
+      border-color: #cbd5e1;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.04);
     }
 
     .btn-action {
@@ -185,15 +236,18 @@
       text-align: center;
       flex-shrink: 0;
       margin-left: 10px;
+      box-shadow: 0 2px 4px rgba(204,0,0,0.2);
     }
 
     .section-title {
-      font-size: 14px;
+      font-size: 13px;
       font-weight: 800;
       color: var(--primary-green);
-      margin: 16px 0 8px 0;
+      margin: 18px 0 8px 0;
       text-transform: uppercase;
-      letter-spacing: 0.5px;
+      letter-spacing: 0.8px;
+      border-bottom: 2px solid #f1f5f9;
+      padding-bottom: 4px;
     }
 
     .form-grid {
@@ -306,6 +360,23 @@
   <div class="container">
     <div class="card">
 
+      <!-- Professional Custom Logo & Crest Header Added For Trust and SEO Authority -->
+      <div class="brand-header">
+        <div class="brand-logo-container">
+          <!-- Custom Scout Escort Crest SVG -->
+          <svg width="34" height="34" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="32" cy="32" r="30" fill="#044b23"/>
+            <circle cx="32" cy="32" r="26" stroke="#f59e0b" stroke-width="2"/>
+            <path d="M32 14L36.5 24H48L39 30.5L42.5 41L32 35L21.5 41L25 30.5L16 24H27.5L32 14Z" fill="#f59e0b"/>
+            <path d="M32 20L34.5 26.5H41.5L36 30.5L38 37L32 33L26 37L28 30.5L22.5 26.5H29.5L32 20Z" fill="#ffffff"/>
+          </svg>
+        </div>
+        <div class="brand-title-group">
+          <h1>Scout Escort</h1>
+          <p>Official Digital Football Talent & Scouting Hub</p>
+        </div>
+      </div>
+
       <!-- Tab 1: Matches -->
       <div id="matches" class="tab-content active">
         <h2 style="color: var(--primary-green); margin-top:0;">Featured Showcase Matches</h2>
@@ -394,6 +465,13 @@
         <div class="matches-list" id="playerList">
           <!-- Major World Leagues Hub -->
           <div class="section-title" style="margin-top:0;">Top Global Leagues</div>
+          <div class="player-card league-card">
+            <div>
+              <h4 style="margin: 0 0 4px 0; font-size: 15px;">⭐ UEFA Champions League (Europe)</h4>
+              <p style="margin: 0; font-size: 12px; color: #666;">Tier 1 Elite • Live Scores & Standings</p>
+            </div>
+            <a href="https://www.google.com/search?q=UEFA+Champions+League+live+scores+table" target="_blank" rel="noopener" class="btn-action">Live Updates</a>
+          </div>
           <div class="player-card league-card">
             <div>
               <h4 style="margin: 0 0 4px 0; font-size: 15px;">🏴󠁧󠁢󠁥󠁮󠁧󠁿 Premier League (England)</h4>
@@ -673,7 +751,6 @@
         const data = await response.json();
         
         if (!data.response || data.response.length === 0) {
-          // Fallback to recent fixtures if no games are live right this moment
           loadRecentApiFixtures();
           return;
         }
