@@ -17,6 +17,40 @@
       gtag('config', 'G-9DMZLL3XQE');
     </script>
 
+    <!-- Firebase SDKs -->
+    <script type="module">
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+      import { getFirestore, collection, addDoc, getDocs, query, orderBy, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+
+      // TODO: Replace with your actual Firebase project configuration credentials
+      const firebaseConfig = {
+        apiKey: "YOUR_FIREBASE_API_KEY",
+        authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
+        projectId: "YOUR_PROJECT_ID",
+        storageBucket: "YOUR_PROJECT_ID.appspot.com",
+        messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
+        appId: "YOUR_APP_ID"
+      };
+
+      // Initialize Firebase
+      const app = initializeApp(firebaseConfig);
+      const db = getFirestore(app);
+
+      // Make functions globally available
+      window.db = db;
+      window.collection = collection;
+      window.addDoc = addDoc;
+      window.getDocs = getDocs;
+      window.query = query;
+      window.orderBy = orderBy;
+      window.serverTimestamp = serverTimestamp;
+
+      // Load profiles on startup
+      window.addEventListener('DOMContentLoaded', () => {
+        loadProfilesFromCloud();
+      });
+    </script>
+
     <style>
         :root {
             --bg-color: #080c14;
@@ -261,6 +295,11 @@
             cursor: pointer;
             font-size: 12px;
             margin-top: 6px;
+        }
+
+        .submit-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
         }
 
         /* Prospect Card */
@@ -556,10 +595,10 @@
 </head>
 <body>
 
-  <!-- Sponsor Ticker with Fully Corrected Authentic Brand Vectors -->
+  <!-- Sponsor Ticker with Authentic Brand Vectors -->
   <div class="global-ticker">
     <div class="ticker-track">
-      <!-- 1. Mercedes-Benz (Exact Precise Star & Circle) -->
+      <!-- 1. Mercedes-Benz -->
       <span class="ticker-symbol brand-benz">
         <svg viewBox="0 0 512 512">
           <path d="M256 32C132.3 32 32 132.3 32 256s100.3 224 224 224 224-100.3 224-224S379.7 32 256 32zm0 416c-105.8 0-192-86.2-192-192S150.2 64 256 64s192 86.2 192 192-86.2 192-192 192z"/>
@@ -567,27 +606,27 @@
         </svg>
       </span>
 
-      <!-- 2. Puma Leaping Cat Silhouette -->
+      <!-- 2. Puma -->
       <span class="ticker-symbol brand-puma">
         <svg viewBox="0 0 512 512"><path d="M473.6 226.4c-17.6-4.8-50.7-11-77.1-4.4-26.5 6.6-48.4 26.4-77.1 26.4-28.7 0-50.6-19.8-77.1-26.4-26.5-6.6-59.5 0-77.1 4.4-44 11-88 37.4-121 81.4 55-77 132-66 176-44 33 17.6 55 17.6 88 0 44-22 121-33 176 44-33-44-77-70.4-121-81.4z"/></svg>
       </span>
 
-      <!-- 3. Adidas Three Sloping Bars -->
+      <!-- 3. Adidas -->
       <span class="ticker-symbol brand-adidas">
         <svg viewBox="0 0 24 24"><path d="M3 19h3.2l3-12H6.2L3 19zm6 0h3.2l3-12h-3.2L9 19zm6 0h3.2l3-12h-3.2L15 19z"/></svg>
       </span>
 
-      <!-- 4. Qatar Airways Arabian Oryx Emblem -->
+      <!-- 4. Qatar Airways -->
       <span class="ticker-symbol brand-qatar">
         <svg viewBox="0 0 24 24"><path d="M12 2L3 7v10l9 5 9-5V7l-9-5zm0 2.8l6.2 3.4L12 11.6 5.8 8.2 12 4.8zM5 9.8l6 3.3v6.4l-6-3.3V9.8zm14 0v6.4l-6 3.3v-6.4l6-3.3z"/></svg>
       </span>
 
-      <!-- 5. Mastercard Intersecting Circles -->
+      <!-- 5. Mastercard -->
       <span class="ticker-symbol">
         <div class="mastercard-logo"><div class="mc-circle-1"></div><div class="mc-circle-2"></div></div>
       </span>
 
-      <!-- 6. Nike Swoosh Checkmark -->
+      <!-- 6. Nike -->
       <span class="ticker-symbol brand-nike">
         <svg viewBox="0 0 24 24"><path d="M21.5 6.5C18 7 13 9.5 9.5 15.5c-2.5 4.5-5.5 2.5-5.5 2.5 4.5-2 7.5-6.5 9-9.5-2 1-3.5 3-4.5 4.5 2.5-3 5.5-6 8.5-8z"/></svg>
       </span>
@@ -633,43 +672,7 @@
         <input type="text" id="prospectSearch" class="search-input" placeholder="Search by position or profile details..." onkeyup="filterProspects()">
 
         <div id="prospectList">
-          <div class="prospect-card" data-name="centre-back profile defender" data-details="centre-back">
-            <div class="prospect-header">
-              <span class="badge-position">Centre-Back</span>
-              <span class="badge-profile">Player Profile #01</span>
-            </div>
-            <div class="prospect-body">
-              <div class="prospect-avatar">🛡️</div>
-              <div class="prospect-info">
-                <h3>Player Profile</h3>
-                <p>Age: 18 • Verified Video Reel Available</p>
-                <a href="https://youtube.com" target="_blank" class="video-link-btn">▶ Watch Highlight Video</a>
-              </div>
-            </div>
-            <div class="social-share-bar">
-              <a href="https://api.whatsapp.com/send?text=Check%20out%20this%20Player%20Profile%20on%20Scout%20Escort:%20https://alebthetrader.github.io/scout-escort/" target="_blank" class="share-btn share-whatsapp">💬 WhatsApp</a>
-              <a href="https://www.facebook.com/sharer/sharer.php?u=https://alebthetrader.github.io/scout-escort/" target="_blank" class="share-btn share-facebook">📘 Facebook</a>
-            </div>
-          </div>
-
-          <div class="prospect-card" data-name="winger profile forward" data-details="winger">
-            <div class="prospect-header">
-              <span class="badge-position">Winger</span>
-              <span class="badge-profile">Player Profile #02</span>
-            </div>
-            <div class="prospect-body">
-              <div class="prospect-avatar">⚡</div>
-              <div class="prospect-info">
-                <h3>Player Profile</h3>
-                <p>Age: 17 • Verified Performance Metrics</p>
-                <a href="https://youtube.com" target="_blank" class="video-link-btn">▶ Watch Highlight Video</a>
-              </div>
-            </div>
-            <div class="social-share-bar">
-              <a href="https://api.whatsapp.com/send?text=Check%20out%20this%20Player%20Profile%20on%20Scout%20Escort:%20https://alebthetrader.github.io/scout-escort/" target="_blank" class="share-btn share-whatsapp">💬 WhatsApp</a>
-              <a href="https://www.facebook.com/sharer/sharer.php?u=https://alebthetrader.github.io/scout-escort/" target="_blank" class="share-btn share-facebook">📘 Facebook</a>
-            </div>
-          </div>
+          <!-- Cloud-loaded profiles will populate here automatically -->
         </div>
       </div>
     </div>
@@ -753,7 +756,7 @@
     <div id="register-tab" class="tab-content">
       <div class="section-card">
         <h2>Global Player Registration Session</h2>
-        <p>Register online instantly. Fill in your details and YouTube link to publish your player profile live on the platform right away.</p>
+        <p>Register online instantly. Fill in your details and YouTube link to publish your player profile live on the cloud database right away.</p>
 
         <form id="playerRegistrationForm" onsubmit="registerPlayer(event)">
           <div class="form-group">
@@ -776,7 +779,7 @@
             <label>YouTube Highlight Video Link</label>
             <input type="url" id="regVideo" class="form-input" placeholder="https://youtube.com/watch?v=..." required>
           </div>
-          <button type="submit" class="submit-btn">Publish Profile Live Instantly</button>
+          <button type="submit" id="submitBtn" class="submit-btn">Publish Profile Live Instantly</button>
         </form>
       </div>
     </div>
@@ -791,7 +794,7 @@
     <div class="tab-btn" onclick="switchTab('register-tab', this)">Registration</div>
   </nav>
 
-  <!-- JavaScript -->
+  <!-- JavaScript Application Logic -->
   <script>
     function switchTab(tabId, element) {
       document.querySelectorAll('.tab-content').forEach(tab => {
@@ -819,45 +822,90 @@
       });
     }
 
-    function registerPlayer(event) {
+    // Load saved profiles from Firestore database
+    async function loadProfilesFromCloud() {
+      const prospectList = document.getElementById('prospectList');
+      prospectList.innerHTML = '<p style="text-align:center; color: var(--text-muted); padding: 15px;">Loading live profiles from cloud...</p>';
+
+      try {
+        const q = query(collection(window.db, "players"), orderBy("timestamp", "desc"));
+        const querySnapshot = await getDocs(q);
+        
+        prospectList.innerHTML = '';
+        
+        if (querySnapshot.empty) {
+          prospectList.innerHTML = '<p style="text-align:center; color: var(--text-muted); padding: 15px;">No profiles registered yet. Be the first!</p>';
+          return;
+        }
+
+        let index = querySnapshot.size;
+        querySnapshot.forEach((doc) => {
+          let data = doc.data();
+          let profileNum = index < 10 ? '0' + index : index;
+          
+          let card = document.createElement('div');
+          card.className = 'prospect-card';
+          card.setAttribute('data-name', (data.position + " profile player").toLowerCase());
+          card.setAttribute('data-details', data.position.toLowerCase());
+          
+          card.innerHTML = `
+            <div class="prospect-header">
+              <span class="badge-position">${data.position}</span>
+              <span class="badge-profile">Player Profile #${profileNum}</span>
+            </div>
+            <div class="prospect-body">
+              <div class="prospect-avatar">⚽</div>
+              <div class="prospect-info">
+                <h3>Player Profile</h3>
+                <p>Age: ${data.age} • Verified Cloud-Registered Talent</p>
+                <a href="${data.videoUrl}" target="_blank" class="video-link-btn">▶ Watch Highlight Video</a>
+              </div>
+            </div>
+            <div class="social-share-bar">
+              <a href="https://api.whatsapp.com/send?text=Check%20out%20this%20Player%20Profile%20on%20Scout%20Escort:%20https://Calebthetrader.github.io/scout-escort/" target="_blank" class="share-btn share-whatsapp">💬 WhatsApp</a>
+              <a href="https://www.facebook.com/sharer/sharer.php?u=https://Calebthetrader.github.io/scout-escort/" target="_blank" class="share-btn share-facebook">📘 Facebook</a>
+            </div>
+          `;
+          prospectList.appendChild(card);
+          index--;
+        });
+      } catch (error) {
+        console.error("Error loading profiles: ", error);
+        prospectList.innerHTML = '<p style="text-align:center; color: #ef4444; padding: 15px;">Please configure your Firebase credentials to enable live cloud saving.</p>';
+      }
+    }
+
+    // Register new player and save to database
+    async function registerPlayer(event) {
       event.preventDefault();
       
       let position = document.getElementById('regPosition').value;
       let age = document.getElementById('regAge').value;
       let videoUrl = document.getElementById('regVideo').value;
-      
-      let prospectList = document.getElementById('prospectList');
-      let profileCount = prospectList.children.length + 1;
-      
-      let newCard = document.createElement('div');
-      newCard.className = 'prospect-card';
-      newCard.setAttribute('data-name', position.toLowerCase() + " profile player");
-      newCard.setAttribute('data-details', position.toLowerCase());
-      
-      newCard.innerHTML = `
-        <div class="prospect-header">
-          <span class="badge-position">${position}</span>
-          <span class="badge-profile">Player Profile #${profileCount < 10 ? '0' + profileCount : profileCount}</span>
-        </div>
-        <div class="prospect-body">
-          <div class="prospect-avatar">⚽</div>
-          <div class="prospect-info">
-            <h3>Player Profile</h3>
-            <p>Age: ${age} • Verified Self-Registered Talent</p>
-            <a href="${videoUrl}" target="_blank" class="video-link-btn">▶ Watch Highlight Video</a>
-          </div>
-        </div>
-        <div class="social-share-bar">
-          <a href="https://api.whatsapp.com/send?text=Check%20out%20this%20Player%20Profile%20on%20Scout%20Escort:%20https://alebthetrader.github.io/scout-escort/" target="_blank" class="share-btn share-whatsapp">💬 WhatsApp</a>
-          <a href="https://www.facebook.com/sharer/sharer.php?u=https://alebthetrader.github.io/scout-escort/" target="_blank" class="share-btn share-facebook">📘 Facebook</a>
-        </div>
-      `;
-      
-      prospectList.insertBefore(newCard, prospectList.firstChild);
-      
-      document.getElementById('playerRegistrationForm').reset();
-      alert('Success! Your player profile and YouTube video link have been published live to the platform.');
-      switchTab('profiles-tab', document.querySelector('.bottom-nav .tab-btn'));
+      let submitBtn = document.getElementById('submitBtn');
+
+      submitBtn.disabled = true;
+      submitBtn.innerText = "Publishing to Cloud...";
+
+      try {
+        await addDoc(collection(window.db, "players"), {
+          position: position,
+          age: age,
+          videoUrl: videoUrl,
+          timestamp: serverTimestamp()
+        });
+
+        document.getElementById('playerRegistrationForm').reset();
+        alert('Success! Your player profile has been saved to the cloud database and is now live for all clubs worldwide.');
+        loadProfilesFromCloud();
+        switchTab('profiles-tab', document.querySelector('.bottom-nav .tab-btn'));
+      } catch (error) {
+        console.error("Error adding document: ", error);
+        alert('Error saving profile. Please check your Firebase settings.');
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.innerText = "Publish Profile Live Instantly";
+      }
     }
   </script>
 
