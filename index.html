@@ -1,916 +1,939 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Scout Escort | Digital Football Talent & Showcase Hub</title>
+
+  <!-- SEO & Search Engine Meta Tags -->
+  <meta name="description" content="Discover and connect with elite West African football talent, youth prospects, and professional scouts on Scout Escort.">
+  <meta name="keywords" content="football talent scouting, African football prospects, youth football trials Ghana, soccer scout platform, Scout Escort">
+  <meta name="author" content="Caleb Anneh">
+
+  <!-- Social Media Preview Cards (Open Graph Tags for WhatsApp, X, Facebook) -->
+  <meta property="og:title" content="Scout Escort | Digital Football Talent & Showcase Hub">
+  <meta property="og:description" content="Connect emerging West African football talent with global scouts and academies. Browse verified player profiles and live match data.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://scout-escort.github.io">
+  <meta property="og:image" content="https://images.unsplash.com/photo-1508098682722-e99c43a406b2?q=80&w=1200&auto=format&fit=crop">
+
+  <!-- Google Analytics Tracking -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-9DMZLL3XQE"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-9DMZLL3XQE');
+  </script>
+
+  <!-- Include Supabase for Database & Auth -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+  <style>
+    :root {
+      --bg-color: #0d2818;
+      --card-bg: #ffffff;
+      --text-dark: #111111;
+      --accent-red: #cc0000;
+      --primary-green: #044b23;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html, body {
+      margin: 0 !important;
+      padding: 0 !important;
+      min-height: 100vh;
+      background-color: var(--bg-color);
+      color: var(--text-dark);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
+
+    /* Pinned Top Sponsor Ticker */
+    .sponsor-ticker {
+      width: 100%;
+      background-color: #050b07;
+      overflow: hidden;
+      white-space: nowrap;
+      padding: 10px 0;
+      border-bottom: 1px solid #1a3a25;
+      display: flex;
+      align-items: center;
+    }
+
+    .ticker-content {
+      display: inline-flex;
+      align-items: center;
+      white-space: nowrap;
+      animation: marquee 25s linear infinite;
+    }
+
+    .brand-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-right: 35px;
+      font-size: 14px;
+      font-weight: 800;
+      letter-spacing: 1px;
+      color: #ffffff;
+      text-transform: uppercase;
+    }
+
+    .brand-item img {
+      height: 18px;
+      width: auto;
+      object-fit: contain;
+    }
+
+    .samsung-text { color: #3b82f6; }
+    .bmw-text { color: #0066b1; }
+    .qatar-text { color: #8a1538; }
+
+    @keyframes marquee {
+      0% { transform: translateX(100%); }
+      100% { transform: translateX(-100%); }
+    }
+
+    /* Main Container Structure */
+    .container {
+      max-width: 600px;
+      margin: 15px auto;
+      padding: 0 12px;
+      padding-bottom: 70px;
+    }
+
+    .card {
+      background: var(--card-bg);
+      border-radius: 12px;
+      padding: 20px;
+      min-height: 75vh;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Fixed Bottom Navigation Menu Bar (5 Tabs) */
+    .bottom-nav {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background: #ffffff;
+      border-top: 1px solid #e0e0e0;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      padding: 6px 0;
+      box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+      z-index: 1000;
+    }
+
+    .bottom-nav button {
+      background: none;
+      border: none;
+      color: #666666;
+      font-size: 10px;
+      font-weight: 700;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 3px;
+      cursor: pointer;
+      flex: 1;
+      padding: 4px 0;
+    }
+
+    .bottom-nav button.active {
+      color: var(--primary-green);
+    }
+
+    .bottom-nav button svg {
+      width: 18px;
+      height: 18px;
+      fill: currentColor;
+    }
+
+    /* Card Item Lists */
+    .matches-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .player-card {
+      border: 1px solid #e0e0e0;
+      border-radius: 8px;
+      padding: 14px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .btn-action {
+      background-color: var(--accent-red);
+      color: white;
+      border: none;
+      padding: 8px 14px;
+      border-radius: 6px;
+      font-weight: bold;
+      cursor: pointer;
+      text-decoration: none;
+      font-size: 13px;
+      text-align: center;
+      flex-shrink: 0;
+      margin-left: 10px;
+    }
+
+    .section-title {
+      font-size: 14px;
+      font-weight: 800;
+      color: var(--primary-green);
+      margin: 16px 0 8px 0;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .form-group {
+      margin-bottom: 14px;
+    }
+
+    .form-group.full-width {
+      grid-column: span 2;
+    }
+
+    .form-group label {
+      display: block;
+      font-weight: 700;
+      margin-bottom: 6px;
+      font-size: 12px;
+      color: #333;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .form-group input, .form-group select, .form-group textarea {
+      width: 100%;
+      padding: 10px 12px;
+      border: 1.5px solid #d0d0d0;
+      border-radius: 6px;
+      font-size: 13px;
+      outline: none;
+      background: #fafafa;
+      transition: border-color 0.2s;
+    }
+
+    .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+      border-color: var(--primary-green);
+      background: #ffffff;
+    }
+
+    .submit-btn {
+      width: 100%;
+      background-color: var(--primary-green);
+      color: white;
+      border: none;
+      padding: 14px;
+      font-size: 15px;
+      font-weight: bold;
+      border-radius: 6px;
+      cursor: pointer;
+      margin-top: 10px;
+      letter-spacing: 0.5px;
+      box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+
+    .tab-content {
+      display: none;
+      flex: 1;
+    }
+
+    .tab-content.active {
+      display: block;
+    }
     
-    <!-- SEO & Analytics -->
-    <title>Scout Escort | Global Digital Scouting & Talent Hub</title>
-    <meta name="description" content="Remote football scouting platform connecting upcoming global talent with international clubs. Scout players online without costly travel.">
-    
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-9DMZLL3XQE"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-9DMZLL3XQE');
-    </script>
-
-    <!-- Firebase SDKs -->
-    <script type="module">
-      import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
-      import { getFirestore, collection, addDoc, getDocs, query, orderBy, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
-
-      // TODO: Replace with your actual Firebase project configuration credentials
-      const firebaseConfig = {
-        apiKey: "YOUR_FIREBASE_API_KEY",
-        authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
-        projectId: "YOUR_PROJECT_ID",
-        storageBucket: "YOUR_PROJECT_ID.appspot.com",
-        messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
-        appId: "YOUR_APP_ID"
-      };
-
-      // Initialize Firebase
-      const app = initializeApp(firebaseConfig);
-      const db = getFirestore(app);
-
-      // Make functions globally available
-      window.db = db;
-      window.collection = collection;
-      window.addDoc = addDoc;
-      window.getDocs = getDocs;
-      window.query = query;
-      window.orderBy = orderBy;
-      window.serverTimestamp = serverTimestamp;
-
-      // Load profiles on startup
-      window.addEventListener('DOMContentLoaded', () => {
-        loadProfilesFromCloud();
-      });
-    </script>
-
-    <style>
-        :root {
-            --bg-color: #080c14;
-            --card-bg: #111827;
-            --accent-green: #00e676;
-            --accent-blue: #00b0ff;
-            --text-main: #ffffff;
-            --text-muted: #94a3b8;
-            --border-color: #1e293b;
-        }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-        }
-
-        body {
-            background-color: var(--bg-color);
-            color: var(--text-main);
-            padding-bottom: 90px;
-        }
-
-        /* Clean Sponsor Symbol Ticker */
-        .global-ticker {
-            background: #04060b;
-            padding: 14px 0;
-            overflow: hidden;
-            white-space: nowrap;
-            border-bottom: 1px solid var(--border-color);
-        }
-
-        .ticker-track {
-            display: inline-block;
-            animation: marquee 30s linear infinite;
-        }
-
-        .ticker-symbol {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid var(--border-color);
-            padding: 10px 20px;
-            border-radius: 12px;
-            margin-right: 20px;
-        }
-
-        .ticker-symbol svg {
-            width: 26px;
-            height: 26px;
-            fill: currentColor;
-            display: block;
-        }
-
-        /* Authentic Brand Color Profiles */
-        .brand-benz { color: #f8fafc; }
-        .brand-puma { color: #f97316; }
-        .brand-adidas { color: #ffffff; }
-        .brand-qatar { color: #a855f7; }
-        .brand-nike { color: #ffffff; }
-
-        /* Mastercard Intersecting Circles Logo */
-        .mastercard-logo {
-            display: inline-flex;
-            align-items: center;
-            width: 32px;
-            height: 20px;
-            position: relative;
-        }
-        .mc-circle-1 {
-            width: 20px;
-            height: 20px;
-            background: #eb001b;
-            border-radius: 50%;
-            position: absolute;
-            left: 0;
-            opacity: 0.95;
-        }
-        .mc-circle-2 {
-            width: 20px;
-            height: 20px;
-            background: #f79e1b;
-            border-radius: 50%;
-            position: absolute;
-            right: 0;
-            mix-blend-mode: screen;
-        }
-
-        @keyframes marquee {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); }
-        }
-
-        /* Header / Hero */
-        .header {
-            padding: 20px 16px;
-            background: linear-gradient(180deg, #111827 0%, var(--bg-color) 100%);
-            border-bottom: 1px solid var(--border-color);
-        }
-
-        .hero-box {
-            display: flex;
-            align-items: center;
-            gap: 14px;
-        }
-
-        .telescope-logo {
-            background: #04060b;
-            width: 52px;
-            height: 52px;
-            border-radius: 14px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6), inset 0 2px 4px rgba(255, 255, 255, 0.05);
-            flex-shrink: 0;
-        }
-
-        .telescope-logo svg {
-            width: 30px;
-            height: 30px;
-            fill: #1e293b;
-            stroke: var(--accent-green);
-            stroke-width: 1.5;
-            stroke-linecap: round;
-            stroke-linejoin: round;
-            filter: drop-shadow(0px 2px 4px rgba(0, 0, 0, 0.8));
-        }
-
-        .title-text h1 {
-            font-size: 20px;
-            font-weight: 800;
-            letter-spacing: -0.5px;
-            color: var(--text-main);
-        }
-
-        .title-text p {
-            font-size: 11px;
-            color: var(--text-muted);
-            margin-top: 3px;
-            line-height: 1.3;
-        }
-
-        /* Vision Banner */
-        .vision-banner {
-            background: linear-gradient(135deg, rgba(0, 230, 118, 0.08), rgba(0, 176, 255, 0.08));
-            border: 1px solid rgba(0, 230, 118, 0.2);
-            border-radius: 12px;
-            margin: 16px;
-            padding: 14px;
-        }
-
-        .vision-banner h3 {
-            font-size: 13px;
-            font-weight: 700;
-            color: var(--accent-green);
-            margin-bottom: 4px;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
-
-        .vision-banner p {
-            font-size: 11px;
-            color: var(--text-muted);
-            line-height: 1.4;
-        }
-
-        .container {
-            padding: 0 16px;
-        }
-
-        .tab-content {
-            display: none;
-        }
-
-        .tab-content.active {
-            display: block;
-        }
-
-        .section-card {
-            background: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-            padding: 16px;
-            margin-bottom: 16px;
-        }
-
-        .section-card h2 {
-            font-size: 15px;
-            font-weight: 700;
-            margin-bottom: 4px;
-        }
-
-        .section-card p {
-            font-size: 11px;
-            color: var(--text-muted);
-            margin-bottom: 14px;
-            line-height: 1.4;
-        }
-
-        /* Inputs & Forms */
-        .search-input, .form-input, .form-select {
-            width: 100%;
-            background: #060911;
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
-            padding: 12px 14px;
-            color: var(--text-main);
-            font-size: 12px;
-            outline: none;
-            margin-bottom: 12px;
-        }
-
-        .search-input:focus, .form-input:focus, .form-select:focus {
-            border-color: var(--accent-green);
-        }
-
-        .form-group {
-            margin-bottom: 12px;
-        }
-
-        .form-group label {
-            display: block;
-            font-size: 11px;
-            font-weight: 600;
-            color: var(--text-muted);
-            margin-bottom: 4px;
-        }
-
-        .submit-btn {
-            width: 100%;
-            background: var(--accent-green);
-            color: #080c14;
-            font-weight: 800;
-            border: none;
-            padding: 12px;
-            border-radius: 8px;
-            cursor: pointer;
-            font-size: 12px;
-            margin-top: 6px;
-        }
-
-        .submit-btn:disabled {
-            opacity: 0.6;
-            cursor: not-allowed;
-        }
-
-        /* Prospect Card */
-        .prospect-card {
-            background: #0c111c;
-            border: 1px solid var(--border-color);
-            border-radius: 10px;
-            overflow: hidden;
-            margin-top: 12px;
-        }
-
-        .prospect-header {
-            display: flex;
-            justify-content: space-between;
-            padding: 8px 12px;
-            background: rgba(255, 255, 255, 0.02);
-            border-bottom: 1px solid var(--border-color);
-            font-size: 11px;
-        }
-
-        .badge-position {
-            background: rgba(0, 230, 118, 0.15);
-            color: var(--accent-green);
-            padding: 2px 8px;
-            border-radius: 4px;
-            font-weight: 700;
-        }
-
-        .badge-profile {
-            color: var(--accent-blue);
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .prospect-body {
-            display: flex;
-            align-items: center;
-            padding: 12px;
-            gap: 12px;
-        }
-
-        .prospect-avatar {
-            width: 44px;
-            height: 44px;
-            background: #1e293b;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 18px;
-            border: 1px solid var(--border-color);
-        }
-
-        .prospect-info h3 {
-            font-size: 14px;
-            font-weight: 700;
-        }
-
-        .prospect-info p {
-            font-size: 11px;
-            color: var(--text-muted);
-            margin-top: 2px;
-            margin-bottom: 0;
-        }
-
-        .video-link-btn {
-            display: inline-block;
-            margin-top: 6px;
-            font-size: 11px;
-            color: var(--accent-blue);
-            text-decoration: none;
-            font-weight: 600;
-        }
-
-        .video-link-btn:hover {
-            text-decoration: underline;
-        }
-
-        /* Social Share Bar */
-        .social-share-bar {
-            display: flex;
-            gap: 8px;
-            padding: 10px 12px;
-            background: rgba(0, 0, 0, 0.2);
-            border-top: 1px solid var(--border-color);
-        }
-
-        .share-btn {
-            flex: 1;
-            padding: 6px 10px;
-            border-radius: 6px;
-            font-size: 10px;
-            font-weight: 700;
-            text-align: center;
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 5px;
-            cursor: pointer;
-            border: 1px solid var(--border-color);
-        }
-
-        .share-whatsapp {
-            background: rgba(37, 211, 102, 0.1);
-            color: #25d366;
-            border-color: rgba(37, 211, 102, 0.3);
-        }
-
-        .share-facebook {
-            background: rgba(24, 119, 242, 0.1);
-            color: #1877f2;
-            border-color: rgba(24, 119, 242, 0.3);
-        }
-
-        /* Live Match & Fixture Cards */
-        .fixture-card {
-            background: #0c111c;
-            border: 1px solid var(--border-color);
-            border-radius: 10px;
-            padding: 14px;
-            margin-top: 10px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .match-teams {
-            font-size: 13px;
-            font-weight: 700;
-        }
-
-        .match-meta {
-            font-size: 10px;
-            color: var(--text-muted);
-            margin-top: 3px;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
-
-        .live-pulse {
-            width: 8px;
-            height: 8px;
-            background: #ef4444;
-            border-radius: 50%;
-            display: inline-block;
-            box-shadow: 0 0 8px #ef4444;
-            animation: pulse 1.5s infinite;
-        }
-
-        @keyframes pulse {
-            0% { transform: scale(0.95); opacity: 0.8; }
-            50% { transform: scale(1.2); opacity: 1; }
-            100% { transform: scale(0.95); opacity: 0.8; }
-        }
-
-        .match-score-live {
-            background: rgba(239, 68, 68, 0.15);
-            color: #ef4444;
-            border: 1px solid rgba(239, 68, 68, 0.3);
-            padding: 6px 10px;
-            border-radius: 6px;
-            font-size: 12px;
-            font-weight: 800;
-            letter-spacing: 1px;
-        }
-
-        .match-score-ft {
-            background: rgba(0, 230, 118, 0.12);
-            color: var(--accent-green);
-            padding: 6px 10px;
-            border-radius: 6px;
-            font-size: 12px;
-            font-weight: 800;
-            letter-spacing: 1px;
-        }
-
-        /* Media Cards */
-        .media-card {
-            background: #0c111c;
-            border: 1px solid var(--border-color);
-            border-radius: 10px;
-            padding: 12px;
-            margin-top: 12px;
-        }
-
-        .media-player-preview {
-            width: 100%;
-            height: 150px;
-            background: linear-gradient(135deg, #020617, #1e293b);
-            border-radius: 8px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            border: 1px solid var(--border-color);
-            overflow: hidden;
-            margin-bottom: 10px;
-        }
-
-        .play-overlay-btn {
-            width: 44px;
-            height: 44px;
-            background: rgba(0, 230, 118, 0.9);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #080c14;
-            font-size: 18px;
-            font-weight: 900;
-            box-shadow: 0 4px 16px rgba(0, 230, 118, 0.4);
-            cursor: pointer;
-            transition: transform 0.2s;
-        }
-
-        .play-overlay-btn:hover {
-            transform: scale(1.1);
-        }
-
-        .media-tag-badge {
-            position: absolute;
-            top: 8px;
-            left: 8px;
-            background: rgba(0, 0, 0, 0.6);
-            backdrop-filter: blur(4px);
-            color: var(--accent-blue);
-            font-size: 9px;
-            font-weight: 700;
-            padding: 3px 8px;
-            border-radius: 4px;
-            border: 1px solid var(--border-color);
-            text-transform: uppercase;
-        }
-
-        .news-item {
-            background: #0c111c;
-            border: 1px solid var(--border-color);
-            border-radius: 10px;
-            padding: 14px;
-            margin-top: 10px;
-        }
-
-        .news-tag {
-            font-size: 10px;
-            color: var(--accent-blue);
-            font-weight: 700;
-            text-transform: uppercase;
-            margin-bottom: 4px;
-            display: block;
-        }
-
-        /* Fixed Bottom Navigation Bar */
-        .bottom-nav {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            background: #04060b;
-            border-top: 1px solid var(--border-color);
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 4px;
-            padding: 8px;
-            z-index: 1000;
-            box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.5);
-        }
-
-        .tab-btn {
-            background: var(--card-bg);
-            border: 1px solid var(--border-color);
-            color: var(--text-muted);
-            padding: 8px 4px;
-            border-radius: 8px;
-            font-size: 10px;
-            font-weight: 700;
-            text-align: center;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            text-transform: uppercase;
-        }
-
-        .tab-btn.active {
-            background: var(--accent-green);
-            color: #080c14;
-            border-color: var(--accent-green);
-            box-shadow: 0 4px 12px rgba(0, 230, 118, 0.2);
-        }
-    </style>
+    .hidden { display: none !important; }
+  </style>
 </head>
 <body>
 
-  <!-- Sponsor Ticker with Authentic Brand Vectors -->
-  <div class="global-ticker">
-    <div class="ticker-track">
-      <!-- 1. Mercedes-Benz -->
-      <span class="ticker-symbol brand-benz">
-        <svg viewBox="0 0 512 512">
-          <path d="M256 32C132.3 32 32 132.3 32 256s100.3 224 224 224 224-100.3 224-224S379.7 32 256 32zm0 416c-105.8 0-192-86.2-192-192S150.2 64 256 64s192 86.2 192 192-86.2 192-192 192z"/>
-          <path d="M256 64l-89.6 155.2h179.2L256 64zm-103.5 179.2L64 396.8h103.6l77.7-134.4-78.8-4.4zm207 0l-78.8 4.4 77.7 134.4H448l-88.5-153.6-3.6 4.8z"/>
+  <!-- Pinned Top Sponsor Ticker Bar -->
+  <div class="sponsor-ticker">
+    <div class="ticker-content">
+      <span class="brand-item">
+        <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/puma.svg" style="filter: brightness(0) invert(1);" alt="Puma">
+        PUMA
+      </span>
+      <span class="brand-item">
+        <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/nike.svg" style="filter: brightness(0) invert(1);" alt="Nike">
+        NIKE
+      </span>
+      <span class="brand-item samsung-text">
+        <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/samsung.svg" style="filter: invert(36%) sepia(85%) saturate(1982%) hue-rotate(209deg) brightness(98%) contrast(96%);" alt="Samsung">
+        SAMSUNG
+      </span>
+      <span class="brand-item">
+        <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/mercedes.svg" style="filter: brightness(0) invert(1);" alt="Mercedes">
+        MERCEDES
+      </span>
+      <span class="brand-item bmw-text">
+        <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/bmw.svg" style="filter: invert(27%) sepia(89%) saturate(1832%) hue-rotate(185deg) brightness(91%) contrast(101%);" alt="BMW">
+        BMW
+      </span>
+      <span class="brand-item">
+        <svg width="22" height="15" viewBox="0 0 24 16" fill="none" style="vertical-align: middle;">
+          <circle cx="8" cy="8" r="7" fill="#EB001B"/>
+          <circle cx="16" cy="8" r="7" fill="#F79E1B" fill-opacity="0.9"/>
         </svg>
+        MASTERCARD
       </span>
-
-      <!-- 2. Puma -->
-      <span class="ticker-symbol brand-puma">
-        <svg viewBox="0 0 512 512"><path d="M473.6 226.4c-17.6-4.8-50.7-11-77.1-4.4-26.5 6.6-48.4 26.4-77.1 26.4-28.7 0-50.6-19.8-77.1-26.4-26.5-6.6-59.5 0-77.1 4.4-44 11-88 37.4-121 81.4 55-77 132-66 176-44 33 17.6 55 17.6 88 0 44-22 121-33 176 44-33-44-77-70.4-121-81.4z"/></svg>
-      </span>
-
-      <!-- 3. Adidas -->
-      <span class="ticker-symbol brand-adidas">
-        <svg viewBox="0 0 24 24"><path d="M3 19h3.2l3-12H6.2L3 19zm6 0h3.2l3-12h-3.2L9 19zm6 0h3.2l3-12h-3.2L15 19z"/></svg>
-      </span>
-
-      <!-- 4. Qatar Airways -->
-      <span class="ticker-symbol brand-qatar">
-        <svg viewBox="0 0 24 24"><path d="M12 2L3 7v10l9 5 9-5V7l-9-5zm0 2.8l6.2 3.4L12 11.6 5.8 8.2 12 4.8zM5 9.8l6 3.3v6.4l-6-3.3V9.8zm14 0v6.4l-6 3.3v-6.4l6-3.3z"/></svg>
-      </span>
-
-      <!-- 5. Mastercard -->
-      <span class="ticker-symbol">
-        <div class="mastercard-logo"><div class="mc-circle-1"></div><div class="mc-circle-2"></div></div>
-      </span>
-
-      <!-- 6. Nike -->
-      <span class="ticker-symbol brand-nike">
-        <svg viewBox="0 0 24 24"><path d="M21.5 6.5C18 7 13 9.5 9.5 15.5c-2.5 4.5-5.5 2.5-5.5 2.5 4.5-2 7.5-6.5 9-9.5-2 1-3.5 3-4.5 4.5 2.5-3 5.5-6 8.5-8z"/></svg>
+      <span class="brand-item qatar-text">
+        <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/qatarairways.svg" style="filter: invert(16%) sepia(76%) saturate(4156%) hue-rotate(328deg) brightness(85%) contrast(98%);" alt="Qatar Airways">
+        QATAR AIRWAYS
       </span>
     </div>
   </div>
 
-  <!-- Header -->
-  <header class="header">
-    <div class="hero-box">
-      <div class="telescope-logo">
-        <svg viewBox="0 0 24 24">
-          <path d="M3 5h5v11H3z" />
-          <path d="M2 5l2-2h5l2 2" />
-          <path d="M13 5h5v11h-5z" />
-          <path d="M12 5l2-2h5l2 2" />
-          <path d="M8 9h5" />
-          <line x1="3" y1="16" x2="8" y2="16" />
-          <line x1="13" y1="16" x2="18" y2="16" />
-        </svg>
-      </div>
-      <div class="title-text">
-        <h1>SCOUT ESCORT</h1>
-        <p>Global Remote Scouting & Player Profile Hub</p>
-      </div>
-    </div>
-  </header>
-
-  <!-- Vision Banner -->
-  <div class="vision-banner">
-    <h3>🔭 Scout From Anywhere</h3>
-    <p>Clubs worldwide can evaluate upcoming talent directly through our online player profiles and match feeds—eliminating expensive international travel.</p>
-  </div>
-
-  <!-- Main Body Content Containers -->
   <div class="container">
-    
-    <!-- Profiles Tab -->
-    <div id="profiles-tab" class="tab-content active">
-      <div class="section-card">
-        <h2>Verified Player Profile Directory</h2>
-        <p>Browse registered upcoming players. Clubs can analyze videos, stats, and positions online.</p>
+    <div class="card">
+
+      <!-- Tab 1: Matches -->
+      <div id="matches" class="tab-content active">
+        <h2 style="color: var(--primary-green); margin-top:0;">Featured Showcase Matches</h2>
+        <div class="matches-list" id="matchesList">
+          <div class="player-card">
+            <div>
+              <h4 style="margin: 0 0 4px 0; font-size: 15px;">D&R Academy vs. Grassroots XI</h4>
+              <p style="margin: 0; font-size: 12px; color: #666;">Showcase Series • Full Match Tape</p>
+            </div>
+            <a href="https://www.google.com/search?q=football+live+scores" target="_blank" rel="noopener" class="btn-action">Live Scores</a>
+          </div>
+          <div class="player-card">
+            <div>
+              <h4 style="margin: 0 0 4px 0; font-size: 15px;">Elite Youth FC vs. Accra Select</h4>
+              <p style="margin: 0; font-size: 12px; color: #666;">U19 Championship • Full Match Tape</p>
+            </div>
+            <a href="https://www.google.com/search?q=football+live+scores" target="_blank" rel="noopener" class="btn-action">Live Scores</a>
+          </div>
+          <div class="player-card">
+            <div>
+              <h4 style="margin: 0 0 4px 0; font-size: 15px;">Rising Stars vs. Valley Stars</h4>
+              <p style="margin: 0; font-size: 12px; color: #666;">Scout Showcase • Highlights</p>
+            </div>
+            <a href="https://www.google.com/search?q=football+live+scores" target="_blank" rel="noopener" class="btn-action">Live Scores</a>
+          </div>
+          <div class="player-card">
+            <div>
+              <h4 style="margin: 0 0 4px 0; font-size: 15px;">City Academy vs. Future Prospects</h4>
+              <p style="margin: 0; font-size: 12px; color: #666;">Talent Identification • Full Match</p>
+            </div>
+            <a href="https://www.google.com/search?q=football+live+scores" target="_blank" rel="noopener" class="btn-action">Live Scores</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tab 2: Live Sports Journalism & Transfer Desk (Powered by API-Football) -->
+      <div id="news" class="tab-content">
+        <h2 style="color: var(--primary-green); margin-top:0;">Live Sports & Transfer Desk</h2>
+        <p style="font-size: 12px; color: #666; margin-bottom: 14px;">Real-time football scores, match feeds, and transfer market updates.</p>
         
-        <input type="text" id="prospectSearch" class="search-input" placeholder="Search by position or profile details..." onkeyup="filterProspects()">
+        <!-- Live API-Football Fixtures Feed Container -->
+        <div id="api-football-container" class="matches-list" style="margin-bottom: 16px;">
+          <div class="player-card">
+            <div>
+              <h4 style="margin: 0 0 4px 0; font-size: 14px;">Connecting to API-Football...</h4>
+              <p style="margin: 0; font-size: 12px; color: #666;">Fetching live match data & fixtures</p>
+            </div>
+          </div>
+        </div>
 
-        <div id="prospectList">
-          <!-- Cloud-loaded profiles will populate here automatically -->
+        <div class="matches-list">
+          <div class="player-card">
+            <div>
+              <h4 style="margin: 0 0 4px 0; font-size: 15px;">Transfer Window & Breaking News Desk</h4>
+              <p style="margin: 0; font-size: 12px; color: #666;">Live reporting, expert journalist analysis & breaking rumors</p>
+            </div>
+            <a href="https://www.espn.com/soccer/transfer" target="_blank" rel="noopener" class="btn-action">Open Desk</a>
+          </div>
+          <div class="player-card">
+            <div>
+              <h4 style="margin: 0 0 4px 0; font-size: 15px;">BBC Sport Football Live Commentary</h4>
+              <p style="margin: 0; font-size: 12px; color: #666;">Minute-by-minute text commentary, expert views & match analysis</p>
+            </div>
+            <a href="https://www.bbc.com/sport/football" target="_blank" rel="noopener" class="btn-action">Read Live</a>
+          </div>
+          <div class="player-card">
+            <div>
+              <h4 style="margin: 0 0 4px 0; font-size: 15px;">African Football & Scouting Updates</h4>
+              <p style="margin: 0; font-size: 12px; color: #666;">Regional tournaments, league standings & talent reports</p>
+            </div>
+            <a href="https://www.cafonline.com/" target="_blank" rel="noopener" class="btn-action">Explore</a>
+          </div>
         </div>
       </div>
+
+      <!-- Tab 3: Leagues & Database -->
+      <div id="rankings" class="tab-content">
+        <h2 style="color: var(--primary-green); margin-top:0;">Global & African Leagues Directory</h2>
+        <p style="font-size: 13px; color: #666; margin-bottom: 12px;">Search players, clubs, or major world and African leagues:</p>
+        
+        <!-- Interactive Search Bar -->
+        <div style="margin-bottom: 14px;">
+          <input type="text" id="playerSearch" placeholder="Search league, club, or player..." onkeyup="filterPlayers()" style="width: 100%; padding: 10px 12px; border: 1.5px solid #d0d0d0; border-radius: 6px; font-size: 13px; outline: none; background: #fafafa;">
+        </div>
+
+        <div class="matches-list" id="playerList">
+          <!-- Major World Leagues Hub -->
+          <div class="section-title" style="margin-top:0;">Top Global Leagues</div>
+          <div class="player-card league-card">
+            <div>
+              <h4 style="margin: 0 0 4px 0; font-size: 15px;">🏴󠁧󠁢󠁥󠁮󠁧󠁿 Premier League (England)</h4>
+              <p style="margin: 0; font-size: 12px; color: #666;">Tier 1 • Live Standings & Results</p>
+            </div>
+            <a href="https://www.google.com/search?q=Premier+League+live+scores+table" target="_blank" rel="noopener" class="btn-action">Live Updates</a>
+          </div>
+          <div class="player-card league-card">
+            <div>
+              <h4 style="margin: 0 0 4px 0; font-size: 15px;">🇪🇸 La Liga (Spain)</h4>
+              <p style="margin: 0; font-size: 12px; color: #666;">Tier 1 • Live Standings & Results</p>
+            </div>
+            <a href="https://www.google.com/search?q=La+Liga+live+scores+table" target="_blank" rel="noopener" class="btn-action">Live Updates</a>
+          </div>
+          <div class="player-card league-card">
+            <div>
+              <h4 style="margin: 0 0 4px 0; font-size: 15px;">🇩🇪 Bundesliga (Germany)</h4>
+              <p style="margin: 0; font-size: 12px; color: #666;">Tier 1 • Live Standings & Results</p>
+            </div>
+            <a href="https://www.google.com/search?q=Bundesliga+live+scores+table" target="_blank" rel="noopener" class="btn-action">Live Updates</a>
+          </div>
+          <div class="player-card league-card">
+            <div>
+              <h4 style="margin: 0 0 4px 0; font-size: 15px;">🇮🇹 Serie A (Italy)</h4>
+              <p style="margin: 0; font-size: 12px; color: #666;">Tier 1 • Live Standings & Results</p>
+            </div>
+            <a href="https://www.google.com/search?q=Serie+A+live+scores+table" target="_blank" rel="noopener" class="btn-action">Live Updates</a>
+          </div>
+          <div class="player-card league-card">
+            <div>
+              <h4 style="margin: 0 0 4px 0; font-size: 15px;">🇫🇷 Ligue 1 (France)</h4>
+              <p style="margin: 0; font-size: 12px; color: #666;">Tier 1 • Live Standings & Results</p>
+            </div>
+            <a href="https://www.google.com/search?q=Ligue+1+live+scores+table" target="_blank" rel="noopener" class="btn-action">Live Updates</a>
+          </div>
+          <div class="player-card league-card">
+            <div>
+              <h4 style="margin: 0 0 4px 0; font-size: 15px;">🇸🇦 Saudi Pro League (Saudi Arabia)</h4>
+              <p style="margin: 0; font-size: 12px; color: #666;">Tier 1 • Live Standings & Results</p>
+            </div>
+            <a href="https://www.google.com/search?q=Saudi+Pro+League+live+scores+table" target="_blank" rel="noopener" class="btn-action">Live Updates</a>
+          </div>
+
+          <!-- Featured African Leagues Hub -->
+          <div class="section-title">Prominent African Leagues</div>
+          <div class="player-card league-card">
+            <div>
+              <h4 style="margin: 0 0 4px 0; font-size: 15px;">🇬🇭 Ghana Premier League (Ghana)</h4>
+              <p style="margin: 0; font-size: 12px; color: #666;">Domestic Elite • Live Scores & Results</p>
+            </div>
+            <a href="https://www.google.com/search?q=Ghana+Premier+League+live+scores" target="_blank" rel="noopener" class="btn-action">Live Updates</a>
+          </div>
+          <div class="player-card league-card">
+            <div>
+              <h4 style="margin: 0 0 4px 0; font-size: 15px;">🇪🇬 Egyptian Premier League (Egypt)</h4>
+              <p style="margin: 0; font-size: 12px; color: #666;">North African Powerhouse • Live Scores</p>
+            </div>
+            <a href="https://www.google.com/search?q=Egyptian+Premier+League+live+scores" target="_blank" rel="noopener" class="btn-action">Live Updates</a>
+          </div>
+          <div class="player-card league-card">
+            <div>
+              <h4 style="margin: 0 0 4px 0; font-size: 15px;">🇿🇦 DStv Premiership (South Africa)</h4>
+              <p style="margin: 0; font-size: 12px; color: #666;">Southern African Elite • Live Scores</p>
+            </div>
+            <a href="https://www.google.com/search?q=DStv+Premiership+live+scores" target="_blank" rel="noopener" class="btn-action">Live Updates</a>
+          </div>
+          <div class="player-card league-card">
+            <div>
+              <h4 style="margin: 0 0 4px 0; font-size: 15px;">🇲🇦 Botola Pro (Morocco)</h4>
+              <p style="margin: 0; font-size: 12px; color: #666;">Maghreb Premier League • Live Scores</p>
+            </div>
+            <a href="https://www.google.com/search?q=Botola+Pro+live+scores" target="_blank" rel="noopener" class="btn-action">Live Updates</a>
+          </div>
+
+          <!-- Verified Prospects -->
+          <div class="section-title">Verified Prospect Directory (Live Database Feed)</div>
+          <div id="db-feed-container">
+            <p style="font-size: 13px; color: #666;">Loading live directory profiles...</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tab 4: Professional Registration Tab -->
+      <div id="registration" class="tab-content" style="background: #ffffff; padding: 20px;">
+        <div style="border-bottom: 2px solid var(--primary-green); padding-bottom: 8px; margin-bottom: 16px;">
+          <h3 style="color: var(--primary-green); margin: 0; font-size: 18px; font-weight: 800;">Scout Escort Registration</h3>
+          <p style="font-size: 12px; color: #666; margin: 4px 0 0 0;">Enter your player profile details and credentials below.</p>
+        </div>
+
+        <div style="background: #f8fafc; padding: 18px; border-radius: 10px; border: 1px solid #e2e8f0;">
+          <div class="form-grid">
+            <div class="form-group full-width">
+              <label>Select Role *</label>
+              <select id="reg-role" style="font-weight: 600; color: #0f172a;">
+                <option value="player">Football Prospect / Player</option>
+                <option value="scout">Scout / Talent Agent</option>
+                <option value="club">Club Representative / Coach</option>
+              </select>
+            </div>
+
+            <div class="form-group full-width">
+              <label>Full Name *</label>
+              <input type="text" id="reg-fullname" placeholder="e.g. Samuel Mensah">
+            </div>
+
+            <div class="form-group">
+              <label>Position *</label>
+              <input type="text" id="reg-position" placeholder="e.g. LW / RW / CM">
+            </div>
+
+            <div class="form-group">
+              <label>Age *</label>
+              <input type="number" id="reg-age" placeholder="e.g. 18">
+            </div>
+
+            <div class="form-group">
+              <label>Height *</label>
+              <input type="text" id="reg-height" placeholder="e.g. 1.82m or 6ft">
+            </div>
+
+            <div class="form-group">
+              <label>Weight *</label>
+              <input type="text" id="reg-weight" placeholder="e.g. 75kg">
+            </div>
+
+            <div class="form-group full-width">
+              <label>Country / Base *</label>
+              <input type="text" id="reg-country" placeholder="e.g. Ghana">
+            </div>
+
+            <div class="form-group full-width">
+              <label>Email Address *</label>
+              <input type="email" id="reg-email" placeholder="name@example.com">
+            </div>
+
+            <div class="form-group full-width">
+              <label>Secure Password *</label>
+              <input type="password" id="reg-password" placeholder="At least 6 characters">
+            </div>
+
+            <div class="form-group full-width">
+              <button type="button" onclick="registerAccount()" class="submit-btn">Register</button>
+            </div>
+          </div>
+          <p id="reg-message" style="font-size: 12px; margin-top: 10px; text-align: center; color: #cc0000; font-weight: 600;"></p>
+        </div>
+      </div>
+
+      <!-- Tab 5: Portal (Login & Publish Dashboard) -->
+      <div id="portal" class="tab-content" style="background: #ffffff; padding: 20px;">
+        <h3 style="color: var(--primary-green); margin-top: 0; margin-bottom: 6px;">Secure Platform Portal</h3>
+        <p style="font-size: 13px; color: #666; line-height: 1.4; margin-bottom: 14px;">
+          Log in to your account to instantly post and manage verified player profiles directly on the live database feed.
+        </p>
+
+        <!-- AUTHENTICATION SECTION -->
+        <div id="auth-box" style="background: #f9fafb; padding: 15px; border-radius: 8px; border: 1px solid #e5e7eb; margin-bottom: 15px;">
+          <h4 style="margin: 0 0 10px 0; font-size: 14px; color: var(--primary-green);">User Login</h4>
+          <div class="form-group" style="margin-bottom: 8px;">
+            <input type="email" id="auth-email" placeholder="Email Address">
+          </div>
+          <div class="form-group" style="margin-bottom: 10px;">
+            <input type="password" id="auth-password" placeholder="Password">
+          </div>
+          <button type="button" onclick="loginUser()" style="width:100%; background: var(--primary-green); color: white; border: none; padding: 10px; border-radius: 6px; font-weight: bold; cursor: pointer;">Log In</button>
+          <p id="auth-message" style="font-size: 12px; margin-top: 8px; color: #cc0000;"></p>
+        </div>
+
+        <!-- LOGGED IN DASHBOARD (Hidden until logged in) -->
+        <div id="dashboard-box" class="hidden" style="background: #f0fdf4; padding: 15px; border-radius: 8px; border: 1px solid #bbf7d0;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+            <span id="logged-user-email" style="font-size: 12px; font-weight: bold; color: var(--primary-green);"></span>
+            <button type="button" onclick="logoutUser()" style="background: #dc2626; color: white; border: none; padding: 4px 10px; border-radius: 4px; font-size: 11px; cursor: pointer;">Logout</button>
+          </div>
+
+          <h4 style="margin: 0 0 10px 0; font-size: 14px; color: var(--primary-green);">Publish New Prospect Profile</h4>
+          
+          <div class="form-grid">
+            <div class="form-group full-width">
+              <label>Player Name *</label>
+              <input type="text" id="p-name" placeholder="e.g. Samuel Mensah">
+            </div>
+            
+            <div class="form-group">
+              <label>Position</label>
+              <input type="text" id="p-position" placeholder="e.g. LW / RW">
+            </div>
+
+            <div class="form-group">
+              <label>Age</label>
+              <input type="text" id="p-age" placeholder="e.g. 19">
+            </div>
+
+            <div class="form-group full-width">
+              <label>Current Team / Academy</label>
+              <input type="text" id="p-team" placeholder="e.g. Accra Select">
+            </div>
+
+            <div class="form-group full-width">
+              <label>Video Highlight Link *</label>
+              <input type="url" id="p-video" placeholder="https://youtube.com/...">
+            </div>
+
+            <div class="form-group full-width">
+              <button type="button" onclick="submitPlayerProfile()" class="submit-btn" style="margin-top: 0;">Publish Profile Live</button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
     </div>
-
-    <!-- Live News Tab -->
-    <div id="news-tab" class="tab-content">
-      <div class="section-card">
-        <h2>Live Scores & Match Feed</h2>
-        <p>Real-time updates across international and domestic competitions.</p>
-
-        <div class="fixture-card">
-          <div>
-            <div class="match-teams">Ajax Amsterdam vs Benfica</div>
-            <div class="match-meta"><span class="live-pulse"></span> UEFA Champions League • 78' Min</div>
-          </div>
-          <div class="match-score-live">2 - 1</div>
-        </div>
-
-        <div class="fixture-card" style="margin-top: 10px;">
-          <div>
-            <div class="match-teams">FC Porto vs Manchester City</div>
-            <div class="match-meta">UEFA Champions League • Full Time</div>
-          </div>
-          <div class="match-score-ft">0 - 2</div>
-        </div>
-
-        <div class="fixture-card" style="margin-top: 10px;">
-          <div>
-            <div class="match-teams">Real Madrid vs Inter Milan</div>
-            <div class="match-meta">UEFA Champions League • Full Time</div>
-          </div>
-          <div class="match-score-ft">2 - 1</div>
-        </div>
-      </div>
-
-      <div class="section-card">
-        <h2>Transfer News Session</h2>
-        <p>Latest updates on transfer windows, scouting reports, and football world developments.</p>
-
-        <div class="news-item">
-          <span class="news-tag">Transfer Window • Active</span>
-          <h3>Clubs Shift Toward Digital Scouting Methods</h3>
-          <p>More sporting directors are utilizing online video databases and self-registered player profiles to evaluate international talent without incurring heavy travel expenses.</p>
-        </div>
-
-        <div class="news-item" style="margin-top: 10px;">
-          <span class="news-tag">Academy Scouting</span>
-          <h3>Global Youth Tournament Feed Integrated</h3>
-          <p>Scout Escort's automated submission platform logs record daily viewings from European club representatives.</p>
-        </div>
-      </div>
-    </div>
-
-    <!-- Highlights Tab -->
-    <div id="watch-tab" class="tab-content">
-      <div class="section-card">
-        <h2>Highlights & Media Feed</h2>
-        <p>Match footage, scouting reels, and training sessions ready for remote club evaluation.</p>
-
-        <div class="media-card">
-          <div class="media-player-preview">
-            <span class="media-tag-badge">Live Reel #01</span>
-            <a href="https://youtube.com" target="_blank" class="play-overlay-btn">▶</a>
-          </div>
-          <h3 style="font-size: 13px; font-weight: 700;">Global Youth Showcase Reels</h3>
-          <p style="font-size: 11px; color: var(--text-muted); margin-top: 3px;">Full match clips and individual player highlight packages ready for club analysis.</p>
-        </div>
-
-        <div class="media-card">
-          <div class="media-player-preview">
-            <span class="media-tag-badge">Analytics #02</span>
-            <a href="https://youtube.com" target="_blank" class="play-overlay-btn">▶</a>
-          </div>
-          <h3 style="font-size: 13px; font-weight: 700;">Scouting Performance Metrics & Vision</h3>
-          <p style="font-size: 11px; color: var(--text-muted); margin-top: 3px;">Detailed breakdown of acceleration, passing accuracy, and tactical awareness data.</p>
-        </div>
-      </div>
-    </div>
-
-    <!-- Registration Tab -->
-    <div id="register-tab" class="tab-content">
-      <div class="section-card">
-        <h2>Global Player Registration Session</h2>
-        <p>Register online instantly. Fill in your details and YouTube link to publish your player profile live on the cloud database right away.</p>
-
-        <form id="playerRegistrationForm" onsubmit="registerPlayer(event)">
-          <div class="form-group">
-            <label>Player Position</label>
-            <select id="regPosition" class="form-select" required>
-              <option value="">Select Position</option>
-              <option value="Centre-Back">Centre-Back</option>
-              <option value="Full-Back">Full-Back</option>
-              <option value="Central Midfielder">Central Midfielder</option>
-              <option value="Attacking Midfielder">Attacking Midfielder</option>
-              <option value="Winger">Winger</option>
-              <option value="Striker">Striker</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label>Age</label>
-            <input type="number" id="regAge" class="form-input" placeholder="e.g. 18" min="14" max="23" required>
-          </div>
-          <div class="form-group">
-            <label>YouTube Highlight Video Link</label>
-            <input type="url" id="regVideo" class="form-input" placeholder="https://youtube.com/watch?v=..." required>
-          </div>
-          <button type="submit" id="submitBtn" class="submit-btn">Publish Profile Live Instantly</button>
-        </form>
-      </div>
-    </div>
-
   </div>
 
-  <!-- Bottom Navigation Bar -->
+  <!-- Bottom Navigation Bar (5 Tabs) -->
   <nav class="bottom-nav">
-    <div class="tab-btn active" onclick="switchTab('profiles-tab', this)">Profiles</div>
-    <div class="tab-btn" onclick="switchTab('news-tab', this)">Live News</div>
-    <div class="tab-btn" onclick="switchTab('watch-tab', this)">Highlights</div>
-    <div class="tab-btn" onclick="switchTab('register-tab', this)">Registration</div>
+    <button class="active" onclick="switchTab('matches', event)" id="nav-matches">
+      <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14.5v-9l6 4.5-6 4.5z"/></svg>
+      Matches
+    </button>
+    <button onclick="switchTab('news', event)" id="nav-news">
+      <svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/></svg>
+      News
+    </button>
+    <button onclick="switchTab('rankings', event)" id="nav-rankings">
+      <svg viewBox="0 0 24 24"><path d="M16 6l2.29 2.29-4.88 4.88-4-4L2 16.59 3.41 18l6-6 4 4 6.3-6.29L22 12V6z"/></svg>
+      Leagues
+    </button>
+    <button onclick="switchTab('registration', event)" id="nav-registration">
+      <svg viewBox="0 0 24 24"><path d="M15 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm-9-2V7H4v3H1v2h3v3h2v-3h3v-2H6zm9 4c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+      Register
+    </button>
+    <button onclick="switchTab('portal', event)" id="nav-portal">
+      <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"/></svg>
+      Portal
+    </button>
   </nav>
 
-  <!-- JavaScript Application Logic -->
   <script>
-    function switchTab(tabId, element) {
-      document.querySelectorAll('.tab-content').forEach(tab => {
-        tab.classList.remove('active');
-      });
-      document.querySelectorAll('.tab-btn').forEach(btn => {
-        btn.classList.remove('active');
-      });
-      document.getElementById(tabId).classList.add('active');
-      element.classList.add('active');
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
+    // --- SUPABASE CONFIGURATION ---
+    const SUPABASE_URL = 'https://ovbybswgoxvifmftxshb.supabase.co';
+    const SUPABASE_ANON_KEY = 'sb_publishable_GVF5j7spmTppoU2oxjLSiw_5fSKZEeg';
+    
+    const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
-    function filterProspects() {
-      let input = document.getElementById('prospectSearch').value.toLowerCase();
-      let cards = document.querySelectorAll('.prospect-card');
-      
-      cards.forEach(card => {
-        let text = card.getAttribute('data-name') + " " + card.getAttribute('data-details');
-        if (text.includes(input)) {
-          card.style.display = "block";
-        } else {
-          card.style.display = "none";
-        }
-      });
-    }
+    // --- API-FOOTBALL CONFIGURATION ---
+    const API_FOOTBALL_KEY = 'bb1f687408c92beab633daadf138a07c';
 
-    // Load saved profiles from Firestore database
-    async function loadProfilesFromCloud() {
-      const prospectList = document.getElementById('prospectList');
-      prospectList.innerHTML = '<p style="text-align:center; color: var(--text-muted); padding: 15px;">Loading live profiles from cloud...</p>';
+    // Check user session and load live data on load
+    async function checkUserSession() {
+      const { data: { session } } = await supabaseClient.auth.getSession();
+      if (session) {
+        document.getElementById('auth-box').classList.add('hidden');
+        document.getElementById('dashboard-box').classList.remove('hidden');
+        document.getElementById('logged-user-email').innerText = 'Logged in as: ' + session.user.email;
+      }
+      loadDatabaseFeed();
+      loadApiFootballFixtures();
+    }
+    checkUserSession();
+
+    // Fetch Live Fixtures from API-Football
+    async function loadApiFootballFixtures() {
+      const container = document.getElementById('api-football-container');
+      if (!container) return;
+
+      const url = "https://v3.football.api-sports.io/fixtures?live=all";
 
       try {
-        const q = query(collection(window.db, "players"), orderBy("timestamp", "desc"));
-        const querySnapshot = await getDocs(q);
+        const response = await fetch(url, {
+          method: "GET",
+          headers: {
+            "x-apisports-key": API_FOOTBALL_KEY
+          }
+        });
+
+        const data = await response.json();
         
-        prospectList.innerHTML = '';
-        
-        if (querySnapshot.empty) {
-          prospectList.innerHTML = '<p style="text-align:center; color: var(--text-muted); padding: 15px;">No profiles registered yet. Be the first!</p>';
+        if (!data.response || data.response.length === 0) {
+          // Fallback to recent fixtures if no games are live right this moment
+          loadRecentApiFixtures();
           return;
         }
 
-        let index = querySnapshot.size;
-        querySnapshot.forEach((doc) => {
-          let data = doc.data();
-          let profileNum = index < 10 ? '0' + index : index;
-          
-          let card = document.createElement('div');
-          card.className = 'prospect-card';
-          card.setAttribute('data-name', (data.position + " profile player").toLowerCase());
-          card.setAttribute('data-details', data.position.toLowerCase());
-          
-          card.innerHTML = `
-            <div class="prospect-header">
-              <span class="badge-position">${data.position}</span>
-              <span class="badge-profile">Player Profile #${profileNum}</span>
-            </div>
-            <div class="prospect-body">
-              <div class="prospect-avatar">⚽</div>
-              <div class="prospect-info">
-                <h3>Player Profile</h3>
-                <p>Age: ${data.age} • Verified Cloud-Registered Talent</p>
-                <a href="${data.videoUrl}" target="_blank" class="video-link-btn">▶ Watch Highlight Video</a>
+        container.innerHTML = '<div class="section-title" style="margin-top:0;">Live Match Ticker (API-Football)</div>';
+        
+        data.response.slice(0, 4).forEach(match => {
+          let homeTeam = match.teams.home.name;
+          let awayTeam = match.teams.away.name;
+          let homeGoals = match.goals.home ?? 0;
+          let awayGoals = match.goals.away ?? 0;
+          let elapsed = match.fixture.status.elapsed || 'LIVE';
+          let league = match.league.name;
+
+          container.innerHTML += `
+            <div class="player-card">
+              <div>
+                <h4 style="margin: 0 0 4px 0; font-size: 14px;">${homeTeam} vs ${awayTeam}</h4>
+                <p style="margin: 0; font-size: 12px; color: #666;">${league} • <span style="color: #cc0000; font-weight: bold;">LIVE ${elapsed}'</span></p>
+              </div>
+              <div style="font-weight: 800; font-size: 14px; background: #fee2e2; color: #991b1b; padding: 6px 10px; border-radius: 6px;">
+                ${homeGoals} - ${awayGoals}
               </div>
             </div>
-            <div class="social-share-bar">
-              <a href="https://api.whatsapp.com/send?text=Check%20out%20this%20Player%20Profile%20on%20Scout%20Escort:%20https://Calebthetrader.github.io/scout-escort/" target="_blank" class="share-btn share-whatsapp">💬 WhatsApp</a>
-              <a href="https://www.facebook.com/sharer/sharer.php?u=https://Calebthetrader.github.io/scout-escort/" target="_blank" class="share-btn share-facebook">📘 Facebook</a>
-            </div>
           `;
-          prospectList.appendChild(card);
-          index--;
         });
+
       } catch (error) {
-        console.error("Error loading profiles: ", error);
-        prospectList.innerHTML = '<p style="text-align:center; color: #ef4444; padding: 15px;">Please configure your Firebase credentials to enable live cloud saving.</p>';
+        console.error("API-Football error:", error);
       }
     }
 
-    // Register new player and save to database
-    async function registerPlayer(event) {
-      event.preventDefault();
-      
-      let position = document.getElementById('regPosition').value;
-      let age = document.getElementById('regAge').value;
-      let videoUrl = document.getElementById('regVideo').value;
-      let submitBtn = document.getElementById('submitBtn');
-
-      submitBtn.disabled = true;
-      submitBtn.innerText = "Publishing to Cloud...";
+    async function loadRecentApiFixtures() {
+      const container = document.getElementById('api-football-container');
+      const url = "https://v3.football.api-sports.io/fixtures?last=3";
 
       try {
-        await addDoc(collection(window.db, "players"), {
-          position: position,
-          age: age,
-          videoUrl: videoUrl,
-          timestamp: serverTimestamp()
+        const response = await fetch(url, {
+          method: "GET",
+          headers: {
+            "x-apisports-key": API_FOOTBALL_KEY
+          }
         });
 
-        document.getElementById('playerRegistrationForm').reset();
-        alert('Success! Your player profile has been saved to the cloud database and is now live for all clubs worldwide.');
-        loadProfilesFromCloud();
-        switchTab('profiles-tab', document.querySelector('.bottom-nav .tab-btn'));
-      } catch (error) {
-        console.error("Error adding document: ", error);
-        alert('Error saving profile. Please check your Firebase settings.');
-      } finally {
-        submitBtn.disabled = false;
-        submitBtn.innerText = "Publish Profile Live Instantly";
+        const data = await response.json();
+        if (!data.response || data.response.length === 0) return;
+
+        container.innerHTML = '<div class="section-title" style="margin-top:0;">Recent Match Results (API-Football)</div>';
+        
+        data.response.forEach(match => {
+          let homeTeam = match.teams.home.name;
+          let awayTeam = match.teams.away.name;
+          let homeGoals = match.goals.home ?? 0;
+          let awayGoals = match.goals.away ?? 0;
+          let status = match.fixture.status.short;
+          let league = match.league.name;
+
+          container.innerHTML += `
+            <div class="player-card">
+              <div>
+                <h4 style="margin: 0 0 4px 0; font-size: 14px;">${homeTeam} vs ${awayTeam}</h4>
+                <p style="margin: 0; font-size: 12px; color: #666;">${league} • <span style="color: var(--primary-green); font-weight: bold;">${status}</span></p>
+              </div>
+              <div style="font-weight: 800; font-size: 14px; background: #f0fdf4; color: var(--primary-green); padding: 6px 10px; border-radius: 6px;">
+                ${homeGoals} - ${awayGoals}
+              </div>
+            </div>
+          `;
+        });
+      } catch (e) {
+        console.error("Recent fixture error:", e);
+      }
+    }
+
+    async function registerAccount() {
+      const role = document.getElementById('reg-role').value;
+      const fullname = document.getElementById('reg-fullname').value;
+      const position = document.getElementById('reg-position').value;
+      const age = document.getElementById('reg-age').value;
+      const height = document.getElementById('reg-height').value;
+      const weight = document.getElementById('reg-weight').value;
+      const country = document.getElementById('reg-country').value;
+      const email = document.getElementById('reg-email').value;
+      const password = document.getElementById('reg-password').value;
+      const msgElem = document.getElementById('reg-message');
+
+      msgElem.innerText = '';
+
+      if (!fullname || !email || !password || !position) {
+        msgElem.innerText = 'Please fill out all required fields.';
+        return;
+      }
+
+      const { error } = await supabaseClient.auth.signUp({ 
+        email, 
+        password,
+        options: {
+          data: {
+            full_name: fullname,
+            account_role: role,
+            position: position,
+            age: age,
+            height: height,
+            weight: weight,
+            country: country
+          }
+        }
+      });
+
+      if (error) {
+        msgElem.innerText = error.message;
+      } else {
+        alert('Registration successful! You can now log in.');
+        switchTab('portal', { target: document.getElementById('nav-portal') });
+      }
+    }
+
+    async function loginUser() {
+      const email = document.getElementById('auth-email').value;
+      const password = document.getElementById('auth-password').value;
+      const { error } = await supabaseClient.auth.signInWithPassword({ email, password });
+      if (error) {
+        document.getElementById('auth-message').innerText = error.message;
+      } else {
+        location.reload();
+      }
+    }
+
+    async function logoutUser() {
+      await supabaseClient.auth.signOut();
+      location.reload();
+    }
+
+    async function submitPlayerProfile() {
+      const name = document.getElementById('p-name').value;
+      const position = document.getElementById('p-position').value;
+      const age = document.getElementById('p-age').value;
+      const team = document.getElementById('p-team').value;
+      const video = document.getElementById('p-video').value;
+
+      if (!name || !video) {
+        alert('Please fill out at least the player name and video link.');
+        return;
+      }
+
+      const { error } = await supabaseClient
+        .from('players')
+        .insert([{ name, position, age, team, video }]);
+
+      if (error) {
+        alert('Error publishing profile: ' + error.message);
+      } else {
+        alert('Profile published live successfully!');
+        document.getElementById('p-name').value = '';
+        document.getElementById('p-position').value = '';
+        document.getElementById('p-age').value = '';
+        document.getElementById('p-team').value = '';
+        document.getElementById('p-video').value = '';
+        loadDatabaseFeed();
+        switchTab('rankings', { target: document.getElementById('nav-rankings') });
+      }
+    }
+
+    async function loadDatabaseFeed() {
+      const container = document.getElementById('db-feed-container');
+      const { data, error } = await supabaseClient
+        .from('players')
+        .select('*')
+        .order('created_at', { ascending: false });
+
+      if (error || !data) {
+        container.innerHTML = `
+          <div class="player-card">
+            <div>
+              <h4 style="margin: 0 0 4px 0; font-size: 15px;">K. Mensah (LW / RW)</h4>
+              <p style="margin: 0; font-size: 12px; color: #666;">Age 19 • Free Agent</p>
+            </div>
+            <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank" rel="noopener" class="btn-action">Highlights</a>
+          </div>
+          <div class="player-card">
+            <div>
+              <h4 style="margin: 0 0 4px 0; font-size: 15px;">A. Osei (CAM / CM)</h4>
+              <p style="margin: 0; font-size: 12px; color: #666;">Age 18 • Accra Select</p>
+            </div>
+            <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank" rel="noopener" class="btn-action">Highlights</a>
+          </div>
+        `;
+        return;
+      }
+
+      if (data.length === 0) {
+        container.innerHTML = '<p style="font-size: 13px; color: #666;">No profiles posted yet. Be the first via the Portal tab!</p>';
+        return;
+      }
+
+      container.innerHTML = '';
+      data.forEach(player => {
+        container.innerHTML += `
+          <div class="player-card">
+            <div>
+              <h4 style="margin: 0 0 4px 0; font-size: 15px;">${player.name} (${player.position || 'Player'})</h4>
+              <p style="margin: 0; font-size: 12px; color: #666;">Age ${player.age || 'N/A'} • ${player.team || 'Independent'}</p>
+            </div>
+            <a href="${player.video}" target="_blank" rel="noopener" class="btn-action">Highlights</a>
+          </div>
+        `;
+      });
+    }
+
+    function switchTab(tabId, event) {
+      document.querySelectorAll('.tab-content').forEach(tab => {
+        tab.classList.remove('active');
+      });
+      document.querySelectorAll('.bottom-nav button').forEach(btn => {
+        btn.classList.remove('active');
+      });
+
+      document.getElementById(tabId).classList.add('active');
+      
+      let targetBtn = event ? event.target : null;
+      if (targetBtn && targetBtn.tagName !== 'BUTTON') {
+        targetBtn = targetBtn.closest('button');
+      }
+      if (!targetBtn) {
+        targetBtn = document.getElementById('nav-' + tabId);
+      }
+      if (targetBtn) {
+        targetBtn.classList.add('active');
+      }
+    }
+
+    function filterPlayers() {
+      let input = document.getElementById('playerSearch').value.toLowerCase();
+      let rankCount = 0;
+
+      let rankingsList = document.getElementById('playerList');
+      if (rankingsList) {
+        let cards = rankingsList.getElementsByClassName('player-card');
+        for (let i = 0; i < cards.length; i++) {
+          let text = cards[i].innerText.toLowerCase();
+          if (text.includes(input)) {
+            cards[i].style.display = "";
+            rankCount++;
+          } else {
+            cards[i].style.display = "none";
+          }
+        }
+      }
+
+      if (input.length > 0 && rankCount > 0) {
+        document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+        document.querySelectorAll('.bottom-nav button').forEach(b => b.classList.remove('active'));
+        document.getElementById('rankings').classList.add('active');
+        document.getElementById('nav-rankings').classList.add('active');
       }
     }
   </script>
-
 </body>
 </html>
+
 
 
 
