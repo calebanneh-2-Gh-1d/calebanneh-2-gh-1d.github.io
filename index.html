@@ -3,16 +3,16 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>Scout Escort | Elite Digital Football Talent & Scouting Hub</title>
+  <title>Scout Escort | West African Football Talent & Scouting Hub</title>
 
   <!-- SEO & Search Engine Meta Tags -->
-  <meta name="description" content="Discover, showcase, and connect elite international football talent, youth prospects, and professional scouts globally on Scout Escort.">
-  <meta name="keywords" content="football talent scouting, African football prospects, youth football trials, soccer scout platform, Scout Escort, live football scores">
+  <meta name="description" content="Connecting West African Elite Talent to European Clubs. Discover, showcase, and connect elite football talent, youth prospects, and professional scouts globally on Scout Escort.">
+  <meta name="keywords" content="football talent scouting, West African football prospects, youth football trials, soccer scout platform, Scout Escort">
   <meta name="author" content="Caleb Anneh">
 
-  <!-- Social Media Preview Cards (Open Graph Tags for WhatsApp, X, Facebook) -->
-  <meta property="og:title" content="Scout Escort | Elite Digital Football Talent & Scouting Hub">
-  <meta property="og:description" content="Connect emerging football talent with professional global scouts and clubs. Browse verified player profiles, live match feeds, and transfer news.">
+  <!-- Social Media Preview Cards (Open Graph Tags) -->
+  <meta property="og:title" content="Scout Escort | West African Football Talent & Scouting Hub">
+  <meta property="og:description" content="Connecting West African Elite Talent to European Clubs. Browse verified player profiles, live match feeds, and transfer news.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://scout-escort.github.io">
   <meta property="og:image" content="https://images.unsplash.com/photo-1508098682722-e99c43a406b2?q=80&w=1200&auto=format&fit=crop">
@@ -31,11 +31,14 @@
 
   <style>
     :root {
-      --bg-color: #0d2818;
-      --card-bg: #ffffff;
-      --text-dark: #111111;
+      --bg-color: #081118;
+      --card-bg: #0f1c29;
+      --card-inner: #162638;
+      --text-light: #ffffff;
+      --text-muted: #94a3b8;
       --accent-red: #cc0000;
-      --primary-green: #044b23;
+      --primary-green: #10b981;
+      --primary-green-dark: #044b23;
       --gold-accent: #f59e0b;
     }
 
@@ -48,115 +51,108 @@
       padding: 0 !important;
       min-height: 100vh;
       background-color: var(--bg-color);
-      color: var(--text-dark);
+      color: var(--text-light);
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    }
-
-    /* Pinned Top Sponsor Ticker */
-    .sponsor-ticker {
-      width: 100%;
-      background-color: #050b07;
-      overflow: hidden;
-      white-space: nowrap;
-      padding: 10px 0;
-      border-bottom: 1px solid #1a3a25;
-      display: flex;
-      align-items: center;
-    }
-
-    .ticker-content {
-      display: inline-flex;
-      align-items: center;
-      white-space: nowrap;
-      animation: marquee 25s linear infinite;
-    }
-
-    .brand-item {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      margin-right: 35px;
-      font-size: 14px;
-      font-weight: 800;
-      letter-spacing: 1px;
-      color: #ffffff;
-      text-transform: uppercase;
-    }
-
-    .brand-item img {
-      height: 18px;
-      width: auto;
-      object-fit: contain;
-    }
-
-    .samsung-text { color: #3b82f6; }
-    .bmw-text { color: #0066b1; }
-    .qatar-text { color: #8a1538; }
-
-    @keyframes marquee {
-      0% { transform: translateX(100%); }
-      100% { transform: translateX(-100%); }
     }
 
     /* Main Container Structure */
     .container {
       max-width: 600px;
-      margin: 15px auto;
-      padding: 0 12px;
-      padding-bottom: 70px;
+      margin: 0 auto;
+      padding: 0 10px;
+      padding-bottom: 75px;
     }
 
     .card {
       background: var(--card-bg);
-      border-radius: 12px;
-      padding: 20px;
-      min-height: 75vh;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+      border-radius: 0 0 16px 16px;
+      padding: 16px;
+      min-height: 85vh;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
       display: flex;
       flex-direction: column;
     }
 
-    /* Professional Brand Header & Logo Styling */
+    /* Professional Brand Header & Tactical Binoculars Styling */
     .brand-header {
+      background: linear-gradient(135deg, #091a13 0%, #0d2818 100%);
+      padding: 16px;
+      border-radius: 12px;
+      margin-bottom: 14px;
+      border: 1px solid #143825;
+      box-shadow: 0 4px 12px rgba(4, 75, 35, 0.25);
+    }
+
+    .brand-top-row {
       display: flex;
       align-items: center;
-      gap: 14px;
-      background: linear-gradient(135deg, #052e16 0%, #064e3b 100%);
-      padding: 16px;
-      border-radius: 10px;
-      margin-bottom: 18px;
-      color: white;
-      box-shadow: 0 4px 12px rgba(4, 75, 35, 0.2);
+      gap: 12px;
     }
 
     .brand-logo-container {
-      width: 52px;
-      height: 52px;
-      background: #ffffff;
-      border-radius: 50%;
+      width: 48px;
+      height: 48px;
+      background: #0b1120;
+      border-radius: 10px;
       display: flex;
       align-items: center;
       justify-content: center;
       flex-shrink: 0;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.3);
-      border: 2px solid var(--gold-accent);
+      box-shadow: 0 4px 10px rgba(16, 185, 129, 0.3);
+      border: 1.5px solid #34d399;
+      overflow: hidden;
+      padding: 4px;
     }
 
     .brand-title-group h1 {
       margin: 0;
-      font-size: 18px;
+      font-size: 17px;
       font-weight: 900;
-      letter-spacing: 0.5px;
+      letter-spacing: 0.8px;
       color: #ffffff;
       text-transform: uppercase;
     }
 
     .brand-title-group p {
-      margin: 3px 0 0 0;
+      margin: 2px 0 0 0;
       font-size: 11px;
-      color: #cbd5e1;
-      letter-spacing: 0.3px;
+      color: #94a3b8;
+      letter-spacing: 0.2px;
       font-weight: 500;
+    }
+
+    /* Sub-Navigation Toggle Buttons */
+    .sub-nav-tabs {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 16px;
+      background: #0b151f;
+      padding: 4px;
+      border-radius: 8px;
+    }
+
+    .sub-nav-btn {
+      flex: 1;
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      padding: 10px 12px;
+      font-size: 12px;
+      font-weight: 700;
+      border-radius: 6px;
+      cursor: pointer;
+      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      transition: all 0.2s ease;
+    }
+
+    .sub-nav-btn.active {
+      background: var(--primary-green);
+      color: #ffffff;
+      box-shadow: 0 2px 6px rgba(16, 185, 129, 0.3);
     }
 
     /* Fixed Bottom Navigation Menu Bar (5 Tabs) */
@@ -165,20 +161,20 @@
       bottom: 0;
       left: 0;
       width: 100%;
-      background: #ffffff;
-      border-top: 1px solid #e0e0e0;
+      background: #0f1c29;
+      border-top: 1px solid #1e293b;
       display: flex;
       justify-content: space-around;
       align-items: center;
       padding: 6px 0;
-      box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 -4px 15px rgba(0, 0, 0, 0.4);
       z-index: 1000;
     }
 
     .bottom-nav button {
       background: none;
       border: none;
-      color: #666666;
+      color: #94a3b8;
       font-size: 10px;
       font-weight: 700;
       display: flex;
@@ -200,7 +196,7 @@
       fill: currentColor;
     }
 
-    /* Card Item Lists */
+    /* Card Item Lists & Design Panels */
     .matches-list {
       display: flex;
       flex-direction: column;
@@ -208,19 +204,18 @@
     }
 
     .player-card {
-      border: 1px solid #e2e8f0;
-      border-radius: 8px;
+      border: 1px solid #1e293b;
+      border-radius: 10px;
       padding: 14px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      background: #ffffff;
-      transition: transform 0.15s ease, box-shadow 0.15s ease;
+      background: var(--card-inner);
+      transition: transform 0.15s ease, border-color 0.15s ease;
     }
 
     .player-card:hover {
-      border-color: #cbd5e1;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+      border-color: var(--primary-green);
     }
 
     .btn-action {
@@ -232,21 +227,21 @@
       font-weight: bold;
       cursor: pointer;
       text-decoration: none;
-      font-size: 13px;
+      font-size: 12px;
       text-align: center;
       flex-shrink: 0;
       margin-left: 10px;
-      box-shadow: 0 2px 4px rgba(204,0,0,0.2);
+      box-shadow: 0 2px 4px rgba(204,0,0,0.3);
     }
 
     .section-title {
-      font-size: 13px;
+      font-size: 12px;
       font-weight: 800;
       color: var(--primary-green);
-      margin: 18px 0 8px 0;
+      margin: 16px 0 8px 0;
       text-transform: uppercase;
       letter-spacing: 0.8px;
-      border-bottom: 2px solid #f1f5f9;
+      border-bottom: 1px solid #1e293b;
       padding-bottom: 4px;
     }
 
@@ -257,7 +252,7 @@
     }
 
     .form-group {
-      margin-bottom: 14px;
+      margin-bottom: 12px;
     }
 
     .form-group.full-width {
@@ -267,9 +262,9 @@
     .form-group label {
       display: block;
       font-weight: 700;
-      margin-bottom: 6px;
-      font-size: 12px;
-      color: #333;
+      margin-bottom: 5px;
+      font-size: 11px;
+      color: #cbd5e1;
       text-transform: uppercase;
       letter-spacing: 0.5px;
     }
@@ -277,17 +272,17 @@
     .form-group input, .form-group select, .form-group textarea {
       width: 100%;
       padding: 10px 12px;
-      border: 1.5px solid #d0d0d0;
+      border: 1px solid #334155;
       border-radius: 6px;
       font-size: 13px;
       outline: none;
-      background: #fafafa;
+      background: #0b151f;
+      color: #ffffff;
       transition: border-color 0.2s;
     }
 
     .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
       border-color: var(--primary-green);
-      background: #ffffff;
     }
 
     .submit-btn {
@@ -295,14 +290,14 @@
       background-color: var(--primary-green);
       color: white;
       border: none;
-      padding: 14px;
-      font-size: 15px;
+      padding: 13px;
+      font-size: 14px;
       font-weight: bold;
       border-radius: 6px;
       cursor: pointer;
-      margin-top: 10px;
+      margin-top: 8px;
       letter-spacing: 0.5px;
-      box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+      box-shadow: 0 3px 6px rgba(16, 185, 129, 0.2);
       text-align: center;
     }
 
@@ -320,94 +315,110 @@
 </head>
 <body>
 
-  <!-- Pinned Top Sponsor Ticker Bar -->
-  <div class="sponsor-ticker">
-    <div class="ticker-content">
-      <span class="brand-item">
-        <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/puma.svg" style="filter: brightness(0) invert(1);" alt="Puma">
-        PUMA
-      </span>
-      <span class="brand-item">
-        <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/nike.svg" style="filter: brightness(0) invert(1);" alt="Nike">
-        NIKE
-      </span>
-      <span class="brand-item samsung-text">
-        <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/samsung.svg" style="filter: invert(36%) sepia(85%) saturate(1982%) hue-rotate(209deg) brightness(98%) contrast(96%);" alt="Samsung">
-        SAMSUNG
-      </span>
-      <span class="brand-item">
-        <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/mercedes.svg" style="filter: brightness(0) invert(1);" alt="Mercedes">
-        MERCEDES
-      </span>
-      <span class="brand-item bmw-text">
-        <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/bmw.svg" style="filter: invert(27%) sepia(89%) saturate(1832%) hue-rotate(185deg) brightness(91%) contrast(101%);" alt="BMW">
-        BMW
-      </span>
-      <span class="brand-item">
-        <svg width="22" height="15" viewBox="0 0 24 16" fill="none" style="vertical-align: middle;">
-          <circle cx="8" cy="8" r="7" fill="#EB001B"/>
-          <circle cx="16" cy="8" r="7" fill="#F79E1B" fill-opacity="0.9"/>
-        </svg>
-        MASTERCARD
-      </span>
-      <span class="brand-item qatar-text">
-        <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/qatarairways.svg" style="filter: invert(16%) sepia(76%) saturate(4156%) hue-rotate(328deg) brightness(85%) contrast(98%);" alt="Qatar Airways">
-        QATAR AIRWAYS
-      </span>
-    </div>
-  </div>
-
   <div class="container">
     <div class="card">
 
-      <!-- Professional Custom Logo & Crest Header Added For Trust and SEO Authority -->
+      <!-- Professional Custom Brand Header & Authentic Field Binoculars Logo -->
       <div class="brand-header">
-        <div class="brand-logo-container">
-          <!-- Custom Scout Escort Crest SVG -->
-          <svg width="34" height="34" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="32" cy="32" r="30" fill="#044b23"/>
-            <circle cx="32" cy="32" r="26" stroke="#f59e0b" stroke-width="2"/>
-            <path d="M32 14L36.5 24H48L39 30.5L42.5 41L32 35L21.5 41L25 30.5L16 24H27.5L32 14Z" fill="#f59e0b"/>
-            <path d="M32 20L34.5 26.5H41.5L36 30.5L38 37L32 33L26 37L28 30.5L22.5 26.5H29.5L32 20Z" fill="#ffffff"/>
-          </svg>
-        </div>
-        <div class="brand-title-group">
-          <h1>Scout Escort</h1>
-          <p>Official Digital Football Talent & Scouting Hub</p>
+        <div class="brand-top-row">
+          <div class="brand-logo-container">
+            <!-- Official Professional Field-Grade Binoculars SVG Emblem -->
+            <svg width="100%" height="100%" viewBox="0 0 240 240" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <linearGradient id="bodyGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                  <stop offset="0%" stop-color="#0a0a0c"/>
+                  <stop offset="50%" stop-color="#27272a"/>
+                  <stop offset="100%" stop-color="#0a0a0c"/>
+                </linearGradient>
+                <linearGradient id="lensGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                  <stop offset="0%" stop-color="#020617"/>
+                  <stop offset="100%" stop-color="#065f46"/>
+                </linearGradient>
+              </defs>
+              <g transform="translate(120, 120) rotate(42) translate(-120, -120)">
+                <!-- Right Barrel -->
+                <g transform="translate(25, -10)">
+                  <rect x="130" y="30" width="36" height="18" rx="3" fill="#111827" stroke="#000000" stroke-width="1"/>
+                  <rect x="138" y="18" width="20" height="12" rx="2" fill="#0a0a0c"/>
+                  <circle cx="148" cy="24" r="6" fill="#000000" stroke="#374151" stroke-width="1.5"/>
+                  <path d="M126 48 H 170 L 166 108 H 130 Z" fill="url(#bodyGrad)" stroke="#000000" stroke-width="1.5"/>
+                  <path d="M130 108 H 166 C 166 140, 190 162, 190 195 H 106 C 106 162, 130 140, 130 108 Z" fill="url(#bodyGrad)" stroke="#000000" stroke-width="1.5"/>
+                  <path d="M104 190 H 192 L 193 205 H 103 Z" fill="#000000"/>
+                  <ellipse cx="148" cy="202" rx="43" ry="12" fill="url(#lensGrad)" stroke="#34d399" stroke-width="1"/>
+                  <ellipse cx="138" cy="198" rx="16" ry="4" fill="#6ee7b7" opacity="0.3"/>
+                </g>
+                <!-- Center Bridge & Focus Wheel -->
+                <g transform="translate(-2, 10)">
+                  <rect x="112" y="65" width="26" height="45" rx="3" fill="#18181b" stroke="#000000" stroke-width="1.5"/>
+                  <rect x="108" y="80" width="34" height="28" rx="4" fill="#27272a" stroke="#000000" stroke-width="1.5"/>
+                  <line x1="114" y1="82" x2="114" y2="106" stroke="#0a0a0c" stroke-width="2.5"/>
+                  <line x1="120" y1="82" x2="120" y2="106" stroke="#3f3f46" stroke-width="2"/>
+                  <line x1="126" y1="82" x2="126" y2="106" stroke="#0a0a0c" stroke-width="2.5"/>
+                  <line x1="132" y1="82" x2="132" y2="106" stroke="#3f3f46" stroke-width="2"/>
+                  <rect x="100" y="72" width="12" height="18" rx="2" fill="#18181b"/>
+                </g>
+                <!-- Left Barrel -->
+                <g>
+                  <rect x="86" y="30" width="38" height="18" rx="3" fill="#111827" stroke="#000000" stroke-width="1"/>
+                  <rect x="94" y="18" width="22" height="12" rx="2" fill="#0a0a0c"/>
+                  <circle cx="105" cy="24" r="6" fill="#000000" stroke="#374151" stroke-width="1.5"/>
+                  <path d="M80 48 H 128 V 108 L 94 120 H 76 Z" fill="url(#bodyGrad)" stroke="#000000" stroke-width="1.5"/>
+                  <line x1="80" y1="48" x2="94" y2="120" stroke="#000000" stroke-width="1"/>
+                  <path d="M94 120 H 128 C 128 160, 154 184, 154 220 H 68 C 68 184, 94 160, 94 120 Z" fill="url(#bodyGrad)" stroke="#000000" stroke-width="1.5"/>
+                  <path d="M66 215 H 156 L 157 232 H 65 Z" fill="#000000"/>
+                  <ellipse cx="111" cy="230" rx="45" ry="14" fill="url(#lensGrad)" stroke="#34d399" stroke-width="1"/>
+                  <ellipse cx="99" cy="225" rx="18" ry="5" fill="#6ee7b7" opacity="0.4"/>
+                  <ellipse cx="122" cy="228" rx="10" ry="2.5" fill="#a7f3d0" opacity="0.5"/>
+                </g>
+              </g>
+            </svg>
+          </div>
+          <div class="brand-title-group">
+            <h1>Scout Escort</h1>
+            <p>Connecting West African Elite Talent to European Clubs</p>
+          </div>
         </div>
       </div>
 
       <!-- Tab 1: Matches -->
       <div id="matches" class="tab-content active">
-        <h2 style="color: var(--primary-green); margin-top:0;">Featured Showcase Matches</h2>
+        <!-- Sub-Navigation Toggle Bar -->
+        <div class="sub-nav-tabs">
+          <button class="sub-nav-btn active" onclick="switchTab('matches', event)">⚽ Prospects & Matches</button>
+          <button class="sub-nav-btn" onclick="switchTab('news', event)">📺 Live Scores & Fixtures</button>
+        </div>
+
+        <div style="background: var(--card-inner); border: 1px solid #1e293b; border-radius: 12px; padding: 16px; margin-bottom: 14px;">
+          <h3 style="margin: 0 0 4px 0; font-size: 16px; color: #ffffff;">Verified Youth Prospects Showcase</h3>
+          <p style="margin: 0 0 12px 0; font-size: 12px; color: var(--text-muted);">Browse verified player highlights, match metrics, and physical profiles ready for international review.</p>
+          <input type="text" id="showcaseSearch" placeholder="Search name, position, or club..." onkeyup="filterPlayers()" style="width: 100%; padding: 10px 12px; border: 1px solid #334155; border-radius: 6px; font-size: 13px; outline: none; background: #0b151f; color: #fff;">
+        </div>
+
+        <h3 style="font-size: 13px; font-weight: 800; color: var(--primary-green); margin: 14px 0 8px 0; text-transform: uppercase; letter-spacing: 0.8px;">Featured Showcase Matches</h3>
         <div class="matches-list" id="matchesList">
           <div class="player-card">
             <div>
-              <h4 style="margin: 0 0 4px 0; font-size: 15px;">D&R Academy vs. Grassroots XI</h4>
-              <p style="margin: 0; font-size: 12px; color: #666;">Showcase Series • Full Match Tape</p>
+              <span style="background: rgba(16,185,129,0.15); color: #34d399; font-size: 10px; font-weight: 800; padding: 3px 8px; border-radius: 4px; text-transform: uppercase;">Centre-Back</span>
+              <h4 style="margin: 6px 0 2px 0; font-size: 15px; color: #fff;">Kofi Mensah</h4>
+              <p style="margin: 0; font-size: 12px; color: var(--text-muted);">📍 Accra Academy Stars (Ghana) • Age: 18</p>
             </div>
-            <a href="https://www.google.com/search?q=football+live+scores" target="_blank" rel="noopener" class="btn-action">Live Scores</a>
+            <a href="https://www.google.com/search?q=football+live+scores" target="_blank" rel="noopener" class="btn-action">Highlights</a>
           </div>
           <div class="player-card">
             <div>
-              <h4 style="margin: 0 0 4px 0; font-size: 15px;">Elite Youth FC vs. Accra Select</h4>
-              <p style="margin: 0; font-size: 12px; color: #666;">U19 Championship • Full Match Tape</p>
+              <span style="background: rgba(16,185,129,0.15); color: #34d399; font-size: 10px; font-weight: 800; padding: 3px 8px; border-radius: 4px; text-transform: uppercase;">Winger (LW/RW)</span>
+              <h4 style="margin: 6px 0 2px 0; font-size: 15px; color: #fff;">Samuel Osei</h4>
+              <p style="margin: 0; font-size: 12px; color: var(--text-muted);">📍 Elite Youth FC (Ghana) • Age: 19</p>
             </div>
-            <a href="https://www.google.com/search?q=football+live+scores" target="_blank" rel="noopener" class="btn-action">Live Scores</a>
+            <a href="https://www.google.com/search?q=football+live+scores" target="_blank" rel="noopener" class="btn-action">Highlights</a>
           </div>
           <div class="player-card">
             <div>
-              <h4 style="margin: 0 0 4px 0; font-size: 15px;">Rising Stars vs. Valley Stars</h4>
-              <p style="margin: 0; font-size: 12px; color: #666;">Scout Showcase • Highlights</p>
+              <span style="background: rgba(16,185,129,0.15); color: #34d399; font-size: 10px; font-weight: 800; padding: 3px 8px; border-radius: 4px; text-transform: uppercase;">Midfielder</span>
+              <h4 style="margin: 6px 0 2px 0; font-size: 15px; color: #fff;">Emmanuel Boateng</h4>
+              <p style="margin: 0; font-size: 12px; color: var(--text-muted);">📍 Rising Stars Academy • Age: 17</p>
             </div>
-            <a href="https://www.google.com/search?q=football+live+scores" target="_blank" rel="noopener" class="btn-action">Live Scores</a>
-          </div>
-          <div class="player-card">
-            <div>
-              <h4 style="margin: 0 0 4px 0; font-size: 15px;">City Academy vs. Future Prospects</h4>
-              <p style="margin: 0; font-size: 12px; color: #666;">Talent Identification • Full Match</p>
-            </div>
-            <a href="https://www.google.com/search?q=football+live+scores" target="_blank" rel="noopener" class="btn-action">Live Scores</a>
+            <a href="https://www.google.com/search?q=football+live+scores" target="_blank" rel="noopener" class="btn-action">Highlights</a>
           </div>
         </div>
       </div>
@@ -415,14 +426,14 @@
       <!-- Tab 2: Live Sports Journalism & Transfer Desk (Powered by API-Football) -->
       <div id="news" class="tab-content">
         <h2 style="color: var(--primary-green); margin-top:0;">Live Sports & Transfer Desk</h2>
-        <p style="font-size: 12px; color: #666; margin-bottom: 14px;">Real-time football scores, match feeds, and transfer market updates.</p>
+        <p style="font-size: 12px; color: var(--text-muted); margin-bottom: 14px;">Real-time football scores, match feeds, and transfer market updates.</p>
         
         <!-- Live API-Football Fixtures Feed Container -->
         <div id="api-football-container" class="matches-list" style="margin-bottom: 16px;">
           <div class="player-card">
             <div>
               <h4 style="margin: 0 0 4px 0; font-size: 14px;">Connecting to API-Football...</h4>
-              <p style="margin: 0; font-size: 12px; color: #666;">Fetching live match data & fixtures</p>
+              <p style="margin: 0; font-size: 12px; color: var(--text-muted);">Fetching live match data & fixtures</p>
             </div>
           </div>
         </div>
@@ -431,21 +442,21 @@
           <div class="player-card">
             <div>
               <h4 style="margin: 0 0 4px 0; font-size: 15px;">Transfer Window & Breaking News Desk</h4>
-              <p style="margin: 0; font-size: 12px; color: #666;">Live reporting, expert journalist analysis & breaking rumors</p>
+              <p style="margin: 0; font-size: 12px; color: var(--text-muted);">Live reporting, expert journalist analysis & breaking rumors</p>
             </div>
             <a href="https://www.espn.com/soccer/transfer" target="_blank" rel="noopener" class="btn-action">Open Desk</a>
           </div>
           <div class="player-card">
             <div>
               <h4 style="margin: 0 0 4px 0; font-size: 15px;">BBC Sport Football Live Commentary</h4>
-              <p style="margin: 0; font-size: 12px; color: #666;">Minute-by-minute text commentary, expert views & match analysis</p>
+              <p style="margin: 0; font-size: 12px; color: var(--text-muted);">Minute-by-minute text commentary, expert views & match analysis</p>
             </div>
             <a href="https://www.bbc.com/sport/football" target="_blank" rel="noopener" class="btn-action">Read Live</a>
           </div>
           <div class="player-card">
             <div>
               <h4 style="margin: 0 0 4px 0; font-size: 15px;">African Football & Scouting Updates</h4>
-              <p style="margin: 0; font-size: 12px; color: #666;">Regional tournaments, league standings & talent reports</p>
+              <p style="margin: 0; font-size: 12px; color: var(--text-muted);">Regional tournaments, league standings & talent reports</p>
             </div>
             <a href="https://www.cafonline.com/" target="_blank" rel="noopener" class="btn-action">Explore</a>
           </div>
@@ -455,11 +466,11 @@
       <!-- Tab 3: Leagues & Database -->
       <div id="rankings" class="tab-content">
         <h2 style="color: var(--primary-green); margin-top:0;">Global & African Leagues Directory</h2>
-        <p style="font-size: 13px; color: #666; margin-bottom: 12px;">Search players, clubs, or major world and African leagues:</p>
+        <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 12px;">Search players, clubs, or major world and African leagues:</p>
         
         <!-- Interactive Search Bar -->
         <div style="margin-bottom: 14px;">
-          <input type="text" id="playerSearch" placeholder="Search league, club, or player..." onkeyup="filterPlayers()" style="width: 100%; padding: 10px 12px; border: 1.5px solid #d0d0d0; border-radius: 6px; font-size: 13px; outline: none; background: #fafafa;">
+          <input type="text" id="playerSearch" placeholder="Search league, club, or player..." onkeyup="filterPlayers()" style="width: 100%; padding: 10px 12px; border: 1px solid #334155; border-radius: 6px; font-size: 13px; outline: none; background: #0b151f; color: #fff;">
         </div>
 
         <div class="matches-list" id="playerList">
@@ -468,51 +479,23 @@
           <div class="player-card league-card">
             <div>
               <h4 style="margin: 0 0 4px 0; font-size: 15px;">⭐ UEFA Champions League (Europe)</h4>
-              <p style="margin: 0; font-size: 12px; color: #666;">Tier 1 Elite • Live Scores & Standings</p>
+              <p style="margin: 0; font-size: 12px; color: var(--text-muted);">Tier 1 Elite • Live Scores & Standings</p>
             </div>
             <a href="https://www.google.com/search?q=UEFA+Champions+League+live+scores+table" target="_blank" rel="noopener" class="btn-action">Live Updates</a>
           </div>
           <div class="player-card league-card">
             <div>
               <h4 style="margin: 0 0 4px 0; font-size: 15px;">🏴󠁧󠁢󠁥󠁮󠁧󠁿 Premier League (England)</h4>
-              <p style="margin: 0; font-size: 12px; color: #666;">Tier 1 • Live Standings & Results</p>
+              <p style="margin: 0; font-size: 12px; color: var(--text-muted);">Tier 1 • Live Standings & Results</p>
             </div>
             <a href="https://www.google.com/search?q=Premier+League+live+scores+table" target="_blank" rel="noopener" class="btn-action">Live Updates</a>
           </div>
           <div class="player-card league-card">
             <div>
               <h4 style="margin: 0 0 4px 0; font-size: 15px;">🇪🇸 La Liga (Spain)</h4>
-              <p style="margin: 0; font-size: 12px; color: #666;">Tier 1 • Live Standings & Results</p>
+              <p style="margin: 0; font-size: 12px; color: var(--text-muted);">Tier 1 • Live Standings & Results</p>
             </div>
             <a href="https://www.google.com/search?q=La+Liga+live+scores+table" target="_blank" rel="noopener" class="btn-action">Live Updates</a>
-          </div>
-          <div class="player-card league-card">
-            <div>
-              <h4 style="margin: 0 0 4px 0; font-size: 15px;">🇩🇪 Bundesliga (Germany)</h4>
-              <p style="margin: 0; font-size: 12px; color: #666;">Tier 1 • Live Standings & Results</p>
-            </div>
-            <a href="https://www.google.com/search?q=Bundesliga+live+scores+table" target="_blank" rel="noopener" class="btn-action">Live Updates</a>
-          </div>
-          <div class="player-card league-card">
-            <div>
-              <h4 style="margin: 0 0 4px 0; font-size: 15px;">🇮🇹 Serie A (Italy)</h4>
-              <p style="margin: 0; font-size: 12px; color: #666;">Tier 1 • Live Standings & Results</p>
-            </div>
-            <a href="https://www.google.com/search?q=Serie+A+live+scores+table" target="_blank" rel="noopener" class="btn-action">Live Updates</a>
-          </div>
-          <div class="player-card league-card">
-            <div>
-              <h4 style="margin: 0 0 4px 0; font-size: 15px;">🇫🇷 Ligue 1 (France)</h4>
-              <p style="margin: 0; font-size: 12px; color: #666;">Tier 1 • Live Standings & Results</p>
-            </div>
-            <a href="https://www.google.com/search?q=Ligue+1+live+scores+table" target="_blank" rel="noopener" class="btn-action">Live Updates</a>
-          </div>
-          <div class="player-card league-card">
-            <div>
-              <h4 style="margin: 0 0 4px 0; font-size: 15px;">🇸🇦 Saudi Pro League (Saudi Arabia)</h4>
-              <p style="margin: 0; font-size: 12px; color: #666;">Tier 1 • Live Standings & Results</p>
-            </div>
-            <a href="https://www.google.com/search?q=Saudi+Pro+League+live+scores+table" target="_blank" rel="noopener" class="btn-action">Live Updates</a>
           </div>
 
           <!-- Featured African Leagues Hub -->
@@ -520,52 +503,38 @@
           <div class="player-card league-card">
             <div>
               <h4 style="margin: 0 0 4px 0; font-size: 15px;">🇬🇭 Ghana Premier League (Ghana)</h4>
-              <p style="margin: 0; font-size: 12px; color: #666;">Domestic Elite • Live Scores & Results</p>
+              <p style="margin: 0; font-size: 12px; color: var(--text-muted);">Domestic Elite • Live Scores & Results</p>
             </div>
             <a href="https://www.google.com/search?q=Ghana+Premier+League+live+scores" target="_blank" rel="noopener" class="btn-action">Live Updates</a>
           </div>
           <div class="player-card league-card">
             <div>
               <h4 style="margin: 0 0 4px 0; font-size: 15px;">🇪🇬 Egyptian Premier League (Egypt)</h4>
-              <p style="margin: 0; font-size: 12px; color: #666;">North African Powerhouse • Live Scores</p>
+              <p style="margin: 0; font-size: 12px; color: var(--text-muted);">North African Powerhouse • Live Scores</p>
             </div>
             <a href="https://www.google.com/search?q=Egyptian+Premier+League+live+scores" target="_blank" rel="noopener" class="btn-action">Live Updates</a>
-          </div>
-          <div class="player-card league-card">
-            <div>
-              <h4 style="margin: 0 0 4px 0; font-size: 15px;">🇿🇦 DStv Premiership (South Africa)</h4>
-              <p style="margin: 0; font-size: 12px; color: #666;">Southern African Elite • Live Scores</p>
-            </div>
-            <a href="https://www.google.com/search?q=DStv+Premiership+live+scores" target="_blank" rel="noopener" class="btn-action">Live Updates</a>
-          </div>
-          <div class="player-card league-card">
-            <div>
-              <h4 style="margin: 0 0 4px 0; font-size: 15px;">🇲🇦 Botola Pro (Morocco)</h4>
-              <p style="margin: 0; font-size: 12px; color: #666;">Maghreb Premier League • Live Scores</p>
-            </div>
-            <a href="https://www.google.com/search?q=Botola+Pro+live+scores" target="_blank" rel="noopener" class="btn-action">Live Updates</a>
           </div>
 
           <!-- Verified Prospects -->
           <div class="section-title">Verified Prospect Directory (Live Database Feed)</div>
           <div id="db-feed-container">
-            <p style="font-size: 13px; color: #666;">Loading live directory profiles...</p>
+            <p style="font-size: 13px; color: var(--text-muted);">Loading live directory profiles...</p>
           </div>
         </div>
       </div>
 
       <!-- Tab 4: Professional Registration Tab -->
-      <div id="registration" class="tab-content" style="background: #ffffff; padding: 20px;">
-        <div style="border-bottom: 2px solid var(--primary-green); padding-bottom: 8px; margin-bottom: 16px;">
+      <div id="registration" class="tab-content" style="background: var(--card-bg); padding: 10px 0;">
+        <div style="border-bottom: 1px solid #1e293b; padding-bottom: 8px; margin-bottom: 16px;">
           <h3 style="color: var(--primary-green); margin: 0; font-size: 18px; font-weight: 800;">Scout Escort Registration</h3>
-          <p style="font-size: 12px; color: #666; margin: 4px 0 0 0;">Enter your player profile details and credentials below.</p>
+          <p style="font-size: 12px; color: var(--text-muted); margin: 4px 0 0 0;">Enter your player profile details and credentials below.</p>
         </div>
 
-        <div style="background: #f8fafc; padding: 18px; border-radius: 10px; border: 1px solid #e2e8f0;">
+        <div style="background: var(--card-inner); padding: 18px; border-radius: 10px; border: 1px solid #1e293b;">
           <div class="form-grid">
             <div class="form-group full-width">
               <label>Select Role *</label>
-              <select id="reg-role" style="font-weight: 600; color: #0f172a;">
+              <select id="reg-role" style="font-weight: 600; color: #ffffff;">
                 <option value="player">Football Prospect / Player</option>
                 <option value="scout">Scout / Talent Agent</option>
                 <option value="club">Club Representative / Coach</option>
@@ -621,14 +590,14 @@
       </div>
 
       <!-- Tab 5: Portal (Login & Publish Dashboard) -->
-      <div id="portal" class="tab-content" style="background: #ffffff; padding: 20px;">
+      <div id="portal" class="tab-content" style="background: var(--card-bg); padding: 10px 0;">
         <h3 style="color: var(--primary-green); margin-top: 0; margin-bottom: 6px;">Secure Platform Portal</h3>
-        <p style="font-size: 13px; color: #666; line-height: 1.4; margin-bottom: 14px;">
+        <p style="font-size: 13px; color: var(--text-muted); line-height: 1.4; margin-bottom: 14px;">
           Log in to your account to instantly post and manage verified player profiles directly on the live database feed.
         </p>
 
         <!-- AUTHENTICATION SECTION -->
-        <div id="auth-box" style="background: #f9fafb; padding: 15px; border-radius: 8px; border: 1px solid #e5e7eb; margin-bottom: 15px;">
+        <div id="auth-box" style="background: var(--card-inner); padding: 15px; border-radius: 8px; border: 1px solid #1e293b; margin-bottom: 15px;">
           <h4 style="margin: 0 0 10px 0; font-size: 14px; color: var(--primary-green);">User Login</h4>
           <div class="form-group" style="margin-bottom: 8px;">
             <input type="email" id="auth-email" placeholder="Email Address">
@@ -641,7 +610,7 @@
         </div>
 
         <!-- LOGGED IN DASHBOARD (Hidden until logged in) -->
-        <div id="dashboard-box" class="hidden" style="background: #f0fdf4; padding: 15px; border-radius: 8px; border: 1px solid #bbf7d0;">
+        <div id="dashboard-box" class="hidden" style="background: #062414; padding: 15px; border-radius: 8px; border: 1px solid #064e3b;">
           <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
             <span id="logged-user-email" style="font-size: 12px; font-weight: bold; color: var(--primary-green);"></span>
             <button type="button" onclick="logoutUser()" style="background: #dc2626; color: white; border: none; padding: 4px 10px; border-radius: 4px; font-size: 11px; cursor: pointer;">Logout</button>
@@ -686,7 +655,7 @@
     </div>
   </div>
 
-  <!-- Bottom Navigation Bar (5 Tabs) -->
+  <!-- Bottom Navigation Bar (Fixed at the bottom screen) -->
   <nav class="bottom-nav">
     <button class="active" onclick="switchTab('matches', event)" id="nav-matches">
       <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14.5v-9l6 4.5-6 4.5z"/></svg>
@@ -768,10 +737,10 @@
           container.innerHTML += `
             <div class="player-card">
               <div>
-                <h4 style="margin: 0 0 4px 0; font-size: 14px;">${homeTeam} vs ${awayTeam}</h4>
-                <p style="margin: 0; font-size: 12px; color: #666;">${league} • <span style="color: #cc0000; font-weight: bold;">LIVE ${elapsed}'</span></p>
+                <h4 style="margin: 0 0 4px 0; font-size: 14px; color:#fff;">${homeTeam} vs ${awayTeam}</h4>
+                <p style="margin: 0; font-size: 12px; color: var(--text-muted);">${league} • <span style="color: #ef4444; font-weight: bold;">LIVE ${elapsed}'</span></p>
               </div>
-              <div style="font-weight: 800; font-size: 14px; background: #fee2e2; color: #991b1b; padding: 6px 10px; border-radius: 6px;">
+              <div style="font-weight: 800; font-size: 14px; background: rgba(239, 68, 68, 0.15); color: #f87171; padding: 6px 10px; border-radius: 6px;">
                 ${homeGoals} - ${awayGoals}
               </div>
             </div>
@@ -811,10 +780,10 @@
           container.innerHTML += `
             <div class="player-card">
               <div>
-                <h4 style="margin: 0 0 4px 0; font-size: 14px;">${homeTeam} vs ${awayTeam}</h4>
-                <p style="margin: 0; font-size: 12px; color: #666;">${league} • <span style="color: var(--primary-green); font-weight: bold;">${status}</span></p>
+                <h4 style="margin: 0 0 4px 0; font-size: 14px; color:#fff;">${homeTeam} vs ${awayTeam}</h4>
+                <p style="margin: 0; font-size: 12px; color: var(--text-muted);">${league} • <span style="color: var(--primary-green); font-weight: bold;">${status}</span></p>
               </div>
-              <div style="font-weight: 800; font-size: 14px; background: #f0fdf4; color: var(--primary-green); padding: 6px 10px; border-radius: 6px;">
+              <div style="font-weight: 800; font-size: 14px; background: rgba(16, 185, 129, 0.15); color: var(--primary-green); padding: 6px 10px; border-radius: 6px;">
                 ${homeGoals} - ${awayGoals}
               </div>
             </div>
@@ -925,15 +894,15 @@
         container.innerHTML = `
           <div class="player-card">
             <div>
-              <h4 style="margin: 0 0 4px 0; font-size: 15px;">K. Mensah (LW / RW)</h4>
-              <p style="margin: 0; font-size: 12px; color: #666;">Age 19 • Free Agent</p>
+              <h4 style="margin: 0 0 4px 0; font-size: 15px; color:#fff;">K. Mensah (LW / RW)</h4>
+              <p style="margin: 0; font-size: 12px; color: var(--text-muted);">Age 19 • Free Agent</p>
             </div>
             <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank" rel="noopener" class="btn-action">Highlights</a>
           </div>
           <div class="player-card">
             <div>
-              <h4 style="margin: 0 0 4px 0; font-size: 15px;">A. Osei (CAM / CM)</h4>
-              <p style="margin: 0; font-size: 12px; color: #666;">Age 18 • Accra Select</p>
+              <h4 style="margin: 0 0 4px 0; font-size: 15px; color:#fff;">A. Osei (CAM / CM)</h4>
+              <p style="margin: 0; font-size: 12px; color: var(--text-muted);">Age 18 • Accra Select</p>
             </div>
             <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank" rel="noopener" class="btn-action">Highlights</a>
           </div>
@@ -942,7 +911,7 @@
       }
 
       if (data.length === 0) {
-        container.innerHTML = '<p style="font-size: 13px; color: #666;">No profiles posted yet. Be the first via the Portal tab!</p>';
+        container.innerHTML = '<p style="font-size: 13px; color: var(--text-muted);">No profiles posted yet. Be the first via the Portal tab!</p>';
         return;
       }
 
@@ -951,8 +920,8 @@
         container.innerHTML += `
           <div class="player-card">
             <div>
-              <h4 style="margin: 0 0 4px 0; font-size: 15px;">${player.name} (${player.position || 'Player'})</h4>
-              <p style="margin: 0; font-size: 12px; color: #666;">Age ${player.age || 'N/A'} • ${player.team || 'Independent'}</p>
+              <h4 style="margin: 0 0 4px 0; font-size: 15px; color:#fff;">${player.name} (${player.position || 'Player'})</h4>
+              <p style="margin: 0; font-size: 12px; color: var(--text-muted);">Age ${player.age || 'N/A'} • ${player.team || 'Independent'}</p>
             </div>
             <a href="${player.video}" target="_blank" rel="noopener" class="btn-action">Highlights</a>
           </div>
@@ -983,15 +952,17 @@
     }
 
     function filterPlayers() {
-      let input = document.getElementById('playerSearch').value.toLowerCase();
+      let input = document.getElementById('playerSearch') ? document.getElementById('playerSearch').value.toLowerCase() : '';
+      let showcaseInput = document.getElementById('showcaseSearch') ? document.getElementById('showcaseSearch').value.toLowerCase() : '';
+      let query = input || showcaseInput;
+      
       let rankCount = 0;
-
       let rankingsList = document.getElementById('playerList');
       if (rankingsList) {
         let cards = rankingsList.getElementsByClassName('player-card');
         for (let i = 0; i < cards.length; i++) {
           let text = cards[i].innerText.toLowerCase();
-          if (text.includes(input)) {
+          if (text.includes(query)) {
             cards[i].style.display = "";
             rankCount++;
           } else {
@@ -1010,6 +981,7 @@
   </script>
 </body>
 </html>
+
 
 
 
