@@ -234,15 +234,6 @@
       justify-content: center;
       flex-shrink: 0;
       border: 1px solid #334155;
-      background: #ffffff;
-      overflow: hidden;
-      padding: 4px;
-    }
-
-    .league-logo-box img {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
     }
 
     .btn-action {
@@ -467,27 +458,123 @@
         </div>
       </div>
 
-      <!-- Tab 3: Leagues & Database (Powered Dynamically by API-Football Official Logos) -->
+      <!-- Tab 3: Leagues & Database (Corrected Clean League Logos) -->
       <div id="rankings" class="tab-content">
         <h2 style="color: var(--primary-green); margin-top:0;">Global & African Leagues Directory</h2>
-        <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 12px;">Official league emblems loaded dynamically from your API feed:</p>
+        <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 12px;">Search players, clubs, or major world and African leagues:</p>
         
         <div style="margin-bottom: 14px;">
-          <input type="text" id="playerSearch" placeholder="Search league..." onkeyup="filterPlayers()" style="width: 100%; padding: 10px 12px; border: 1px solid #334155; border-radius: 6px; font-size: 13px; outline: none; background: #0b151f; color: #fff;">
+          <input type="text" id="playerSearch" placeholder="Search league, club, or player..." onkeyup="filterPlayers()" style="width: 100%; padding: 10px 12px; border: 1px solid #334155; border-radius: 6px; font-size: 13px; outline: none; background: #0b151f; color: #fff;">
         </div>
 
-        <div class="matches-list" id="api-leagues-container">
-          <div class="player-card">
-            <div>
-              <h4 style="margin: 0 0 4px 0; font-size: 14px; color:#fff;">Loading official leagues from API-Football...</h4>
-              <p style="margin: 0; font-size: 12px; color: var(--text-muted);">Fetching official emblems and standings</p>
+        <div class="matches-list" id="playerList">
+          <div class="section-title" style="margin-top:0;">Top Global Leagues</div>
+          
+          <!-- UEFA Champions League -->
+          <div class="player-card league-card">
+            <div class="league-card-inner">
+              <div class="league-logo-box" style="background: linear-gradient(135deg, #020617 0%, #1e1b4b 100%);">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#38bdf8" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 3v18M3 12h18"/></svg>
+              </div>
+              <div>
+                <h4 style="margin: 0 0 4px 0; font-size: 15px;">UEFA Champions League</h4>
+                <p style="margin: 0; font-size: 12px; color: var(--text-muted);">Tier 1 Elite • Live Scores & Standings</p>
+              </div>
             </div>
+            <a href="https://www.google.com/search?q=UEFA+Champions+League+live+scores+table" target="_blank" rel="noopener" class="btn-action">Live Updates</a>
           </div>
-        </div>
 
-        <div class="section-title">Verified Prospect Directory (Live Database Feed)</div>
-        <div id="db-feed-container">
-          <p style="font-size: 13px; color: var(--text-muted);">Loading live directory profiles...</p>
+          <!-- Premier League -->
+          <div class="player-card league-card">
+            <div class="league-card-inner">
+              <div class="league-logo-box" style="background: linear-gradient(135deg, #3b0764 0%, #701a75 100%);">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#c084fc" stroke-width="2"><path d="M12 2l3 6h6l-5 4 2 6-6-4-6 4 2-6-5-4h6z"/></svg>
+              </div>
+              <div>
+                <h4 style="margin: 0 0 4px 0; font-size: 15px;">Premier League</h4>
+                <p style="margin: 0; font-size: 12px; color: var(--text-muted);">England • Live Standings & Results</p>
+              </div>
+            </div>
+            <a href="https://www.google.com/search?q=Premier+League+live+scores+table" target="_blank" rel="noopener" class="btn-action">Live Updates</a>
+          </div>
+
+          <!-- La Liga -->
+          <div class="player-card league-card">
+            <div class="league-card-inner">
+              <div class="league-logo-box" style="background: linear-gradient(135deg, #7f1d1d 0%, #b91c1c 100%);">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fef08a" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 12h6M12 9v6"/></svg>
+              </div>
+              <div>
+                <h4 style="margin: 0 0 4px 0; font-size: 15px;">La Liga</h4>
+                <p style="margin: 0; font-size: 12px; color: var(--text-muted);">Spain • Live Standings & Results</p>
+              </div>
+            </div>
+            <a href="https://www.google.com/search?q=La+Liga+live+scores+table" target="_blank" rel="noopener" class="btn-action">Live Updates</a>
+          </div>
+
+          <!-- Bundesliga -->
+          <div class="player-card league-card">
+            <div class="league-card-inner">
+              <div class="league-logo-box" style="background: linear-gradient(135deg, #991b1b 0%, #450a0a 100%);">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#facc15" stroke-width="2"><circle cx="12" cy="12" r="9"/></svg>
+              </div>
+              <div>
+                <h4 style="margin: 0 0 4px 0; font-size: 15px;">Bundesliga</h4>
+                <p style="margin: 0; font-size: 12px; color: var(--text-muted);">Germany • Live Standings & Results</p>
+              </div>
+            </div>
+            <a href="https://www.google.com/search?q=Bundesliga+live+scores+table" target="_blank" rel="noopener" class="btn-action">Live Updates</a>
+          </div>
+
+          <!-- Serie A -->
+          <div class="player-card league-card">
+            <div class="league-card-inner">
+              <div class="league-logo-box" style="background: linear-gradient(135deg, #1e3a8a 0%, #0284c7 100%);">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#38bdf8" stroke-width="2"><path d="M12 2l9 4v6c0 5.25-3.75 10-9 11-5.25-1-9-5.75-9-11V6l9-4z"/></svg>
+              </div>
+              <div>
+                <h4 style="margin: 0 0 4px 0; font-size: 15px;">Serie A</h4>
+                <p style="margin: 0; font-size: 12px; color: var(--text-muted);">Italy • Live Standings & Results</p>
+              </div>
+            </div>
+            <a href="https://www.google.com/search?q=Serie+A+live+scores+table" target="_blank" rel="noopener" class="btn-action">Live Updates</a>
+          </div>
+
+          <!-- Ligue 1 -->
+          <div class="player-card league-card">
+            <div class="league-card-inner">
+              <div class="league-logo-box" style="background: linear-gradient(135deg, #18181b 0%, #3f3f46 100%);">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#e4e4e7" stroke-width="2"><polygon points="12 2 22 8 22 16 12 22 2 16 2 8 12 2"/></svg>
+              </div>
+              <div>
+                <h4 style="margin: 0 0 4px 0; font-size: 15px;">Ligue 1</h4>
+                <p style="margin: 0; font-size: 12px; color: var(--text-muted);">France • Live Standings & Results</p>
+              </div>
+            </div>
+            <a href="https://www.google.com/search?q=Ligue+1+live+scores+table" target="_blank" rel="noopener" class="btn-action">Live Updates</a>
+          </div>
+
+          <!-- Featured African Leagues Hub -->
+          <div class="section-title">Prominent African Leagues</div>
+          
+          <!-- Ghana Premier League -->
+          <div class="player-card league-card">
+            <div class="league-card-inner">
+              <div class="league-logo-box" style="background: linear-gradient(135deg, #064e3b 0%, #022c22 100%);">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#facc15" stroke-width="2"><polygon points="12 2 15 8 22 9 17 14 18 21 12 17 6 21 7 14 2 9 9 8 12 2"/></svg>
+              </div>
+              <div>
+                <h4 style="margin: 0 0 4px 0; font-size: 15px;">Ghana Premier League</h4>
+                <p style="margin: 0; font-size: 12px; color: var(--text-muted);">Domestic Elite • Live Scores & Results</p>
+              </div>
+            </div>
+            <a href="https://www.google.com/search?q=Ghana+Premier+League+live+scores" target="_blank" rel="noopener" class="btn-action">Live Updates</a>
+          </div>
+
+          <div class="section-title">Verified Prospect Directory (Live Database Feed)</div>
+          <div id="db-feed-container">
+            <p style="font-size: 13px; color: var(--text-muted);">Loading live directory profiles...</p>
+          </div>
         </div>
       </div>
 
@@ -660,51 +747,8 @@
       }
       loadDatabaseFeed();
       loadApiFootballFixtures();
-      loadApiLeagues();
     }
     checkUserSession();
-
-    async function loadApiLeagues() {
-      const container = document.getElementById('api-leagues-container');
-      if (!container) return;
-
-      // Key league IDs from API-Football: Premier League, Champions League, La Liga, Ghana Premier League
-      const targetLeagueIds = [39, 2, 140, 293]; 
-      container.innerHTML = '';
-
-      for (const leagueId of targetLeagueIds) {
-        try {
-          const response = await fetch(`https://v3.football.api-sports.io/leagues?id=${leagueId}`, {
-            method: "GET",
-            headers: { "x-apisports-key": API_FOOTBALL_KEY }
-          });
-          const data = await response.json();
-          
-          if (data.response && data.response.length > 0) {
-            const item = data.response[0];
-            const league = item.league;
-            const country = item.country;
-
-            container.innerHTML += `
-              <div class="player-card league-card">
-                <div class="league-card-inner">
-                  <div class="league-logo-box">
-                    <img src="${league.logo}" alt="${league.name} Logo">
-                  </div>
-                  <div>
-                    <h4 style="margin: 0 0 4px 0; font-size: 15px; color: #fff;">${league.name}</h4>
-                    <p style="margin: 0; font-size: 12px; color: var(--text-muted);">${country.name} • Live Scores & Standings</p>
-                  </div>
-                </div>
-                <a href="https://www.google.com/search?q=${encodeURIComponent(league.name + ' live scores table')}" target="_blank" rel="noopener" class="btn-action">Live Updates</a>
-              </div>
-            `;
-          }
-        } catch (e) {
-          console.error("Error fetching league ID " + leagueId, e);
-        }
-      }
-    }
 
     async function loadApiFootballFixtures() {
       const container = document.getElementById('api-football-container');
@@ -876,40 +920,47 @@
     }
 
     function filterPlayers() {
-      let input = document.getElementById('playerSearch') ? document.getElementById('playerSearch').value.toLowerCase() : '';
-      let showcaseInput = document.getElementById('showcaseSearch') ? document.getElementById('showcaseSearch').value.toLowerCase() : '';
-      let query = input || showcaseInput;
-      
-      let rankingsList = document.getElementById('api-leagues-container');
-      if (rankingsList) {
-        let cards = rankingsList.getElementsByClassName('player-card');
-        for (let i = 0; i < cards.length; i++) {
-          let text = cards[i].innerText.toLowerCase();
-          cards[i].style.display = text.includes(query) ? "" : "none";
+      // 1. Filter Showcase Prospects on Tab 1
+      let showcaseInput = document.getElementById('showcaseSearch');
+      if (showcaseInput) {
+        let query = showcaseInput.value.toLowerCase();
+        let matchesContainer = document.getElementById('matchesList');
+        if (matchesContainer) {
+          let cards = matchesContainer.getElementsByClassName('player-card');
+          for (let i = 0; i < cards.length; i++) {
+            let text = cards[i].innerText.toLowerCase();
+            cards[i].style.display = text.includes(query) ? "" : "none";
+          }
+        }
+      }
+
+      // 2. Filter Leagues and Database Feed on Tab 3
+      let playerSearchInput = document.getElementById('playerSearch');
+      if (playerSearchInput) {
+        let query = playerSearchInput.value.toLowerCase();
+        
+        let rankingsList = document.getElementById('playerList');
+        if (rankingsList) {
+          let cards = rankingsList.getElementsByClassName('player-card');
+          for (let i = 0; i < cards.length; i++) {
+            let text = cards[i].innerText.toLowerCase();
+            cards[i].style.display = text.includes(query) ? "" : "none";
+          }
+        }
+
+        let dbFeed = document.getElementById('db-feed-container');
+        if (dbFeed) {
+          let dbCards = dbFeed.getElementsByClassName('player-card');
+          for (let j = 0; j < dbCards.length; j++) {
+            let dbText = dbCards[j].innerText.toLowerCase();
+            dbCards[j].style.display = dbText.includes(query) ? "" : "none";
+          }
         }
       }
     }
   </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
