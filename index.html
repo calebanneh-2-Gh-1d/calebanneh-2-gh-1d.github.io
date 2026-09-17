@@ -340,7 +340,6 @@
       <div class="brand-header">
         <div class="brand-top-row">
           <div class="brand-logo-container">
-            <!-- Official Professional Field-Grade Binoculars SVG Emblem -->
             <svg width="100%" height="100%" viewBox="0 0 240 240" fill="none" xmlns="http://www.w3.org/2000/svg">
               <defs>
                 <linearGradient id="bodyGrad" x1="0%" y1="0%" x2="100%" y2="0%">
@@ -354,7 +353,6 @@
                 </linearGradient>
               </defs>
               <g transform="translate(120, 120) rotate(42) translate(-120, -120)">
-                <!-- Right Barrel -->
                 <g transform="translate(25, -10)">
                   <rect x="130" y="30" width="36" height="18" rx="3" fill="#111827" stroke="#000000" stroke-width="1"/>
                   <rect x="138" y="18" width="20" height="12" rx="2" fill="#0a0a0c"/>
@@ -363,30 +361,18 @@
                   <path d="M130 108 H 166 C 166 140, 190 162, 190 195 H 106 C 106 162, 130 140, 130 108 Z" fill="url(#bodyGrad)" stroke="#000000" stroke-width="1.5"/>
                   <path d="M104 190 H 192 L 193 205 H 103 Z" fill="#000000"/>
                   <ellipse cx="148" cy="202" rx="43" ry="12" fill="url(#lensGrad)" stroke="#34d399" stroke-width="1"/>
-                  <ellipse cx="138" cy="198" rx="16" ry="4" fill="#6ee7b7" opacity="0.3"/>
                 </g>
-                <!-- Center Bridge & Focus Wheel -->
                 <g transform="translate(-2, 10)">
                   <rect x="112" y="65" width="26" height="45" rx="3" fill="#18181b" stroke="#000000" stroke-width="1.5"/>
                   <rect x="108" y="80" width="34" height="28" rx="4" fill="#27272a" stroke="#000000" stroke-width="1.5"/>
-                  <line x1="114" y1="82" x2="114" y2="106" stroke="#0a0a0c" stroke-width="2.5"/>
-                  <line x1="120" y1="82" x2="120" y2="106" stroke="#3f3f46" stroke-width="2"/>
-                  <line x1="126" y1="82" x2="126" y2="106" stroke="#0a0a0c" stroke-width="2.5"/>
-                  <line x1="132" y1="82" x2="132" y2="106" stroke="#3f3f46" stroke-width="2"/>
-                  <rect x="100" y="72" width="12" height="18" rx="2" fill="#18181b"/>
                 </g>
-                <!-- Left Barrel -->
                 <g>
                   <rect x="86" y="30" width="38" height="18" rx="3" fill="#111827" stroke="#000000" stroke-width="1"/>
                   <rect x="94" y="18" width="22" height="12" rx="2" fill="#0a0a0c"/>
                   <circle cx="105" cy="24" r="6" fill="#000000" stroke="#374151" stroke-width="1.5"/>
                   <path d="M80 48 H 128 V 108 L 94 120 H 76 Z" fill="url(#bodyGrad)" stroke="#000000" stroke-width="1.5"/>
-                  <line x1="80" y1="48" x2="94" y2="120" stroke="#000000" stroke-width="1"/>
                   <path d="M94 120 H 128 C 128 160, 154 184, 154 220 H 68 C 68 184, 94 160, 94 120 Z" fill="url(#bodyGrad)" stroke="#000000" stroke-width="1.5"/>
-                  <path d="M66 215 H 156 L 157 232 H 65 Z" fill="#000000"/>
                   <ellipse cx="111" cy="230" rx="45" ry="14" fill="url(#lensGrad)" stroke="#34d399" stroke-width="1"/>
-                  <ellipse cx="99" cy="225" rx="18" ry="5" fill="#6ee7b7" opacity="0.4"/>
-                  <ellipse cx="122" cy="228" rx="10" ry="2.5" fill="#a7f3d0" opacity="0.5"/>
                 </g>
               </g>
             </svg>
@@ -400,7 +386,6 @@
 
       <!-- Tab 1: Matches -->
       <div id="matches" class="tab-content active">
-        <!-- Sub-Navigation Toggle Bar -->
         <div class="sub-nav-tabs">
           <button class="sub-nav-btn active" onclick="switchTab('matches', event)">⚽ Prospects & Matches</button>
           <button class="sub-nav-btn" onclick="switchTab('news', event)">📺 Live Scores & Fixtures</button>
@@ -441,12 +426,11 @@
         </div>
       </div>
 
-      <!-- Tab 2: Live Sports Journalism & Transfer Desk (Powered by API-Football) -->
+      <!-- Tab 2: Live Sports Journalism & Transfer Desk -->
       <div id="news" class="tab-content">
         <h2 style="color: var(--primary-green); margin-top:0;">Live Sports & Transfer Desk</h2>
         <p style="font-size: 12px; color: var(--text-muted); margin-bottom: 14px;">Real-time football scores, match feeds, and transfer market updates.</p>
         
-        <!-- Live API-Football Fixtures Feed Container -->
         <div id="api-football-container" class="matches-list" style="margin-bottom: 16px;">
           <div class="player-card">
             <div>
@@ -471,39 +455,26 @@
             </div>
             <a href="https://www.bbc.com/sport/football" target="_blank" rel="noopener" class="btn-action">Read Live</a>
           </div>
-          <div class="player-card">
-            <div>
-              <h4 style="margin: 0 0 4px 0; font-size: 15px;">African Football & Scouting Updates</h4>
-              <p style="margin: 0; font-size: 12px; color: var(--text-muted);">Regional tournaments, league standings & talent reports</p>
-            </div>
-            <a href="https://www.cafonline.com/" target="_blank" rel="noopener" class="btn-action">Explore</a>
-          </div>
         </div>
       </div>
 
-      <!-- Tab 3: Leagues & Database -->
+      <!-- Tab 3: Leagues & Database (Corrected Clean League Logos) -->
       <div id="rankings" class="tab-content">
         <h2 style="color: var(--primary-green); margin-top:0;">Global & African Leagues Directory</h2>
         <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 12px;">Search players, clubs, or major world and African leagues:</p>
         
-        <!-- Interactive Search Bar -->
         <div style="margin-bottom: 14px;">
           <input type="text" id="playerSearch" placeholder="Search league, club, or player..." onkeyup="filterPlayers()" style="width: 100%; padding: 10px 12px; border: 1px solid #334155; border-radius: 6px; font-size: 13px; outline: none; background: #0b151f; color: #fff;">
         </div>
 
         <div class="matches-list" id="playerList">
-          <!-- Major World Leagues Hub -->
           <div class="section-title" style="margin-top:0;">Top Global Leagues</div>
           
           <!-- UEFA Champions League -->
           <div class="player-card league-card">
             <div class="league-card-inner">
               <div class="league-logo-box" style="background: linear-gradient(135deg, #020617 0%, #1e1b4b 100%);">
-                <!-- UCL Starball Emblem SVG -->
-                <svg width="28" height="28" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <polygon points="50,5 61,35 93,38 68,59 76,90 50,73 24,90 32,59 7,38 39,35" fill="#38bdf8" stroke="#ffffff" stroke-width="3"/>
-                  <circle cx="50" cy="52" r="12" fill="#0f172a" stroke="#38bdf8" stroke-width="2"/>
-                </svg>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#38bdf8" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 3v18M3 12h18"/></svg>
               </div>
               <div>
                 <h4 style="margin: 0 0 4px 0; font-size: 15px;">UEFA Champions League</h4>
@@ -517,10 +488,7 @@
           <div class="player-card league-card">
             <div class="league-card-inner">
               <div class="league-logo-box" style="background: linear-gradient(135deg, #3b0764 0%, #701a75 100%);">
-                <!-- Premier League Crown/Lion Emblem SVG -->
-                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M12 2L15 8H21L16 12L18 18L12 15L6 18L8 12L3 8H9L12 2Z" fill="#38bdf8" stroke="#c084fc" stroke-width="1"/>
-                </svg>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#c084fc" stroke-width="2"><path d="M12 2l3 6h6l-5 4 2 6-6-4-6 4 2-6-5-4h6z"/></svg>
               </div>
               <div>
                 <h4 style="margin: 0 0 4px 0; font-size: 15px;">Premier League</h4>
@@ -534,11 +502,7 @@
           <div class="player-card league-card">
             <div class="league-card-inner">
               <div class="league-logo-box" style="background: linear-gradient(135deg, #7f1d1d 0%, #b91c1c 100%);">
-                <!-- La Liga Abstract Wheel Crest SVG -->
-                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <circle cx="12" cy="12" r="9" stroke="#f87171" stroke-width="2.5" fill="none"/>
-                  <path d="M12 3V21M3 12H21" stroke="#fef08a" stroke-width="2"/>
-                </svg>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fef08a" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 12h6M12 9v6"/></svg>
               </div>
               <div>
                 <h4 style="margin: 0 0 4px 0; font-size: 15px;">La Liga</h4>
@@ -552,11 +516,7 @@
           <div class="player-card league-card">
             <div class="league-card-inner">
               <div class="league-logo-box" style="background: linear-gradient(135deg, #991b1b 0%, #450a0a 100%);">
-                <!-- Bundesliga Silhouette Emblem SVG -->
-                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <circle cx="12" cy="8" r="4" fill="#facc15"/>
-                  <path d="M4 20C4 16 7 14 12 14C17 14 20 16 20 20" stroke="#facc15" stroke-width="2.5" stroke-linecap="round"/>
-                </svg>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#facc15" stroke-width="2"><circle cx="12" cy="12" r="9"/></svg>
               </div>
               <div>
                 <h4 style="margin: 0 0 4px 0; font-size: 15px;">Bundesliga</h4>
@@ -570,11 +530,7 @@
           <div class="player-card league-card">
             <div class="league-card-inner">
               <div class="league-logo-box" style="background: linear-gradient(135deg, #1e3a8a 0%, #0284c7 100%);">
-                <!-- Serie A Shield Emblem SVG -->
-                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M12 2L3 5V11C3 16 7 20 12 22C17 20 21 16 21 11V5L12 2Z" fill="#0284c7" stroke="#38bdf8" stroke-width="1.5"/>
-                  <text x="8" y="15" fill="#ffffff" font-size="10" font-weight="bold">TIM</text>
-                </svg>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#38bdf8" stroke-width="2"><path d="M12 2l9 4v6c0 5.25-3.75 10-9 11-5.25-1-9-5.75-9-11V6l9-4z"/></svg>
               </div>
               <div>
                 <h4 style="margin: 0 0 4px 0; font-size: 15px;">Serie A</h4>
@@ -588,11 +544,7 @@
           <div class="player-card league-card">
             <div class="league-card-inner">
               <div class="league-logo-box" style="background: linear-gradient(135deg, #18181b 0%, #3f3f46 100%);">
-                <!-- Ligue 1 Hexagon Emblem SVG -->
-                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <polygon points="12,2 21,7 21,17 12,22 3,17 3,7" fill="#27272a" stroke="#e4e4e7" stroke-width="1.5"/>
-                  <text x="8" y="16" fill="#e4e4e7" font-size="11" font-weight="bold">1</text>
-                </svg>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#e4e4e7" stroke-width="2"><polygon points="12 2 22 8 22 16 12 22 2 16 2 8 12 2"/></svg>
               </div>
               <div>
                 <h4 style="margin: 0 0 4px 0; font-size: 15px;">Ligue 1</h4>
@@ -609,10 +561,7 @@
           <div class="player-card league-card">
             <div class="league-card-inner">
               <div class="league-logo-box" style="background: linear-gradient(135deg, #064e3b 0%, #022c22 100%);">
-                <!-- Ghana Star Emblem SVG -->
-                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <polygon points="12,2 15,9 22,9 17,14 19,21 12,17 5,21 7,14 2,9 9,9" fill="#facc15" stroke="#f59e0b" stroke-width="1"/>
-                </svg>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#facc15" stroke-width="2"><polygon points="12 2 15 8 22 9 17 14 18 21 12 17 6 21 7 14 2 9 9 8 12 2"/></svg>
               </div>
               <div>
                 <h4 style="margin: 0 0 4px 0; font-size: 15px;">Ghana Premier League</h4>
@@ -622,42 +571,6 @@
             <a href="https://www.google.com/search?q=Ghana+Premier+League+live+scores" target="_blank" rel="noopener" class="btn-action">Live Updates</a>
           </div>
 
-          <!-- Egyptian Premier League -->
-          <div class="player-card league-card">
-            <div class="league-card-inner">
-              <div class="league-logo-box" style="background: linear-gradient(135deg, #1e3a8a 0%, #172554 100%);">
-                <!-- African Football Shield Emblem SVG -->
-                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M12 2L4 5V11C4 16 8 20 12 22C16 20 20 16 20 11V5L12 2Z" fill="#3b82f6" stroke="#93c5fd" stroke-width="1.5"/>
-                </svg>
-              </div>
-              <div>
-                <h4 style="margin: 0 0 4px 0; font-size: 15px;">Egyptian Premier League</h4>
-                <p style="margin: 0; font-size: 12px; color: var(--text-muted);">North Africa • Live Scores</p>
-              </div>
-            </div>
-            <a href="https://www.google.com/search?q=Egyptian+Premier+League+live+scores" target="_blank" rel="noopener" class="btn-action">Live Updates</a>
-          </div>
-
-          <!-- South African Premier Division (DSTV Premiership) -->
-          <div class="player-card league-card">
-            <div class="league-card-inner">
-              <div class="league-logo-box" style="background: linear-gradient(135deg, #b45309 0%, #78350f 100%);">
-                <!-- DSTV Premiership Football Emblem SVG -->
-                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <circle cx="12" cy="12" r="9" fill="#f59e0b" stroke="#fef3c7" stroke-width="1.5"/>
-                  <path d="M12 3C14 7 14 17 12 21M3 12C7 10 17 10 21 12" stroke="#ffffff" stroke-width="1.5"/>
-                </svg>
-              </div>
-              <div>
-                <h4 style="margin: 0 0 4px 0; font-size: 15px;">South African Premier Division</h4>
-                <p style="margin: 0; font-size: 12px; color: var(--text-muted);">DSTV Premiership • Live Scores</p>
-              </div>
-            </div>
-            <a href="https://www.google.com/search?q=South+African+Premier+Division+live+scores" target="_blank" rel="noopener" class="btn-action">Live Updates</a>
-          </div>
-
-          <!-- Verified Prospects -->
           <div class="section-title">Verified Prospect Directory (Live Database Feed)</div>
           <div id="db-feed-container">
             <p style="font-size: 13px; color: var(--text-muted);">Loading live directory profiles...</p>
@@ -738,7 +651,6 @@
           Log in to your account to instantly post and manage verified player profiles directly on the live database feed.
         </p>
 
-        <!-- AUTHENTICATION SECTION -->
         <div id="auth-box" style="background: var(--card-inner); padding: 15px; border-radius: 8px; border: 1px solid #1e293b; margin-bottom: 15px;">
           <h4 style="margin: 0 0 10px 0; font-size: 14px; color: var(--primary-green);">User Login</h4>
           <div class="form-group" style="margin-bottom: 8px;">
@@ -751,7 +663,6 @@
           <p id="auth-message" style="font-size: 12px; margin-top: 8px; color: #cc0000;"></p>
         </div>
 
-        <!-- LOGGED IN DASHBOARD (Hidden until logged in) -->
         <div id="dashboard-box" class="hidden" style="background: #062414; padding: 15px; border-radius: 8px; border: 1px solid #064e3b;">
           <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
             <span id="logged-user-email" style="font-size: 12px; font-weight: bold; color: var(--primary-green);"></span>
@@ -797,7 +708,7 @@
     </div>
   </div>
 
-  <!-- Bottom Navigation Bar (Fixed at the bottom screen) -->
+  <!-- Bottom Navigation Bar -->
   <nav class="bottom-nav">
     <button class="active" onclick="switchTab('matches', event)" id="nav-matches">
       <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14.5v-9l6 4.5-6 4.5z"/></svg>
@@ -822,16 +733,11 @@
   </nav>
 
   <script>
-    // --- SUPABASE CONFIGURATION ---
     const SUPABASE_URL = 'https://ovbybswgoxvifmftxshb.supabase.co';
     const SUPABASE_ANON_KEY = 'sb_publishable_GVF5j7spmTppoU2oxjLSiw_5fSKZEeg';
-    
     const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
-
-    // --- API-FOOTBALL CONFIGURATION ---
     const API_FOOTBALL_KEY = 'bb1f687408c92beab633daadf138a07c';
 
-    // Check user session and load live data on load
     async function checkUserSession() {
       const { data: { session } } = await supabaseClient.auth.getSession();
       if (session) {
@@ -844,21 +750,16 @@
     }
     checkUserSession();
 
-    // Fetch Live Fixtures from API-Football
     async function loadApiFootballFixtures() {
       const container = document.getElementById('api-football-container');
       if (!container) return;
-
       const url = "https://v3.football.api-sports.io/fixtures?live=all";
 
       try {
         const response = await fetch(url, {
           method: "GET",
-          headers: {
-            "x-apisports-key": API_FOOTBALL_KEY
-          }
+          headers: { "x-apisports-key": API_FOOTBALL_KEY }
         });
-
         const data = await response.json();
         
         if (!data.response || data.response.length === 0) {
@@ -867,28 +768,19 @@
         }
 
         container.innerHTML = '<div class="section-title" style="margin-top:0;">Live Match Ticker (API-Football)</div>';
-        
         data.response.slice(0, 4).forEach(match => {
-          let homeTeam = match.teams.home.name;
-          let awayTeam = match.teams.away.name;
-          let homeGoals = match.goals.home ?? 0;
-          let awayGoals = match.goals.away ?? 0;
-          let elapsed = match.fixture.status.elapsed || 'LIVE';
-          let league = match.league.name;
-
           container.innerHTML += `
             <div class="player-card">
               <div>
-                <h4 style="margin: 0 0 4px 0; font-size: 14px; color:#fff;">${homeTeam} vs ${awayTeam}</h4>
-                <p style="margin: 0; font-size: 12px; color: var(--text-muted);">${league} • <span style="color: #ef4444; font-weight: bold;">LIVE ${elapsed}'</span></p>
+                <h4 style="margin: 0 0 4px 0; font-size: 14px; color:#fff;">${match.teams.home.name} vs ${match.teams.away.name}</h4>
+                <p style="margin: 0; font-size: 12px; color: var(--text-muted);">${match.league.name} • <span style="color: #ef4444; font-weight: bold;">LIVE ${match.fixture.status.elapsed || 'LIVE'}'</span></p>
               </div>
               <div style="font-weight: 800; font-size: 14px; background: rgba(239, 68, 68, 0.15); color: #f87171; padding: 6px 10px; border-radius: 6px;">
-                ${homeGoals} - ${awayGoals}
+                ${match.goals.home ?? 0} - ${match.goals.away ?? 0}
               </div>
             </div>
           `;
         });
-
       } catch (error) {
         console.error("API-Football error:", error);
       }
@@ -897,36 +789,24 @@
     async function loadRecentApiFixtures() {
       const container = document.getElementById('api-football-container');
       const url = "https://v3.football.api-sports.io/fixtures?last=3";
-
       try {
         const response = await fetch(url, {
           method: "GET",
-          headers: {
-            "x-apisports-key": API_FOOTBALL_KEY
-          }
+          headers: { "x-apisports-key": API_FOOTBALL_KEY }
         });
-
         const data = await response.json();
         if (!data.response || data.response.length === 0) return;
 
         container.innerHTML = '<div class="section-title" style="margin-top:0;">Recent Match Results (API-Football)</div>';
-        
         data.response.forEach(match => {
-          let homeTeam = match.teams.home.name;
-          let awayTeam = match.teams.away.name;
-          let homeGoals = match.goals.home ?? 0;
-          let awayGoals = match.goals.away ?? 0;
-          let status = match.fixture.status.short;
-          let league = match.league.name;
-
           container.innerHTML += `
             <div class="player-card">
               <div>
-                <h4 style="margin: 0 0 4px 0; font-size: 14px; color:#fff;">${homeTeam} vs ${awayTeam}</h4>
-                <p style="margin: 0; font-size: 12px; color: var(--text-muted);">${league} • <span style="color: var(--primary-green); font-weight: bold;">${status}</span></p>
+                <h4 style="margin: 0 0 4px 0; font-size: 14px; color:#fff;">${match.teams.home.name} vs ${match.teams.away.name}</h4>
+                <p style="margin: 0; font-size: 12px; color: var(--text-muted);">${match.league.name} • <span style="color: var(--primary-green); font-weight: bold;">${match.fixture.status.short}</span></p>
               </div>
               <div style="font-weight: 800; font-size: 14px; background: rgba(16, 185, 129, 0.15); color: var(--primary-green); padding: 6px 10px; border-radius: 6px;">
-                ${homeGoals} - ${awayGoals}
+                ${match.goals.home ?? 0} - ${match.goals.away ?? 0}
               </div>
             </div>
           `;
@@ -949,26 +829,14 @@
       const msgElem = document.getElementById('reg-message');
 
       msgElem.innerText = '';
-
       if (!fullname || !email || !password || !position) {
         msgElem.innerText = 'Please fill out all required fields.';
         return;
       }
 
       const { error } = await supabaseClient.auth.signUp({ 
-        email, 
-        password,
-        options: {
-          data: {
-            full_name: fullname,
-            account_role: role,
-            position: position,
-            age: age,
-            height: height,
-            weight: weight,
-            country: country
-          }
-        }
+        email, password,
+        options: { data: { full_name: fullname, account_role: role, position, age, height, weight, country } }
       });
 
       if (error) {
@@ -1007,19 +875,11 @@
         return;
       }
 
-      const { error } = await supabaseClient
-        .from('players')
-        .insert([{ name, position, age, team, video }]);
-
+      const { error } = await supabaseClient.from('players').insert([{ name, position, age, team, video }]);
       if (error) {
         alert('Error publishing profile: ' + error.message);
       } else {
         alert('Profile published live successfully!');
-        document.getElementById('p-name').value = '';
-        document.getElementById('p-position').value = '';
-        document.getElementById('p-age').value = '';
-        document.getElementById('p-team').value = '';
-        document.getElementById('p-video').value = '';
         loadDatabaseFeed();
         switchTab('rankings', { target: document.getElementById('nav-rankings') });
       }
@@ -1027,33 +887,10 @@
 
     async function loadDatabaseFeed() {
       const container = document.getElementById('db-feed-container');
-      const { data, error } = await supabaseClient
-        .from('players')
-        .select('*')
-        .order('created_at', { ascending: false });
+      const { data, error } = await supabaseClient.from('players').select('*').order('created_at', { ascending: false });
 
-      if (error || !data) {
-        container.innerHTML = `
-          <div class="player-card">
-            <div>
-              <h4 style="margin: 0 0 4px 0; font-size: 15px; color:#fff;">K. Mensah (LW / RW)</h4>
-              <p style="margin: 0; font-size: 12px; color: var(--text-muted);">Age 19 • Free Agent</p>
-            </div>
-            <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank" rel="noopener" class="btn-action">Highlights</a>
-          </div>
-          <div class="player-card">
-            <div>
-              <h4 style="margin: 0 0 4px 0; font-size: 15px; color:#fff;">A. Osei (CAM / CM)</h4>
-              <p style="margin: 0; font-size: 12px; color: var(--text-muted);">Age 18 • Accra Select</p>
-            </div>
-            <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank" rel="noopener" class="btn-action">Highlights</a>
-          </div>
-        `;
-        return;
-      }
-
-      if (data.length === 0) {
-        container.innerHTML = '<p style="font-size: 13px; color: var(--text-muted);">No profiles posted yet. Be the first via the Portal tab!</p>';
+      if (error || !data || data.length === 0) {
+        container.innerHTML = '<p style="font-size: 13px; color: var(--text-muted);">No custom profiles posted yet. Use the Portal tab to publish.</p>';
         return;
       }
 
@@ -1072,25 +909,14 @@
     }
 
     function switchTab(tabId, event) {
-      document.querySelectorAll('.tab-content').forEach(tab => {
-        tab.classList.remove('active');
-      });
-      document.querySelectorAll('.bottom-nav button').forEach(btn => {
-        btn.classList.remove('active');
-      });
+      document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
+      document.querySelectorAll('.bottom-nav button').forEach(btn => btn.classList.remove('active'));
 
       document.getElementById(tabId).classList.add('active');
-      
       let targetBtn = event ? event.target : null;
-      if (targetBtn && targetBtn.tagName !== 'BUTTON') {
-        targetBtn = targetBtn.closest('button');
-      }
-      if (!targetBtn) {
-        targetBtn = document.getElementById('nav-' + tabId);
-      }
-      if (targetBtn) {
-        targetBtn.classList.add('active');
-      }
+      if (targetBtn && targetBtn.tagName !== 'BUTTON') targetBtn = targetBtn.closest('button');
+      if (!targetBtn) targetBtn = document.getElementById('nav-' + tabId);
+      if (targetBtn) targetBtn.classList.add('active');
     }
 
     function filterPlayers() {
@@ -1098,26 +924,13 @@
       let showcaseInput = document.getElementById('showcaseSearch') ? document.getElementById('showcaseSearch').value.toLowerCase() : '';
       let query = input || showcaseInput;
       
-      let rankCount = 0;
       let rankingsList = document.getElementById('playerList');
       if (rankingsList) {
         let cards = rankingsList.getElementsByClassName('player-card');
         for (let i = 0; i < cards.length; i++) {
           let text = cards[i].innerText.toLowerCase();
-          if (text.includes(query)) {
-            cards[i].style.display = "";
-            rankCount++;
-          } else {
-            cards[i].style.display = "none";
-          }
+          cards[i].style.display = text.includes(query) ? "" : "none";
         }
-      }
-
-      if (input.length > 0 && rankCount > 0) {
-        document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
-        document.querySelectorAll('.bottom-nav button').forEach(b => b.classList.remove('active'));
-        document.getElementById('rankings').classList.add('active');
-        document.getElementById('nav-rankings').classList.add('active');
       }
     }
   </script>
