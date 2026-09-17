@@ -218,6 +218,24 @@
       border-color: var(--primary-green);
     }
 
+    /* League Emblem Thumbnail Container */
+    .league-card-inner {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .league-logo-box {
+      width: 42px;
+      height: 42px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      border: 1px solid #334155;
+    }
+
     .btn-action {
       background-color: var(--accent-red);
       color: white;
@@ -476,41 +494,111 @@
         <div class="matches-list" id="playerList">
           <!-- Major World Leagues Hub -->
           <div class="section-title" style="margin-top:0;">Top Global Leagues</div>
+          
+          <!-- UEFA Champions League -->
           <div class="player-card league-card">
-            <div>
-              <h4 style="margin: 0 0 4px 0; font-size: 15px;">⭐ UEFA Champions League (Europe)</h4>
-              <p style="margin: 0; font-size: 12px; color: var(--text-muted);">Tier 1 Elite • Live Scores & Standings</p>
+            <div class="league-card-inner">
+              <div class="league-logo-box" style="background: linear-gradient(135deg, #020617 0%, #1e1b4b 100%);">
+                <!-- UCL Starball Emblem SVG -->
+                <svg width="28" height="28" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <polygon points="50,5 61,35 93,38 68,59 76,90 50,73 24,90 32,59 7,38 39,35" fill="#38bdf8" stroke="#ffffff" stroke-width="3"/>
+                  <circle cx="50" cy="52" r="12" fill="#0f172a" stroke="#38bdf8" stroke-width="2"/>
+                </svg>
+              </div>
+              <div>
+                <h4 style="margin: 0 0 4px 0; font-size: 15px;">UEFA Champions League</h4>
+                <p style="margin: 0; font-size: 12px; color: var(--text-muted);">Tier 1 Elite • Live Scores & Standings</p>
+              </div>
             </div>
             <a href="https://www.google.com/search?q=UEFA+Champions+League+live+scores+table" target="_blank" rel="noopener" class="btn-action">Live Updates</a>
           </div>
+
+          <!-- Premier League -->
           <div class="player-card league-card">
-            <div>
-              <h4 style="margin: 0 0 4px 0; font-size: 15px;">🏴󠁧󠁢󠁥󠁮󠁧󠁿 Premier League (England)</h4>
-              <p style="margin: 0; font-size: 12px; color: var(--text-muted);">Tier 1 • Live Standings & Results</p>
+            <div class="league-card-inner">
+              <div class="league-logo-box" style="background: linear-gradient(135deg, #3b0764 0%, #701a75 100%);">
+                <!-- Premier League Crown/Lion Emblem SVG -->
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M12 2L15 8H21L16 12L18 18L12 15L6 18L8 12L3 8H9L12 2Z" fill="#38bdf8" stroke="#c084fc" stroke-width="1"/>
+                </svg>
+              </div>
+              <div>
+                <h4 style="margin: 0 0 4px 0; font-size: 15px;">Premier League</h4>
+                <p style="margin: 0; font-size: 12px; color: var(--text-muted);">England • Live Standings & Results</p>
+              </div>
             </div>
             <a href="https://www.google.com/search?q=Premier+League+live+scores+table" target="_blank" rel="noopener" class="btn-action">Live Updates</a>
           </div>
+
+          <!-- La Liga -->
           <div class="player-card league-card">
-            <div>
-              <h4 style="margin: 0 0 4px 0; font-size: 15px;">🇪🇸 La Liga (Spain)</h4>
-              <p style="margin: 0; font-size: 12px; color: var(--text-muted);">Tier 1 • Live Standings & Results</p>
+            <div class="league-card-inner">
+              <div class="league-logo-box" style="background: linear-gradient(135deg, #7f1d1d 0%, #b91c1c 100%);">
+                <!-- La Liga Abstract Wheel Crest SVG -->
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <circle cx="12" cy="12" r="9" stroke="#f87171" stroke-width="2.5" fill="none"/>
+                  <path d="M12 3V21M3 12H21" stroke="#fef08a" stroke-width="2"/>
+                </svg>
+              </div>
+              <div>
+                <h4 style="margin: 0 0 4px 0; font-size: 15px;">La Liga</h4>
+                <p style="margin: 0; font-size: 12px; color: var(--text-muted);">Spain • Live Standings & Results</p>
+              </div>
             </div>
             <a href="https://www.google.com/search?q=La+Liga+live+scores+table" target="_blank" rel="noopener" class="btn-action">Live Updates</a>
           </div>
 
+          <!-- Bundesliga -->
+          <div class="player-card league-card">
+            <div class="league-card-inner">
+              <div class="league-logo-box" style="background: linear-gradient(135deg, #991b1b 0%, #450a0a 100%);">
+                <!-- Bundesliga Silhouette Emblem SVG -->
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <circle cx="12" cy="8" r="4" fill="#facc15"/>
+                  <path d="M4 20C4 16 7 14 12 14C17 14 20 16 20 20" stroke="#facc15" stroke-width="2.5" stroke-linecap="round"/>
+                </svg>
+              </div>
+              <div>
+                <h4 style="margin: 0 0 4px 0; font-size: 15px;">Bundesliga</h4>
+                <p style="margin: 0; font-size: 12px; color: var(--text-muted);">Germany • Live Standings & Results</p>
+              </div>
+            </div>
+            <a href="https://www.google.com/search?q=Bundesliga+live+scores+table" target="_blank" rel="noopener" class="btn-action">Live Updates</a>
+          </div>
+
           <!-- Featured African Leagues Hub -->
           <div class="section-title">Prominent African Leagues</div>
+          
+          <!-- Ghana Premier League -->
           <div class="player-card league-card">
-            <div>
-              <h4 style="margin: 0 0 4px 0; font-size: 15px;">🇬🇭 Ghana Premier League (Ghana)</h4>
-              <p style="margin: 0; font-size: 12px; color: var(--text-muted);">Domestic Elite • Live Scores & Results</p>
+            <div class="league-card-inner">
+              <div class="league-logo-box" style="background: linear-gradient(135deg, #064e3b 0%, #022c22 100%);">
+                <!-- Ghana Star Emblem SVG -->
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <polygon points="12,2 15,9 22,9 17,14 19,21 12,17 5,21 7,14 2,9 9,9" fill="#facc15" stroke="#f59e0b" stroke-width="1"/>
+                </svg>
+              </div>
+              <div>
+                <h4 style="margin: 0 0 4px 0; font-size: 15px;">Ghana Premier League</h4>
+                <p style="margin: 0; font-size: 12px; color: var(--text-muted);">Domestic Elite • Live Scores & Results</p>
+              </div>
             </div>
             <a href="https://www.google.com/search?q=Ghana+Premier+League+live+scores" target="_blank" rel="noopener" class="btn-action">Live Updates</a>
           </div>
+
+          <!-- Egyptian Premier League -->
           <div class="player-card league-card">
-            <div>
-              <h4 style="margin: 0 0 4px 0; font-size: 15px;">🇪🇬 Egyptian Premier League (Egypt)</h4>
-              <p style="margin: 0; font-size: 12px; color: var(--text-muted);">North African Powerhouse • Live Scores</p>
+            <div class="league-card-inner">
+              <div class="league-logo-box" style="background: linear-gradient(135deg, #1e3a8a 0%, #172554 100%);">
+                <!-- African Football Shield Emblem SVG -->
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M12 2L4 5V11C4 16 8 20 12 22C16 20 20 16 20 11V5L12 2Z" fill="#3b82f6" stroke="#93c5fd" stroke-width="1.5"/>
+                </svg>
+              </div>
+              <div>
+                <h4 style="margin: 0 0 4px 0; font-size: 15px;">Egyptian Premier League</h4>
+                <p style="margin: 0; font-size: 12px; color: var(--text-muted);">North Africa • Live Scores</p>
+              </div>
             </div>
             <a href="https://www.google.com/search?q=Egyptian+Premier+League+live+scores" target="_blank" rel="noopener" class="btn-action">Live Updates</a>
           </div>
