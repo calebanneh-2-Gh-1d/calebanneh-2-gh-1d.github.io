@@ -222,20 +222,16 @@
     .league-logo-box {
       width: 48px;
       height: 48px;
-      border-radius: 12px;
+      border-radius: 10px;
       display: flex;
       align-items: center;
       justify-content: center;
       flex-shrink: 0;
-      border: 1.5px solid rgba(255,255,255,0.15);
-      box-shadow: 0 4px 10px rgba(0,0,0,0.4);
-      font-weight: 900;
-      font-size: 11px;
-      letter-spacing: -0.5px;
-      text-transform: uppercase;
-      color: #ffffff;
-      text-align: center;
-      line-height: 1.1;
+      box-shadow: 0 4px 10px rgba(16, 185, 129, 0.3);
+      border: 1.5px solid #34d399;
+      overflow: hidden;
+      padding: 4px;
+      background: #0b1120;
     }
 
     .btn-action {
@@ -460,7 +456,7 @@
         </div>
       </div>
 
-      <!-- Tab 3: Leagues & Database (Restored African Leagues & Precise Recognized League Identifiers) -->
+      <!-- Tab 3: Leagues & Database (Using Brand Binoculars Symbol on Each League Card) -->
       <div id="rankings" class="tab-content">
         <h2 style="color: var(--primary-green); margin-top:0;">Global & African Leagues Directory</h2>
         <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 12px;">Search players, clubs, or major world and African leagues:</p>
@@ -475,8 +471,43 @@
           <!-- UEFA Champions League -->
           <div class="player-card league-card">
             <div class="league-card-inner">
-              <div class="league-logo-box" style="background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%); border-color: #38bdf8;">
-                <span style="color: #38bdf8; font-size: 13px;">UCL</span>
+              <div class="league-logo-box">
+                <svg width="100%" height="100%" viewBox="0 0 240 240" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <defs>
+                    <linearGradient id="bodyGrad1" x1="0%" y1="0%" x2="100%" y2="0%">
+                      <stop offset="0%" stop-color="#0a0a0c"/>
+                      <stop offset="50%" stop-color="#27272a"/>
+                      <stop offset="100%" stop-color="#0a0a0c"/>
+                    </linearGradient>
+                    <linearGradient id="lensGrad1" x1="0%" y1="0%" x2="0%" y2="100%">
+                      <stop offset="0%" stop-color="#020617"/>
+                      <stop offset="100%" stop-color="#065f46"/>
+                    </linearGradient>
+                  </defs>
+                  <g transform="translate(120, 120) rotate(42) translate(-120, -120)">
+                    <g transform="translate(25, -10)">
+                      <rect x="130" y="30" width="36" height="18" rx="3" fill="#111827" stroke="#000000" stroke-width="1"/>
+                      <rect x="138" y="18" width="20" height="12" rx="2" fill="#0a0a0c"/>
+                      <circle cx="148" cy="24" r="6" fill="#000000" stroke="#374151" stroke-width="1.5"/>
+                      <path d="M126 48 H 170 L 166 108 H 130 Z" fill="url(#bodyGrad1)" stroke="#000000" stroke-width="1.5"/>
+                      <path d="M130 108 H 166 C 166 140, 190 162, 190 195 H 106 C 106 162, 130 140, 130 108 Z" fill="url(#bodyGrad1)" stroke="#000000" stroke-width="1.5"/>
+                      <path d="M104 190 H 192 L 193 205 H 103 Z" fill="#000000"/>
+                      <ellipse cx="148" cy="202" rx="43" ry="12" fill="url(#lensGrad1)" stroke="#34d399" stroke-width="1"/>
+                    </g>
+                    <g transform="translate(-2, 10)">
+                      <rect x="112" y="65" width="26" height="45" rx="3" fill="#18181b" stroke="#000000" stroke-width="1.5"/>
+                      <rect x="108" y="80" width="34" height="28" rx="4" fill="#27272a" stroke="#000000" stroke-width="1.5"/>
+                    </g>
+                    <g>
+                      <rect x="86" y="30" width="38" height="18" rx="3" fill="#111827" stroke="#000000" stroke-width="1"/>
+                      <rect x="94" y="18" width="22" height="12" rx="2" fill="#0a0a0c"/>
+                      <circle cx="105" cy="24" r="6" fill="#000000" stroke="#374151" stroke-width="1.5"/>
+                      <path d="M80 48 H 128 V 108 L 94 120 H 76 Z" fill="url(#bodyGrad1)" stroke="#000000" stroke-width="1.5"/>
+                      <path d="M94 120 H 128 C 128 160, 154 184, 154 220 H 68 C 68 184, 94 160, 94 120 Z" fill="url(#bodyGrad1)" stroke="#000000" stroke-width="1.5"/>
+                      <ellipse cx="111" cy="230" rx="45" ry="14" fill="url(#lensGrad1)" stroke="#34d399" stroke-width="1"/>
+                    </g>
+                  </g>
+                </svg>
               </div>
               <div>
                 <h4 style="margin: 0 0 4px 0; font-size: 15px;">UEFA Champions League</h4>
@@ -489,8 +520,32 @@
           <!-- Premier League -->
           <div class="player-card league-card">
             <div class="league-card-inner">
-              <div class="league-logo-box" style="background: linear-gradient(135deg, #3b0764 0%, #4c1d95 100%); border-color: #c084fc;">
-                <span style="color: #c084fc; font-size: 13px;">EPL</span>
+              <div class="league-logo-box">
+                <svg width="100%" height="100%" viewBox="0 0 240 240" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <g transform="translate(120, 120) rotate(42) translate(-120, -120)">
+                    <g transform="translate(25, -10)">
+                      <rect x="130" y="30" width="36" height="18" rx="3" fill="#111827" stroke="#000000" stroke-width="1"/>
+                      <rect x="138" y="18" width="20" height="12" rx="2" fill="#0a0a0c"/>
+                      <circle cx="148" cy="24" r="6" fill="#000000" stroke="#374151" stroke-width="1.5"/>
+                      <path d="M126 48 H 170 L 166 108 H 130 Z" fill="url(#bodyGrad1)" stroke="#000000" stroke-width="1.5"/>
+                      <path d="M130 108 H 166 C 166 140, 190 162, 190 195 H 106 C 106 162, 130 140, 130 108 Z" fill="url(#bodyGrad1)" stroke="#000000" stroke-width="1.5"/>
+                      <path d="M104 190 H 192 L 193 205 H 103 Z" fill="#000000"/>
+                      <ellipse cx="148" cy="202" rx="43" ry="12" fill="url(#lensGrad1)" stroke="#34d399" stroke-width="1"/>
+                    </g>
+                    <g transform="translate(-2, 10)">
+                      <rect x="112" y="65" width="26" height="45" rx="3" fill="#18181b" stroke="#000000" stroke-width="1.5"/>
+                      <rect x="108" y="80" width="34" height="28" rx="4" fill="#27272a" stroke="#000000" stroke-width="1.5"/>
+                    </g>
+                    <g>
+                      <rect x="86" y="30" width="38" height="18" rx="3" fill="#111827" stroke="#000000" stroke-width="1"/>
+                      <rect x="94" y="18" width="22" height="12" rx="2" fill="#0a0a0c"/>
+                      <circle cx="105" cy="24" r="6" fill="#000000" stroke="#374151" stroke-width="1.5"/>
+                      <path d="M80 48 H 128 V 108 L 94 120 H 76 Z" fill="url(#bodyGrad1)" stroke="#000000" stroke-width="1.5"/>
+                      <path d="M94 120 H 128 C 128 160, 154 184, 154 220 H 68 C 68 184, 94 160, 94 120 Z" fill="url(#bodyGrad1)" stroke="#000000" stroke-width="1.5"/>
+                      <ellipse cx="111" cy="230" rx="45" ry="14" fill="url(#lensGrad1)" stroke="#34d399" stroke-width="1"/>
+                    </g>
+                  </g>
+                </svg>
               </div>
               <div>
                 <h4 style="margin: 0 0 4px 0; font-size: 15px;">Premier League</h4>
@@ -503,8 +558,32 @@
           <!-- La Liga -->
           <div class="player-card league-card">
             <div class="league-card-inner">
-              <div class="league-logo-box" style="background: linear-gradient(135deg, #b91c1c 0%, #991b1b 100%); border-color: #fca5a5;">
-                <span style="color: #fef08a; font-size: 13px;">LIGA</span>
+              <div class="league-logo-box">
+                <svg width="100%" height="100%" viewBox="0 0 240 240" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <g transform="translate(120, 120) rotate(42) translate(-120, -120)">
+                    <g transform="translate(25, -10)">
+                      <rect x="130" y="30" width="36" height="18" rx="3" fill="#111827" stroke="#000000" stroke-width="1"/>
+                      <rect x="138" y="18" width="20" height="12" rx="2" fill="#0a0a0c"/>
+                      <circle cx="148" cy="24" r="6" fill="#000000" stroke="#374151" stroke-width="1.5"/>
+                      <path d="M126 48 H 170 L 166 108 H 130 Z" fill="url(#bodyGrad1)" stroke="#000000" stroke-width="1.5"/>
+                      <path d="M130 108 H 166 C 166 140, 190 162, 190 195 H 106 C 106 162, 130 140, 130 108 Z" fill="url(#bodyGrad1)" stroke="#000000" stroke-width="1.5"/>
+                      <path d="M104 190 H 192 L 193 205 H 103 Z" fill="#000000"/>
+                      <ellipse cx="148" cy="202" rx="43" ry="12" fill="url(#lensGrad1)" stroke="#34d399" stroke-width="1"/>
+                    </g>
+                    <g transform="translate(-2, 10)">
+                      <rect x="112" y="65" width="26" height="45" rx="3" fill="#18181b" stroke="#000000" stroke-width="1.5"/>
+                      <rect x="108" y="80" width="34" height="28" rx="4" fill="#27272a" stroke="#000000" stroke-width="1.5"/>
+                    </g>
+                    <g>
+                      <rect x="86" y="30" width="38" height="18" rx="3" fill="#111827" stroke="#000000" stroke-width="1"/>
+                      <rect x="94" y="18" width="22" height="12" rx="2" fill="#0a0a0c"/>
+                      <circle cx="105" cy="24" r="6" fill="#000000" stroke="#374151" stroke-width="1.5"/>
+                      <path d="M80 48 H 128 V 108 L 94 120 H 76 Z" fill="url(#bodyGrad1)" stroke="#000000" stroke-width="1.5"/>
+                      <path d="M94 120 H 128 C 128 160, 154 184, 154 220 H 68 C 68 184, 94 160, 94 120 Z" fill="url(#bodyGrad1)" stroke="#000000" stroke-width="1.5"/>
+                      <ellipse cx="111" cy="230" rx="45" ry="14" fill="url(#lensGrad1)" stroke="#34d399" stroke-width="1"/>
+                    </g>
+                  </g>
+                </svg>
               </div>
               <div>
                 <h4 style="margin: 0 0 4px 0; font-size: 15px;">La Liga</h4>
@@ -517,8 +596,32 @@
           <!-- Bundesliga -->
           <div class="player-card league-card">
             <div class="league-card-inner">
-              <div class="league-logo-box" style="background: linear-gradient(135deg, #dc2626 0%, #7f1d1d 100%); border-color: #fca5a5;">
-                <span style="color: #ffffff; font-size: 12px;">BL</span>
+              <div class="league-logo-box">
+                <svg width="100%" height="100%" viewBox="0 0 240 240" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <g transform="translate(120, 120) rotate(42) translate(-120, -120)">
+                    <g transform="translate(25, -10)">
+                      <rect x="130" y="30" width="36" height="18" rx="3" fill="#111827" stroke="#000000" stroke-width="1"/>
+                      <rect x="138" y="18" width="20" height="12" rx="2" fill="#0a0a0c"/>
+                      <circle cx="148" cy="24" r="6" fill="#000000" stroke="#374151" stroke-width="1.5"/>
+                      <path d="M126 48 H 170 L 166 108 H 130 Z" fill="url(#bodyGrad1)" stroke="#000000" stroke-width="1.5"/>
+                      <path d="M130 108 H 166 C 166 140, 190 162, 190 195 H 106 C 106 162, 130 140, 130 108 Z" fill="url(#bodyGrad1)" stroke="#000000" stroke-width="1.5"/>
+                      <path d="M104 190 H 192 L 193 205 H 103 Z" fill="#000000"/>
+                      <ellipse cx="148" cy="202" rx="43" ry="12" fill="url(#lensGrad1)" stroke="#34d399" stroke-width="1"/>
+                    </g>
+                    <g transform="translate(-2, 10)">
+                      <rect x="112" y="65" width="26" height="45" rx="3" fill="#18181b" stroke="#000000" stroke-width="1.5"/>
+                      <rect x="108" y="80" width="34" height="28" rx="4" fill="#27272a" stroke="#000000" stroke-width="1.5"/>
+                    </g>
+                    <g>
+                      <rect x="86" y="30" width="38" height="18" rx="3" fill="#111827" stroke="#000000" stroke-width="1"/>
+                      <rect x="94" y="18" width="22" height="12" rx="2" fill="#0a0a0c"/>
+                      <circle cx="105" cy="24" r="6" fill="#000000" stroke="#374151" stroke-width="1.5"/>
+                      <path d="M80 48 H 128 V 108 L 94 120 H 76 Z" fill="url(#bodyGrad1)" stroke="#000000" stroke-width="1.5"/>
+                      <path d="M94 120 H 128 C 128 160, 154 184, 154 220 H 68 C 68 184, 94 160, 94 120 Z" fill="url(#bodyGrad1)" stroke="#000000" stroke-width="1.5"/>
+                      <ellipse cx="111" cy="230" rx="45" ry="14" fill="url(#lensGrad1)" stroke="#34d399" stroke-width="1"/>
+                    </g>
+                  </g>
+                </svg>
               </div>
               <div>
                 <h4 style="margin: 0 0 4px 0; font-size: 15px;">Bundesliga</h4>
@@ -531,8 +634,32 @@
           <!-- Serie A -->
           <div class="player-card league-card">
             <div class="league-card-inner">
-              <div class="league-logo-box" style="background: linear-gradient(135deg, #1d4ed8 0%, #1e40af 100%); border-color: #93c5fd;">
-                <span style="color: #93c5fd; font-size: 12px;">TIM</span>
+              <div class="league-logo-box">
+                <svg width="100%" height="100%" viewBox="0 0 240 240" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <g transform="translate(120, 120) rotate(42) translate(-120, -120)">
+                    <g transform="translate(25, -10)">
+                      <rect x="130" y="30" width="36" height="18" rx="3" fill="#111827" stroke="#000000" stroke-width="1"/>
+                      <rect x="138" y="18" width="20" height="12" rx="2" fill="#0a0a0c"/>
+                      <circle cx="148" cy="24" r="6" fill="#000000" stroke="#374151" stroke-width="1.5"/>
+                      <path d="M126 48 H 170 L 166 108 H 130 Z" fill="url(#bodyGrad1)" stroke="#000000" stroke-width="1.5"/>
+                      <path d="M130 108 H 166 C 166 140, 190 162, 190 195 H 106 C 106 162, 130 140, 130 108 Z" fill="url(#bodyGrad1)" stroke="#000000" stroke-width="1.5"/>
+                      <path d="M104 190 H 192 L 193 205 H 103 Z" fill="#000000"/>
+                      <ellipse cx="148" cy="202" rx="43" ry="12" fill="url(#lensGrad1)" stroke="#34d399" stroke-width="1"/>
+                    </g>
+                    <g transform="translate(-2, 10)">
+                      <rect x="112" y="65" width="26" height="45" rx="3" fill="#18181b" stroke="#000000" stroke-width="1.5"/>
+                      <rect x="108" y="80" width="34" height="28" rx="4" fill="#27272a" stroke="#000000" stroke-width="1.5"/>
+                    </g>
+                    <g>
+                      <rect x="86" y="30" width="38" height="18" rx="3" fill="#111827" stroke="#000000" stroke-width="1"/>
+                      <rect x="94" y="18" width="22" height="12" rx="2" fill="#0a0a0c"/>
+                      <circle cx="105" cy="24" r="6" fill="#000000" stroke="#374151" stroke-width="1.5"/>
+                      <path d="M80 48 H 128 V 108 L 94 120 H 76 Z" fill="url(#bodyGrad1)" stroke="#000000" stroke-width="1.5"/>
+                      <path d="M94 120 H 128 C 128 160, 154 184, 154 220 H 68 C 68 184, 94 160, 94 120 Z" fill="url(#bodyGrad1)" stroke="#000000" stroke-width="1.5"/>
+                      <ellipse cx="111" cy="230" rx="45" ry="14" fill="url(#lensGrad1)" stroke="#34d399" stroke-width="1"/>
+                    </g>
+                  </g>
+                </svg>
               </div>
               <div>
                 <h4 style="margin: 0 0 4px 0; font-size: 15px;">Serie A</h4>
@@ -545,8 +672,32 @@
           <!-- Ligue 1 -->
           <div class="player-card league-card">
             <div class="league-card-inner">
-              <div class="league-logo-box" style="background: linear-gradient(135deg, #18181b 0%, #27272a 100%); border-color: #e4e4e7;">
-                <span style="color: #e4e4e7; font-size: 12px;">L1</span>
+              <div class="league-logo-box">
+                <svg width="100%" height="100%" viewBox="0 0 240 240" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <g transform="translate(120, 120) rotate(42) translate(-120, -120)">
+                    <g transform="translate(25, -10)">
+                      <rect x="130" y="30" width="36" height="18" rx="3" fill="#111827" stroke="#000000" stroke-width="1"/>
+                      <rect x="138" y="18" width="20" height="12" rx="2" fill="#0a0a0c"/>
+                      <circle cx="148" cy="24" r="6" fill="#000000" stroke="#374151" stroke-width="1.5"/>
+                      <path d="M126 48 H 170 L 166 108 H 130 Z" fill="url(#bodyGrad1)" stroke="#000000" stroke-width="1.5"/>
+                      <path d="M130 108 H 166 C 166 140, 190 162, 190 195 H 106 C 106 162, 130 140, 130 108 Z" fill="url(#bodyGrad1)" stroke="#000000" stroke-width="1.5"/>
+                      <path d="M104 190 H 192 L 193 205 H 103 Z" fill="#000000"/>
+                      <ellipse cx="148" cy="202" rx="43" ry="12" fill="url(#lensGrad1)" stroke="#34d399" stroke-width="1"/>
+                    </g>
+                    <g transform="translate(-2, 10)">
+                      <rect x="112" y="65" width="26" height="45" rx="3" fill="#18181b" stroke="#000000" stroke-width="1.5"/>
+                      <rect x="108" y="80" width="34" height="28" rx="4" fill="#27272a" stroke="#000000" stroke-width="1.5"/>
+                    </g>
+                    <g>
+                      <rect x="86" y="30" width="38" height="18" rx="3" fill="#111827" stroke="#000000" stroke-width="1"/>
+                      <rect x="94" y="18" width="22" height="12" rx="2" fill="#0a0a0c"/>
+                      <circle cx="105" cy="24" r="6" fill="#000000" stroke="#374151" stroke-width="1.5"/>
+                      <path d="M80 48 H 128 V 108 L 94 120 H 76 Z" fill="url(#bodyGrad1)" stroke="#000000" stroke-width="1.5"/>
+                      <path d="M94 120 H 128 C 128 160, 154 184, 154 220 H 68 C 68 184, 94 160, 94 120 Z" fill="url(#bodyGrad1)" stroke="#000000" stroke-width="1.5"/>
+                      <ellipse cx="111" cy="230" rx="45" ry="14" fill="url(#lensGrad1)" stroke="#34d399" stroke-width="1"/>
+                    </g>
+                  </g>
+                </svg>
               </div>
               <div>
                 <h4 style="margin: 0 0 4px 0; font-size: 15px;">Ligue 1</h4>
@@ -562,8 +713,32 @@
           <!-- Ghana Premier League -->
           <div class="player-card league-card">
             <div class="league-card-inner">
-              <div class="league-logo-box" style="background: linear-gradient(135deg, #064e3b 0%, #022c22 100%); border-color: #34d399;">
-                <span style="color: #34d399; font-size: 12px;">GPL</span>
+              <div class="league-logo-box">
+                <svg width="100%" height="100%" viewBox="0 0 240 240" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <g transform="translate(120, 120) rotate(42) translate(-120, -120)">
+                    <g transform="translate(25, -10)">
+                      <rect x="130" y="30" width="36" height="18" rx="3" fill="#111827" stroke="#000000" stroke-width="1"/>
+                      <rect x="138" y="18" width="20" height="12" rx="2" fill="#0a0a0c"/>
+                      <circle cx="148" cy="24" r="6" fill="#000000" stroke="#374151" stroke-width="1.5"/>
+                      <path d="M126 48 H 170 L 166 108 H 130 Z" fill="url(#bodyGrad1)" stroke="#000000" stroke-width="1.5"/>
+                      <path d="M130 108 H 166 C 166 140, 190 162, 190 195 H 106 C 106 162, 130 140, 130 108 Z" fill="url(#bodyGrad1)" stroke="#000000" stroke-width="1.5"/>
+                      <path d="M104 190 H 192 L 193 205 H 103 Z" fill="#000000"/>
+                      <ellipse cx="148" cy="202" rx="43" ry="12" fill="url(#lensGrad1)" stroke="#34d399" stroke-width="1"/>
+                    </g>
+                    <g transform="translate(-2, 10)">
+                      <rect x="112" y="65" width="26" height="45" rx="3" fill="#18181b" stroke="#000000" stroke-width="1.5"/>
+                      <rect x="108" y="80" width="34" height="28" rx="4" fill="#27272a" stroke="#000000" stroke-width="1.5"/>
+                    </g>
+                    <g>
+                      <rect x="86" y="30" width="38" height="18" rx="3" fill="#111827" stroke="#000000" stroke-width="1"/>
+                      <rect x="94" y="18" width="22" height="12" rx="2" fill="#0a0a0c"/>
+                      <circle cx="105" cy="24" r="6" fill="#000000" stroke="#374151" stroke-width="1.5"/>
+                      <path d="M80 48 H 128 V 108 L 94 120 H 76 Z" fill="url(#bodyGrad1)" stroke="#000000" stroke-width="1.5"/>
+                      <path d="M94 120 H 128 C 128 160, 154 184, 154 220 H 68 C 68 184, 94 160, 94 120 Z" fill="url(#bodyGrad1)" stroke="#000000" stroke-width="1.5"/>
+                      <ellipse cx="111" cy="230" rx="45" ry="14" fill="url(#lensGrad1)" stroke="#34d399" stroke-width="1"/>
+                    </g>
+                  </g>
+                </svg>
               </div>
               <div>
                 <h4 style="margin: 0 0 4px 0; font-size: 15px;">Ghana Premier League</h4>
@@ -576,8 +751,32 @@
           <!-- South African Premier Division -->
           <div class="player-card league-card">
             <div class="league-card-inner">
-              <div class="league-logo-box" style="background: linear-gradient(135deg, #1e3a8a 0%, #172554 100%); border-color: #60a5fa;">
-                <span style="color: #60a5fa; font-size: 11px;">PSL</span>
+              <div class="league-logo-box">
+                <svg width="100%" height="100%" viewBox="0 0 240 240" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <g transform="translate(120, 120) rotate(42) translate(-120, -120)">
+                    <g transform="translate(25, -10)">
+                      <rect x="130" y="30" width="36" height="18" rx="3" fill="#111827" stroke="#000000" stroke-width="1"/>
+                      <rect x="138" y="18" width="20" height="12" rx="2" fill="#0a0a0c"/>
+                      <circle cx="148" cy="24" r="6" fill="#000000" stroke="#374151" stroke-width="1.5"/>
+                      <path d="M126 48 H 170 L 166 108 H 130 Z" fill="url(#bodyGrad1)" stroke="#000000" stroke-width="1.5"/>
+                      <path d="M130 108 H 166 C 166 140, 190 162, 190 195 H 106 C 106 162, 130 140, 130 108 Z" fill="url(#bodyGrad1)" stroke="#000000" stroke-width="1.5"/>
+                      <path d="M104 190 H 192 L 193 205 H 103 Z" fill="#000000"/>
+                      <ellipse cx="148" cy="202" rx="43" ry="12" fill="url(#lensGrad1)" stroke="#34d399" stroke-width="1"/>
+                    </g>
+                    <g transform="translate(-2, 10)">
+                      <rect x="112" y="65" width="26" height="45" rx="3" fill="#18181b" stroke="#000000" stroke-width="1.5"/>
+                      <rect x="108" y="80" width="34" height="28" rx="4" fill="#27272a" stroke="#000000" stroke-width="1.5"/>
+                    </g>
+                    <g>
+                      <rect x="86" y="30" width="38" height="18" rx="3" fill="#111827" stroke="#000000" stroke-width="1"/>
+                      <rect x="94" y="18" width="22" height="12" rx="2" fill="#0a0a0c"/>
+                      <circle cx="105" cy="24" r="6" fill="#000000" stroke="#374151" stroke-width="1.5"/>
+                      <path d="M80 48 H 128 V 108 L 94 120 H 76 Z" fill="url(#bodyGrad1)" stroke="#000000" stroke-width="1.5"/>
+                      <path d="M94 120 H 128 C 128 160, 154 184, 154 220 H 68 C 68 184, 94 160, 94 120 Z" fill="url(#bodyGrad1)" stroke="#000000" stroke-width="1.5"/>
+                      <ellipse cx="111" cy="230" rx="45" ry="14" fill="url(#lensGrad1)" stroke="#34d399" stroke-width="1"/>
+                    </g>
+                  </g>
+                </svg>
               </div>
               <div>
                 <h4 style="margin: 0 0 4px 0; font-size: 15px;">South African Premier Division</h4>
@@ -590,8 +789,32 @@
           <!-- Egyptian Premier League -->
           <div class="player-card league-card">
             <div class="league-card-inner">
-              <div class="league-logo-box" style="background: linear-gradient(135deg, #b45309 0%, #78350f 100%); border-color: #fbbf24;">
-                <span style="color: #fbbf24; font-size: 11px;">EGY</span>
+              <div class="league-logo-box">
+                <svg width="100%" height="100%" viewBox="0 0 240 240" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <g transform="translate(120, 120) rotate(42) translate(-120, -120)">
+                    <g transform="translate(25, -10)">
+                      <rect x="130" y="30" width="36" height="18" rx="3" fill="#111827" stroke="#000000" stroke-width="1"/>
+                      <rect x="138" y="18" width="20" height="12" rx="2" fill="#0a0a0c"/>
+                      <circle cx="148" cy="24" r="6" fill="#000000" stroke="#374151" stroke-width="1.5"/>
+                      <path d="M126 48 H 170 L 166 108 H 130 Z" fill="url(#bodyGrad1)" stroke="#000000" stroke-width="1.5"/>
+                      <path d="M130 108 H 166 C 166 140, 190 162, 190 195 H 106 C 106 162, 130 140, 130 108 Z" fill="url(#bodyGrad1)" stroke="#000000" stroke-width="1.5"/>
+                      <path d="M104 190 H 192 L 193 205 H 103 Z" fill="#000000"/>
+                      <ellipse cx="148" cy="202" rx="43" ry="12" fill="url(#lensGrad1)" stroke="#34d399" stroke-width="1"/>
+                    </g>
+                    <g transform="translate(-2, 10)">
+                      <rect x="112" y="65" width="26" height="45" rx="3" fill="#18181b" stroke="#000000" stroke-width="1.5"/>
+                      <rect x="108" y="80" width="34" height="28" rx="4" fill="#27272a" stroke="#000000" stroke-width="1.5"/>
+                    </g>
+                    <g>
+                      <rect x="86" y="30" width="38" height="18" rx="3" fill="#111827" stroke="#000000" stroke-width="1"/>
+                      <rect x="94" y="18" width="22" height="12" rx="2" fill="#0a0a0c"/>
+                      <circle cx="105" cy="24" r="6" fill="#000000" stroke="#374151" stroke-width="1.5"/>
+                      <path d="M80 48 H 128 V 108 L 94 120 H 76 Z" fill="url(#bodyGrad1)" stroke="#000000" stroke-width="1.5"/>
+                      <path d="M94 120 H 128 C 128 160, 154 184, 154 220 H 68 C 68 184, 94 160, 94 120 Z" fill="url(#bodyGrad1)" stroke="#000000" stroke-width="1.5"/>
+                      <ellipse cx="111" cy="230" rx="45" ry="14" fill="url(#lensGrad1)" stroke="#34d399" stroke-width="1"/>
+                    </g>
+                  </g>
+                </svg>
               </div>
               <div>
                 <h4 style="margin: 0 0 4px 0; font-size: 15px;">Egyptian Premier League</h4>
@@ -989,6 +1212,7 @@
   </script>
 </body>
 </html>
+
 
 
 
