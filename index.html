@@ -59,8 +59,8 @@
                 <p class="text-xs text-slate-400">Global Talent Hub & Live Feeds</p>
             </div>
         </div>
-        <div id="authStatusIndicator" class="text-xs px-2.5 py-1 rounded-full bg-slate-800 text-slate-300 border border-slate-700">
-            Live Mode Active
+        <div id="authStatusIndicator" class="text-xs px-2.5 py-1 rounded-full bg-emerald-950/80 text-emerald-400 border border-emerald-800">
+            Database Connected Active
         </div>
     </header>
 
@@ -320,7 +320,7 @@
     <!-- Application Logic Script -->
     <script>
         const SUPABASE_URL = 'https://ovbybswgoxvifmftxshb.supabase.co';
-        const SUPABASE_ANON_KEY = 'YOUR_SUPABASE_ANON_KEY';
+        const SUPABASE_ANON_KEY = 'sb_publishable_GVF5j7spmTppoU2oxjLSiw_5fSKZEeg';
         const supabaseClient = window.supabase ? window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY) : null;
 
         let profilesCache = [];
@@ -349,8 +349,8 @@
 
         async function fetchDirectoryProfiles() {
             const container = document.getElementById('selfServiceDirectoryGrid');
-            if (!supabaseClient || SUPABASE_ANON_KEY === 'YOUR_SUPABASE_ANON_KEY') {
-                container.innerHTML = '<p class="text-xs text-slate-500 col-span-2">Database pending configuration (Update SUPABASE_ANON_KEY).</p>';
+            if (!supabaseClient) {
+                container.innerHTML = '<p class="text-xs text-slate-500 col-span-2">Database client failed to initialize.</p>';
                 return;
             }
 
@@ -439,8 +439,8 @@
             const videoUrl = document.getElementById('profileVideoUrl').value;
             const bio = document.getElementById('profileBio').value;
 
-            if (!supabaseClient || SUPABASE_ANON_KEY === 'YOUR_SUPABASE_ANON_KEY') {
-                alert('Supabase client unconfigured. Please update your API key.');
+            if (!supabaseClient) {
+                alert('Supabase client unconfigured.');
                 return;
             }
 
