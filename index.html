@@ -184,6 +184,17 @@
                 </div>
             </div>
 
+            <!-- Match Highlight & Media Viewer Box -->
+            <div id="leagueMatchViewer" class="hidden my-4 bg-slate-900 border border-slate-800 rounded-xl p-4 shadow-xl">
+                <div class="flex justify-between items-center mb-3">
+                    <h4 id="viewerMatchTitle" class="text-white font-bold text-sm">Match Highlights</h4>
+                    <button onclick="closeLeagueViewer()" class="text-slate-400 hover:text-white font-bold px-2 text-lg">&times;</button>
+                </div>
+                <div id="viewerContentSlot" class="relative w-full aspect-video bg-black rounded-lg overflow-hidden flex flex-col items-center justify-center p-4 text-center">
+                    <p class="text-slate-500 text-sm">Select any club row below to load highlights.</p>
+                </div>
+            </div>
+
             <div class="bg-cardBg border border-slate-800 rounded-xl overflow-hidden shadow-md">
                 <div id="leagueTitleBanner" class="bg-slate-900/80 px-4 py-3 border-b border-slate-800 font-bold text-xs text-accentEmerald uppercase tracking-wider flex justify-between items-center">
                     <span>English Premier League Standings</span>
@@ -193,16 +204,18 @@
                     <table class="w-full text-left text-xs">
                         <thead class="bg-slate-900/40 text-slate-400 border-b border-slate-800">
                             <tr>
-                                <th class="py-3 px-4">Pos</th>
+                                <th class="py-3 px-3">Pos</th>
                                 <th class="py-3 px-4">Club</th>
-                                <th class="py-3 px-3 text-center">P</th>
-                                <th class="py-3 px-3 text-center">GD</th>
-                                <th class="py-3 px-4 text-center font-bold text-white">Pts</th>
+                                <th class="py-3 px-2 text-center">MP</th>
+                                <th class="py-3 px-2 text-center">W</th>
+                                <th class="py-3 px-2 text-center">D</th>
+                                <th class="py-3 px-2 text-center">L</th>
+                                <th class="py-3 px-3 text-center font-bold text-white">Pts</th>
                             </tr>
                         </thead>
                         <tbody id="standingsTableBody" class="divide-y divide-slate-800/60 text-slate-300">
                             <tr>
-                                <td colspan="5" class="text-center py-6 text-slate-500">Syncing official live league standings...</td>
+                                <td colspan="7" class="text-center py-6 text-slate-500">Syncing official live league standings...</td>
                             </tr>
                         </tbody>
                     </table>
@@ -534,13 +547,11 @@
             }
         }
 
-        // Updated Live League Standings Function
+        // Live League Standings with Highlight Viewer integration
         async function fetchLeagueStandings() {
             const leagueCode = document.getElementById('leagueSelect').value;
             const banner = document.getElementById('leagueTitleBanner').querySelector('span');
             const tbody = document.getElementById('standingsTableBody');
-
-            tbody.innerHTML = `<tr><td colspan="5" class="text-center py-6 text-slate-500">Syncing live league standings...</td></tr>`;
 
             const leaguePaths = {
                 'PL': 'eng.1',
@@ -572,21 +583,28 @@
                         const getStat = (name) => stats.find(s => s.name === name)?.value || 0;
                         
                         const teamName = st.team?.displayName || 'Football Club';
-                        const gamesPlayed = getStat('gamesPlayed');
-                        const goalDiff = getStat('pointDifferential');
-                        const points = getStat('points');
+                        const mp = getStat('gamesPlayed');
+                        const w = getStat('wins');
+                        const d = getStat('ties');
+                        const l = getStat('losses');
+                        const pts = getStat('points');
                         const logoUrl = st.team?.logos?.[0]?.href || '';
 
                         return `
-                            <tr class="hover:bg-slate-800/40 transition">
-                                <td class="py-3 px-4 font-mono text-slate-400">${idx + 1}</td>
-                                <td class="py-3 px-4 font-bold text-white flex items-center gap-2">
-                                    ${logoUrl ? `<img src="${logoUrl}" class="w-4 h-4 object-contain" alt="">` : ''}
-                                    ${teamName}
+                            <tr onclick="openLeagueMatchHighlights('${teamName}')" class="hover:bg-slate-800/60 cursor-pointer transition">
+                                <td class="py-3 px-3 font-mono text-slate-400">${idx + 1}</td>
+                                <td class="py-3 px-4 font-bold text-white flex items-center justify-between">
+                                    <div class="flex items-center gap-2">
+                                        ${logoUrl ? `<img src="${logoUrl}" class="w-4 h-4 object-contain" alt="">` : ''}
+                                        <span>${teamName}</span>
+                                    </div>
+                                    <span class="text-[10px] text-accentEmerald font-normal">⚡ Highlights</span>
                                 </td>
-                                <td class="py-3 px-3 text-center text-slate-400">${gamesPlayed}</td>
-                                <td class="py-3 px-3 text-center text-slate-400">${goalDiff > 0 ? '+' + goalDiff : goalDiff}</td>
-                                <td class="py-3 px-4 text-center font-extrabold text-accentEmerald">${points}</td>
+                                <td class="py-3 px-2 text-center text-slate-400">${mp}</td>
+                                <td class="py-3 px-2 text-center text-slate-300">${w}</td>
+                                <td class="py-3 px-2 text-center text-slate-400">${d}</td>
+                                <td class="py-3 px-2 text-center text-slate-400">${l}</td>
+                                <td class="py-3 px-3 text-center font-extrabold text-accentEmerald">${pts}</td>
                             </tr>
                         `;
                     }).join('');
@@ -596,22 +614,59 @@
             } catch (err) {
                 banner.textContent = `${document.getElementById('leagueSelect').selectedOptions[0].text} Standings (Live View)`;
                 const sampleTable = [
-                    { pos: 1, club: 'Manchester City', p: 5, gd: +9, pts: 15 },
-                    { pos: 2, club: 'Arsenal FC', p: 5, gd: +8, pts: 13 },
-                    { pos: 3, club: 'Liverpool FC', p: 5, gd: +7, pts: 12 },
-                    { pos: 4, club: 'Chelsea FC', p: 5, gd: +4, pts: 10 },
-                    { pos: 5, club: 'Tottenham Hotspur', p: 5, gd: +3, pts: 9 },
+                    { pos: 1, club: 'Arsenal', mp: 4, w: 4, d: 0, l: 0, pts: 12 },
+                    { pos: 2, club: 'Man City', mp: 4, w: 4, d: 0, l: 0, pts: 12 },
+                    { pos: 3, club: 'Brentford', mp: 5, w: 2, d: 3, l: 0, pts: 9 },
+                    { pos: 4, club: 'Leeds', mp: 4, w: 2, d: 2, l: 0, pts: 8 },
+                    { pos: 5, club: 'Hull', mp: 4, w: 2, d: 2, l: 0, pts: 8 },
                 ];
                 tbody.innerHTML = sampleTable.map(t => `
-                    <tr class="hover:bg-slate-800/40 transition">
-                        <td class="py-3 px-4 font-mono text-slate-400">${t.pos}</td>
-                        <td class="py-3 px-4 font-bold text-white">${t.club}</td>
-                        <td class="py-3 px-3 text-center text-slate-400">${t.p}</td>
-                        <td class="py-3 px-3 text-center text-slate-400">+${t.gd}</td>
-                        <td class="py-3 px-4 text-center font-extrabold text-accentEmerald">${t.pts}</td>
+                    <tr onclick="openLeagueMatchHighlights('${t.club}')" class="hover:bg-slate-800/60 cursor-pointer transition">
+                        <td class="py-3 px-3 font-mono text-slate-400">${t.pos}</td>
+                        <td class="py-3 px-4 font-bold text-white flex items-center justify-between">
+                            <span>${t.club}</span>
+                            <span class="text-[10px] text-accentEmerald font-normal">⚡ Highlights</span>
+                        </td>
+                        <td class="py-3 px-2 text-center text-slate-400">${t.mp}</td>
+                        <td class="py-3 px-2 text-center text-slate-300">${t.w}</td>
+                        <td class="py-3 px-2 text-center text-slate-400">${t.d}</td>
+                        <td class="py-3 px-2 text-center text-slate-400">${t.l}</td>
+                        <td class="py-3 px-3 text-center font-extrabold text-accentEmerald">${t.pts}</td>
                     </tr>
                 `).join('');
             }
+        }
+
+        // Highlight Viewer Controllers
+        function openLeagueMatchHighlights(clubName) {
+            const viewer = document.getElementById('leagueMatchViewer');
+            if (!viewer) return;
+            const title = document.getElementById('viewerMatchTitle');
+            const slot = document.getElementById('viewerContentSlot');
+
+            viewer.classList.remove('hidden');
+            title.textContent = `${clubName} — Match Highlights & Media`;
+            
+            slot.innerHTML = `<p class="text-slate-400 text-xs animate-pulse">Syncing highlight feeds for ${clubName}...</p>`;
+
+            setTimeout(() => {
+                slot.innerHTML = `
+                    <div class="w-full h-full flex flex-col items-center justify-center bg-slate-950 p-6 text-center rounded-lg border border-slate-800">
+                        <p class="text-white font-semibold text-sm mb-1">${clubName} Match Stream & Highlights</p>
+                        <p class="text-slate-400 text-xs mb-4">Access official post-match highlights, goals, and scout media.</p>
+                        <a href="https://www.youtube.com/results?search_query=${encodeURIComponent(clubName + ' match highlights 2026')}" 
+                           target="_blank" 
+                           class="bg-accentEmerald text-slate-950 font-extrabold px-4 py-2 rounded-lg text-xs hover:opacity-90 transition shadow-lg">
+                            ▶ Watch Highlights Feed 
+                        </a>
+                    </div>
+                `;
+            }, 400);
+        }
+
+        function closeLeagueViewer() {
+            const viewer = document.getElementById('leagueMatchViewer');
+            if (viewer) viewer.classList.add('hidden');
         }
 
         // Live News Feed
