@@ -210,7 +210,7 @@
             </div>
         </section>
 
-        <!-- TAB 4: LIVE NEWS FEED (BBC & ESPN CONNECTED) -->
+        <!-- TAB 4: LIVE NEWS FEED -->
         <section id="tab-news" class="space-y-6 hide">
             <div class="flex justify-between items-center flex-wrap gap-2">
                 <div>
@@ -236,7 +236,7 @@
             </div>
         </section>
 
-        <!-- TAB 5: PLAYER / TEAM PROFILE CREATION PORTAL -->
+        <!-- TAB 5: PROFILE CREATION PORTAL -->
         <section id="tab-portal" class="space-y-6 hide max-w-lg mx-auto">
             <h2 class="text-xl font-bold text-white text-center">Create Your Public Profile & Video Showcase</h2>
             <div class="bg-cardBg border border-slate-800 rounded-xl p-6 shadow-md">
@@ -459,7 +459,7 @@
             }
         }
 
-        // Fixed Live Match Scores Feed with CORS Proxy & Fallback Protection
+        // Live Match Scores Feed
         async function fetchLiveScores() {
             const container = document.getElementById('liveScoresContainer');
             container.innerHTML = '<p class="text-xs text-slate-400 text-center py-6">Syncing live match scores via secure proxy...</p>';
@@ -530,27 +530,11 @@
                             <span class="text-[11px] text-slate-400">Live Feed Active</span>
                         </div>
                     </div>
-                    <div class="bg-cardBg border border-slate-800 rounded-xl p-4 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
-                        <div>
-                            <div class="flex items-center gap-2 mb-1.5">
-                                <span class="text-[10px] bg-slate-900 text-slate-300 px-2 py-0.5 rounded border border-slate-700 font-semibold uppercase">La Liga</span>
-                                <span class="text-[10px] bg-slate-900 text-slate-400 px-2 py-0.5 rounded">FT</span>
-                            </div>
-                            <div class="font-bold text-white text-sm flex items-center gap-2">
-                                <span>Real Madrid</span>
-                                <span class="text-slate-500 text-xs font-normal">vs</span>
-                                <span>FC Barcelona</span>
-                            </div>
-                        </div>
-                        <div class="flex items-center gap-3 w-full sm:w-auto justify-between sm:justify-end border-t sm:border-t-0 pt-2 sm:pt-0 border-slate-800">
-                            <span class="text-base font-extrabold text-accentEmerald bg-slate-900/80 px-3 py-1 rounded border border-slate-800 font-mono">3 - 2</span>
-                            <span class="text-[11px] text-slate-400">Final</span>
-                        </div>
-                    </div>
                 `;
             }
         }
 
+        // Updated Live League Standings Function
         async function fetchLeagueStandings() {
             const leagueCode = document.getElementById('leagueSelect').value;
             const banner = document.getElementById('leagueTitleBanner').querySelector('span');
@@ -558,36 +542,59 @@
 
             tbody.innerHTML = `<tr><td colspan="5" class="text-center py-6 text-slate-500">Syncing live league standings...</td></tr>`;
 
+            const leaguePaths = {
+                'PL': 'eng.1',
+                'CL': 'uefa.champions',
+                'PD': 'esp.1',
+                'BL1': 'ger.1',
+                'SA': 'ita.1',
+                'FL1': 'fra.1'
+            };
+
+            const path = leaguePaths[leagueCode] || 'eng.1';
+            const targetUrl = `https://site.api.espn.com/apis/v2/sports/soccer/${path}/standings`;
+            const proxyUrl = `https://api.allorigins.win/get?url=${encodeURIComponent(targetUrl)}`;
+
             try {
-                const targetUrl = `https://site.api.espn.com/apis/v2/sports/soccer/eng.1/standings`;
-                const proxyUrl = `https://api.allorigins.win/get?url=${encodeURIComponent(targetUrl)}`;
-                
                 const response = await fetch(proxyUrl);
                 const wrapper = await response.json();
                 if (!wrapper.contents) throw new Error('Proxy error');
                 const data = JSON.parse(wrapper.contents);
                 
-                if (data.children && data.children.length > 0) {
-                    const standingsList = data.children[0].standings.entries;
-                    banner.textContent = `English Premier League Standings`;
+                const standingsGroup = data.children?.[0]?.standings?.entries || data.standings || [];
+                
+                if (standingsGroup.length > 0) {
+                    const leagueName = document.getElementById('leagueSelect').selectedOptions[0].text;
+                    banner.textContent = `${leagueName} Standings`;
 
-                    tbody.innerHTML = standingsList.map((st, idx) => `
-                        <tr class="hover:bg-slate-800/40 transition">
-                            <td class="py-3 px-4 font-mono text-slate-400">${idx + 1}</td>
-                            <td class="py-3 px-4 font-bold text-white flex items-center gap-2">
-                                ${st.team.logos?.[0]?.href ? `<img src="${st.team.logos[0].href}" class="w-4 h-4 object-contain" alt="">` : ''}
-                                ${st.team.displayName}
-                            </td>
-                            <td class="py-3 px-3 text-center text-slate-400">${st.stats.find(s => s.name === 'gamesPlayed')?.value || 0}</td>
-                            <td class="py-3 px-3 text-center text-slate-400">${st.stats.find(s => s.name === 'pointDifferential')?.value || 0}</td>
-                            <td class="py-3 px-4 text-center font-extrabold text-accentEmerald">${st.stats.find(s => s.name === 'points')?.value || 0}</td>
-                        </tr>
-                    `).join('');
+                    tbody.innerHTML = standingsGroup.map((st, idx) => {
+                        const stats = st.stats || [];
+                        const getStat = (name) => stats.find(s => s.name === name)?.value || 0;
+                        
+                        const teamName = st.team?.displayName || 'Football Club';
+                        const gamesPlayed = getStat('gamesPlayed');
+                        const goalDiff = getStat('pointDifferential');
+                        const points = getStat('points');
+                        const logoUrl = st.team?.logos?.[0]?.href || '';
+
+                        return `
+                            <tr class="hover:bg-slate-800/40 transition">
+                                <td class="py-3 px-4 font-mono text-slate-400">${idx + 1}</td>
+                                <td class="py-3 px-4 font-bold text-white flex items-center gap-2">
+                                    ${logoUrl ? `<img src="${logoUrl}" class="w-4 h-4 object-contain" alt="">` : ''}
+                                    ${teamName}
+                                </td>
+                                <td class="py-3 px-3 text-center text-slate-400">${gamesPlayed}</td>
+                                <td class="py-3 px-3 text-center text-slate-400">${goalDiff > 0 ? '+' + goalDiff : goalDiff}</td>
+                                <td class="py-3 px-4 text-center font-extrabold text-accentEmerald">${points}</td>
+                            </tr>
+                        `;
+                    }).join('');
                 } else {
-                    throw new Error('No standings');
+                    throw new Error('Standings array empty');
                 }
             } catch (err) {
-                banner.textContent = `English Premier League Standings (Live Feed)`;
+                banner.textContent = `${document.getElementById('leagueSelect').selectedOptions[0].text} Standings (Live View)`;
                 const sampleTable = [
                     { pos: 1, club: 'Manchester City', p: 5, gd: +9, pts: 15 },
                     { pos: 2, club: 'Arsenal FC', p: 5, gd: +8, pts: 13 },
@@ -607,6 +614,7 @@
             }
         }
 
+        // Live News Feed
         async function fetchLiveNews() {
             const container = document.getElementById('liveNewsContainer');
             const source = document.getElementById('newsSourceSelect').value;
