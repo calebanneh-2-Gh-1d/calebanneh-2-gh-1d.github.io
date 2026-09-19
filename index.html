@@ -3,7 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Scout Escort | West African Football Scouting Platform</title>
+    <title>Scout Escort | Global Football Scouting Platform</title>
+    
+    <!-- Global SEO Meta Tags -->
+    <meta name="description" content="Scout Escort is the premier global football scouting platform. Search academy prospects and professional talent worldwide by position, age, and advanced stats.">
+    <meta name="keywords" content="global football scouting, soccer talent hub, youth prospects, player database, football scouts, Scout Escort">
+    <meta name="author" content="Caleb Anneh">
+
+    <!-- Open Graph / Social Sharing Meta Tags -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://calebthetrader.github.io/scout-escort/">
+    <meta property="og:title" content="Scout Escort | Global Football Scouting Platform">
+    <meta property="og:description" content="Advanced global player search and professional scouting reports worldwide.">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1508098682722-e99c43a406b2?q=80&w=1200&auto=format&fit=crop">
+
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Supabase JS SDK -->
@@ -42,7 +55,7 @@
             </svg>
             <div>
                 <h1 class="font-bold text-lg tracking-wider text-white">SCOUT ESCORT</h1>
-                <p class="text-xs text-slate-400">West African Talent Hub</p>
+                <p class="text-xs text-slate-400">Global Talent Hub</p>
             </div>
         </div>
         <div id="authStatusIndicator" class="text-xs px-2.5 py-1 rounded-full bg-slate-800 text-slate-300 border border-slate-700">
@@ -53,73 +66,79 @@
     <!-- Main Content Area -->
     <main class="flex-grow container mx-auto px-4 py-6 max-w-4xl pb-24">
 
-        <!-- TAB 1: MATCHES & PROSPECTS -->
+        <!-- TAB 1: ADVANCED PLAYER SEARCH & DATABASE -->
         <section id="tab-matches" class="space-y-6">
-            <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
-                <h2 class="text-xl font-bold text-white flex items-center gap-2">
-                    <span class="w-2.5 h-2.5 rounded-full bg-accentEmerald animate-pulse"></span> Live Match Tickers & Prospects
-                </h2>
-                <input type="text" id="searchMatchesInput" onkeyup="filterMatchContent()" placeholder="Search players, matches..." class="bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-accentEmerald w-full sm:w-64">
+            <div class="flex flex-col gap-4">
+                <div class="flex justify-between items-center">
+                    <h2 class="text-xl font-bold text-white flex items-center gap-2">
+                        <span class="w-2.5 h-2.5 rounded-full bg-accentEmerald animate-pulse"></span> Global Talent Search Engine
+                    </h2>
+                </div>
+
+                <!-- Advanced Filter Controls Panel -->
+                <div class="bg-cardBg border border-slate-800 rounded-xl p-4 shadow-sm grid grid-gap-4 sm:grid-cols-3 gap-3">
+                    <div>
+                        <label class="block text-[11px] text-slate-400 mb-1 uppercase tracking-wider">Position</label>
+                        <select id="filterPosition" onchange="applyAdvancedFilters()" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-xs text-white focus:outline-none focus:border-accentEmerald">
+                            <option value="">All Positions</option>
+                            <option value="FW">Forward / Winger (FW)</option>
+                            <option value="MF">Midfielder (MF)</option>
+                            <option value="DF">Defender (DF)</option>
+                            <option value="GK">Goalkeeper (GK)</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-[11px] text-slate-400 mb-1 uppercase tracking-wider">Age Group</label>
+                        <select id="filterAge" onchange="applyAdvancedFilters()" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-xs text-white focus:outline-none focus:border-accentEmerald">
+                            <option value="">All Ages</option>
+                            <option value="U17">U-17 Academy</option>
+                            <option value="U20">U-20 Youth Circuit</option>
+                            <option value="Senior">Senior Professional</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-[11px] text-slate-400 mb-1 uppercase tracking-wider">Keyword / Stats</label>
+                        <input type="text" id="filterKeyword" onkeyup="applyAdvancedFilters()" placeholder="Search pace, goals, region..." class="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-xs text-white focus:outline-none focus:border-accentEmerald">
+                    </div>
+                </div>
             </div>
             
-            <div id="matchesList" class="grid gap-4 md:grid-cols-2">
-                <div class="bg-cardBg border border-slate-800 rounded-xl p-4 shadow-sm hover:border-slate-700 transition">
-                    <div class="flex justify-between items-center text-xs text-slate-400 mb-2">
-                        <span>Ghana Premier League</span>
-                        <span class="text-accentEmerald font-semibold">LIVE 68'</span>
-                    </div>
-                    <div class="flex justify-between items-center font-medium my-2">
-                        <span>Hearts of Oak</span>
-                        <span class="text-slate-500 font-bold">1 - 0</span>
-                        <span>Asante Kotoko</span>
-                    </div>
-                    <p class="text-xs text-slate-400 mt-3 pt-3 border-t border-slate-800">Scout Note: Standout performance from central midfielder (ID: #GH-882).</p>
-                </div>
+            <!-- Dynamic Results Container -->
+            <div id="globalScoutDirectory" class="grid gap-4 md:grid-cols-2">
+                <p class="text-xs text-slate-500 italic">Loading global scouting reports...</p>
             </div>
         </section>
 
         <!-- TAB 2: NEWS & INSIGHTS -->
         <section id="tab-news" class="space-y-6 hide">
-            <h2 class="text-xl font-bold text-white">Scouting & Academy News</h2>
+            <h2 class="text-xl font-bold text-white">Global Scouting & Academy News</h2>
             <div class="space-y-4">
                 <article class="bg-cardBg border border-slate-800 rounded-xl p-5 shadow-sm">
-                    <span class="text-xs text-accentEmerald font-semibold">ACADEMY SPOTLIGHT</span>
-                    <h3 class="font-bold text-lg text-white mt-1">Emerging Talents in West African Regional Tournaments</h3>
-                    <p class="text-sm text-slate-400 mt-2">Analysis on how modern tracking metrics and video scouts are reshaping recruitment channels across Ghana, Nigeria, and Ivory Coast.</p>
+                    <span class="text-xs text-accentEmerald font-semibold">ANALYTICS REPORT</span>
+                    <h3 class="font-bold text-lg text-white mt-1">Cross-Border Scouting Data & Performance Benchmarks</h3>
+                    <p class="text-sm text-slate-400 mt-2">Examining how international clubs utilize multi-layered metric filters to discover high-ceiling prospects in emerging markets.</p>
                 </article>
             </div>
         </section>
 
-        <!-- TAB 3: LEAGUES & DATABASE FEED -->
+        <!-- TAB 3: LEAGUES DIRECTORY -->
         <section id="tab-leagues" class="space-y-6 hide">
-            <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
-                <h2 class="text-xl font-bold text-white">Leagues & Dynamic Database Feed</h2>
-                <input type="text" id="searchLeaguesInput" onkeyup="filterDatabaseFeed()" placeholder="Search league directory or feeds..." class="bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-accentEmerald w-full sm:w-64">
-            </div>
-            
-            <div id="leaguesDirectory" class="grid gap-4 md:grid-cols-2">
+            <h2 class="text-xl font-bold text-white">International Leagues Directory</h2>
+            <div class="grid gap-4 md:grid-cols-2">
                 <div class="bg-cardBg border border-slate-800 rounded-xl p-4">
-                    <h4 class="font-bold text-white">Ghana Premier League</h4>
-                    <p class="text-xs text-slate-400 mt-1">Tier 1 Professional League</p>
+                    <h4 class="font-bold text-white">European Tier 1 Leagues</h4>
+                    <p class="text-xs text-slate-400 mt-1">Premier League, La Liga, Serie A, Bundesliga</p>
                 </div>
                 <div class="bg-cardBg border border-slate-800 rounded-xl p-4">
-                    <h4 class="font-bold text-white">WAFU Zone B Championship</h4>
-                    <p class="text-xs text-slate-400 mt-1">Regional Youth & Senior Showcase</p>
-                </div>
-            </div>
-
-            <!-- Supabase Database Feed Container -->
-            <div class="mt-6">
-                <h3 class="text-sm font-semibold text-slate-400 uppercase tracking-wider mb-3">Supabase Live Records</h3>
-                <div id="supabaseFeedContainer" class="space-y-3">
-                    <p class="text-xs text-slate-500 italic">Loading records from database...</p>
+                    <h4 class="font-bold text-white">African & South American Circuits</h4>
+                    <p class="text-xs text-slate-400 mt-1">Ghana Premier League, CAF Youth Showcases, Copa Libertadores</p>
                 </div>
             </div>
         </section>
 
         <!-- TAB 4: REGISTER / AUTH -->
         <section id="tab-register" class="space-y-6 hide max-w-md mx-auto">
-            <h2 id="authTitle" class="text-xl font-bold text-white text-center">Scout Registration</h2>
+            <h2 id="authTitle" class="text-xl font-bold text-white text-center">Global Scout Registration</h2>
             <form id="authForm" onsubmit="handleAuth(event)" class="bg-cardBg border border-slate-800 rounded-xl p-6 shadow-md space-y-4">
                 <div>
                     <label class="block text-xs text-slate-400 mb-1">Email Address</label>
@@ -140,22 +159,47 @@
             </form>
         </section>
 
-        <!-- TAB 5: PORTAL -->
+        <!-- TAB 5: PUBLISHER PORTAL -->
         <section id="tab-portal" class="space-y-6 hide">
             <h2 class="text-xl font-bold text-white">Publisher Portal</h2>
             <div class="bg-cardBg border border-slate-800 rounded-xl p-6 shadow-md">
-                <p class="text-sm text-slate-300 mb-4">Publish dynamic player scouting reports directly to your Supabase backend repository.</p>
+                <p class="text-sm text-slate-300 mb-4">Publish dynamic player reports to your Supabase database with precise position and age categories.</p>
                 <form id="publishForm" onsubmit="publishPlayerReport(event)" class="space-y-4">
-                    <div>
-                        <label class="block text-xs text-slate-400 mb-1">Player Name & Position</label>
-                        <input type="text" id="reportPlayerName" placeholder="e.g. Kwame Mensah (CDM)" required class="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-accentEmerald">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                        <div>
+                            <label class="block text-xs text-slate-400 mb-1">Player Name</label>
+                            <input type="text" id="reportPlayerName" placeholder="e.g. Mateo Silva" required class="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-accentEmerald">
+                        </div>
+                        <div>
+                            <label class="block text-xs text-slate-400 mb-1">Position Category</label>
+                            <select id="reportPosition" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-accentEmerald">
+                                <option value="FW">Forward / Winger (FW)</option>
+                                <option value="MF">Midfielder (MF)</option>
+                                <option value="DF">Defender (DF)</option>
+                                <option value="GK">Goalkeeper (GK)</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                        <div>
+                            <label class="block text-xs text-slate-400 mb-1">Age Group</label>
+                            <select id="reportAge" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-accentEmerald">
+                                <option value="U17">U-17 Academy</option>
+                                <option value="U20">U-20 Youth</option>
+                                <option value="Senior">Senior Professional</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-xs text-slate-400 mb-1">Key Stat / Region</label>
+                            <input type="text" id="reportStats" placeholder="e.g. 92% pass accuracy, Ghana" required class="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-accentEmerald">
+                        </div>
                     </div>
                     <div>
                         <label class="block text-xs text-slate-400 mb-1">Scouting Assessment</label>
-                        <textarea id="reportDetails" rows="3" placeholder="Enter key metrics, speed, tactical awareness..." required class="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-accentEmerald"></textarea>
+                        <textarea id="reportDetails" rows="3" placeholder="Enter tactical analysis, speed metrics..." required class="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-accentEmerald"></textarea>
                     </div>
-                    <button type="submit" class="bg-accentEmerald hover:bg-accentHover text-slate-950 font-bold py-2 px-4 rounded-lg text-sm transition">
-                        Publish Report
+                    <button type="submit" class="w-full bg-accentEmerald hover:bg-accentHover text-slate-950 font-bold py-2 px-4 rounded-lg text-sm transition">
+                        Publish Report to Database
                     </button>
                 </form>
             </div>
@@ -167,7 +211,7 @@
     <nav class="bg-cardBg border-t border-slate-800 fixed bottom-0 left-0 right-0 z-50 px-2 py-2 flex justify-around shadow-lg">
         <button onclick="switchTab('matches')" id="nav-matches" class="flex flex-col items-center text-accentEmerald text-xs font-medium space-y-1">
             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg>
-            <span>Matches</span>
+            <span>Search</span>
         </button>
         <button onclick="switchTab('news')" id="nav-news" class="flex flex-col items-center text-slate-400 hover:text-slate-200 text-xs font-medium space-y-1">
             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z"></path></svg>
@@ -195,6 +239,7 @@
         const supabaseClient = window.supabase ? window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY) : null;
 
         let isLoginMode = false;
+        let globalReportsCache = [];
 
         // Tab Switching Logic
         function switchTab(tabId) {
@@ -212,39 +257,134 @@
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        // Toggle between Sign Up and Sign In modes
+        // Toggle Auth Mode
         function toggleAuthMode() {
             isLoginMode = !isLoginMode;
-            document.getElementById('authTitle').textContent = isLoginMode ? 'Scout Sign In' : 'Scout Registration';
+            document.getElementById('authTitle').textContent = isLoginMode ? 'Scout Sign In' : 'Global Scout Registration';
             document.getElementById('authSubmitBtn').textContent = isLoginMode ? 'Sign In' : 'Register Account';
             document.getElementById('authToggleText').textContent = isLoginMode ? "Don't have an account? Register" : 'Already have an account? Sign In';
         }
 
-        // Filtering for Matches/Prospects
-        function filterMatchContent() {
-            const query = document.getElementById('searchMatchesInput').value.toLowerCase();
-            const container = document.getElementById('matchesList');
-            const cards = container.getElementsByClassName('bg-cardBg');
+        // Fetch Global Reports from Supabase
+        async function fetchSupabaseFeed() {
+            const container = document.getElementById('globalScoutDirectory');
+            if (!supabaseClient || SUPABASE_ANON_KEY === 'YOUR_SUPABASE_ANON_KEY') {
+                container.innerHTML = '<p class="text-xs text-slate-500 col-span-2">Database pending configuration (Update SUPABASE_ANON_KEY).</p>';
+                return;
+            }
+
+            const { data, error } = await supabaseClient.from('player_reports').select('*').order('created_at', { ascending: false });
             
-            Array.from(cards).forEach(card => {
-                const text = card.textContent.toLowerCase();
-                card.style.display = text.includes(query) ? '' : 'none';
-            });
+            if (error || !data || data.length === 0) {
+                container.innerHTML = '<p class="text-xs text-slate-500 col-span-2">No active player reports found in database. Use the Portal tab to publish records.</p>';
+                globalReportsCache = [];
+                return;
+            }
+
+            globalReportsCache = data;
+            renderReports(globalReportsCache);
         }
 
-        // Filtering for Leagues & Database Feed
-        function filterDatabaseFeed() {
-            const query = document.getElementById('searchLeaguesInput').value.toLowerCase();
-            const feedContainer = document.getElementById('supabaseFeedContainer');
-            const feedItems = feedContainer.getElementsByClassName('feed-item');
-            
-            Array.from(feedItems).forEach(item => {
-                const text = item.textContent.toLowerCase();
-                item.style.display = text.includes(query) ? '' : 'none';
-            });
+        // Render Reports List
+        function renderReports(reports) {
+            const container = document.getElementById('globalScoutDirectory');
+            if (reports.length === 0) {
+                container.innerHTML = '<p class="text-xs text-slate-500 col-span-2">No profiles match your selected filter criteria.</p>';
+                return;
+            }
+
+            container.innerHTML = reports.map(item => `
+                <div class="feed-item bg-cardBg border border-slate-800 rounded-xl p-4 relative flex flex-col justify-between">
+                    <div>
+                        <div class="flex justify-between items-start mb-2">
+                            <div>
+                                <span class="text-[10px] bg-slate-900 text-accentEmerald px-2 py-0.5 rounded border border-slate-700 font-semibold uppercase">${item.position || 'PRO'}</span>
+                                <span class="text-[10px] bg-slate-900 text-slate-300 px-2 py-0.5 rounded border border-slate-700 ml-1">${item.age_group || 'Senior'}</span>
+                            </div>
+                            <button onclick="shareReport('${(item.player_name || '').replace(/'/g, "\\'")}', '${(item.assessment || '').replace(/'/g, "\\'")}')" class="text-xs text-accentEmerald hover:underline flex items-center gap-1 bg-slate-900/80 px-2 py-1 rounded border border-slate-700">
+                                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3.316 3.316 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3.316 3.316 0 00-5.368-2.684z"></path></svg>
+                                Share
+                            </button>
+                        </div>
+                        <h4 class="font-bold text-white text-sm mt-1">${item.player_name}</h4>
+                        <p class="text-xs text-accentEmerald font-medium mt-1">Key Metrics: ${item.stats || 'Not specified'}</p>
+                        <p class="text-xs text-slate-300 mt-2">${item.assessment}</p>
+                    </div>
+                    <span class="text-[10px] text-slate-500 mt-4 pt-3 border-t border-slate-800 block">${new Date(item.created_at).toLocaleDateString()}</span>
+                </div>
+            `).join('');
         }
 
-        // Enhanced Auth Handler supporting both Sign Up and Sign In
+        // Apply Advanced Filters
+        function applyAdvancedFilters() {
+            const posFilter = document.getElementById('filterPosition').value;
+            const ageFilter = document.getElementById('filterAge').value;
+            const keyword = document.getElementById('filterKeyword').value.toLowerCase();
+
+            const filtered = globalReportsCache.filter(item => {
+                const matchPos = !posFilter || (item.position && item.position === posFilter);
+                const matchAge = !ageFilter || (item.age_group && item.age_group === ageFilter);
+                
+                const fullText = `${item.player_name} ${item.assessment} ${item.stats} ${item.position} ${item.age_group}`.toLowerCase();
+                const matchKeyword = !keyword || fullText.includes(keyword);
+
+                return matchPos && matchAge && matchKeyword;
+            });
+
+            renderReports(filtered);
+        }
+
+        // Publish Player Report to Supabase
+        async function publishPlayerReport(e) {
+            e.preventDefault();
+            const playerName = document.getElementById('reportPlayerName').value;
+            const position = document.getElementById('reportPosition').value;
+            const ageGroup = document.getElementById('reportAge').value;
+            const stats = document.getElementById('reportStats').value;
+            const details = document.getElementById('reportDetails').value;
+
+            if (!supabaseClient || SUPABASE_ANON_KEY === 'YOUR_SUPABASE_ANON_KEY') {
+                alert('Supabase client unavailable or key not configured.');
+                return;
+            }
+
+            const { error } = await supabaseClient
+                .from('player_reports')
+                .insert([{ 
+                    player_name: playerName, 
+                    position: position,
+                    age_group: ageGroup,
+                    stats: stats,
+                    assessment: details, 
+                    created_at: new Date() 
+                }]);
+
+            if (error) {
+                alert('Error publishing report: ' + error.message);
+            } else {
+                alert('Report successfully published to your global database!');
+                document.getElementById('publishForm').reset();
+                fetchSupabaseFeed();
+                switchTab('matches');
+            }
+        }
+
+        // Share report feature
+        function shareReport(playerName, assessment) {
+            const shareText = `⚽ Scout Escort Report: ${playerName}\n\n"${assessment}"\n\nExplore global talent on Scout Escort!`;
+            if (navigator.share) {
+                navigator.share({
+                    title: `Scout Escort - ${playerName}`,
+                    text: shareText,
+                    url: window.location.href
+                }).catch(() => {});
+            } else {
+                navigator.clipboard.writeText(shareText);
+                alert('Report copied to clipboard! Share it across your scouting networks.');
+            }
+        }
+
+        // Auth Handler
         async function handleAuth(e) {
             e.preventDefault();
             const email = document.getElementById('authEmail').value;
@@ -275,72 +415,14 @@
             }
         }
 
-        // Publish Player Report to Supabase
-        async function publishPlayerReport(e) {
-            e.preventDefault();
-            const playerName = document.getElementById('reportPlayerName').value;
-            const details = document.getElementById('reportDetails').value;
-
-            if (!supabaseClient || SUPABASE_ANON_KEY === 'YOUR_SUPABASE_ANON_KEY') {
-                alert('Supabase client unavailable or key not configured.');
-                return;
-            }
-
-            const { error } = await supabaseClient
-                .from('player_reports')
-                .insert([{ player_name: playerName, assessment: details, created_at: new Date() }]);
-
-            if (error) {
-                alert('Error publishing report: ' + error.message);
-            } else {
-                alert('Report successfully published to Supabase!');
-                document.getElementById('publishForm').reset();
-                fetchSupabaseFeed();
-            }
-        }
-
-        // Fetch Data Feed on Load
-        async function fetchSupabaseFeed() {
-            const feedContainer = document.getElementById('supabaseFeedContainer');
-            if (!supabaseClient || SUPABASE_ANON_KEY === 'YOUR_SUPABASE_ANON_KEY') {
-                feedContainer.innerHTML = '<p class="text-xs text-slate-500">Database pending configuration (Update SUPABASE_ANON_KEY).</p>';
-                return;
-            }
-
-            const { data, error } = await supabaseClient.from('player_reports').select('*').order('created_at', { ascending: false }).limit(5);
-            
-            if (error || !data || data.length === 0) {
-                feedContainer.innerHTML = '<p class="text-xs text-slate-500">No active reports found in database.</p>';
-                return;
-            }
-
-            feedContainer.innerHTML = data.map(item => `
-                <div class="feed-item bg-cardBg border border-slate-800 rounded-xl p-4">
-                    <h5 class="font-bold text-white text-sm">${item.player_name}</h5>
-                    <p class="text-xs text-slate-300 mt-1">${item.assessment}</p>
-                    <span class="text-[10px] text-slate-500 mt-2 block">${new Date(item.created_at).toLocaleDateString()}</span>
-                </div>
-            `).join('');
-        }
-
-        // Check active session on load
-        async function checkSession() {
-            if (supabaseClient && SUPABASE_ANON_KEY !== 'YOUR_SUPABASE_ANON_KEY') {
-                const { data } = await supabaseClient.auth.getSession();
-                if (data && data.session) {
-                    document.getElementById('authStatusIndicator').textContent = 'Authenticated';
-                }
-            }
-        }
-
         // Initialize on load
         window.onload = () => {
-            checkSession();
             fetchSupabaseFeed();
         };
     </script>
 </body>
 </html>
+
 
 
 
