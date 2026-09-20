@@ -508,29 +508,22 @@
                         </div>`;
                     }).join('');
                 } else {
-                    throw new Error('No live fixtures active');
+                    container.innerHTML = `
+                        <div class="bg-cardBg border border-slate-800 rounded-xl p-6 text-center text-slate-400 text-xs">
+                            No live matches currently in progress. Check back during matchday schedules.
+                        </div>
+                    `;
                 }
             } catch (err) {
                 container.innerHTML = `
-                    <div class="bg-cardBg border border-slate-800 rounded-xl p-4 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
-                        <div>
-                            <div class="flex items-center gap-2 mb-1.5">
-                                <span class="text-[10px] bg-slate-900 text-slate-300 px-2 py-0.5 rounded border border-slate-700 font-semibold uppercase">SoccersAPI Connected</span>
-                                <span class="text-[10px] bg-accentEmerald/20 text-accentEmerald px-2 py-0.5 rounded font-bold">TOKEN ACTIVE</span>
-                            </div>
-                            <div class="font-bold text-white text-sm flex items-center gap-2">
-                                <span>No live matches currently in progress</span>
-                            </div>
-                        </div>
-                        <div class="flex items-center gap-3 w-full sm:w-auto justify-between sm:justify-end border-t sm:border-t-0 pt-2 sm:pt-0 border-slate-800">
-                            <span class="text-[11px] text-slate-400">Token: SdOEEH7W</span>
-                        </div>
+                    <div class="bg-cardBg border border-slate-800 rounded-xl p-6 text-center text-slate-400 text-xs">
+                        Unable to load live fixtures at the moment. Please try refreshing.
                     </div>
                 `;
             }
         }
 
-        // League Standings via SoccersAPI Token Authentication
+        // League Standings with Correct League Switcher Mapping
         async function fetchLeagueStandings() {
             const leagueCode = document.getElementById('leagueSelect').value;
             const banner = document.getElementById('leagueTitleBanner').querySelector('span');
@@ -539,11 +532,17 @@
             const leagueName = document.getElementById('leagueSelect').selectedOptions[0].text;
             banner.textContent = `${leagueName} Standings`;
 
-            tbody.innerHTML = `<tr><td colspan="7" class="text-center py-6 text-slate-500">Syncing live standings via SoccersAPI...</td></tr>`;
+            tbody.innerHTML = `<tr><td colspan="7" class="text-center py-6 text-slate-500">Syncing ${leagueName} via SoccersAPI...</td></tr>`;
 
             try {
-                // SoccersAPI League ID mapping
-                const leagueIds = { 'PL': 17, 'CL': 3, 'PD': 8, 'BL1': 35, 'SA': 34, 'FL1': 31 };
+                const leagueIds = { 
+                    'PL': 17,  // Premier League
+                    'CL': 3,   // Champions League
+                    'PD': 8,   // La Liga
+                    'BL1': 35, // Bundesliga
+                    'SA': 34,  // Serie A
+                    'FL1': 31  // Ligue 1
+                };
                 const lid = leagueIds[leagueCode] || 17;
 
                 const url = `https://api.soccersapi.com/v2.2/standings/?user=${SOCCERS_API_USER}&token=${SOCCERS_API_TOKEN}&t=standing&league_id=${lid}`;
@@ -572,29 +571,13 @@
                     throw new Error('Standings data returned empty');
                 }
             } catch (err) {
-                // Fallback sample table if cross-origin browser restriction occurs
-                const sampleTable = [
-                    { pos: 1, club: 'Arsenal', mp: 4, w: 4, d: 0, l: 0, pts: 12 },
-                    { pos: 2, club: 'Man City', mp: 4, w: 4, d: 0, l: 0, pts: 12 },
-                    { pos: 3, club: 'Brentford', mp: 5, w: 2, d: 3, l: 0, pts: 9 },
-                    { pos: 4, club: 'Leeds', mp: 4, w: 2, d: 2, l: 0, pts: 8 },
-                    { pos: 5, club: 'Hull', mp: 4, w: 2, d: 2, l: 0, pts: 8 }
-                ];
-
-                tbody.innerHTML = sampleTable.map(t => `
-                    <tr onclick="openLeagueMatchHighlights('${t.club}')" class="hover:bg-slate-800/60 cursor-pointer transition">
-                        <td class="py-3 px-3 font-mono text-slate-400">${t.pos}</td>
-                        <td class="py-3 px-4 font-bold text-white flex items-center justify-between">
-                            <span>${t.club}</span>
-                            <span class="text-[10px] text-accentEmerald font-normal">⚡ Highlights</span>
+                tbody.innerHTML = `
+                    <tr>
+                        <td colspan="7" class="text-center py-6 text-slate-400 text-xs">
+                            Standings data is temporarily unavailable for this league. Please click "Sync Table" to retry.
                         </td>
-                        <td class="py-3 px-2 text-center text-slate-400">${t.mp}</td>
-                        <td class="py-3 px-2 text-center text-slate-300">${t.w}</td>
-                        <td class="py-3 px-2 text-center text-slate-400">${t.d}</td>
-                        <td class="py-3 px-2 text-center text-slate-400">${t.l}</td>
-                        <td class="py-3 px-3 text-center font-extrabold text-accentEmerald">${t.pts}</td>
                     </tr>
-                `).join('');
+                `;
             }
         }
 
@@ -684,6 +667,7 @@
     </script>
 </body>
 </html>
+
 
 
 
