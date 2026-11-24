@@ -1,478 +1,295 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Scout Escort | Global Football Talent & Scouting</title>
-
-    <!-- Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=cde3082dd39e08d8f0ae297e4c3554a2"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'cde3082dd39e08d8f0ae297e4c3554a2');
-    </script>
-
-    <meta name="description" content="Scout Escort helps footballers showcase their talent, publish player profiles and share highlight videos with scouts and clubs around the world.">
-    <meta property="og:title" content="Scout Escort | Global Football Scouting Platform">
-    <meta property="og:description" content="Discover football talent, explore player profiles and watch highlight videos from around the world.">
-    <meta property="og:url" content="https://calebthetrader.github.io/scout-escort/">
-
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        darkBg: '#081118',
-                        cardBg: '#0f172a',
-                        accentEmerald: '#10b981',
-                        accentHover: '#059669'
-                    }
-                }
-            }
-        }
-    </script>
-    <style>
-        body { background-color: #081118; color: #f8fafc; font-family: system-ui, -apple-system, sans-serif; }
-        .hide { display: none !important; }
-        .video-frame { aspect-ratio: 16 / 9; width: 100%; border: 0; border-radius: .65rem; background: #000; }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Scout Escort | Global Football Talent Hub</title>
+  <meta name="description" content="Discover football players, watch highlights, explore academies and teams, and follow global football news on Scout Escort.">
+  <meta property="og:title" content="Scout Escort | Global Football Talent Hub">
+  <meta property="og:description" content="Discover talent, watch player highlights, and connect with football academies and teams.">
+  <meta property="og:url" content="https://calebthetrader.github.io/scout-escort/">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+  <style>
+    body{background:#081118;color:#f8fafc;font-family:system-ui,-apple-system,sans-serif}
+    .hide{display:none!important}
+    .tab-btn{color:#94a3b8}
+    .tab-btn.active{color:#10b981}
+    .video-frame{aspect-ratio:16/9;width:100%;border:0;border-radius:.65rem;background:#020617}
+    input,select,textarea{color-scheme:dark}
+  </style>
 </head>
-<body class="min-h-screen flex flex-col">
+<body class="min-h-screen">
+<header class="sticky top-0 z-40 bg-slate-900 border-b border-slate-800 px-4 py-3 shadow-lg">
+  <div class="max-w-5xl mx-auto flex items-center gap-3">
+    <svg class="w-9 h-9 text-emerald-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 3h12l2 6H4l2-6z"/><circle cx="9" cy="15" r="4"/><circle cx="15" cy="15" r="4"/></svg>
+    <div><h1 class="font-extrabold tracking-widest text-lg">SCOUT ESCORT</h1><p class="text-xs text-slate-400">Global Football Talent Hub</p></div>
+  </div>
+</header>
 
-    <header class="bg-cardBg border-b border-slate-800 sticky top-0 z-40 px-4 py-3 flex items-center justify-between shadow-md">
-        <div class="flex items-center space-x-3">
-            <svg class="w-8 h-8 text-accentEmerald" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <path d="M6 3h12l2 6H4l2-6z"></path>
-                <circle cx="9" cy="15" r="4"></circle>
-                <circle cx="15" cy="15" r="4"></circle>
-            </svg>
-            <div>
-                <h1 class="font-bold text-lg tracking-wider text-white">SCOUT ESCORT</h1>
-                <p class="text-xs text-slate-400">Global Football Talent Hub</p>
-            </div>
-        </div>
-    </header>
+<main class="max-w-5xl mx-auto px-4 pt-6 pb-28">
+  <section id="page-profiles" class="space-y-5">
+    <div class="flex flex-wrap items-center justify-between gap-3">
+      <div><h2 class="text-xl font-bold">Profiles</h2><p class="text-xs text-slate-400 mt-1">Discover football talent from around the world.</p></div>
+      <button onclick="showPage('create')" class="rounded-lg bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold text-xs px-4 py-2">+ Create Profile</button>
+    </div>
+    <div class="rounded-xl border border-emerald-900 bg-slate-900 p-4">
+      <h3 class="font-semibold text-sm">Share Scout Escort</h3>
+      <p class="text-xs text-slate-400 mt-1">Invite players, scouts, academies and teams to join the global talent directory.</p>
+      <div class="flex flex-wrap gap-2 mt-3">
+        <a class="text-xs rounded-md bg-emerald-700 px-3 py-2" target="_blank" rel="noopener" href="https://api.whatsapp.com/send?text=Discover%20football%20talent%20on%20Scout%20Escort%20https%3A%2F%2Fcalebthetrader.github.io%2Fscout-escort%2F">WhatsApp</a>
+        <a class="text-xs rounded-md bg-sky-700 px-3 py-2" target="_blank" rel="noopener" href="https://twitter.com/intent/tweet?text=Discover%20football%20talent%20on%20Scout%20Escort&url=https%3A%2F%2Fcalebthetrader.github.io%2Fscout-escort%2F">X / Twitter</a>
+        <a class="text-xs rounded-md bg-blue-700 px-3 py-2" target="_blank" rel="noopener" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fcalebthetrader.github.io%2Fscout-escort%2F">Facebook</a>
+      </div>
+    </div>
+    <div class="grid sm:grid-cols-3 gap-3 rounded-xl border border-slate-800 bg-slate-900 p-4">
+      <select id="filterPosition" onchange="applyFilters()" class="bg-slate-950 border border-slate-700 rounded-lg p-2 text-xs"><option value="">All Positions</option><option>FW</option><option>MF</option><option>DF</option><option>GK</option></select>
+      <select id="filterType" onchange="applyFilters()" class="bg-slate-950 border border-slate-700 rounded-lg p-2 text-xs"><option value="">Players & Teams</option><option value="Player">Players</option><option value="Team">Academies & Teams</option></select>
+      <input id="searchProfiles" oninput="applyFilters()" placeholder="Search name, location or bio..." class="bg-slate-950 border border-slate-700 rounded-lg p-2 text-xs">
+    </div>
+    <div id="profilesGrid" class="grid md:grid-cols-2 gap-4"><p class="text-xs text-slate-400">Loading profiles...</p></div>
+  </section>
 
-    <main class="flex-grow container mx-auto px-4 py-6 max-w-4xl pb-24">
+  <section id="page-highlights" class="hide space-y-5">
+    <div><h2 class="text-xl font-bold">Highlights</h2><p class="text-xs text-slate-400 mt-1">Watch player skills, goals and match performances.</p></div>
+    <div id="highlightsGrid" class="grid md:grid-cols-2 gap-4"><p class="text-xs text-slate-400">Loading highlight videos...</p></div>
+  </section>
 
-        <!-- PROFILES: public player and team directory -->
-        <section id="tab-profiles" class="space-y-6">
-            <div class="flex flex-col gap-4">
-                <div class="flex justify-between items-center gap-3">
-                    <div>
-                        <h2 class="text-xl font-bold text-white">Discover Football Talent</h2>
-                        <p class="text-xs text-slate-400 mt-1">Player and team profiles from around the world.</p>
-                    </div>
-                    <button onclick="switchTab('portal')" class="shrink-0 text-xs bg-accentEmerald text-slate-950 font-bold px-3 py-2 rounded-lg hover:bg-accentHover transition">
-                        + Create Profile
-                    </button>
-                </div>
+  <section id="page-academies" class="hide space-y-5">
+    <div><h2 class="text-xl font-bold">Academies & Teams</h2><p class="text-xs text-slate-400 mt-1">Discover football clubs, squads and development academies.</p></div>
+    <div id="academiesGrid" class="grid md:grid-cols-2 gap-4"><p class="text-xs text-slate-400">Loading academies and teams...</p></div>
+  </section>
 
-                <div class="bg-cardBg border border-emerald-900/50 rounded-xl p-4 flex flex-col sm:flex-row items-center justify-between gap-3 shadow-sm">
-                    <div>
-                        <h3 class="text-sm font-bold text-white">Share Scout Escort</h3>
-                        <p class="text-xs text-slate-400">Help players, teams and scouts discover the platform.</p>
-                    </div>
-                    <div class="flex items-center gap-2 flex-wrap">
-                        <a href="https://api.whatsapp.com/send?text=Discover%20football%20talent%20on%20Scout%20Escort%3A%20https%3A%2F%2Fcalebthetrader.github.io%2Fscout-escort%2F" target="_blank" rel="noopener noreferrer" class="bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-semibold px-3 py-1.5 rounded-lg">WhatsApp</a>
-                        <a href="https://twitter.com/intent/tweet?text=Discover%20football%20talent%20on%20Scout%20Escort&url=https://calebthetrader.github.io/scout-escort/" target="_blank" rel="noopener noreferrer" class="bg-sky-600 hover:bg-sky-500 text-white text-xs font-semibold px-3 py-1.5 rounded-lg">X</a>
-                        <a href="https://www.facebook.com/sharer/sharer.php?u=https://calebthetrader.github.io/scout-escort/" target="_blank" rel="noopener noreferrer" class="bg-blue-600 hover:bg-blue-500 text-white text-xs font-semibold px-3 py-1.5 rounded-lg">Facebook</a>
-                        <a href="https://t.me/share/url?url=https://calebthetrader.github.io/scout-escort/&text=Join%20Scout%20Escort" target="_blank" rel="noopener noreferrer" class="bg-cyan-600 hover:bg-cyan-500 text-white text-xs font-semibold px-3 py-1.5 rounded-lg">Telegram</a>
-                    </div>
-                </div>
-            </div>
+  <section id="page-news" class="hide space-y-5">
+    <div class="flex flex-wrap items-center justify-between gap-3">
+      <div><h2 class="text-xl font-bold">News</h2><p class="text-xs text-slate-400 mt-1">Football news from around the world.</p></div>
+      <button onclick="loadNews()" class="rounded-lg border border-slate-700 bg-slate-800 px-3 py-2 text-xs">Refresh News</button>
+    </div>
+    <div id="newsGrid" class="grid md:grid-cols-2 gap-4"><p class="text-xs text-slate-400">Loading football news...</p></div>
+  </section>
 
-            <div id="selfServiceDirectoryGrid" class="grid gap-4 md:grid-cols-2">
-                <p class="text-xs text-slate-500 italic">Loading profiles from database...</p>
-            </div>
-        </section>
+  <section id="page-create" class="hide max-w-2xl mx-auto space-y-5">
+    <div><h2 class="text-xl font-bold text-center">Create Profile</h2><p class="text-xs text-slate-400 text-center mt-1">Publish your player, academy or team profile.</p></div>
+    <form id="profileForm" class="space-y-4 rounded-xl border border-slate-800 bg-slate-900 p-5">
+      <div class="grid sm:grid-cols-2 gap-3">
+        <label class="text-xs text-slate-300">Profile Name
+          <input id="profileName" required maxlength="80" placeholder="Player or academy name" class="mt-1 w-full rounded-lg border border-slate-700 bg-slate-950 p-3 text-sm">
+        </label>
+        <label class="text-xs text-slate-300">Profile Type
+          <select id="profileType" class="mt-1 w-full rounded-lg border border-slate-700 bg-slate-950 p-3 text-sm"><option value="Player">Player</option><option value="Team">Academy / Team</option></select>
+        </label>
+        <label class="text-xs text-slate-300">Position / Focus
+          <select id="profilePosition" class="mt-1 w-full rounded-lg border border-slate-700 bg-slate-950 p-3 text-sm"><option value="FW">Forward / Winger (FW)</option><option value="MF">Midfielder (MF)</option><option value="DF">Defender (DF)</option><option value="GK">Goalkeeper (GK)</option><option value="Team">Full Squad / Academy</option></select>
+        </label>
+        <label class="text-xs text-slate-300">Country / Location
+          <input id="profileLocation" required maxlength="100" placeholder="e.g. Accra, Ghana" class="mt-1 w-full rounded-lg border border-slate-700 bg-slate-950 p-3 text-sm">
+        </label>
+      </div>
+      <label class="block text-xs text-slate-300">Highlight Video URL (YouTube or Vimeo)
+        <input id="profileVideo" type="url" placeholder="https://www.youtube.com/watch?v=..." class="mt-1 w-full rounded-lg border border-slate-700 bg-slate-950 p-3 text-sm">
+      </label>
+      <label class="block text-xs text-slate-300">Bio / Stats / Achievements
+        <textarea id="profileBio" required rows="4" maxlength="1500" placeholder="Tell scouts about your experience, age, achievements and playing style..." class="mt-1 w-full rounded-lg border border-slate-700 bg-slate-950 p-3 text-sm"></textarea>
+      </label>
+      <p id="formMessage" class="text-xs text-slate-400" role="status"></p>
+      <button id="publishBtn" type="submit" class="w-full rounded-lg bg-emerald-500 hover:bg-emerald-400 py-3 text-sm font-extrabold text-slate-950">Publish Profile</button>
+    </form>
+  </section>
+</main>
 
-        <!-- VIDEOS: all submitted YouTube highlight reels -->
-        <section id="tab-videos" class="space-y-6 hide">
-            <div>
-                <h2 class="text-xl font-bold text-white">Player Highlight Videos</h2>
-                <p class="text-xs text-slate-400 mt-1">Watch highlight reels shared by players and teams on Scout Escort.</p>
-            </div>
-            <div id="highlightVideosGrid" class="grid gap-5 md:grid-cols-2">
-                <p class="text-xs text-slate-500">Loading highlight videos...</p>
-            </div>
-        </section>
+<nav class="fixed bottom-0 left-0 right-0 z-50 border-t border-slate-800 bg-slate-900/95 backdrop-blur px-1 py-2">
+  <div class="max-w-2xl mx-auto grid grid-cols-5 gap-1">
+    <button data-page="profiles" onclick="showPage('profiles')" class="tab-btn active flex flex-col items-center gap-1 py-1 text-[10px]"><span class="text-lg">👤</span><span>Profiles</span></button>
+    <button data-page="highlights" onclick="showPage('highlights')" class="tab-btn flex flex-col items-center gap-1 py-1 text-[10px]"><span class="text-lg">▶</span><span>Highlights</span></button>
+    <button data-page="academies" onclick="showPage('academies')" class="tab-btn flex flex-col items-center gap-1 py-1 text-[10px]"><span class="text-lg">⚽</span><span>Academies & Teams</span></button>
+    <button data-page="news" onclick="showPage('news')" class="tab-btn flex flex-col items-center gap-1 py-1 text-[10px]"><span class="text-lg">📰</span><span>News</span></button>
+    <button data-page="create" onclick="showPage('create')" class="tab-btn flex flex-col items-center gap-1 py-1 text-[10px]"><span class="text-lg">＋</span><span>Create Profile</span></button>
+  </div>
+</nav>
 
-        <!-- SEARCH: dedicated scout search -->
-        <section id="tab-search" class="space-y-6 hide">
-            <div>
-                <h2 class="text-xl font-bold text-white">Find Players & Teams</h2>
-                <p class="text-xs text-slate-400 mt-1">Search the directory by name, location, category or playing position.</p>
-            </div>
+<script>
+/* IMPORTANT: Replace every placeholder below with your existing Firebase web-app config.
+   Firebase Console > Project settings > General > Your apps > SDK setup and configuration.
+   This version uses Cloud Firestore and the collection named "player_profiles". */
+const firebaseConfig = {
+  apiKey: "PASTE_YOUR_FIREBASE_API_KEY",
+  authDomain: "PASTE_YOUR_PROJECT_ID.firebaseapp.com",
+  projectId: "PASTE_YOUR_PROJECT_ID",
+  storageBucket: "PASTE_YOUR_PROJECT_ID.appspot.com",
+  messagingSenderId: "PASTE_YOUR_MESSAGING_SENDER_ID",
+  appId: "PASTE_YOUR_FIREBASE_APP_ID"
+};
 
-            <div class="bg-cardBg border border-slate-800 rounded-xl p-4 shadow-sm space-y-3">
-                <div>
-                    <label for="searchKeyword" class="block text-[11px] text-slate-400 mb-1 uppercase tracking-wider">Name or keyword</label>
-                    <input type="search" id="searchKeyword" oninput="applyScoutSearch()" placeholder="Search player, team, country or bio..." class="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-3 text-sm text-white focus:outline-none focus:border-accentEmerald">
-                </div>
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                    <div>
-                        <label for="searchPosition" class="block text-[11px] text-slate-400 mb-1 uppercase tracking-wider">Playing position</label>
-                        <select id="searchPosition" onchange="applyScoutSearch()" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-accentEmerald">
-                            <option value="">All positions</option>
-                            <option value="FW">Forward / Winger</option>
-                            <option value="MF">Midfielder</option>
-                            <option value="DF">Defender</option>
-                            <option value="GK">Goalkeeper</option>
-                            <option value="Team">Team / Academy</option>
-                        </select>
-                    </div>
-                    <div>
-                        <label for="searchCategory" class="block text-[11px] text-slate-400 mb-1 uppercase tracking-wider">Profile category</label>
-                        <select id="searchCategory" onchange="applyScoutSearch()" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-accentEmerald">
-                            <option value="">Players & teams</option>
-                            <option value="Player">Individual player</option>
-                            <option value="Team">Football team / academy</option>
-                        </select>
-                    </div>
-                </div>
-                <button onclick="resetScoutSearch()" class="text-xs text-accentEmerald hover:underline font-semibold">Clear search filters</button>
-            </div>
-            <p id="searchResultCount" class="text-xs text-slate-400" aria-live="polite"></p>
-            <div id="scoutSearchResults" class="grid gap-4 md:grid-cols-2">
-                <p class="text-xs text-slate-500">Loading profiles...</p>
-            </div>
-        </section>
+let db = null;
+let allProfiles = [];
+const $ = id => document.getElementById(id);
+const safe = value => String(value ?? "").replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const validHttpUrl = value => { try { const u = new URL(value); return u.protocol === "https:" || u.protocol === "http:" ? u.href : ""; } catch { return ""; } };
 
-        <!-- PORTAL: registration form -->
-        <section id="tab-portal" class="space-y-6 hide max-w-lg mx-auto">
-            <div class="text-center">
-                <h2 class="text-xl font-bold text-white">Create Your Scout Escort Profile</h2>
-                <p class="text-xs text-slate-400 mt-1">Showcase your football journey to scouts and clubs worldwide.</p>
-            </div>
-            <div class="bg-cardBg border border-slate-800 rounded-xl p-6 shadow-md">
-                <form id="profileCreationForm" onsubmit="submitSelfProfile(event)" class="space-y-4">
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                        <div>
-                            <label for="profileName" class="block text-xs text-slate-400 mb-1">Player or team name</label>
-                            <input type="text" id="profileName" placeholder="e.g. John Doe / Academy FC" required maxlength="100" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-accentEmerald">
-                        </div>
-                        <div>
-                            <label for="profileType" class="block text-xs text-slate-400 mb-1">Profile type</label>
-                            <select id="profileType" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-accentEmerald">
-                                <option value="Player">Individual player</option>
-                                <option value="Team">Football team / academy</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                        <div>
-                            <label for="profilePosition" class="block text-xs text-slate-400 mb-1">Playing position / focus</label>
-                            <select id="profilePosition" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-accentEmerald">
-                                <option value="FW">Forward / Winger (FW)</option>
-                                <option value="MF">Midfielder (MF)</option>
-                                <option value="DF">Defender (DF)</option>
-                                <option value="GK">Goalkeeper (GK)</option>
-                                <option value="Team">Full squad / academy</option>
-                            </select>
-                        </div>
-                        <div>
-                            <label for="profileLocation" class="block text-xs text-slate-400 mb-1">Country / location</label>
-                            <input type="text" id="profileLocation" placeholder="e.g. Accra, Ghana" required maxlength="100" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-accentEmerald">
-                        </div>
-                    </div>
-                    <div>
-                        <label for="profileVideoUrl" class="block text-xs text-slate-400 mb-1">YouTube highlight video link</label>
-                        <input type="url" id="profileVideoUrl" placeholder="https://www.youtube.com/watch?v=..." class="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-accentEmerald">
-                        <p class="text-[11px] text-slate-500 mt-1">Paste a public or unlisted YouTube video link. The video will appear in your profile and the Videos tab.</p>
-                    </div>
-                    <div>
-                        <label for="profileBio" class="block text-xs text-slate-400 mb-1">Football bio, stats and achievements</label>
-                        <textarea id="profileBio" rows="4" placeholder="Tell scouts about your playing style, experience, achievements and football goals..." required maxlength="1500" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-accentEmerald"></textarea>
-                    </div>
-                    <button id="publishProfileButton" type="submit" class="w-full bg-accentEmerald hover:bg-accentHover text-slate-950 font-bold py-3 px-4 rounded-lg text-sm transition">
-                        Publish My Public Profile
-                    </button>
-                    <p class="text-[11px] text-slate-500 text-center">Only submit information and videos you have permission to share publicly.</p>
-                </form>
-            </div>
-        </section>
+try {
+  const configReady = firebaseConfig.apiKey.startsWith("AIza") &&
+    !firebaseConfig.projectId.includes("PASTE_") &&
+    !firebaseConfig.appId.includes("PASTE_");
+  if (configReady) {
+    firebase.initializeApp(firebaseConfig);
+    db = firebase.firestore();
+  }
+} catch (err) { console.error("Firebase initialization error:", err); }
 
-    </main>
+function showPage(page) {
+  ["profiles","highlights","academies","news","create"].forEach(name => {
+    $("page-" + name).classList.toggle("hide", name !== page);
+    const button = document.querySelector(`[data-page="${name}"]`);
+    button.classList.toggle("active", name === page);
+  });
+  window.scrollTo({top:0,behavior:"smooth"});
+  if (page === "news" && !$("newsGrid").dataset.loaded) loadNews();
+  if (page === "highlights") renderHighlights();
+  if (page === "academies") renderAcademies();
+}
 
-    <!-- Four-section navigation -->
-    <nav class="bg-cardBg border-t border-slate-800 fixed bottom-0 left-0 right-0 z-50 px-2 py-2 flex justify-around shadow-lg">
-        <button onclick="switchTab('profiles')" id="nav-profiles" class="flex flex-col items-center text-accentEmerald text-xs font-medium space-y-1" aria-label="Profiles">
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
-            <span>Profiles</span>
-        </button>
-        <button onclick="switchTab('videos')" id="nav-videos" class="flex flex-col items-center text-slate-400 hover:text-slate-200 text-xs font-medium space-y-1" aria-label="Videos">
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M4 6h11a2 2 0 012 2v8a2 2 0 01-2 2H4a2 2 0 01-2-2V8a2 2 0 012-2z"></path></svg>
-            <span>Videos</span>
-        </button>
-        <button onclick="switchTab('search')" id="nav-search" class="flex flex-col items-center text-slate-400 hover:text-slate-200 text-xs font-medium space-y-1" aria-label="Search">
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 20l-4-4"></path></svg>
-            <span>Search</span>
-        </button>
-        <button onclick="switchTab('portal')" id="nav-portal" class="flex flex-col items-center text-slate-400 hover:text-slate-200 text-xs font-medium space-y-1" aria-label="Create profile">
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path></svg>
-            <span>Register</span>
-        </button>
-    </nav>
+function videoEmbed(url) {
+  const safeUrl = validHttpUrl(url);
+  if (!safeUrl) return "";
+  try {
+    const u = new URL(safeUrl);
+    let id = "";
+    if (u.hostname === "youtu.be") id = u.pathname.slice(1);
+    else if (u.hostname.includes("youtube.com")) id = u.searchParams.get("v") || u.pathname.split("/").filter(Boolean).pop();
+    if (id && /^[A-Za-z0-9_-]{6,}$/.test(id)) return `https://www.youtube-nocookie.com/embed/${encodeURIComponent(id)}`;
+    if (u.hostname.includes("vimeo.com")) {
+      const match = u.pathname.match(/\/(\d+)/);
+      if (match) return `https://player.vimeo.com/video/${match[1]}`;
+    }
+  } catch {}
+  return "";
+}
 
-    <script>
-        const SUPABASE_URL = 'https://ovbybswgoxvifmftxshb.supabase.co';
-        const SUPABASE_ANON_KEY = 'sb_publishable_GVF5j7spmTppoU2oxjLSiw_5fSKZEeg';
-        const supabaseClient = window.supabase
-            ? window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY)
-            : null;
+function profileCard(p) {
+  const name = safe(p.profile_name || "Unnamed profile");
+  const position = safe(p.position || "Player");
+  const type = safe(p.profile_type || "Player");
+  const location = safe(p.location || "Location not provided");
+  const bio = safe(p.bio || "");
+  const video = validHttpUrl(p.video_url || "");
+  const share = encodeURIComponent(`Discover ${p.profile_name || "this profile"} on Scout Escort: ${location}`);
+  return `<article class="rounded-xl border border-slate-800 bg-slate-900 p-4 flex flex-col gap-3">
+    <div class="flex items-start justify-between gap-2"><div><span class="rounded bg-slate-950 border border-slate-700 px-2 py-1 text-[10px] text-emerald-400">${position}</span> <span class="rounded bg-slate-950 border border-slate-700 px-2 py-1 text-[10px]">${type}</span></div><span class="text-[10px] text-slate-400 text-right">${location}</span></div>
+    <div><h3 class="font-bold text-base">${name}</h3><p class="mt-2 text-xs text-slate-300 whitespace-pre-wrap break-words">${bio}</p></div>
+    ${video ? `<a href="${video}" target="_blank" rel="noopener" class="text-xs font-semibold text-emerald-400 underline break-all">Open highlight video ↗</a>` : ""}
+    <div class="mt-auto border-t border-slate-800 pt-3 flex flex-wrap gap-3 text-[11px]"><a class="text-emerald-400" target="_blank" rel="noopener" href="https://api.whatsapp.com/send?text=${share}%20${encodeURIComponent(location.href)}">Share on WhatsApp</a><button class="text-slate-300" onclick="copyProfileLink()">Copy website link</button></div>
+  </article>`;
+}
 
-        let profilesCache = [];
-        const TAB_NAMES = ['profiles', 'videos', 'search', 'portal'];
+function copyProfileLink() {
+  navigator.clipboard?.writeText(location.href).then(() => alert("Website link copied.")).catch(() => alert("Copy this website address from your browser."));
+}
 
-        function switchTab(tabId) {
-            if (!TAB_NAMES.includes(tabId)) return;
+function renderProfiles(list) {
+  $("profilesGrid").innerHTML = list.length ? list.map(profileCard).join("") : '<p class="text-xs text-slate-400">No profiles found. Be the first to create one.</p>';
+}
+function applyFilters() {
+  const position = $("filterPosition").value;
+  const type = $("filterType").value;
+  const keyword = $("searchProfiles").value.trim().toLowerCase();
+  renderProfiles(allProfiles.filter(p => (!position || p.position === position) && (!type || p.profile_type === type) &&
+    `${p.profile_name||""} ${p.location||""} ${p.bio||""} ${p.position||""}`.toLowerCase().includes(keyword)));
+}
+function renderHighlights() {
+  const items = allProfiles.filter(p => validHttpUrl(p.video_url || ""));
+  $("highlightsGrid").innerHTML = items.length ? items.map(p => {
+    const embed = videoEmbed(p.video_url);
+    return `<article class="rounded-xl border border-slate-800 bg-slate-900 p-3">
+      ${embed ? `<iframe class="video-frame" src="${embed}" title="${safe(p.profile_name)} highlight video" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>` : `<a class="text-emerald-400 text-xs underline" href="${validHttpUrl(p.video_url)}" target="_blank" rel="noopener">Watch video ↗</a>`}
+      <h3 class="font-bold mt-3">${safe(p.profile_name)}</h3><p class="text-xs text-slate-400 mt-1">${safe(p.position || "Player")} · ${safe(p.location || "Global")}</p>
+      <p class="text-xs text-slate-300 mt-2">${safe(p.bio || "")}</p>
+    </article>`;
+  }).join("") : '<p class="text-xs text-slate-400">No highlight videos have been published yet. Add a YouTube or Vimeo link when creating a profile.</p>';
+}
+function renderAcademies() {
+  const items = allProfiles.filter(p => p.profile_type === "Team");
+  $("academiesGrid").innerHTML = items.length ? items.map(profileCard).join("") : '<p class="text-xs text-slate-400">No academies or teams have been published yet.</p>';
+}
 
-            TAB_NAMES.forEach(tab => {
-                document.getElementById(`tab-${tab}`).classList.add('hide');
-                const navButton = document.getElementById(`nav-${tab}`);
-                navButton.classList.remove('text-accentEmerald');
-                navButton.classList.add('text-slate-400');
-            });
+async function loadProfiles() {
+  if (!db) {
+    $("profilesGrid").innerHTML = '<div class="rounded-xl border border-amber-900 bg-slate-900 p-4 text-xs text-amber-200 md:col-span-2">Firebase is not connected yet. Add your existing Firebase configuration in the code before publishing.</div>';
+    $("highlightsGrid").innerHTML = '<p class="text-xs text-slate-400">Connect Firebase to load highlight videos.</p>';
+    $("academiesGrid").innerHTML = '<p class="text-xs text-slate-400">Connect Firebase to load academies and teams.</p>';
+    return;
+  }
+  try {
+    const snapshot = await db.collection("player_profiles").orderBy("created_at","desc").get();
+    allProfiles = snapshot.docs.map(doc => ({id:doc.id,...doc.data()}));
+    applyFilters(); renderHighlights(); renderAcademies();
+  } catch (err) {
+    console.error(err);
+    $("profilesGrid").innerHTML = '<p class="text-xs text-rose-300">Could not load profiles. Check that Cloud Firestore is enabled and its rules allow public reads.</p>';
+  }
+}
 
-            document.getElementById(`tab-${tabId}`).classList.remove('hide');
-            const activeButton = document.getElementById(`nav-${tabId}`);
-            activeButton.classList.remove('text-slate-400');
-            activeButton.classList.add('text-accentEmerald');
+$("profileForm").addEventListener("submit", async event => {
+  event.preventDefault();
+  if (!db) { $("formMessage").textContent = "Firebase is not configured. Add your Firebase web-app configuration first."; return; }
+  const name = $("profileName").value.trim();
+  const type = $("profileType").value;
+  const position = type === "Team" ? "Team" : $("profilePosition").value;
+  const locationValue = $("profileLocation").value.trim();
+  const video = $("profileVideo").value.trim();
+  const bio = $("profileBio").value.trim();
+  if (video && !validHttpUrl(video)) { $("formMessage").textContent = "Please enter a valid http or https video URL."; return; }
+  const button = $("publishBtn");
+  button.disabled = true; button.textContent = "Publishing...";
+  $("formMessage").textContent = "";
+  try {
+    await db.collection("player_profiles").add({
+      profile_name:name, profile_type:type, position, location:locationValue,
+      video_url:video, bio, created_at:firebase.firestore.FieldValue.serverTimestamp()
+    });
+    $("profileForm").reset();
+    $("formMessage").textContent = "Your profile has been published successfully.";
+    await loadProfiles();
+    showPage("profiles");
+  } catch (err) {
+    console.error(err);
+    $("formMessage").textContent = "Publishing failed. Check your Firestore database and security rules, then try again.";
+  } finally { button.disabled = false; button.textContent = "Publish Profile"; }
+});
 
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+async function loadNews() {
+  const box = $("newsGrid"); box.dataset.loaded = "yes";
+  box.innerHTML = '<p class="text-xs text-slate-400">Fetching football headlines...</p>';
+  const feeds = [
+    {name:"BBC Sport",url:"https://feeds.bbci.co.uk/sport/football/rss.xml"},
+    {name:"ESPN",url:"https://www.espn.com/espn/rss/soccer/news"}
+  ];
+  try {
+    const results = await Promise.all(feeds.map(async feed => {
+      const response = await fetch(`https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(feed.url)}`);
+      if (!response.ok) throw new Error("News feed unavailable");
+      const data = await response.json();
+      return (data.items || []).slice(0,8).map(item => ({...item,source:feed.name}));
+    }));
+    const items = results.flat().sort((a,b) => new Date(b.pubDate)-new Date(a.pubDate));
+    if (!items.length) throw new Error("No news items");
+    box.innerHTML = items.map(item => `<article class="rounded-xl border border-slate-800 bg-slate-900 p-4 flex flex-col">
+      <div class="flex justify-between gap-2 text-[10px] text-slate-400"><span class="text-emerald-400 font-bold uppercase">${safe(item.source)}</span><span>${item.pubDate ? new Date(item.pubDate).toLocaleDateString() : ""}</span></div>
+      <h3 class="font-bold text-sm mt-2">${safe(item.title)}</h3>
+      <p class="text-xs text-slate-300 mt-2">${safe((item.description || "").replace(/<[^>]*>/g," ").slice(0,260))}</p>
+      <a class="text-xs text-emerald-400 font-semibold mt-4 underline" href="${validHttpUrl(item.link)}" target="_blank" rel="noopener">Read full story ↗</a>
+    </article>`).join("");
+  } catch (err) {
+    console.error(err);
+    box.innerHTML = '<p class="rounded-xl border border-slate-800 bg-slate-900 p-4 text-xs text-slate-300 md:col-span-2">The news feed is temporarily unavailable. Please try Refresh News later.</p>';
+  }
+}
 
-            if (tabId === 'videos') renderHighlightVideos();
-            if (tabId === 'search') applyScoutSearch();
-        }
-
-        // Escape database text before inserting it into HTML.
-        function escapeHTML(value) {
-            return String(value ?? '').replace(/[&<>"']/g, char => ({
-                '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
-            })[char]);
-        }
-
-        // Accept YouTube watch, short, embed and youtu.be links only.
-        function getYouTubeId(rawUrl) {
-            if (!rawUrl) return null;
-            try {
-                const url = new URL(rawUrl);
-                let id = '';
-                if (url.hostname === 'youtu.be' || url.hostname === 'www.youtu.be') {
-                    id = url.pathname.split('/').filter(Boolean)[0] || '';
-                } else if (['youtube.com', 'www.youtube.com', 'm.youtube.com', 'youtube-nocookie.com', 'www.youtube-nocookie.com'].includes(url.hostname)) {
-                    if (url.pathname === '/watch') id = url.searchParams.get('v') || '';
-                    else if (url.pathname.startsWith('/embed/')) id = url.pathname.split('/')[2] || '';
-                    else if (url.pathname.startsWith('/shorts/')) id = url.pathname.split('/')[2] || '';
-                }
-                return /^[a-zA-Z0-9_-]{11}$/.test(id) ? id : null;
-            } catch (_) {
-                return null;
-            }
-        }
-
-        function profileCard(item) {
-            const name = escapeHTML(item.profile_name || 'Unnamed profile');
-            const type = escapeHTML(item.profile_type || 'Player');
-            const position = escapeHTML(item.position || 'Not specified');
-            const location = escapeHTML(item.location || 'Location not provided');
-            const bio = escapeHTML(item.bio || 'No biography added yet.');
-            const videoId = getYouTubeId(item.video_url);
-            const safeVideoUrl = videoId ? `https://www.youtube.com/watch?v=${videoId}` : '';
-
-            return `
-                <article class="bg-cardBg border border-slate-800 rounded-xl p-4 flex flex-col justify-between">
-                    <div>
-                        <div class="flex justify-between items-start gap-2 mb-2">
-                            <div class="flex flex-wrap gap-1">
-                                <span class="text-[10px] bg-slate-900 text-accentEmerald px-2 py-1 rounded border border-slate-700 font-semibold uppercase">${position}</span>
-                                <span class="text-[10px] bg-slate-900 text-slate-300 px-2 py-1 rounded border border-slate-700">${type}</span>
-                            </div>
-                            <span class="text-[10px] text-slate-400 text-right">${location}</span>
-                        </div>
-                        <div class="flex items-center gap-3 mt-3">
-                            <div class="w-12 h-12 shrink-0 rounded-full bg-emerald-900/50 border border-emerald-700 flex items-center justify-center text-accentEmerald font-bold text-lg">${escapeHTML((item.profile_name || '?').trim().charAt(0).toUpperCase())}</div>
-                            <h3 class="font-bold text-white text-base">${name}</h3>
-                        </div>
-                        <p class="text-xs text-slate-300 mt-3 whitespace-pre-line">${bio}</p>
-                        ${videoId ? `
-                            <div class="mt-4 pt-3 border-t border-slate-800">
-                                <iframe class="video-frame" src="https://www.youtube-nocookie.com/embed/${videoId}" title="${name} football highlights" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                                <a href="${safeVideoUrl}" target="_blank" rel="noopener noreferrer" class="inline-block mt-2 text-xs text-accentEmerald hover:underline font-semibold">Open video on YouTube</a>
-                            </div>
-                        ` : '<p class="text-[11px] text-slate-500 mt-3">No highlight video added yet.</p>'}
-                    </div>
-                    <div class="mt-4 pt-3 border-t border-slate-800 flex items-center justify-between text-[11px]">
-                        <span class="text-slate-500">Share profile</span>
-                        <div class="flex items-center gap-2">
-                            <a href="https://api.whatsapp.com/send?text=${encodeURIComponent(`Discover ${item.profile_name || 'this profile'} on Scout Escort: ${window.location.href}`)}" target="_blank" rel="noopener noreferrer" class="text-emerald-400 hover:underline font-semibold">WhatsApp</a>
-                            <span class="text-slate-700">|</span>
-                            <button type="button" onclick="copyProfileLink()" class="text-sky-400 hover:underline font-semibold">Copy site link</button>
-                        </div>
-                    </div>
-                </article>
-            `;
-        }
-
-        async function fetchDirectoryProfiles() {
-            const directory = document.getElementById('selfServiceDirectoryGrid');
-            if (!supabaseClient) {
-                directory.innerHTML = '<p class="text-xs text-red-300">Database client could not start. Check your Supabase settings.</p>';
-                return;
-            }
-
-            const { data, error } = await supabaseClient
-                .from('player_profiles')
-                .select('*')
-                .order('created_at', { ascending: false });
-
-            if (error) {
-                console.error('Profile loading error:', error);
-                directory.innerHTML = `<p class="text-xs text-red-300">Could not load profiles. Check the player_profiles table and its read permissions in Supabase.</p>`;
-                profilesCache = [];
-                return;
-            }
-
-            profilesCache = data || [];
-            renderDirectory(profilesCache);
-            renderHighlightVideos();
-            applyScoutSearch();
-        }
-
-        function renderDirectory(profiles) {
-            const directory = document.getElementById('selfServiceDirectoryGrid');
-            if (!profiles.length) {
-                directory.innerHTML = '<p class="text-xs text-slate-500 md:col-span-2">No profiles published yet. Be the first to create one!</p>';
-                return;
-            }
-            directory.innerHTML = profiles.map(profileCard).join('');
-        }
-
-        function renderHighlightVideos() {
-            const container = document.getElementById('highlightVideosGrid');
-            const profilesWithVideos = profilesCache.filter(item => getYouTubeId(item.video_url));
-
-            if (!profilesWithVideos.length) {
-                container.innerHTML = '<div class="bg-cardBg border border-slate-800 rounded-xl p-6 text-center md:col-span-2"><p class="text-sm text-slate-300">No highlight videos have been published yet.</p><p class="text-xs text-slate-500 mt-2">When players add YouTube links to their profiles, their videos will appear here.</p></div>';
-                return;
-            }
-
-            container.innerHTML = profilesWithVideos.map(item => {
-                const id = getYouTubeId(item.video_url);
-                const name = escapeHTML(item.profile_name || 'Player');
-                const position = escapeHTML(item.position || 'Not specified');
-                const location = escapeHTML(item.location || 'Location not provided');
-                return `
-                    <article class="bg-cardBg border border-slate-800 rounded-xl p-4">
-                        <iframe class="video-frame" src="https://www.youtube-nocookie.com/embed/${id}" title="${name} highlight video" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                        <h3 class="font-bold text-white mt-3">${name}</h3>
-                        <p class="text-xs text-slate-400 mt-1">${position} · ${location}</p>
-                        <a href="https://www.youtube.com/watch?v=${id}" target="_blank" rel="noopener noreferrer" class="inline-block text-xs text-accentEmerald hover:underline mt-3">Watch on YouTube</a>
-                    </article>
-                `;
-            }).join('');
-        }
-
-        function applyScoutSearch() {
-            const keyword = (document.getElementById('searchKeyword')?.value || '').trim().toLowerCase();
-            const position = document.getElementById('searchPosition')?.value || '';
-            const category = document.getElementById('searchCategory')?.value || '';
-
-            const results = profilesCache.filter(item => {
-                const matchesPosition = !position || item.position === position;
-                const matchesCategory = !category || item.profile_type === category;
-                const searchable = `${item.profile_name || ''} ${item.bio || ''} ${item.location || ''} ${item.position || ''} ${item.profile_type || ''}`.toLowerCase();
-                return matchesPosition && matchesCategory && (!keyword || searchable.includes(keyword));
-            });
-
-            const resultCount = document.getElementById('searchResultCount');
-            const resultsContainer = document.getElementById('scoutSearchResults');
-            if (resultCount) resultCount.textContent = `${results.length} profile${results.length === 1 ? '' : 's'} found`;
-
-            if (resultsContainer) {
-                resultsContainer.innerHTML = results.length
-                    ? results.map(profileCard).join('')
-                    : '<p class="text-xs text-slate-500 md:col-span-2">No profiles match those search filters.</p>';
-            }
-        }
-
-        function resetScoutSearch() {
-            document.getElementById('searchKeyword').value = '';
-            document.getElementById('searchPosition').value = '';
-            document.getElementById('searchCategory').value = '';
-            applyScoutSearch();
-        }
-
-        function copyProfileLink() {
-            if (navigator.clipboard && navigator.clipboard.writeText) {
-                navigator.clipboard.writeText(window.location.href)
-                    .then(() => alert('Scout Escort link copied.'))
-                    .catch(() => alert('Copy failed. Please copy the website address from your browser.'));
-            } else {
-                alert('Please copy the website address from your browser.');
-            }
-        }
-
-        async function submitSelfProfile(event) {
-            event.preventDefault();
-
-            const submitButton = document.getElementById('publishProfileButton');
-            const profileName = document.getElementById('profileName').value.trim();
-            const profileType = document.getElementById('profileType').value;
-            const position = document.getElementById('profilePosition').value;
-            const location = document.getElementById('profileLocation').value.trim();
-            const videoUrl = document.getElementById('profileVideoUrl').value.trim();
-            const bio = document.getElementById('profileBio').value.trim();
-
-            if (videoUrl && !getYouTubeId(videoUrl)) {
-                alert('Please enter a valid YouTube video link, or leave the video field blank.');
-                return;
-            }
-
-            if (!supabaseClient) {
-                alert('The database connection is unavailable. Please check the Supabase settings.');
-                return;
-            }
-
-            submitButton.disabled = true;
-            submitButton.textContent = 'Publishing...';
-
-            const { error } = await supabaseClient
-                .from('player_profiles')
-                .insert([{
-                    profile_name: profileName,
-                    profile_type: profileType,
-                    position: position,
-                    location: location,
-                    video_url: videoUrl || null,
-                    bio: bio,
-                    created_at: new Date().toISOString()
-                }]);
-
-            submitButton.disabled = false;
-            submitButton.textContent = 'Publish My Public Profile';
-
-            if (error) {
-                console.error('Profile publishing error:', error);
-                alert('Profile could not be published: ' + error.message);
-                return;
-            }
-
-            alert('Your profile has been published on Scout Escort!');
-            document.getElementById('profileCreationForm').reset();
-            await fetchDirectoryProfiles();
-            switchTab('profiles');
-        }
-
-        window.addEventListener('load', fetchDirectoryProfiles);
-    </script>
+loadProfiles();
+</script>
 </body>
 </html>
+
 
 
 
