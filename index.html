@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Scout Escort | Global Football Scouting, Live Scores & News</title>
-    
-    <!-- Google tag (gtag.js) -->
+    <title>Scout Escort | Global Football Talent & Scouting</title>
+
+    <!-- Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=cde3082dd39e08d8f0ae297e4c3554a2"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -14,15 +14,12 @@
       gtag('config', 'cde3082dd39e08d8f0ae297e4c3554a2');
     </script>
 
-    <!-- Global SEO & Social Sharing Open Graph Meta Tags -->
-    <meta name="description" content="Scout Escort is the premier global football scouting platform featuring live scores, breaking news, league standings, and self-service player profile showcases.">
+    <meta name="description" content="Scout Escort helps footballers showcase their talent, publish player profiles and share highlight videos with scouts and clubs around the world.">
     <meta property="og:title" content="Scout Escort | Global Football Scouting Platform">
-    <meta property="og:description" content="Discover global talent, share player highlight reels, and track live scores and league tables.">
+    <meta property="og:description" content="Discover football talent, explore player profiles and watch highlight videos from around the world.">
     <meta property="og:url" content="https://calebthetrader.github.io/scout-escort/">
 
-    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Supabase JS SDK -->
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script>
         tailwind.config = {
@@ -41,639 +38,441 @@
     <style>
         body { background-color: #081118; color: #f8fafc; font-family: system-ui, -apple-system, sans-serif; }
         .hide { display: none !important; }
+        .video-frame { aspect-ratio: 16 / 9; width: 100%; border: 0; border-radius: .65rem; background: #000; }
     </style>
 </head>
-<body class="min-h-screen flex flex-col justify-between">
+<body class="min-h-screen flex flex-col">
 
-    <!-- Header / Brand Bar -->
-    <header class="bg-cardBg border-b border-slate-800 sticky top-0 z-50 px-4 py-3 flex items-center justify-between shadow-md">
+    <header class="bg-cardBg border-b border-slate-800 sticky top-0 z-40 px-4 py-3 flex items-center justify-between shadow-md">
         <div class="flex items-center space-x-3">
-            <!-- Tactical Binoculars Logo -->
-            <svg class="w-8 h-8 text-accentEmerald" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <svg class="w-8 h-8 text-accentEmerald" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                 <path d="M6 3h12l2 6H4l2-6z"></path>
                 <circle cx="9" cy="15" r="4"></circle>
                 <circle cx="15" cy="15" r="4"></circle>
             </svg>
             <div>
                 <h1 class="font-bold text-lg tracking-wider text-white">SCOUT ESCORT</h1>
-                <p class="text-xs text-slate-400">Global Talent Hub & Live Feeds</p>
+                <p class="text-xs text-slate-400">Global Football Talent Hub</p>
             </div>
         </div>
     </header>
 
-    <!-- Main Content Area -->
     <main class="flex-grow container mx-auto px-4 py-6 max-w-4xl pb-24">
 
-        <!-- TAB 1: PLAYER & TEAM PROFILES DIRECTORY -->
+        <!-- PROFILES: public player and team directory -->
         <section id="tab-profiles" class="space-y-6">
             <div class="flex flex-col gap-4">
-                <div class="flex justify-between items-center">
-                    <h2 class="text-xl font-bold text-white flex items-center gap-2">
-                        <span class="w-2.5 h-2.5 rounded-full bg-accentEmerald animate-pulse"></span> Self-Service Talent Directory
-                    </h2>
-                    <button onclick="switchTab('portal')" class="text-xs bg-accentEmerald text-slate-950 font-bold px-3 py-1.5 rounded-lg hover:bg-accentHover transition">
-                        + Create Your Profile
+                <div class="flex justify-between items-center gap-3">
+                    <div>
+                        <h2 class="text-xl font-bold text-white">Discover Football Talent</h2>
+                        <p class="text-xs text-slate-400 mt-1">Player and team profiles from around the world.</p>
+                    </div>
+                    <button onclick="switchTab('portal')" class="shrink-0 text-xs bg-accentEmerald text-slate-950 font-bold px-3 py-2 rounded-lg hover:bg-accentHover transition">
+                        + Create Profile
                     </button>
                 </div>
 
-                <!-- Global Share Platform Card for Players -->
                 <div class="bg-cardBg border border-emerald-900/50 rounded-xl p-4 flex flex-col sm:flex-row items-center justify-between gap-3 shadow-sm">
                     <div>
-                        <h3 class="text-sm font-bold text-white">Introduce Scout Escort to Others</h3>
-                        <p class="text-xs text-slate-400">Share this platform with players, teams, and scouts across your favorite social channels.</p>
+                        <h3 class="text-sm font-bold text-white">Share Scout Escort</h3>
+                        <p class="text-xs text-slate-400">Help players, teams and scouts discover the platform.</p>
                     </div>
                     <div class="flex items-center gap-2 flex-wrap">
-                        <a href="https://api.whatsapp.com/send?text=Check%20out%20Scout%20Escort%20-%20the%20ultimate%20global%20football%20talent%20hub%20to%20showcase%20your%20highlights%20and%20connect%20with%20scouts!%20https://calebthetrader.github.io/scout-escort/" target="_blank" class="bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-semibold px-3 py-1.5 rounded-lg flex items-center gap-1 transition">
-                            WhatsApp
-                        </a>
-                        <a href="https://twitter.com/intent/tweet?text=Discover%20top%20football%20talent%20and%20showcase%20your%20highlight%20videos%20on%20Scout%20Escort!&url=https://calebthetrader.github.io/scout-escort/" target="_blank" class="bg-sky-600 hover:bg-sky-500 text-white text-xs font-semibold px-3 py-1.5 rounded-lg flex items-center gap-1 transition">
-                            Twitter / X
-                        </a>
-                        <a href="https://www.facebook.com/sharer/sharer.php?u=https://calebthetrader.github.io/scout-escort/" target="_blank" class="bg-blue-600 hover:bg-blue-500 text-white text-xs font-semibold px-3 py-1.5 rounded-lg flex items-center gap-1 transition">
-                            Facebook
-                        </a>
-                        <a href="https://t.me/share/url?url=https://calebthetrader.github.io/scout-escort/&text=Join%20Scout%20Escort%20-%20Global%20Football%20Talent%20Hub" target="_blank" class="bg-cyan-600 hover:bg-cyan-500 text-white text-xs font-semibold px-3 py-1.5 rounded-lg flex items-center gap-1 transition">
-                            Telegram
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Search & Filters -->
-                <div class="bg-cardBg border border-slate-800 rounded-xl p-4 shadow-sm grid grid-cols-1 sm:grid-cols-3 gap-3">
-                    <div>
-                        <label class="block text-[11px] text-slate-400 mb-1 uppercase tracking-wider">Position</label>
-                        <select id="filterPosition" onchange="applyDirectoryFilters()" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-xs text-white focus:outline-none focus:border-accentEmerald">
-                            <option value="">All Positions</option>
-                            <option value="FW">Forward / Winger</option>
-                            <option value="MF">Midfielder</option>
-                            <option value="DF">Defender</option>
-                            <option value="GK">Goalkeeper</option>
-                        </select>
-                    </div>
-                    <div>
-                        <label class="block text-[11px] text-slate-400 mb-1 uppercase tracking-wider">Category</label>
-                        <select id="filterCategory" onchange="applyDirectoryFilters()" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-xs text-white focus:outline-none focus:border-accentEmerald">
-                            <option value="">Players & Teams</option>
-                            <option value="Player">Individual Player</option>
-                            <option value="Team">Football Team / Academy</option>
-                        </select>
-                    </div>
-                    <div>
-                        <label class="block text-[11px] text-slate-400 mb-1 uppercase tracking-wider">Search Keywords</label>
-                        <input type="text" id="filterKeyword" onkeyup="applyDirectoryFilters()" placeholder="Search name, country, video..." class="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-xs text-white focus:outline-none focus:border-accentEmerald">
+                        <a href="https://api.whatsapp.com/send?text=Discover%20football%20talent%20on%20Scout%20Escort%3A%20https%3A%2F%2Fcalebthetrader.github.io%2Fscout-escort%2F" target="_blank" rel="noopener noreferrer" class="bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-semibold px-3 py-1.5 rounded-lg">WhatsApp</a>
+                        <a href="https://twitter.com/intent/tweet?text=Discover%20football%20talent%20on%20Scout%20Escort&url=https://calebthetrader.github.io/scout-escort/" target="_blank" rel="noopener noreferrer" class="bg-sky-600 hover:bg-sky-500 text-white text-xs font-semibold px-3 py-1.5 rounded-lg">X</a>
+                        <a href="https://www.facebook.com/sharer/sharer.php?u=https://calebthetrader.github.io/scout-escort/" target="_blank" rel="noopener noreferrer" class="bg-blue-600 hover:bg-blue-500 text-white text-xs font-semibold px-3 py-1.5 rounded-lg">Facebook</a>
+                        <a href="https://t.me/share/url?url=https://calebthetrader.github.io/scout-escort/&text=Join%20Scout%20Escort" target="_blank" rel="noopener noreferrer" class="bg-cyan-600 hover:bg-cyan-500 text-white text-xs font-semibold px-3 py-1.5 rounded-lg">Telegram</a>
                     </div>
                 </div>
             </div>
-            
-            <!-- Dynamic Directory Grid -->
+
             <div id="selfServiceDirectoryGrid" class="grid gap-4 md:grid-cols-2">
                 <p class="text-xs text-slate-500 italic">Loading profiles from database...</p>
             </div>
         </section>
 
-        <!-- TAB 2: LIVE SCORES -->
-        <section id="tab-scores" class="space-y-6 hide">
-            <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
-                <div>
-                    <h2 class="text-xl font-bold text-white flex items-center gap-2">
-                        <span class="w-2.5 h-2.5 rounded-full bg-red-500 animate-pulse"></span> Live Match Scores & Fixtures
-                    </h2>
-                    <p class="text-xs text-slate-400 mt-0.5">Real-time official match updates via authenticated SoccersAPI feed</p>
-                </div>
-                <div class="flex items-center gap-2">
-                    <select id="scoreCompetitionFilter" onchange="fetchLiveScores()" class="bg-slate-900 border border-slate-700 text-xs text-white rounded-lg px-3 py-2 focus:outline-none focus:border-accentEmerald">
-                        <option value="PL">Premier League</option>
-                        <option value="CL">Champions League</option>
-                        <option value="PD">La Liga</option>
-                        <option value="BL1">Bundesliga</option>
-                        <option value="SA">Serie A</option>
-                    </select>
-                    <button onclick="fetchLiveScores()" class="text-xs bg-slate-800 text-slate-300 hover:text-white px-3 py-2 rounded-lg border border-slate-700">
-                        Refresh Scores
-                    </button>
-                </div>
+        <!-- VIDEOS: all submitted YouTube highlight reels -->
+        <section id="tab-videos" class="space-y-6 hide">
+            <div>
+                <h2 class="text-xl font-bold text-white">Player Highlight Videos</h2>
+                <p class="text-xs text-slate-400 mt-1">Watch highlight reels shared by players and teams on Scout Escort.</p>
             </div>
-            <div id="liveScoresContainer" class="space-y-3">
-                <div class="bg-cardBg border border-slate-800 rounded-xl p-4 text-center text-slate-400 text-xs">
-                    Connecting to live API fixtures...
-                </div>
+            <div id="highlightVideosGrid" class="grid gap-5 md:grid-cols-2">
+                <p class="text-xs text-slate-500">Loading highlight videos...</p>
             </div>
         </section>
 
-        <!-- TAB 3: LEAGUES & STANDINGS -->
-        <section id="tab-leagues" class="space-y-6 hide">
-            <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
+        <!-- SEARCH: dedicated scout search -->
+        <section id="tab-search" class="space-y-6 hide">
+            <div>
+                <h2 class="text-xl font-bold text-white">Find Players & Teams</h2>
+                <p class="text-xs text-slate-400 mt-1">Search the directory by name, location, category or playing position.</p>
+            </div>
+
+            <div class="bg-cardBg border border-slate-800 rounded-xl p-4 shadow-sm space-y-3">
                 <div>
-                    <h2 class="text-xl font-bold text-white flex items-center gap-2">
-                        <span class="w-2.5 h-2.5 rounded-full bg-accentEmerald animate-pulse"></span> Official League Standings
-                    </h2>
-                    <p class="text-xs text-slate-400 mt-0.5">Real-time dynamic tables synced via SoccersAPI</p>
+                    <label for="searchKeyword" class="block text-[11px] text-slate-400 mb-1 uppercase tracking-wider">Name or keyword</label>
+                    <input type="search" id="searchKeyword" oninput="applyScoutSearch()" placeholder="Search player, team, country or bio..." class="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-3 text-sm text-white focus:outline-none focus:border-accentEmerald">
                 </div>
-                <div class="flex items-center gap-2">
-                    <select id="leagueSelect" onchange="fetchLeagueStandings()" class="bg-slate-900 border border-slate-700 text-xs text-white rounded-lg px-3 py-2 focus:outline-none focus:border-accentEmerald">
-                        <option value="PL" selected>🏴󠁧󠁢󠁥󠁮󠁧󠁿 English Premier League</option>
-                        <option value="CL">🇪🇺 UEFA Champions League</option>
-                        <option value="PD">🇪🇸 Spanish La Liga</option>
-                        <option value="BL1">🇩🇪 German Bundesliga</option>
-                        <option value="SA">🇮🇹 Italian Serie A</option>
-                        <option value="FL1">🇫🇷 French Ligue 1</option>
-                    </select>
-                    <button onclick="fetchLeagueStandings()" class="text-xs bg-slate-800 text-slate-300 hover:text-white px-3 py-2 rounded-lg border border-slate-700">
-                        Sync Table
-                    </button>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    <div>
+                        <label for="searchPosition" class="block text-[11px] text-slate-400 mb-1 uppercase tracking-wider">Playing position</label>
+                        <select id="searchPosition" onchange="applyScoutSearch()" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-accentEmerald">
+                            <option value="">All positions</option>
+                            <option value="FW">Forward / Winger</option>
+                            <option value="MF">Midfielder</option>
+                            <option value="DF">Defender</option>
+                            <option value="GK">Goalkeeper</option>
+                            <option value="Team">Team / Academy</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="searchCategory" class="block text-[11px] text-slate-400 mb-1 uppercase tracking-wider">Profile category</label>
+                        <select id="searchCategory" onchange="applyScoutSearch()" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-accentEmerald">
+                            <option value="">Players & teams</option>
+                            <option value="Player">Individual player</option>
+                            <option value="Team">Football team / academy</option>
+                        </select>
+                    </div>
                 </div>
+                <button onclick="resetScoutSearch()" class="text-xs text-accentEmerald hover:underline font-semibold">Clear search filters</button>
             </div>
-
-            <!-- Match Highlight & Media Viewer Box -->
-            <div id="leagueMatchViewer" class="hidden my-4 bg-slate-900 border border-slate-800 rounded-xl p-4 shadow-xl">
-                <div class="flex justify-between items-center mb-3">
-                    <h4 id="viewerMatchTitle" class="text-white font-bold text-sm">Match Highlights</h4>
-                    <button onclick="closeLeagueViewer()" class="text-slate-400 hover:text-white font-bold px-2 text-lg">&times;</button>
-                </div>
-                <div id="viewerContentSlot" class="relative w-full aspect-video bg-black rounded-lg overflow-hidden flex flex-col items-center justify-center p-4 text-center">
-                    <p class="text-slate-500 text-sm">Select any club row below to load highlights.</p>
-                </div>
-            </div>
-
-            <div class="bg-cardBg border border-slate-800 rounded-xl overflow-hidden shadow-md">
-                <div id="leagueTitleBanner" class="bg-slate-900/80 px-4 py-3 border-b border-slate-800 font-bold text-xs text-accentEmerald uppercase tracking-wider flex justify-between items-center">
-                    <span>English Premier League Standings</span>
-                    <span class="text-[10px] text-slate-400 font-normal">SoccersAPI Feed Active</span>
-                </div>
-                <div class="overflow-x-auto">
-                    <table class="w-full text-left text-xs">
-                        <thead class="bg-slate-900/40 text-slate-400 border-b border-slate-800">
-                            <tr>
-                                <th class="py-3 px-3">Pos</th>
-                                <th class="py-3 px-4">Club</th>
-                                <th class="py-3 px-2 text-center">MP</th>
-                                <th class="py-3 px-2 text-center">W</th>
-                                <th class="py-3 px-2 text-center">D</th>
-                                <th class="py-3 px-2 text-center">L</th>
-                                <th class="py-3 px-3 text-center font-bold text-white">Pts</th>
-                            </tr>
-                        </thead>
-                        <tbody id="standingsTableBody" class="divide-y divide-slate-800/60 text-slate-300">
-                            <tr>
-                                <td colspan="7" class="text-center py-6 text-slate-500">Loading standings...</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
+            <p id="searchResultCount" class="text-xs text-slate-400" aria-live="polite"></p>
+            <div id="scoutSearchResults" class="grid gap-4 md:grid-cols-2">
+                <p class="text-xs text-slate-500">Loading profiles...</p>
             </div>
         </section>
 
-        <!-- TAB 4: LIVE NEWS FEED -->
-        <section id="tab-news" class="space-y-6 hide">
-            <div class="flex justify-between items-center flex-wrap gap-2">
-                <div>
-                    <h2 class="text-xl font-bold text-white flex items-center gap-2">
-                        <span class="w-2.5 h-2.5 rounded-full bg-blue-500 animate-pulse"></span> BBC Sport & ESPN Live News
-                    </h2>
-                    <p class="text-xs text-slate-400 mt-0.5">Real-time breaking football news and global coverage</p>
-                </div>
-                <div class="flex items-center gap-2">
-                    <select id="newsSourceSelect" onchange="fetchLiveNews()" class="bg-slate-900 border border-slate-700 text-xs text-white rounded-lg px-3 py-1.5 focus:outline-none focus:border-accentEmerald">
-                        <option value="bbc">BBC Sport Football</option>
-                        <option value="espn">ESPN Soccer</option>
-                    </select>
-                    <button onclick="fetchLiveNews()" class="text-xs bg-slate-800 text-slate-300 hover:text-white px-3 py-1.5 rounded-lg border border-slate-700">
-                        Refresh News
-                    </button>
-                </div>
-            </div>
-            <div id="liveNewsContainer" class="grid gap-4 md:grid-cols-2">
-                <div class="bg-cardBg border border-slate-800 rounded-xl p-4 text-center text-slate-400 text-xs col-span-2 py-8">
-                    Connecting to BBC Sport & ESPN live news feeds...
-                </div>
-            </div>
-        </section>
-
-        <!-- TAB 5: PROFILE CREATION PORTAL -->
+        <!-- PORTAL: registration form -->
         <section id="tab-portal" class="space-y-6 hide max-w-lg mx-auto">
-            <h2 class="text-xl font-bold text-white text-center">Create Your Public Profile & Video Showcase</h2>
+            <div class="text-center">
+                <h2 class="text-xl font-bold text-white">Create Your Scout Escort Profile</h2>
+                <p class="text-xs text-slate-400 mt-1">Showcase your football journey to scouts and clubs worldwide.</p>
+            </div>
             <div class="bg-cardBg border border-slate-800 rounded-xl p-6 shadow-md">
                 <form id="profileCreationForm" onsubmit="submitSelfProfile(event)" class="space-y-4">
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
                         <div>
-                            <label class="block text-xs text-slate-400 mb-1">Profile Name (Player or Club)</label>
-                            <input type="text" id="profileName" placeholder="e.g. Academy FC / John Doe" required class="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-accentEmerald">
+                            <label for="profileName" class="block text-xs text-slate-400 mb-1">Player or team name</label>
+                            <input type="text" id="profileName" placeholder="e.g. John Doe / Academy FC" required maxlength="100" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-accentEmerald">
                         </div>
                         <div>
-                            <label class="block text-xs text-slate-400 mb-1">Profile Type</label>
+                            <label for="profileType" class="block text-xs text-slate-400 mb-1">Profile type</label>
                             <select id="profileType" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-accentEmerald">
-                                <option value="Player">Individual Player</option>
-                                <option value="Team">Football Team / Academy</option>
+                                <option value="Player">Individual player</option>
+                                <option value="Team">Football team / academy</option>
                             </select>
                         </div>
                     </div>
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
                         <div>
-                            <label class="block text-xs text-slate-400 mb-1">Position / Focus</label>
+                            <label for="profilePosition" class="block text-xs text-slate-400 mb-1">Playing position / focus</label>
                             <select id="profilePosition" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-accentEmerald">
                                 <option value="FW">Forward / Winger (FW)</option>
                                 <option value="MF">Midfielder (MF)</option>
                                 <option value="DF">Defender (DF)</option>
                                 <option value="GK">Goalkeeper (GK)</option>
-                                <option value="Team">Full Squad / Academy</option>
+                                <option value="Team">Full squad / academy</option>
                             </select>
                         </div>
                         <div>
-                            <label class="block text-xs text-slate-400 mb-1">Country / Region</label>
-                            <input type="text" id="profileLocation" placeholder="e.g. Accra, Ghana" required class="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-accentEmerald">
+                            <label for="profileLocation" class="block text-xs text-slate-400 mb-1">Country / location</label>
+                            <input type="text" id="profileLocation" placeholder="e.g. Accra, Ghana" required maxlength="100" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-accentEmerald">
                         </div>
                     </div>
                     <div>
-                        <label class="block text-xs text-slate-400 mb-1">Highlight Video URL (YouTube / Vimeo / MP4 link)</label>
-                        <input type="url" id="profileVideoUrl" placeholder="https://youtube.com/watch?v=..." class="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-accentEmerald">
+                        <label for="profileVideoUrl" class="block text-xs text-slate-400 mb-1">YouTube highlight video link</label>
+                        <input type="url" id="profileVideoUrl" placeholder="https://www.youtube.com/watch?v=..." class="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-accentEmerald">
+                        <p class="text-[11px] text-slate-500 mt-1">Paste a public or unlisted YouTube video link. The video will appear in your profile and the Videos tab.</p>
                     </div>
                     <div>
-                        <label class="block text-xs text-slate-400 mb-1">Bio / Tactical Stats & Achievements</label>
-                        <textarea id="profileBio" rows="3" placeholder="Share your stats, age, club history, and why scouts should watch you..." required class="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-accentEmerald"></textarea>
+                        <label for="profileBio" class="block text-xs text-slate-400 mb-1">Football bio, stats and achievements</label>
+                        <textarea id="profileBio" rows="4" placeholder="Tell scouts about your playing style, experience, achievements and football goals..." required maxlength="1500" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-accentEmerald"></textarea>
                     </div>
-                    <button type="submit" class="w-full bg-accentEmerald hover:bg-accentHover text-slate-950 font-bold py-2 px-4 rounded-lg text-sm transition">
-                        Publish Profile to World Directory
+                    <button id="publishProfileButton" type="submit" class="w-full bg-accentEmerald hover:bg-accentHover text-slate-950 font-bold py-3 px-4 rounded-lg text-sm transition">
+                        Publish My Public Profile
                     </button>
+                    <p class="text-[11px] text-slate-500 text-center">Only submit information and videos you have permission to share publicly.</p>
                 </form>
             </div>
         </section>
 
     </main>
 
-    <!-- Bottom Navigation Bar -->
+    <!-- Four-section navigation -->
     <nav class="bg-cardBg border-t border-slate-800 fixed bottom-0 left-0 right-0 z-50 px-2 py-2 flex justify-around shadow-lg">
-        <button onclick="switchTab('profiles')" id="nav-profiles" class="flex flex-col items-center text-accentEmerald text-xs font-medium space-y-1">
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2,2,0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+        <button onclick="switchTab('profiles')" id="nav-profiles" class="flex flex-col items-center text-accentEmerald text-xs font-medium space-y-1" aria-label="Profiles">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
             <span>Profiles</span>
         </button>
-        <button onclick="switchTab('scores')" id="nav-scores" class="flex flex-col items-center text-slate-400 hover:text-slate-200 text-xs font-medium space-y-1">
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
-            <span>Scores</span>
+        <button onclick="switchTab('videos')" id="nav-videos" class="flex flex-col items-center text-slate-400 hover:text-slate-200 text-xs font-medium space-y-1" aria-label="Videos">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M4 6h11a2 2 0 012 2v8a2 2 0 01-2 2H4a2 2 0 01-2-2V8a2 2 0 012-2z"></path></svg>
+            <span>Videos</span>
         </button>
-        <button onclick="switchTab('leagues')" id="nav-leagues" class="flex flex-col items-center text-slate-400 hover:text-slate-200 text-xs font-medium space-y-1">
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 10h16M4 14h16M4 18h16"></path></svg>
-            <span>Leagues</span>
+        <button onclick="switchTab('search')" id="nav-search" class="flex flex-col items-center text-slate-400 hover:text-slate-200 text-xs font-medium space-y-1" aria-label="Search">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 20l-4-4"></path></svg>
+            <span>Search</span>
         </button>
-        <button onclick="switchTab('news')" id="nav-news" class="flex flex-col items-center text-slate-400 hover:text-slate-200 text-xs font-medium space-y-1">
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z"></path></svg>
-            <span>News</span>
-        </button>
-        <button onclick="switchTab('portal')" id="nav-portal" class="flex flex-col items-center text-slate-400 hover:text-slate-200 text-xs font-medium space-y-1">
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path></svg>
-            <span>Profile</span>
+        <button onclick="switchTab('portal')" id="nav-portal" class="flex flex-col items-center text-slate-400 hover:text-slate-200 text-xs font-medium space-y-1" aria-label="Create profile">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path></svg>
+            <span>Register</span>
         </button>
     </nav>
 
-    <!-- Application Logic Script -->
     <script>
         const SUPABASE_URL = 'https://ovbybswgoxvifmftxshb.supabase.co';
         const SUPABASE_ANON_KEY = 'sb_publishable_GVF5j7spmTppoU2oxjLSiw_5fSKZEeg';
-        
-        const supabaseClient = window.supabase ? window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY) : null;
-        let profilesCache = [];
+        const supabaseClient = window.supabase
+            ? window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY)
+            : null;
 
-        // SoccersAPI Credentials
-        const SOCCERS_API_USER = 'calebanneh@gmail.com';
-        const SOCCERS_API_TOKEN = 'SdOEEH7W';
+        let profilesCache = [];
+        const TAB_NAMES = ['profiles', 'videos', 'search', 'portal'];
 
         function switchTab(tabId) {
-            ['profiles', 'scores', 'leagues', 'news', 'portal'].forEach(t => {
-                document.getElementById(`tab-${t}`).classList.add('hide');
-                const navBtn = document.getElementById(`nav-${t}`);
-                if(navBtn) {
-                    navBtn.classList.remove('text-accentEmerald');
-                    navBtn.classList.add('text-slate-400');
-                }
+            if (!TAB_NAMES.includes(tabId)) return;
+
+            TAB_NAMES.forEach(tab => {
+                document.getElementById(`tab-${tab}`).classList.add('hide');
+                const navButton = document.getElementById(`nav-${tab}`);
+                navButton.classList.remove('text-accentEmerald');
+                navButton.classList.add('text-slate-400');
             });
+
             document.getElementById(`tab-${tabId}`).classList.remove('hide');
-            const activeNav = document.getElementById(`nav-${tabId}`);
-            if(activeNav) {
-                activeNav.classList.remove('text-slate-400');
-                activeNav.classList.add('text-accentEmerald');
-            }
+            const activeButton = document.getElementById(`nav-${tabId}`);
+            activeButton.classList.remove('text-slate-400');
+            activeButton.classList.add('text-accentEmerald');
+
             window.scrollTo({ top: 0, behavior: 'smooth' });
 
-            if(tabId === 'scores') fetchLiveScores();
-            if(tabId === 'leagues') fetchLeagueStandings();
-            if(tabId === 'news') fetchLiveNews();
+            if (tabId === 'videos') renderHighlightVideos();
+            if (tabId === 'search') applyScoutSearch();
+        }
+
+        // Escape database text before inserting it into HTML.
+        function escapeHTML(value) {
+            return String(value ?? '').replace(/[&<>"']/g, char => ({
+                '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+            })[char]);
+        }
+
+        // Accept YouTube watch, short, embed and youtu.be links only.
+        function getYouTubeId(rawUrl) {
+            if (!rawUrl) return null;
+            try {
+                const url = new URL(rawUrl);
+                let id = '';
+                if (url.hostname === 'youtu.be' || url.hostname === 'www.youtu.be') {
+                    id = url.pathname.split('/').filter(Boolean)[0] || '';
+                } else if (['youtube.com', 'www.youtube.com', 'm.youtube.com', 'youtube-nocookie.com', 'www.youtube-nocookie.com'].includes(url.hostname)) {
+                    if (url.pathname === '/watch') id = url.searchParams.get('v') || '';
+                    else if (url.pathname.startsWith('/embed/')) id = url.pathname.split('/')[2] || '';
+                    else if (url.pathname.startsWith('/shorts/')) id = url.pathname.split('/')[2] || '';
+                }
+                return /^[a-zA-Z0-9_-]{11}$/.test(id) ? id : null;
+            } catch (_) {
+                return null;
+            }
+        }
+
+        function profileCard(item) {
+            const name = escapeHTML(item.profile_name || 'Unnamed profile');
+            const type = escapeHTML(item.profile_type || 'Player');
+            const position = escapeHTML(item.position || 'Not specified');
+            const location = escapeHTML(item.location || 'Location not provided');
+            const bio = escapeHTML(item.bio || 'No biography added yet.');
+            const videoId = getYouTubeId(item.video_url);
+            const safeVideoUrl = videoId ? `https://www.youtube.com/watch?v=${videoId}` : '';
+
+            return `
+                <article class="bg-cardBg border border-slate-800 rounded-xl p-4 flex flex-col justify-between">
+                    <div>
+                        <div class="flex justify-between items-start gap-2 mb-2">
+                            <div class="flex flex-wrap gap-1">
+                                <span class="text-[10px] bg-slate-900 text-accentEmerald px-2 py-1 rounded border border-slate-700 font-semibold uppercase">${position}</span>
+                                <span class="text-[10px] bg-slate-900 text-slate-300 px-2 py-1 rounded border border-slate-700">${type}</span>
+                            </div>
+                            <span class="text-[10px] text-slate-400 text-right">${location}</span>
+                        </div>
+                        <div class="flex items-center gap-3 mt-3">
+                            <div class="w-12 h-12 shrink-0 rounded-full bg-emerald-900/50 border border-emerald-700 flex items-center justify-center text-accentEmerald font-bold text-lg">${escapeHTML((item.profile_name || '?').trim().charAt(0).toUpperCase())}</div>
+                            <h3 class="font-bold text-white text-base">${name}</h3>
+                        </div>
+                        <p class="text-xs text-slate-300 mt-3 whitespace-pre-line">${bio}</p>
+                        ${videoId ? `
+                            <div class="mt-4 pt-3 border-t border-slate-800">
+                                <iframe class="video-frame" src="https://www.youtube-nocookie.com/embed/${videoId}" title="${name} football highlights" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                                <a href="${safeVideoUrl}" target="_blank" rel="noopener noreferrer" class="inline-block mt-2 text-xs text-accentEmerald hover:underline font-semibold">Open video on YouTube</a>
+                            </div>
+                        ` : '<p class="text-[11px] text-slate-500 mt-3">No highlight video added yet.</p>'}
+                    </div>
+                    <div class="mt-4 pt-3 border-t border-slate-800 flex items-center justify-between text-[11px]">
+                        <span class="text-slate-500">Share profile</span>
+                        <div class="flex items-center gap-2">
+                            <a href="https://api.whatsapp.com/send?text=${encodeURIComponent(`Discover ${item.profile_name || 'this profile'} on Scout Escort: ${window.location.href}`)}" target="_blank" rel="noopener noreferrer" class="text-emerald-400 hover:underline font-semibold">WhatsApp</a>
+                            <span class="text-slate-700">|</span>
+                            <button type="button" onclick="copyProfileLink()" class="text-sky-400 hover:underline font-semibold">Copy site link</button>
+                        </div>
+                    </div>
+                </article>
+            `;
         }
 
         async function fetchDirectoryProfiles() {
-            const container = document.getElementById('selfServiceDirectoryGrid');
+            const directory = document.getElementById('selfServiceDirectoryGrid');
             if (!supabaseClient) {
-                container.innerHTML = '<p class="text-xs text-slate-500 col-span-2">Database client failed to initialize.</p>';
+                directory.innerHTML = '<p class="text-xs text-red-300">Database client could not start. Check your Supabase settings.</p>';
                 return;
             }
 
-            const { data, error } = await supabaseClient.from('player_profiles').select('*').order('created_at', { ascending: false });
-            
-            if (error || !data || data.length === 0) {
-                container.innerHTML = '<p class="text-xs text-slate-500 col-span-2">No player or team profiles published yet. Use the "Profile" tab to create yours!</p>';
+            const { data, error } = await supabaseClient
+                .from('player_profiles')
+                .select('*')
+                .order('created_at', { ascending: false });
+
+            if (error) {
+                console.error('Profile loading error:', error);
+                directory.innerHTML = `<p class="text-xs text-red-300">Could not load profiles. Check the player_profiles table and its read permissions in Supabase.</p>`;
                 profilesCache = [];
                 return;
             }
 
-            profilesCache = data;
+            profilesCache = data || [];
             renderDirectory(profilesCache);
+            renderHighlightVideos();
+            applyScoutSearch();
         }
 
         function renderDirectory(profiles) {
-            const container = document.getElementById('selfServiceDirectoryGrid');
-            if (profiles.length === 0) {
-                container.innerHTML = '<p class="text-xs text-slate-500 col-span-2">No profiles match your filter criteria.</p>';
+            const directory = document.getElementById('selfServiceDirectoryGrid');
+            if (!profiles.length) {
+                directory.innerHTML = '<p class="text-xs text-slate-500 md:col-span-2">No profiles published yet. Be the first to create one!</p>';
+                return;
+            }
+            directory.innerHTML = profiles.map(profileCard).join('');
+        }
+
+        function renderHighlightVideos() {
+            const container = document.getElementById('highlightVideosGrid');
+            const profilesWithVideos = profilesCache.filter(item => getYouTubeId(item.video_url));
+
+            if (!profilesWithVideos.length) {
+                container.innerHTML = '<div class="bg-cardBg border border-slate-800 rounded-xl p-6 text-center md:col-span-2"><p class="text-sm text-slate-300">No highlight videos have been published yet.</p><p class="text-xs text-slate-500 mt-2">When players add YouTube links to their profiles, their videos will appear here.</p></div>';
                 return;
             }
 
-            container.innerHTML = profiles.map(item => {
-                const shareText = encodeURIComponent(`Check out ${item.profile_name} (${item.position}) on Scout Escort! Watch their highlight video here: ${item.video_url || window.location.href}`);
+            container.innerHTML = profilesWithVideos.map(item => {
+                const id = getYouTubeId(item.video_url);
+                const name = escapeHTML(item.profile_name || 'Player');
+                const position = escapeHTML(item.position || 'Not specified');
+                const location = escapeHTML(item.location || 'Location not provided');
                 return `
-                <div class="bg-cardBg border border-slate-800 rounded-xl p-4 flex flex-col justify-between">
-                    <div>
-                        <div class="flex justify-between items-start mb-2">
-                            <div>
-                                <span class="text-[10px] bg-slate-900 text-accentEmerald px-2 py-0.5 rounded border border-slate-700 font-semibold uppercase">${item.position || 'TEAM'}</span>
-                                <span class="text-[10px] bg-slate-900 text-slate-300 px-2 py-0.5 rounded border border-slate-700 ml-1">${item.profile_type || 'Player'}</span>
-                            </div>
-                            <span class="text-[10px] text-slate-400">${item.location || 'Global'}</span>
-                        </div>
-                        <h4 class="font-bold text-white text-base mt-1">${item.profile_name}</h4>
-                        <p class="text-xs text-slate-300 mt-2">${item.bio}</p>
-                        ${item.video_url ? `
-                            <div class="mt-3 pt-3 border-t border-slate-800">
-                                <a href="${item.video_url}" target="_blank" class="inline-flex items-center gap-1.5 text-xs text-accentEmerald hover:underline font-medium">
-                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                                    Watch Highlight Reel / Video
-                                </a>
-                            </div>
-                        ` : ''}
-                    </div>
-                    
-                    <div class="mt-4 pt-3 border-t border-slate-800 flex items-center justify-between text-[11px]">
-                        <span class="text-slate-500">Share Profile:</span>
-                        <div class="flex items-center gap-2">
-                            <a href="https://api.whatsapp.com/send?text=${shareText}" target="_blank" class="text-emerald-400 hover:underline font-semibold">WhatsApp</a>
-                            <span class="text-slate-700">|</span>
-                            <a href="https://twitter.com/intent/tweet?text=${shareText}" target="_blank" class="text-sky-400 hover:underline font-semibold">Twitter</a>
-                            <span class="text-slate-700">|</span>
-                            <a href="https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(window.location.href)}" target="_blank" class="text-blue-400 hover:underline font-semibold">Facebook</a>
-                        </div>
-                    </div>
-                </div>
-            `;
+                    <article class="bg-cardBg border border-slate-800 rounded-xl p-4">
+                        <iframe class="video-frame" src="https://www.youtube-nocookie.com/embed/${id}" title="${name} highlight video" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                        <h3 class="font-bold text-white mt-3">${name}</h3>
+                        <p class="text-xs text-slate-400 mt-1">${position} · ${location}</p>
+                        <a href="https://www.youtube.com/watch?v=${id}" target="_blank" rel="noopener noreferrer" class="inline-block text-xs text-accentEmerald hover:underline mt-3">Watch on YouTube</a>
+                    </article>
+                `;
             }).join('');
         }
 
-        function applyDirectoryFilters() {
-            const posFilter = document.getElementById('filterPosition').value;
-            const catFilter = document.getElementById('filterCategory').value;
-            const keyword = document.getElementById('filterKeyword').value.toLowerCase();
+        function applyScoutSearch() {
+            const keyword = (document.getElementById('searchKeyword')?.value || '').trim().toLowerCase();
+            const position = document.getElementById('searchPosition')?.value || '';
+            const category = document.getElementById('searchCategory')?.value || '';
 
-            const filtered = profilesCache.filter(item => {
-                const matchPos = !posFilter || (item.position && item.position === posFilter);
-                const matchCat = !catFilter || (item.profile_type && item.profile_type === catFilter);
-                const fullText = `${item.profile_name} ${item.bio} ${item.location} ${item.position}`.toLowerCase();
-                const matchKeyword = !keyword || fullText.includes(keyword);
-
-                return matchPos && matchCat && matchKeyword;
+            const results = profilesCache.filter(item => {
+                const matchesPosition = !position || item.position === position;
+                const matchesCategory = !category || item.profile_type === category;
+                const searchable = `${item.profile_name || ''} ${item.bio || ''} ${item.location || ''} ${item.position || ''} ${item.profile_type || ''}`.toLowerCase();
+                return matchesPosition && matchesCategory && (!keyword || searchable.includes(keyword));
             });
 
-            renderDirectory(filtered);
+            const resultCount = document.getElementById('searchResultCount');
+            const resultsContainer = document.getElementById('scoutSearchResults');
+            if (resultCount) resultCount.textContent = `${results.length} profile${results.length === 1 ? '' : 's'} found`;
+
+            if (resultsContainer) {
+                resultsContainer.innerHTML = results.length
+                    ? results.map(profileCard).join('')
+                    : '<p class="text-xs text-slate-500 md:col-span-2">No profiles match those search filters.</p>';
+            }
         }
 
-        async function submitSelfProfile(e) {
-            e.preventDefault();
-            const profileName = document.getElementById('profileName').value;
+        function resetScoutSearch() {
+            document.getElementById('searchKeyword').value = '';
+            document.getElementById('searchPosition').value = '';
+            document.getElementById('searchCategory').value = '';
+            applyScoutSearch();
+        }
+
+        function copyProfileLink() {
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                navigator.clipboard.writeText(window.location.href)
+                    .then(() => alert('Scout Escort link copied.'))
+                    .catch(() => alert('Copy failed. Please copy the website address from your browser.'));
+            } else {
+                alert('Please copy the website address from your browser.');
+            }
+        }
+
+        async function submitSelfProfile(event) {
+            event.preventDefault();
+
+            const submitButton = document.getElementById('publishProfileButton');
+            const profileName = document.getElementById('profileName').value.trim();
             const profileType = document.getElementById('profileType').value;
             const position = document.getElementById('profilePosition').value;
-            const location = document.getElementById('profileLocation').value;
-            const videoUrl = document.getElementById('profileVideoUrl').value;
-            const bio = document.getElementById('profileBio').value;
+            const location = document.getElementById('profileLocation').value.trim();
+            const videoUrl = document.getElementById('profileVideoUrl').value.trim();
+            const bio = document.getElementById('profileBio').value.trim();
 
-            if (!supabaseClient) {
-                alert('Supabase client unconfigured.');
+            if (videoUrl && !getYouTubeId(videoUrl)) {
+                alert('Please enter a valid YouTube video link, or leave the video field blank.');
                 return;
             }
 
+            if (!supabaseClient) {
+                alert('The database connection is unavailable. Please check the Supabase settings.');
+                return;
+            }
+
+            submitButton.disabled = true;
+            submitButton.textContent = 'Publishing...';
+
             const { error } = await supabaseClient
                 .from('player_profiles')
-                .insert([{ 
-                    profile_name: profileName, 
+                .insert([{
+                    profile_name: profileName,
                     profile_type: profileType,
                     position: position,
                     location: location,
-                    video_url: videoUrl,
-                    bio: bio, 
-                    created_at: new Date() 
+                    video_url: videoUrl || null,
+                    bio: bio,
+                    created_at: new Date().toISOString()
                 }]);
 
+            submitButton.disabled = false;
+            submitButton.textContent = 'Publish My Public Profile';
+
             if (error) {
-                alert('Error publishing profile: ' + error.message);
-            } else {
-                alert('Your profile/team showcase is now live on Scout Escort for the world to see!');
-                document.getElementById('profileCreationForm').reset();
-                fetchDirectoryProfiles();
-                switchTab('profiles');
+                console.error('Profile publishing error:', error);
+                alert('Profile could not be published: ' + error.message);
+                return;
             }
+
+            alert('Your profile has been published on Scout Escort!');
+            document.getElementById('profileCreationForm').reset();
+            await fetchDirectoryProfiles();
+            switchTab('profiles');
         }
 
-        // Live Match Scores Feed via SoccersAPI
-        async function fetchLiveScores() {
-            const container = document.getElementById('liveScoresContainer');
-            container.innerHTML = '<p class="text-xs text-slate-400 text-center py-6">Syncing live match scores via SoccersAPI...</p>';
-
-            try {
-                const url = `https://api.soccersapi.com/v2.2/fixtures/?user=${SOCCERS_API_USER}&token=${SOCCERS_API_TOKEN}&t=live`;
-                const response = await fetch(url);
-                const data = await response.json();
-
-                if (data && data.status === 200 && data.data && data.data.length > 0) {
-                    container.innerHTML = data.data.map(ev => {
-                        return `
-                        <div class="bg-cardBg border border-slate-800 rounded-xl p-4 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 hover:border-slate-700 transition">
-                            <div>
-                                <div class="flex items-center gap-2 mb-1.5">
-                                    <span class="text-[10px] bg-slate-900 text-slate-300 px-2 py-0.5 rounded border border-slate-700 font-semibold uppercase">Live Match</span>
-                                    <span class="text-[10px] bg-red-500/20 text-red-400 animate-pulse font-bold px-2 py-0.5 rounded">IN PLAY</span>
-                                </div>
-                                <div class="font-bold text-white text-sm flex items-center gap-2">
-                                    <span>${ev.home_team?.name || 'Home Team'}</span>
-                                    <span class="text-slate-500 text-xs font-normal">vs</span>
-                                    <span>${ev.away_team?.name || 'Away Team'}</span>
-                                </div>
-                            </div>
-                            <div class="flex items-center gap-3 w-full sm:w-auto justify-between sm:justify-end border-t sm:border-t-0 pt-2 sm:pt-0 border-slate-800">
-                                <span class="text-base font-extrabold text-accentEmerald bg-slate-900/80 px-3 py-1 rounded border border-slate-800 font-mono">${ev.home_score || 0} - ${ev.away_score || 0}</span>
-                                <span class="text-[11px] text-slate-400">${ev.time || 'Live'}</span>
-                            </div>
-                        </div>`;
-                    }).join('');
-                } else {
-                    container.innerHTML = `
-                        <div class="bg-cardBg border border-slate-800 rounded-xl p-6 text-center text-slate-400 text-xs">
-                            No live matches currently in progress. Check back during matchday schedules.
-                        </div>
-                    `;
-                }
-            } catch (err) {
-                container.innerHTML = `
-                    <div class="bg-cardBg border border-slate-800 rounded-xl p-6 text-center text-slate-400 text-xs">
-                        Unable to load live fixtures at the moment. Please try refreshing.
-                    </div>
-                `;
-            }
-        }
-
-        // League Standings with Correct League Switcher Mapping
-        async function fetchLeagueStandings() {
-            const leagueCode = document.getElementById('leagueSelect').value;
-            const banner = document.getElementById('leagueTitleBanner').querySelector('span');
-            const tbody = document.getElementById('standingsTableBody');
-
-            const leagueName = document.getElementById('leagueSelect').selectedOptions[0].text;
-            banner.textContent = `${leagueName} Standings`;
-
-            tbody.innerHTML = `<tr><td colspan="7" class="text-center py-6 text-slate-500">Syncing ${leagueName} via SoccersAPI...</td></tr>`;
-
-            try {
-                const leagueIds = { 
-                    'PL': 17,  // Premier League
-                    'CL': 3,   // Champions League
-                    'PD': 8,   // La Liga
-                    'BL1': 35, // Bundesliga
-                    'SA': 34,  // Serie A
-                    'FL1': 31  // Ligue 1
-                };
-                const lid = leagueIds[leagueCode] || 17;
-
-                const url = `https://api.soccersapi.com/v2.2/standings/?user=${SOCCERS_API_USER}&token=${SOCCERS_API_TOKEN}&t=standing&league_id=${lid}`;
-                const response = await fetch(url);
-                const data = await response.json();
-
-                if (data && data.status === 200 && data.data && data.data.length > 0) {
-                    tbody.innerHTML = data.data.map((st, idx) => {
-                        const teamName = st.team_name || st.name || 'Club';
-                        return `
-                            <tr onclick="openLeagueMatchHighlights('${teamName}')" class="hover:bg-slate-800/60 cursor-pointer transition">
-                                <td class="py-3 px-3 font-mono text-slate-400">${st.rank || idx + 1}</td>
-                                <td class="py-3 px-4 font-bold text-white flex items-center justify-between">
-                                    <span>${teamName}</span>
-                                    <span class="text-[10px] text-accentEmerald font-normal">⚡ Highlights</span>
-                                </td>
-                                <td class="py-3 px-2 text-center text-slate-400">${st.matches || st.played || 0}</td>
-                                <td class="py-3 px-2 text-center text-slate-300">${st.won || 0}</td>
-                                <td class="py-3 px-2 text-center text-slate-400">${st.drawn || 0}</td>
-                                <td class="py-3 px-2 text-center text-slate-400">${st.lost || 0}</td>
-                                <td class="py-3 px-3 text-center font-extrabold text-accentEmerald">${st.points || 0}</td>
-                            </tr>
-                        `;
-                    }).join('');
-                } else {
-                    throw new Error('Standings data returned empty');
-                }
-            } catch (err) {
-                tbody.innerHTML = `
-                    <tr>
-                        <td colspan="7" class="text-center py-6 text-slate-400 text-xs">
-                            Standings data is temporarily unavailable for this league. Please click "Sync Table" to retry.
-                        </td>
-                    </tr>
-                `;
-            }
-        }
-
-        // Highlight Viewer Controllers
-        function openLeagueMatchHighlights(clubName) {
-            const viewer = document.getElementById('leagueMatchViewer');
-            if (!viewer) return;
-            const title = document.getElementById('viewerMatchTitle');
-            const slot = document.getElementById('viewerContentSlot');
-
-            viewer.classList.remove('hidden');
-            title.textContent = `${clubName} — Match Highlights & Media`;
-            
-            slot.innerHTML = `<p class="text-slate-400 text-xs animate-pulse">Syncing highlight feeds for ${clubName}...</p>`;
-
-            setTimeout(() => {
-                slot.innerHTML = `
-                    <div class="w-full h-full flex flex-col items-center justify-center bg-slate-950 p-6 text-center rounded-lg border border-slate-800">
-                        <p class="text-white font-semibold text-sm mb-1">${clubName} Match Stream & Highlights</p>
-                        <p class="text-slate-400 text-xs mb-4">Access official post-match highlights, goals, and scout media.</p>
-                        <a href="https://www.youtube.com/results?search_query=${encodeURIComponent(clubName + ' match highlights 2026')}" 
-                           target="_blank" 
-                           class="bg-accentEmerald text-slate-950 font-extrabold px-4 py-2 rounded-lg text-xs hover:opacity-90 transition shadow-lg">
-                            ▶ Watch Highlights Feed 
-                        </a>
-                    </div>
-                `;
-            }, 300);
-        }
-
-        function closeLeagueViewer() {
-            const viewer = document.getElementById('leagueMatchViewer');
-            if (viewer) viewer.classList.add('hidden');
-        }
-
-        // Live News Feed
-        async function fetchLiveNews() {
-            const container = document.getElementById('liveNewsContainer');
-            const source = document.getElementById('newsSourceSelect').value;
-            container.innerHTML = '<p class="text-xs text-slate-400 text-center py-8 col-span-2">Fetching live news headlines...</p>';
-
-            let rssUrl = source === 'bbc' 
-                ? 'https://feeds.bbci.co.uk/sport/football/rss.xml' 
-                : 'https://www.espn.com/espn/rss/news';
-
-            try {
-                const response = await fetch(`https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(rssUrl)}`);
-                const data = await response.json();
-
-                if (data.status === 'ok' && data.items && data.items.length > 0) {
-                    container.innerHTML = data.items.map(item => `
-                        <article class="bg-cardBg border border-slate-800 rounded-xl p-4 flex flex-col justify-between hover:border-slate-700 transition">
-                            <div>
-                                <div class="flex items-center justify-between mb-2">
-                                    <span class="text-[10px] bg-blue-500/20 text-blue-400 px-2 py-0.5 rounded font-semibold uppercase">${source === 'bbc' ? 'BBC Sport' : 'ESPN Soccer'}</span>
-                                    <span class="text-[10px] text-slate-500">${new Date(item.pubDate).toLocaleDateString()}</span>
-                                </div>
-                                <h3 class="font-bold text-sm text-white mt-1 leading-snug">${item.title}</h3>
-                                <p class="text-xs text-slate-300 mt-2 line-clamp-3">${item.description.replace(/<[^>]*>?/gm, '')}</p>
-                            </div>
-                            <div class="mt-4 pt-3 border-t border-slate-800 flex justify-between items-center">
-                                <span class="text-[10px] text-slate-500">Verified Feed Source</span>
-                                <a href="${item.link}" target="_blank" class="text-xs text-accentEmerald hover:underline font-semibold inline-flex items-center gap-1">
-                                    Read Full Article &rarr;
-                                </a>
-                            </div>
-                        </article>
-                    `).join('');
-                } else {
-                    throw new Error('Failed to load RSS feed items');
-                }
-            } catch (err) {
-                container.innerHTML = `
-                    <article class="bg-cardBg border border-slate-800 rounded-xl p-4 col-span-2">
-                        <span class="text-[10px] text-accentEmerald font-semibold uppercase">Global Headline</span>
-                        <h3 class="font-bold text-sm text-white mt-1">Transfer Window Updates: Top Scouts Target Emerging Academy Talent</h3>
-                        <p class="text-xs text-slate-400 mt-2">Clubs across Europe and Africa are increasing digital scouting efforts through self-published showcase platforms.</p>
-                        <span class="text-[10px] text-slate-500 mt-3 block">Live feed active</span>
-                    </article>
-                `;
-            }
-        }
-
-        window.onload = () => {
-            fetchDirectoryProfiles();
-        };
+        window.addEventListener('load', fetchDirectoryProfiles);
     </script>
 </body>
 </html>
-
-
-
-
-
-    
-
 
 
 
