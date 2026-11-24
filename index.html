@@ -113,12 +113,13 @@
    Firebase Console > Project settings > General > Your apps > SDK setup and configuration.
    This version uses Cloud Firestore and the collection named "player_profiles". */
 const firebaseConfig = {
-  apiKey: "PASTE_YOUR_FIREBASE_API_KEY",
-  authDomain: "PASTE_YOUR_PROJECT_ID.firebaseapp.com",
-  projectId: "PASTE_YOUR_PROJECT_ID",
-  storageBucket: "PASTE_YOUR_PROJECT_ID.appspot.com",
-  messagingSenderId: "PASTE_YOUR_MESSAGING_SENDER_ID",
-  appId: "PASTE_YOUR_FIREBASE_APP_ID"
+  apiKey: "YOUR_API_KEY", // Replace with the Web API key from Firebase Project Settings
+  authDomain: "scout-escort.firebaseapp.com",
+  projectId: "scout-escort",
+  storageBucket: "scout-escort.firebasestorage.app",
+  messagingSenderId: "920239833217",
+  appId: "YOUR_WEB_APP_ID", // Replace with the Web App ID from Firebase Project Settings
+  measurementId: "YOUR_MEASUREMENT_ID" // Optional: Firebase Analytics measurement ID
 };
 
 let db = null;
